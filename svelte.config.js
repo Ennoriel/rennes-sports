@@ -8,7 +8,13 @@ const config = {
 			pages: 'build',
 			fallback: null
 		}),
-		target: '#svelte'
+		target: '#svelte',
+		paths: {
+			base: '/rennes-sports'
+		},
+		prerender: {
+			onError: 'continue'
+		}
 	}
 };
 
