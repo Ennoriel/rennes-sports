@@ -2,23 +2,26 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" href="/favicon.png" />
+		<link rel="icon" href="favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		
 
 		
 
-		<link rel="modulepreload" href="/_app/start-23fd0a24.js">
-		<link rel="modulepreload" href="/_app/chunks/vendor-e4a2e6fe.js">
-		<link rel="modulepreload" href="/_app/layout.svelte-3adfae6b.js">
-		<link rel="modulepreload" href="/_app/pages/index.svelte-bab010df.js">
-		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="modulepreload" href="/rennes-sports/_app/start-98c3fb77.js">
+		<link rel="modulepreload" href="/rennes-sports/_app/chunks/vendor-bc27337d.js">
+		<link rel="modulepreload" href="/rennes-sports/_app/pages/__layout.svelte-d0cb9cad.js">
+		<link rel="modulepreload" href="/rennes-sports/_app/pages/index.svelte-a611f506.js">
+		<link rel="stylesheet" href="/rennes-sports/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/rennes-sports/_app/assets/vendor-59df78f7.css">
+		<link rel="stylesheet" href="/rennes-sports/_app/assets/pages/__layout.svelte-15e83343.css">
+		<link rel="stylesheet" href="/rennes-sports/_app/assets/pages/index.svelte-7d21b3f6.css">
 
 		<script type="module">
-			import { start } from "/_app/start-23fd0a24.js";
+			import { start } from "/rennes-sports/_app/start-98c3fb77.js";
 			start({
 				target: document.querySelector("#svelte"),
-				paths: {"base":"","assets":""},
+				paths: {"base":"/rennes-sports","assets":""},
 				session: {},
 				host: location.host,
 				route: true,
@@ -28,8 +31,8 @@
 					status: 200,
 					error: null,
 					nodes: [
-						import("/_app/layout.svelte-3adfae6b.js"),
-						import("/_app/pages/index.svelte-bab010df.js")
+						import("/rennes-sports/_app/pages/__layout.svelte-d0cb9cad.js"),
+						import("/rennes-sports/_app/pages/index.svelte-a611f506.js")
 					],
 					page: {
 						host: location.host, // TODO this is redundant
@@ -45,8 +48,255 @@
 		<div id="svelte">
 
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<div id="table" class="svelte-elb99w"><table class=" svelte-w7dofd"><thead class=" svelte-w7dofd">
+    
+      <tr><th class="isSortable svelte-w7dofd">sport
+              
+            </th><th class="isSortable svelte-w7dofd">pratique
+              
+            </th><th class="isSortable svelte-w7dofd">année de naissance - sexe
+              
+            </th><th class="isSortable svelte-w7dofd">créneau
+              
+            </th><th class="isSortable svelte-w7dofd">Lieu
+              
+            </th><th class="isSortable svelte-w7dofd">association
+              
+            </th></tr>
+    </thead>
+  <tbody class=" svelte-w7dofd"><tr class="svelte-fcnf0k"><td style="border-color: #bf9c03" class="svelte-fcnf0k"><span class="svelte-w63l3s">Basket-ball
+</span></td>
+	<td class="svelte-fcnf0k"><span>Compétition</span></td>
+	<td class="svelte-fcnf0k"><div classname="asso-from-year" class="svelte-1xp3agw">2013, 2014, 2015</div>
+<div classname="asso-sexe" class="svelte-1xp3agw">Mixte
+</div></td>
+	<td class="svelte-fcnf0k"><div class="slot svelte-1832zip"><div class="slot-day svelte-1832zip">Mercredi</div>
+<div class="slot-hour svelte-1832zip">16h30-18h00</div>
+	</div></td>
+	<td class="svelte-fcnf0k"><div class="slot svelte-1e5x39k">Gymnase Guillevic
+	</div></td>
+	<td class="svelte-fcnf0k"><span class="asso-name svelte-sq2ksp">CPB Blosne Pôle Landrel</span>
+<a class="asso-website svelte-sq2ksp" href="https://cerclepaulbert.asso.fr/">consulter le site
+</a></td>
+</tr><tr class="svelte-fcnf0k"><td style="border-color: #bf9c03" class="svelte-fcnf0k"><span class="svelte-w63l3s">Basket-ball
+</span></td>
+	<td class="svelte-fcnf0k"><span>Compétition</span></td>
+	<td class="svelte-fcnf0k"><div classname="asso-from-year" class="svelte-1xp3agw">2011, 2012</div>
+<div classname="asso-sexe" class="svelte-1xp3agw">Masculin
+</div></td>
+	<td class="svelte-fcnf0k"><div class="slot svelte-1832zip"><div class="slot-day svelte-1832zip">Mercredi</div>
+<div class="slot-hour svelte-1832zip">16h30-18h00</div>
+	</div></td>
+	<td class="svelte-fcnf0k"><div class="slot svelte-1e5x39k">Gymnase Guillevic
+	</div></td>
+	<td class="svelte-fcnf0k"><span class="asso-name svelte-sq2ksp">CPB Blosne Pôle Landrel</span>
+<a class="asso-website svelte-sq2ksp" href="https://cerclepaulbert.asso.fr/">consulter le site
+</a></td>
+</tr><tr class="svelte-fcnf0k"><td style="border-color: #bf9c03" class="svelte-fcnf0k"><span class="svelte-w63l3s">Basket-ball
+</span></td>
+	<td class="svelte-fcnf0k"><span>Compétition</span></td>
+	<td class="svelte-fcnf0k"><div classname="asso-from-year" class="svelte-1xp3agw">2013, 2014, 2015, 2016</div>
+<div classname="asso-sexe" class="svelte-1xp3agw">Mixte
+</div></td>
+	<td class="svelte-fcnf0k"><div class="slot svelte-1832zip"><div class="slot-day svelte-1832zip">Mardi</div>
+<div class="slot-hour svelte-1832zip">18h00-19h00</div>
+	</div><div class="slot svelte-1832zip"><div class="slot-day svelte-1832zip">Mercredi</div>
+<div class="slot-hour svelte-1832zip">13h45-14h45</div>
+	</div><div class="slot svelte-1832zip"><div class="slot-day svelte-1832zip">Samedi</div>
+<div class="slot-hour svelte-1832zip">11h00-12h00</div>
+	</div></td>
+	<td class="svelte-fcnf0k"><div class="slot svelte-1e5x39k">Gymnase Jules Issac
+	</div><div class="slot svelte-1e5x39k">Stade Robert Launay
+	</div><div class="slot svelte-1e5x39k">en attente
+	</div></td>
+	<td class="svelte-fcnf0k"><span class="asso-name svelte-sq2ksp">ASPTT Rennes</span>
+<a class="asso-website svelte-sq2ksp" href="https://www.asptt-rennes-basket.fr/">consulter le site
+</a></td>
+</tr><tr class="svelte-fcnf0k"><td style="border-color: #5f3877" class="svelte-fcnf0k"><span class="svelte-w63l3s">Roller randonnée
+</span></td>
+	<td class="svelte-fcnf0k"><span>Loisir</span></td>
+	<td class="svelte-fcnf0k"><div classname="asso-from-year" class="svelte-1xp3agw">2007, 2006, 2005, 2004, adultes</div>
+<div classname="asso-sexe" class="svelte-1xp3agw">Mixte
+</div></td>
+	<td class="svelte-fcnf0k"><div class="slot svelte-1832zip"><div class="slot-day svelte-1832zip">Mardi</div>
+<div class="slot-hour svelte-1832zip">20h15-22h00</div>
+	</div></td>
+	<td class="svelte-fcnf0k"><div class="slot svelte-1e5x39k">Skatepark de la Poterie
+	</div></td>
+	<td class="svelte-fcnf0k"><span class="asso-name svelte-sq2ksp">CPB Ginguené</span>
+<a class="asso-website svelte-sq2ksp" href="https://cerclepaulbert.asso.fr/">consulter le site
+</a></td>
+</tr><tr class="svelte-fcnf0k"><td style="border-color: #33332b" class="svelte-fcnf0k"><span class="svelte-w63l3s">Roller hockey
+</span></td>
+	<td class="svelte-fcnf0k"><span>Loisir</span></td>
+	<td class="svelte-fcnf0k"><div classname="asso-from-year" class="svelte-1xp3agw">2007, 2006, 2005, 2004, adultes</div>
+<div classname="asso-sexe" class="svelte-1xp3agw">Mixte
+</div></td>
+	<td class="svelte-fcnf0k"><div class="slot svelte-1832zip"><div class="slot-day svelte-1832zip">Mercredi</div>
+<div class="slot-hour svelte-1832zip">18h30-20h00</div>
+	</div></td>
+	<td class="svelte-fcnf0k"><div class="slot svelte-1e5x39k">Skatepark de la Poterie
+	</div></td>
+	<td class="svelte-fcnf0k"><span class="asso-name svelte-sq2ksp">CPB Ginguené</span>
+<a class="asso-website svelte-sq2ksp" href="https://cerclepaulbert.asso.fr/">consulter le site
+</a></td>
+</tr><tr class="svelte-fcnf0k"><td style="border-color: #d0a9d1" class="svelte-fcnf0k"><span class="svelte-w63l3s">Roller slalom
+</span></td>
+	<td class="svelte-fcnf0k"><span>Loisir</span></td>
+	<td class="svelte-fcnf0k"><div classname="asso-from-year" class="svelte-1xp3agw">2007, 2006, 2005, 2004, adultes</div>
+<div classname="asso-sexe" class="svelte-1xp3agw">Mixte
+</div></td>
+	<td class="svelte-fcnf0k"><div class="slot svelte-1832zip"><div class="slot-day svelte-1832zip">Jeudi</div>
+<div class="slot-hour svelte-1832zip">18h15-20h00</div>
+	</div></td>
+	<td class="svelte-fcnf0k"><div class="slot svelte-1e5x39k">Skatepark de la Poterie
+	</div></td>
+	<td class="svelte-fcnf0k"><span class="asso-name svelte-sq2ksp">CPB Ginguené</span>
+<a class="asso-website svelte-sq2ksp" href="https://cerclepaulbert.asso.fr/">consulter le site
+</a></td>
+</tr><tr class="svelte-fcnf0k"><td style="border-color: #20441f" class="svelte-fcnf0k"><span class="svelte-w63l3s">Roller fitness
+</span></td>
+	<td class="svelte-fcnf0k"><span>Loisir</span></td>
+	<td class="svelte-fcnf0k"><div classname="asso-from-year" class="svelte-1xp3agw">2007, 2006, 2005, 2004, adultes</div>
+<div classname="asso-sexe" class="svelte-1xp3agw">Mixte
+</div></td>
+	<td class="svelte-fcnf0k"><div class="slot svelte-1832zip"><div class="slot-day svelte-1832zip">Samedi</div>
+<div class="slot-hour svelte-1832zip">9h60-11h00</div>
+	</div></td>
+	<td class="svelte-fcnf0k"><div class="slot svelte-1e5x39k">Skatepark de la Poterie
+	</div></td>
+	<td class="svelte-fcnf0k"><span class="asso-name svelte-sq2ksp">CPB Ginguené</span>
+<a class="asso-website svelte-sq2ksp" href="https://cerclepaulbert.asso.fr/">consulter le site
+</a></td>
+</tr><tr class="svelte-fcnf0k"><td style="border-color: #e15fef" class="svelte-fcnf0k"><span class="svelte-w63l3s">Rink Hockey
+</span></td>
+	<td class="svelte-fcnf0k"><span>Compétition</span></td>
+	<td class="svelte-fcnf0k"><div classname="asso-from-year" class="svelte-1xp3agw">2005, 2004, adultes</div>
+<div classname="asso-sexe" class="svelte-1xp3agw">Mixte
+</div></td>
+	<td class="svelte-fcnf0k"><div class="slot svelte-1832zip"><div class="slot-day svelte-1832zip">Mercredi</div>
+<div class="slot-hour svelte-1832zip">20h00-22h00</div>
+	</div></td>
+	<td class="svelte-fcnf0k"><div class="slot svelte-1e5x39k">Gymnase Les Chalais
+	</div></td>
+	<td class="svelte-fcnf0k"><span class="asso-name svelte-sq2ksp">CPB Ginguené</span>
+<a class="asso-website svelte-sq2ksp" href="https://cerclepaulbert.asso.fr/">consulter le site
+</a></td>
+</tr><tr class="svelte-fcnf0k"><td style="border-color: #d6ad3b" class="svelte-fcnf0k"><span class="svelte-w63l3s">Roller skatepark
+</span></td>
+	<td class="svelte-fcnf0k"><span>Loisir</span></td>
+	<td class="svelte-fcnf0k"><div classname="asso-from-year" class="svelte-1xp3agw">2007, 2006, 2005, 2004, adultes</div>
+<div classname="asso-sexe" class="svelte-1xp3agw">Mixte
+</div></td>
+	<td class="svelte-fcnf0k"><div class="slot svelte-1832zip"><div class="slot-day svelte-1832zip">Lundi</div>
+<div class="slot-hour svelte-1832zip">18h15-20h00</div>
+	</div></td>
+	<td class="svelte-fcnf0k"><div class="slot svelte-1e5x39k">Skatepark de la Poterie
+	</div></td>
+	<td class="svelte-fcnf0k"><span class="asso-name svelte-sq2ksp">CPB Ginguené</span>
+<a class="asso-website svelte-sq2ksp" href="https://cerclepaulbert.asso.fr/">consulter le site
+</a></td>
+</tr><tr class="svelte-fcnf0k"><td style="border-color: #c5f45f" class="svelte-fcnf0k"><span class="svelte-w63l3s">Roller
+</span></td>
+	<td class="svelte-fcnf0k"><span>Loisir</span></td>
+	<td class="svelte-fcnf0k"><div classname="asso-from-year" class="svelte-1xp3agw">2012, 2011, 2010, 2009, 2008, 2007, 2006, 2005</div>
+<div classname="asso-sexe" class="svelte-1xp3agw">Mixte
+</div></td>
+	<td class="svelte-fcnf0k"><div class="slot svelte-1832zip"><div class="slot-day svelte-1832zip">Lundi</div>
+<div class="slot-hour svelte-1832zip">18h15-20h00</div>
+	</div></td>
+	<td class="svelte-fcnf0k"><div class="slot svelte-1e5x39k">Skatepark de la Poterie
+	</div></td>
+	<td class="svelte-fcnf0k"><span class="asso-name svelte-sq2ksp">CPB Ginguené</span>
+<a class="asso-website svelte-sq2ksp" href="https://cerclepaulbert.asso.fr/">consulter le site
+</a></td>
+</tr><tr class="svelte-fcnf0k"><td style="border-color: #c5f45f" class="svelte-fcnf0k"><span class="svelte-w63l3s">Roller
+</span></td>
+	<td class="svelte-fcnf0k"><span>Loisir</span></td>
+	<td class="svelte-fcnf0k"><div classname="asso-from-year" class="svelte-1xp3agw">2015, 2014, 2013, 2012, 2011, 2010, 2009, 2008, 2007</div>
+<div classname="asso-sexe" class="svelte-1xp3agw">Mixte
+</div></td>
+	<td class="svelte-fcnf0k"><div class="slot svelte-1832zip"><div class="slot-day svelte-1832zip">Mercredi</div>
+<div class="slot-hour svelte-1832zip">14h00-15h30</div>
+	</div><div class="slot svelte-1832zip"><div class="slot-day svelte-1832zip">Mercredi</div>
+<div class="slot-hour svelte-1832zip">15h30-16h30</div>
+	</div><div class="slot svelte-1832zip"><div class="slot-day svelte-1832zip">Mercredi</div>
+<div class="slot-hour svelte-1832zip">16h30-17h30</div>
+	</div></td>
+	<td class="svelte-fcnf0k"><div class="slot svelte-1e5x39k">Skatepark de la Poterie
+	</div><div class="slot svelte-1e5x39k">Skatepark de la Poterie
+	</div><div class="slot svelte-1e5x39k">Skatepark de la Poterie
+	</div></td>
+	<td class="svelte-fcnf0k"><span class="asso-name svelte-sq2ksp">CPB Ginguené</span>
+<a class="asso-website svelte-sq2ksp" href="https://cerclepaulbert.asso.fr/">consulter le site
+</a></td>
+</tr><tr class="svelte-fcnf0k"><td style="border-color: #c5f45f" class="svelte-fcnf0k"><span class="svelte-w63l3s">Roller
+</span></td>
+	<td class="svelte-fcnf0k"><span>Loisir</span></td>
+	<td class="svelte-fcnf0k"><div classname="asso-from-year" class="svelte-1xp3agw">2007, 2006, 2005, 2004, adultes</div>
+<div classname="asso-sexe" class="svelte-1xp3agw">Mixte
+</div></td>
+	<td class="svelte-fcnf0k"><div class="slot svelte-1832zip"><div class="slot-day svelte-1832zip">Lundi</div>
+<div class="slot-hour svelte-1832zip">20h15-22h00</div>
+	</div><div class="slot svelte-1832zip"><div class="slot-day svelte-1832zip">Mercredi</div>
+<div class="slot-hour svelte-1832zip">20h15-22h00</div>
+	</div><div class="slot svelte-1832zip"><div class="slot-day svelte-1832zip">Jeudi</div>
+<div class="slot-hour svelte-1832zip">20h15-22h00</div>
+	</div></td>
+	<td class="svelte-fcnf0k"><div class="slot svelte-1e5x39k">Skatepark de la Poterie
+	</div><div class="slot svelte-1e5x39k">Skatepark de la Poterie
+	</div><div class="slot svelte-1e5x39k">Skatepark de la Poterie
+	</div></td>
+	<td class="svelte-fcnf0k"><span class="asso-name svelte-sq2ksp">CPB Ginguené</span>
+<a class="asso-website svelte-sq2ksp" href="https://cerclepaulbert.asso.fr/">consulter le site
+</a></td>
+</tr><tr class="svelte-fcnf0k"><td style="border-color: #c5f45f" class="svelte-fcnf0k"><span class="svelte-w63l3s">Roller
+</span></td>
+	<td class="svelte-fcnf0k"><span>Loisir</span></td>
+	<td class="svelte-fcnf0k"><div classname="asso-from-year" class="svelte-1xp3agw">Parent-enfant</div>
+<div classname="asso-sexe" class="svelte-1xp3agw">Mixte
+</div></td>
+	<td class="svelte-fcnf0k"><div class="slot svelte-1832zip"><div class="slot-day svelte-1832zip">Samedi</div>
+<div class="slot-hour svelte-1832zip">11h00-12h30</div>
+	</div></td>
+	<td class="svelte-fcnf0k"><div class="slot svelte-1e5x39k">Skatepark de la Poterie
+	</div></td>
+	<td class="svelte-fcnf0k"><span class="asso-name svelte-sq2ksp">CPB Ginguené</span>
+<a class="asso-website svelte-sq2ksp" href="https://cerclepaulbert.asso.fr/">consulter le site
+</a></td>
+</tr><tr class="svelte-fcnf0k"><td style="border-color: #c5f45f" class="svelte-fcnf0k"><span class="svelte-w63l3s">Roller
+</span></td>
+	<td class="svelte-fcnf0k"><span>Loisir</span></td>
+	<td class="svelte-fcnf0k"><div classname="asso-from-year" class="svelte-1xp3agw">2015, 2014, 2013, 2012, 2011, 2010, 2009</div>
+<div classname="asso-sexe" class="svelte-1xp3agw">Mixte
+</div></td>
+	<td class="svelte-fcnf0k"><div class="slot svelte-1832zip"><div class="slot-day svelte-1832zip">Mercredi</div>
+<div class="slot-hour svelte-1832zip">13h45-15h00</div>
+	</div><div class="slot svelte-1832zip"><div class="slot-day svelte-1832zip">Samedi</div>
+<div class="slot-hour svelte-1832zip">10h45-12h00</div>
+	</div></td>
+	<td class="svelte-fcnf0k"><div class="slot svelte-1e5x39k">Salle Belle-Ile
+	</div><div class="slot svelte-1e5x39k">Salle Belle-Ile
+	</div></td>
+	<td class="svelte-fcnf0k"><span class="asso-name svelte-sq2ksp">La Tour d&#39;Auvergne</span>
+<a class="asso-website svelte-sq2ksp" href="https://www.tourdauvergneasso.com/roller/">consulter le site
+</a></td>
+</tr><tr class="svelte-fcnf0k"><td style="border-color: #c5f45f" class="svelte-fcnf0k"><span class="svelte-w63l3s">Roller
+</span></td>
+	<td class="svelte-fcnf0k"><span>Loisir</span></td>
+	<td class="svelte-fcnf0k"><div classname="asso-from-year" class="svelte-1xp3agw">2013, 2012, 2011, 2010, 2009, 2008, 2007, 2006, 2005, 2004, adultes</div>
+<div classname="asso-sexe" class="svelte-1xp3agw">Mixte
+</div></td>
+	<td class="svelte-fcnf0k"><div class="slot svelte-1832zip"><div class="slot-day svelte-1832zip">Samedi</div>
+<div class="slot-hour svelte-1832zip">12h00-13h15</div>
+	</div></td>
+	<td class="svelte-fcnf0k"><div class="slot svelte-1e5x39k">Salle Belle-Ile
+	</div></td>
+	<td class="svelte-fcnf0k"><span class="asso-name svelte-sq2ksp">La Tour d&#39;Auvergne</span>
+<a class="asso-website svelte-sq2ksp" href="https://www.tourdauvergneasso.com/roller/">consulter le site
+</a></td>
+</tr></tbody></table>
+</div>
 
 
 
