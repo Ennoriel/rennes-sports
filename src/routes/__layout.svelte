@@ -1,0 +1,10 @@
+<slot/>
+
+<style>
+	:global(body) {
+      font-family: 'Roboto', sans-serif;
+			font-size: 14px;
+			line-height: 1.5em;
+			background-color: #FAFAFA;
+	}
+</style>
