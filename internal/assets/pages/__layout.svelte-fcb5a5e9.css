@@ -1,0 +1,1 @@
+body{font-family:"Roboto",sans-serif;font-size:14px;line-height:1.5em;background-color:#fafafa;margin:0}*{--dark:black;--light:white;scrollbar-width:thin;scrollbar-color:var(--dark) var(--light);scroll-behavior:smooth}*::-webkit-scrollbar-track{background:var(--light)}*::-webkit-scrollbar-thumb{background-color:var(--dark)}*::-webkit-scrollbar{width:7px}
