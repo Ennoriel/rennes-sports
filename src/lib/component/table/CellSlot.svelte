@@ -1,5 +1,6 @@
 <script lang='ts'>
-	import type { Sport } from '$lib/types/sport.type';
+	import type { Sport } from '../../types/sport.type';
+	import { displayHours } from '../../utils/time';
 
 	export let row: Sport;
 </script>
@@ -7,7 +8,7 @@
 {#each row.slots as slot}
 	<div class='slot'>
 		<div class='slot-day'>{slot.day}</div>
-		<div class='slot-hour'>{slot.hour}</div>
+		<div class='slot-hour'> {displayHours(slot.hour)}</div>
 	</div>
 {/each}
 

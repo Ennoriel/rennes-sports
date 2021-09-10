@@ -6,5 +6,22 @@
 			font-size: 14px;
 			line-height: 1.5em;
 			background-color: #FAFAFA;
+			margin: 0;
 	}
+  :global(*) {
+			--dark: black;
+			--light: white;
+      scrollbar-width: thin;
+      scrollbar-color: var(--dark) var(--light);
+      scroll-behavior: smooth;
+  }
+  :global(*::-webkit-scrollbar-track) {
+      background: var(--light);
+  }
+  :global(*::-webkit-scrollbar-thumb) {
+      background-color: var(--dark) ;
+  }
+  :global(*::-webkit-scrollbar) {
+      width: 7px;
+  }
 </style>

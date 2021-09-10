@@ -1,10 +1,10 @@
 <script>
-	import CellYearSexe from '$lib/component/CellYearSexe.svelte';
-	import CellSlot from '$lib/component/CellSlot.svelte';
-	import CellLocation from '$lib/component/CellLocation.svelte';
-	import CellSport from '$lib/component/CellSport.svelte';
-	import CellAsso from '$lib/component/CellAsso.svelte';
-	import CellLevel from '$lib/component/CellLevel.svelte';
+	import CellYearSex from './CellYearSex.svelte';
+	import CellSlot from './CellSlot.svelte';
+	import CellLocation from './CellLocation.svelte';
+	import CellSport from './CellSport.svelte';
+	import CellAsso from './CellAsso.svelte';
+	import CellLevel from './CellLevel.svelte';
 
 	export let row
 
@@ -20,14 +20,13 @@
 		['Roller']: '#c5f45f'
 	};
 
-
 </script>
 
 
 <tr>
 	<td style='border-color: {colors[row.sport]}'><CellSport {row} /></td>
 	<td><CellLevel {row} /></td>
-	<td><CellYearSexe {row} /></td>
+	<td><CellYearSex {row} /></td>
 	<td><CellSlot {row} /></td>
 	<td><CellLocation {row} /></td>
 	<td><CellAsso {row} /></td>

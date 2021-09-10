@@ -9,8 +9,10 @@ const config = {
 			fallback: null
 		}),
 		target: '#svelte',
+		appDir: 'internal',
 		paths: {
-			base: '/rennes-sports'
+			base: '/rennes-sports',
+			assets: '/rennes-sports',
 		},
 		prerender: {
 			onError: 'continue'
