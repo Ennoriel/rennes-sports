@@ -9,8 +9,8 @@
 			margin: 0;
 	}
   :global(*) {
-			--dark: black;
-			--light: white;
+			--dark: #CCC;
+			--light: #FAFAFA;
       scrollbar-width: thin;
       scrollbar-color: var(--dark) var(--light);
       scroll-behavior: smooth;

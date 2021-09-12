@@ -23,8 +23,8 @@
 			sortable: true
 		},
 		{
-			key: 'year-sexe',
-			title: 'année de naissance - sex',
+			key: 'year-sex',
+			title: 'année de naissance - sexe',
 			sortable: false
 		},
 		{
@@ -73,21 +73,17 @@
         margin: 0 24px;
     }
 
-    #table :global(thead) {
+    #table :global(thead tr) {
         font-size: 10px;
         text-transform: uppercase;
         color: #7F7F7F;
+        box-shadow: 0 0 5px #888;
+
+        position: sticky;
+        background-color: #FAFAFA;
+				height: 40px;
+        top: 0;
     }
-    /*:global(tbody) {*/
-    /*    height:100vh;*/
-    /*    overflow:auto;*/
-    /*    display: block;*/
-    /*}*/
-    /*:global(thead, tbody tr) {*/
-    /*    display:table;*/
-    /*    width:100%;*/
-    /*    table-layout:fixed;*/
-    /*}*/
 
     #table :global(tbody td:not(:first-of-type)) {
         padding: 4px 0;

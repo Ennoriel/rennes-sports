@@ -31,20 +31,20 @@
 <Panel>
 	<div class="panel-wrapper">
 		<Select
-			label="Sports"
+			label="Sport"
 			options={[...new Set(sports.map(sport => sport.sport))]}
 			bind:value={filter.sport}
 		/>
 
 		<Radio
 			label="Pratique"
-			options={["Loisir", "Compétition"]}
+			options={[...new Set(sports.map(sport => sport.level))]}
 			bind:value={filter.level}
 		/>
 
 		<Select
 			label="Année de naissance"
-			placeholder="Années"
+			placeholder="Année"
 			options={range(2021, 1920)}
 			bind:value={filter.birthYear}
 		/>
@@ -71,7 +71,7 @@
 
 		<Select
 			label="Lieu"
-			placeholder="Salle/Gymnase"
+			placeholder="Salle / Gymnase"
 			options={[...new Set(locations)]}
 			bind:value={filter.location}
 		/>
@@ -87,9 +87,6 @@
 			<button type="submit" on:click={() => {$state.isOpen = false; onSubmit(filter);}}>Valider</button>
 			<button type="reset" on:click={resetFilters}>Effacer</button>
 		</div>
-<!--		<pre>-->
-<!--			{JSON.stringify(filter, null, 2)}-->
-<!--		</pre>-->
 	</div>
 </Panel>
 

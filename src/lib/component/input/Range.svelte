@@ -65,6 +65,20 @@
 		minPressed = false;
 		maxPressed = false;
 	}
+
+	function keyDown(e, isMinIndicator) {
+		if (e.key === 'ArrowLeft') {
+			range = [
+				isMinIndicator ? Math.max(min, range[0] - step) : range[0],
+				isMinIndicator ? range[1] : Math.max(range[1] - step, range[0] + step)
+			]
+		} else if (e.key === 'ArrowRight') {
+			range = [
+				isMinIndicator ? Math.min(range[0] + step, range[1] - step) : range[0],
+				isMinIndicator ? range[1] : Math.min(max, range[1] + step)
+			]
+		}
+	}
 </script>
 
 <svelte:window on:mousemove={mouseMove} on:mouseup={mouseUp} />
@@ -78,6 +92,8 @@
 		></div>
 		<div
 			class="indicator"
+			tabindex='0'
+			on:keydown={e => keyDown(e, true)}
 			on:mousedown={() => minPressed = true}
 			style="left: {valToPos(range[0])}px"
 		>
@@ -87,6 +103,8 @@
 		</div>
 		<div
 			class="indicator"
+			tabindex='0'
+			on:keydown={e => keyDown(e, false)}
 			on:mousedown={() => maxPressed = true}
 			style="left: {valToPos(range[1])}px"
 		>
@@ -124,6 +142,10 @@
 			border: 2px solid #6100FF;
 			background-color: white;
 			margin: 0 -10px;
+	}
+	.indicator:focus {
+			box-shadow: 0 0 5px black;
+			font-weight: 700;
 	}
 	.selected-range {
       position: absolute;
