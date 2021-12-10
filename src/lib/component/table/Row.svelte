@@ -8,7 +8,6 @@
 
 	export let row
 
-
 	const colors = {
 		['Basket-ball']: '#bf9c03',
 		['Roller randonnée']: '#5f3877',
