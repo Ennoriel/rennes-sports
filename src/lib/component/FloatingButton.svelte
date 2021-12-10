@@ -10,16 +10,19 @@
 
 <style>
 	button {
+			color: white;
+			font-size: 16px;
+			font-weight: 500;
 			position: fixed;
 			bottom: 50px;
 			left: 50px;
 			outline: none;
-			padding: 15px 25px;
-			border-radius: 25px;
+      border-radius: 5px;
+      padding: 12px 24px;
       border: 1px solid white;
 			cursor: pointer;
 
-			background: linear-gradient(90deg, #d0a9d1, #d079a1 50%, #d0a9d1 100%);
+			background: linear-gradient(90deg, var(--main-color), #0035e2 50%, var(--main-color) 100%);
 			background-size: 200% 100%;
       animation: background-gradient 5s infinite linear;
 			transition: all .4s;

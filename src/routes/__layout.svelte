@@ -7,6 +7,8 @@
 			line-height: 1.5em;
 			background-color: #FAFAFA;
 			margin: 0;
+
+			--main-color: #002395;
 	}
   :global(*) {
 			--dark: #CCC;

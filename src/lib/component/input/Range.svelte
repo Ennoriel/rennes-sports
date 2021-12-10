@@ -139,9 +139,10 @@
 			height: 20px;
 			box-sizing: border-box;
 			border-radius: 10px;
-			border: 2px solid #6100FF;
+			border: 2px solid var(--main-color);
 			background-color: white;
 			margin: 0 -10px;
+			cursor: pointer;
 	}
 	.indicator:focus {
 			box-shadow: 0 0 5px black;
@@ -151,7 +152,7 @@
       position: absolute;
       width: 100%;
 			height: 100%;
-      background-color: #6100FF;
+      background-color: var(--main-color);
 	}
 	span {
 			position: absolute;

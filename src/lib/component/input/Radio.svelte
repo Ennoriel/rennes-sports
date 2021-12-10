@@ -42,7 +42,7 @@
 				margin: 0;
 		}
 		label.selected {
-				background-color: #6100FF;
+				background-color: var(--main-color);
 				color: white;
         cursor: default;
 		}

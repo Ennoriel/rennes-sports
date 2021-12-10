@@ -113,7 +113,7 @@
 		}
     button[type="submit"] {
         flex-grow: 3;
-        background-color: #6100FF;
+        background-color: var(--main-color);
 				color: white;
     }
 </style>
