@@ -2,7 +2,7 @@
 
 	<img
 		class='background-image'
-		src='static/home-background.png'
+		src='/home-background.png'
 		alt='3 sportifs en action.'
 	/>
 
@@ -10,7 +10,7 @@
 		<ul>
 			<li>
 				<a href='/'>
-					<img src='static/svg/icon.svg' alt='icon app'/>
+					<img src='/svg/icon.svg' alt='icon app'/>
 				</a>
 			</li>
 			<li>
