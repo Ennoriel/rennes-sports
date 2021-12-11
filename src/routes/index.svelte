@@ -1,25 +1,29 @@
+<script>
+	import { getHost } from '../lib/utils/static.util';
+</script>
+
 <main>
 
 	<img
 		class='background-image'
-		src='/home-background.png'
+		src='{getHost()}/home-background.png'
 		alt='3 sportifs en action.'
 	/>
 
 	<nav>
 		<ul>
 			<li>
-				<a href='/'>
-					<img src='/svg/icon.svg' alt='icon app'/>
+				<a href='{getHost()}/'>
+					<img src='{getHost()}/svg/icon.svg' alt='icon app'/>
 				</a>
 			</li>
 			<li>
-				<a href='/sports'>
+				<a href='{getHost()}/sports'>
 					Liste
 				</a>
 			</li>
 			<li>
-				<a href='/'>
+				<a href='{getHost()}/'>
 					Carte
 				</a>
 			</li>
@@ -43,7 +47,7 @@
 
 		<ul class='details'>
 			<li data-type='Liste'>
-				<a href='/sports'>
+				<a href='{getHost()}/sports'>
 					Tri des créneaux par sport, âge, sexe, jour, type de pratique...
 				</a>
 			</li>
@@ -137,6 +141,8 @@
       border-radius: 5px;
 			margin-right: 16px;
 			padding: 2px 6px;
+			width: 35px;
+			text-align: center;
 	}
 
 	.background-image {
