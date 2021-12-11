@@ -1,5 +1,5 @@
 <script>
-	import { getHost } from '../lib/utils/static.util';
+	import { getHost } from '$lib/utils/static.util';
 </script>
 
 <main>
@@ -23,7 +23,7 @@
 				</a>
 			</li>
 			<li>
-				<a href='{getHost()}/'>
+				<a href='{getHost()}/carte'>
 					Carte
 				</a>
 			</li>
@@ -51,7 +51,11 @@
 					Tri des créneaux par sport, âge, sexe, jour, type de pratique...
 				</a>
 			</li>
-			<li data-type='Carte'>Localisation des équipements sportifs à proximité</li>
+			<li data-type='Carte'>
+				<a href='{getHost()}/carte'>
+					Localisation des équipements sportifs à proximité
+				</a>
+			</li>
 		</ul>
 	</div>
 </main>

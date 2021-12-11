@@ -19,16 +19,17 @@
 			outline: none;
       border-radius: 5px;
       padding: 12px 24px;
-      border: 1px solid white;
+      border: none;
 			cursor: pointer;
 
 			background: linear-gradient(90deg, var(--main-color), #0035e2 50%, var(--main-color) 100%);
 			background-size: 200% 100%;
       animation: background-gradient 5s infinite linear;
 			transition: all .4s;
+
+			z-index: 401;
 	}
 	button:hover {
-			border: 1px solid #777;
 			box-shadow: 0 0 10px black;
 	}
 	button.isOpen {

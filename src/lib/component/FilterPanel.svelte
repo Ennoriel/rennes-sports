@@ -2,7 +2,8 @@
 	import Panel from './Panel.svelte';
 	import { range } from '../utils/array';
 	import { sports } from '../data/sports';
-	import { Filter, Slot } from '../types/sport.type';
+	import { locations } from '../data/locations';
+	import { Filter } from '../types/sport.type';
 	import Select from './input/Select.svelte';
 	import Radio from './input/Radio.svelte';
 	import { state } from '../store/state';
@@ -13,11 +14,7 @@
 
 	let filter: Filter = {};
 
-	const locations = sports.map(sport => sport.slots)
-		.reduce((acc: string[], slots: Slot[]) => {
-			acc.push(...slots.map(slot => slot.location));
-			return acc;
-		}, []);
+	const locationIds = locations.map(location => location.id)
 
 	function resetFilters() {
 		filter = {
@@ -30,6 +27,11 @@
 
 <Panel>
 	<div class="panel-wrapper">
+
+		<h2>
+			Filtres
+		</h2>
+
 		<Select
 			label="Sport"
 			options={[...new Set(sports.map(sport => sport.sport))]}
@@ -72,13 +74,12 @@
 		<Select
 			label="Lieu"
 			placeholder="Salle / Gymnase"
-			options={[...new Set(locations)]}
-			bind:value={filter.location}
+			options={locationIds}
+			bind:value={filter.locationId}
 		/>
 
 		<Select
 			label="Association"
-			placeholder="Association"
 			options={[...new Set(sports.map(sport => sport.assoName))]}
 			bind:value={filter.assoName}
 		/>
@@ -97,6 +98,14 @@
 		.panel-wrapper > :global(label:first-child) {
 				margin: 0;
 		}
+
+		h2 {
+        text-transform: uppercase;
+        font-size: 16px;
+        color: var(--main-color);
+        font-weight: normal;
+		}
+
     .button-wrapper {
 				margin-top: 10px;
         display: flex;

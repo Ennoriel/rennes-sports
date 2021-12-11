@@ -14,7 +14,7 @@ export const sports: Sport[] = [
         "details": "",
         "day": "Mercredi",
         "hour": [990, 1080],
-        "location": "Gymnase Guillevic"
+        "locationId": 0,
       }
     ]
   },
@@ -31,7 +31,7 @@ export const sports: Sport[] = [
         "details": "",
         "day": "Mercredi",
         "hour": [990, 1080],
-        "location": "Gymnase Guillevic"
+        "locationId": 0,
       }
     ]
   },
@@ -48,7 +48,7 @@ export const sports: Sport[] = [
         "details": "",
         "day": "Mercredi",
         "hour": [990, 1080],
-        "location": "Gymnase Guillevic"
+        "locationId": 0,
       }
     ]
   },
@@ -65,19 +65,19 @@ export const sports: Sport[] = [
         "details": "",
         "day": "Mardi",
         "hour": [1080, 1140],
-        "location": "Gymnase Jules Issac"
+        "locationId": 1,
       },
       {
         "details": "",
         "day": "Mercredi",
         "hour": [795, 855],
-        "location": "Stade Robert Launay"
+        "locationId": 2,
       },
       {
         "details": "",
         "day": "Samedi",
         "hour": [660, 720],
-        "location": "en attente"
+        "locationId": 3
       }
     ]
   },
@@ -94,7 +94,7 @@ export const sports: Sport[] = [
         "details": "Perfectionnement",
         "day": "Mardi",
         "hour": [1215, 1320],
-        "location": "Skatepark de la Poterie"
+        "locationId": 4,
       }
     ]
   },
@@ -111,7 +111,7 @@ export const sports: Sport[] = [
         "details": "",
         "day": "Mercredi",
         "hour": [1110, 1200],
-        "location": "Skatepark de la Poterie"
+        "locationId": 4,
       }
     ]
   },
@@ -128,7 +128,7 @@ export const sports: Sport[] = [
         "details": "",
         "day": "Jeudi",
         "hour": [1095, 1200],
-        "location": "Skatepark de la Poterie"
+        "locationId": 4,
       }
     ]
   },
@@ -145,7 +145,7 @@ export const sports: Sport[] = [
         "details": "",
         "day": "Samedi",
         "hour": [540, 660],
-        "location": "Skatepark de la Poterie"
+        "locationId": 4,
       }
     ]
   },
@@ -162,7 +162,7 @@ export const sports: Sport[] = [
         "details": "",
         "day": "Mercredi",
         "hour": [1200, 1320],
-        "location": "Gymnase Les Chalais"
+        "locationId": 5,
       }
     ]
   },
@@ -179,7 +179,7 @@ export const sports: Sport[] = [
         "details": "Découverte, perfectionnement",
         "day": "Lundi",
         "hour": [995, 1200],
-        "location": "Skatepark de la Poterie"
+        "locationId": 4,
       }
     ]
   },
@@ -196,7 +196,7 @@ export const sports: Sport[] = [
         "details": "Niveau 4, roue rouge",
         "day": "Lundi",
         "hour": [995, 1200],
-        "location": "Skatepark de la Poterie"
+        "locationId": 4,
       }
     ]
   },
@@ -213,19 +213,19 @@ export const sports: Sport[] = [
         "details": "Niveau 3, roue bleue",
         "day": "Mercredi",
         "hour": [840, 930],
-        "location": "Skatepark de la Poterie"
+        "locationId": 4,
       },
       {
         "details": "Niveau 2, roue verte",
         "day": "Mercredi",
         "hour": [930, 990],
-        "location": "Skatepark de la Poterie"
+        "locationId": 4,
       },
       {
         "details": "Niveau 1, roue jaune",
         "day": "Mercredi",
         "hour": [990, 1050],
-        "location": "Skatepark de la Poterie"
+        "locationId": 4,
       }
     ]
   },
@@ -242,19 +242,19 @@ export const sports: Sport[] = [
         "details": "Niveau 3, confirmés",
         "day": "Lundi",
         "hour": [1215, 1320],
-        "location": "Skatepark de la Poterie"
+        "locationId": 4,
       },
       {
         "details": "Niveau 2, initiés",
         "day": "Mercredi",
         "hour": [1215, 1320],
-        "location": "Skatepark de la Poterie"
+        "locationId": 4,
       },
       {
         "details": "Niveau 1, débutants",
         "day": "Jeudi",
         "hour": [1215, 1320],
-        "location": "Skatepark de la Poterie"
+        "locationId": 4,
       }
     ]
   },
@@ -272,7 +272,7 @@ export const sports: Sport[] = [
         "details": "6-77 ans",
         "day": "Samedi",
         "hour": [660, 750],
-        "location": "Skatepark de la Poterie"
+        "locationId": 4,
       }
     ]
   },
@@ -289,13 +289,13 @@ export const sports: Sport[] = [
         "details": "Débutant, intermédiaire",
         "day": "Mercredi",
         "hour": [795, 900],
-        "location": "Salle Belle-Ile"
+        "locationId": 6,
       },
       {
         "details": "Débutant, intermédiaire",
         "day": "Samedi",
         "hour": [645, 720],
-        "location": "Salle Belle-Ile"
+        "locationId": 6,
       }
     ]
   },
@@ -312,7 +312,7 @@ export const sports: Sport[] = [
         "details": "Niveau 2, perfectionnement",
         "day": "Samedi",
         "hour": [720, 795],
-        "location": "Salle Belle-Ile"
+        "locationId": 6,
       }
     ]
   }

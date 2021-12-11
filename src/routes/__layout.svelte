@@ -9,7 +9,8 @@
 			margin: 0;
 
 			--main-color: #002395;
-	}
+			--header-height: 80px;
+  }
   :global(*) {
 			--dark: #CCC;
 			--light: #FAFAFA;
