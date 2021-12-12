@@ -22,7 +22,7 @@
 	div {
 			background-color: white;
 			position: fixed;
-			height: 100%;
+			height: calc(100vh - var(--header-height));
 			width: 300px;
       transform: translateX(-300px);
 			transition: all .4s;

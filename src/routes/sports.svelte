@@ -93,6 +93,8 @@
 
     #table {
         transition: all .4s;
+				height: calc(100vh - var(--header-height));
+				overflow-y: auto;
     }
     #table.isPadded {
         padding-left: 300px;
@@ -120,6 +122,6 @@
         font-size: 16px;
         color: var(--main-color);
 				font-weight: normal;
-				margin-left: 24px;
+				margin: 12px 0 12px 24px;
     }
 </style>
