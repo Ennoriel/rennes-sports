@@ -1,5 +1,4 @@
 <script lang="ts">
-	// import { LeafletMap, TileLayer, Marker, Popup } from 'svelte-leafletjs';
 	import { onMount } from 'svelte';
 	import { browser } from '$app/env';
 	import { sports } from '$lib/data/sports';
@@ -7,8 +6,8 @@
 	import { state } from '$lib/store/state';
 	import 'leaflet/dist/leaflet.css';
 	import FilterPanel from '../lib/component/FilterPanel.svelte';
-	import { Filter } from '../lib/types/sport.type';
-	import { filterSports, getMarkers } from '../lib/utils/filter';
+	import { Filter } from '$lib/types/sport.type';
+	import { filterSports, getMarkers } from '$lib/utils/filter';
 	import Menu from '../lib/component/Menu.svelte';
 
 	let rows = sports;
