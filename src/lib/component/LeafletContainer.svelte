@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { LeafletMap, TileLayer, Marker, Popup } from 'svelte-leafletjs';
 	import MapPopup from './MapPopup.svelte';
-	export let markers
+	export let markers;
 
 	const mapOptions = {
 		center: [48.1113618, -1.6500957],
@@ -17,11 +17,11 @@
 </script>
 
 <LeafletMap options={mapOptions}>
-	<TileLayer url={tileUrl} options={tileLayerOptions}/>
+	<TileLayer url={tileUrl} options={tileLayerOptions} />
 	{#each markers as marker}
 		<Marker latLng={marker.location.coordinates}>
 			<Popup>
-				<MapPopup sports={marker.sports}/>
+				<MapPopup sports={marker.sports} />
 			</Popup>
 		</Marker>
 	{/each}

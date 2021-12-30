@@ -1,4 +1,4 @@
-<script lang='ts'>
+<script lang="ts">
 	import { sports } from '$lib/data/sports';
 	import SvelteTable from 'svelte-table';
 	import Row from '$lib/component/table/Row.svelte';
@@ -14,13 +14,13 @@
 		{
 			key: 'sport',
 			title: 'sport',
-			value: v => v.sport,
+			value: (v) => v.sport,
 			sortable: true
 		},
 		{
 			key: 'level',
 			title: 'pratique',
-			value: v => v.level,
+			value: (v) => v.level,
 			sortable: true
 		},
 		{
@@ -41,7 +41,7 @@
 		{
 			key: 'assoName',
 			title: 'association',
-			value: v => v.assoName,
+			value: (v) => v.assoName,
 			sortable: true
 		}
 	];
@@ -55,73 +55,72 @@
 
 <FilterPanel {onSubmit} />
 
-<div id='table' class:isPadded={$state.isOpen}>
-
+<div id="table" class:isPadded={$state.isOpen}>
 	<h1>
 		Résultats ({rows.length})
 	</h1>
 
-	<SvelteTable columns='{columns}' rows='{rows}'>
-		<Row slot='row' let:row let:n {row}/>
+	<SvelteTable {columns} {rows}>
+		<Row slot="row" let:row let:n {row} />
 	</SvelteTable>
 </div>
 
 <style>
-    #table :global(table) {
-        width: calc(100% - 48px);
-        border-collapse: separate;
-        border-spacing: 0 8px;
-        margin: 0 24px;
-    }
+	#table :global(table) {
+		width: calc(100% - 48px);
+		border-collapse: separate;
+		border-spacing: 0 8px;
+		margin: 0 24px;
+	}
 
-    #table :global(thead tr) {
-        font-size: 10px;
-        text-transform: uppercase;
-        color: #7F7F7F;
-        box-shadow: 0 0 5px #888;
+	#table :global(thead tr) {
+		font-size: 10px;
+		text-transform: uppercase;
+		color: #7f7f7f;
+		box-shadow: 0 0 5px #888;
 
-        position: sticky;
-        background-color: #FAFAFA;
-        height: 40px;
-        top: 0;
-    }
+		position: sticky;
+		background-color: #fafafa;
+		height: 40px;
+		top: 0;
+	}
 
-    #table :global(tbody td:not(:first-of-type)) {
-        padding: 4px 0;
-        min-height: 32px;
-    }
+	#table :global(tbody td:not(:first-of-type)) {
+		padding: 4px 0;
+		min-height: 32px;
+	}
 
-    #table {
-        transition: all .4s;
-				height: calc(100vh - var(--header-height));
-				overflow-y: auto;
-    }
-    #table.isPadded {
-        padding-left: 300px;
-    }
+	#table {
+		transition: all 0.4s;
+		height: calc(100vh - var(--header-height));
+		overflow-y: auto;
+	}
+	#table.isPadded {
+		padding-left: 300px;
+	}
 
-    @media (min-width: 720px) {
-        #table:not(.isPadded) {
-            width: 1000px;
-            margin: auto;
-        }
-        #table.isPadded {
-            width: calc(100% - 300px);
-            margin: auto;
-        }
-    }
-    @media (min-width: 1324px) {
-        #table.isPadded {
-            width: 1000px;
-            margin: auto;
-        }
-    }
+	@media (min-width: 720px) {
+		#table:not(.isPadded) {
+			width: 1000px;
+			margin: auto;
+		}
+		#table.isPadded {
+			width: calc(100% - 300px);
+			margin: auto;
+		}
+	}
+	@media (min-width: 1324px) {
+		#table.isPadded {
+			width: 1000px;
+			margin: auto;
+		}
+	}
 
-    h1 {
-        text-transform: uppercase;
-        font-size: 16px;
-        color: var(--main-color);
-				font-weight: normal;
-				margin: 12px 0 12px 24px;
-    }
+	h1 {
+		text-transform: uppercase;
+		font-size: 16px;
+		color: var(--main-color);
+		font-weight: normal;
+		margin: 12px 0 12px 24px;
+	}
 </style>

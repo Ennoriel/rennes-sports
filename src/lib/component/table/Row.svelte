@@ -6,7 +6,7 @@
 	import CellAsso from './CellAsso.svelte';
 	import CellLevel from './CellLevel.svelte';
 
-	export let row
+	export let row;
 
 	const colors = {
 		['Basket-ball']: '#bf9c03',
@@ -18,12 +18,10 @@
 		['Roller skatepark']: '#d6ad3b',
 		['Roller']: '#c5f45f'
 	};
-
 </script>
 
-
 <tr>
-	<td style='border-color: {colors[row.sport]}'><CellSport {row} /></td>
+	<td style="border-color: {colors[row.sport]}"><CellSport {row} /></td>
 	<td><CellLevel {row} /></td>
 	<td><CellYearSex {row} /></td>
 	<td><CellSlot {row} /></td>
@@ -32,17 +30,17 @@
 </tr>
 
 <style>
-    tr {
-        background-color: white;
-        box-shadow: 0 0 3px #CCC;
-				cursor: pointer;
-				transition: all .4s ease-in-out;
-    }
-		tr:hover {
-        box-shadow: 0 0 5px #888;
-		}
-		td:first-of-type {
-        border-left: 5px solid black;
-				padding-left: 8px;
-    }
+	tr {
+		background-color: white;
+		box-shadow: 0 0 3px #ccc;
+		cursor: pointer;
+		transition: all 0.4s ease-in-out;
+	}
+	tr:hover {
+		box-shadow: 0 0 5px #888;
+	}
+	td:first-of-type {
+		border-left: 5px solid black;
+		padding-left: 8px;
+	}
 </style>

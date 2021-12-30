@@ -8,8 +8,8 @@
 	import { Filter } from '$lib/types/sport.type';
 	import { filterSports, getMarkers } from '$lib/utils/filter';
 	import Menu from '../lib/component/Menu.svelte';
-	import ResponsiveWrapper from "$lib/component/ResponsiveWrapper.svelte";
-	import MenuMobile from "$lib/component/MenuMobile.svelte";
+	import ResponsiveWrapper from '$lib/component/ResponsiveWrapper.svelte';
+	import MenuMobile from '$lib/component/MenuMobile.svelte';
 
 	let rows = sports;
 
@@ -30,11 +30,11 @@
 </script>
 
 <ResponsiveWrapper>
-	<MenuMobile slot="s"/>
-	<Menu slot="l"/>
+	<MenuMobile slot="s" />
+	<Menu slot="l" />
 </ResponsiveWrapper>
 
-<FilterPanel onSubmit={onSubmit} />
+<FilterPanel {onSubmit} />
 
 <div class="map">
 	{#if browser && window}
@@ -46,6 +46,6 @@
 	.map {
 		height: calc(100vh - var(--header-height));
 		width: 100vw;
-		transition: all .4s;
+		transition: all 0.4s;
 	}
 </style>

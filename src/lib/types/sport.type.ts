@@ -15,17 +15,17 @@ export type Slot = {
 	day: string;
 	hour: HourRange;
 	locationId: number;
-}
+};
 
 export type Filter = {
-	sport?: string,
-	level?: string,
-	birthYear?: number,
-	sex?: string,
-	day?: string[],
-	locationId?: number,
-	assoName?: string,
-	minutes?: HourRange
-}
+	sport?: string;
+	level?: string;
+	birthYear?: number;
+	sex?: string;
+	day?: string[];
+	locationId?: number;
+	assoName?: string;
+	minutes?: HourRange;
+};
 
-export type HourRange = [number, number]
+export type HourRange = [number, number];

@@ -1,5 +1,5 @@
-<script lang='ts'>
-	import type { Sport } from '../../types/sport.type';
+<script lang="ts">
+	import type { Sport } from '$lib/types/sport.type';
 
 	export let row: Sport;
 </script>
@@ -13,10 +13,10 @@
 
 <style>
 	div {
-			display: flex;
-			justify-content: center;
-			gap: .2em;
-			text-align: center;
-			line-height: 3em;
+		display: flex;
+		justify-content: center;
+		gap: 0.2em;
+		text-align: center;
+		line-height: 3em;
 	}
 </style>

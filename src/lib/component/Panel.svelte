@@ -2,8 +2,8 @@
 	import FloatingButton from './FloatingButton.svelte';
 	import { state } from '../store/state';
 
-	let panel
-	let button
+	let panel;
+	let button;
 
 	function click({ target }) {
 		if ($state.isOpen && !panel.contains(target) && !button.contains(target)) $state.isOpen = false;
@@ -25,7 +25,7 @@
 		height: calc(100vh - var(--header-height));
 		width: 300px;
 		transform: translateX(-300px);
-		transition: all .4s;
+		transition: all 0.4s;
 		box-shadow: 0 0 10px black;
 		overflow-y: auto;
 		overflow-x: hidden;

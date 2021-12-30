@@ -14,7 +14,7 @@
 
 	let filter: Filter = {};
 
-	const locationIds = locations.map(location => location.id)
+	const locationIds = locations.map((location) => location.id);
 
 	function resetFilters() {
 		filter = {
@@ -27,20 +27,17 @@
 
 <Panel>
 	<div class="panel-wrapper">
-
-		<h2>
-			Filtres
-		</h2>
+		<h2>Filtres</h2>
 
 		<Select
 			label="Sport"
-			options={[...new Set(sports.map(sport => sport.sport))]}
+			options={[...new Set(sports.map((sport) => sport.sport))]}
 			bind:value={filter.sport}
 		/>
 
 		<Radio
 			label="Pratique"
-			options={[...new Set(sports.map(sport => sport.level))]}
+			options={[...new Set(sports.map((sport) => sport.level))]}
 			bind:value={filter.level}
 		/>
 
@@ -51,25 +48,15 @@
 			bind:value={filter.birthYear}
 		/>
 
-		<Radio
-			label="Sexe"
-			options={["Mixte", "Féminin", "Masculin"]}
-			bind:value={filter.sex}
-		/>
+		<Radio label="Sexe" options={['Mixte', 'Féminin', 'Masculin']} bind:value={filter.sex} />
 
 		<Checkbox
 			label="Jour"
-			options={["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]}
+			options={['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche']}
 			bind:value={filter.day}
 		/>
 
-		<Range
-			label="Horaire"
-			min={360}
-			max={1380}
-			step={15}
-			bind:range={filter.minutes}
-		/>
+		<Range label="Horaire" min={360} max={1380} step={15} bind:range={filter.minutes} />
 
 		<Select
 			label="Lieu"
@@ -80,49 +67,55 @@
 
 		<Select
 			label="Association"
-			options={[...new Set(sports.map(sport => sport.assoName))]}
+			options={[...new Set(sports.map((sport) => sport.assoName))]}
 			bind:value={filter.assoName}
 		/>
 
 		<div class="button-wrapper">
-			<button type="submit" on:click={() => {$state.isOpen = false; onSubmit(filter);}}>Valider</button>
+			<button
+				type="submit"
+				on:click={() => {
+					$state.isOpen = false;
+					onSubmit(filter);
+				}}>Valider</button
+			>
 			<button type="reset" on:click={resetFilters}>Effacer</button>
 		</div>
 	</div>
 </Panel>
 
 <style>
-    .panel-wrapper {
-        margin: 1em;
-    }
-		.panel-wrapper > :global(label:first-child) {
-				margin: 0;
-		}
+	.panel-wrapper {
+		margin: 1em;
+	}
+	.panel-wrapper > :global(label:first-child) {
+		margin: 0;
+	}
 
-		h2 {
-        text-transform: uppercase;
-        font-size: 16px;
-        color: var(--main-color);
-        font-weight: normal;
-		}
+	h2 {
+		text-transform: uppercase;
+		font-size: 16px;
+		color: var(--main-color);
+		font-weight: normal;
+	}
 
-    .button-wrapper {
-				margin-top: 10px;
-        display: flex;
-				gap: 10px;
-    }
-		button {
-				flex-grow: 1;
-        background-color: #F7F7FA;
-        border-radius: 5px;
-        padding: 8px 16px;
-				cursor: pointer;
-				border: none;
-				color: #C4C4C4;
-		}
-    button[type="submit"] {
-        flex-grow: 3;
-        background-color: var(--main-color);
-				color: white;
-    }
+	.button-wrapper {
+		margin-top: 10px;
+		display: flex;
+		gap: 10px;
+	}
+	button {
+		flex-grow: 1;
+		background-color: #f7f7fa;
+		border-radius: 5px;
+		padding: 8px 16px;
+		cursor: pointer;
+		border: none;
+		color: #c4c4c4;
+	}
+	button[type='submit'] {
+		flex-grow: 3;
+		background-color: var(--main-color);
+		color: white;
+	}
 </style>
