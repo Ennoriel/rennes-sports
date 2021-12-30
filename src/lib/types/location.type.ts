@@ -1,5 +1,5 @@
 export type Location = {
 	id: number;
-	location: string;
+	name: string;
 	coordinates?: [number, number];
 };

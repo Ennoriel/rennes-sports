@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { getHost } from '$lib/utils/static.util';
 	import type { Sport } from '$lib/types/sport.type';
+	import { locations } from '$lib/data/locations';
 
 	export let row: Sport;
 </script>
@@ -8,7 +9,7 @@
 {#each row.slots as slot}
 	<div>
 		<img alt="localisation" src="{getHost()}/svg/location.svg" />
-		{slot.location}
+		{locations.find(location => location.id === slot.locationId)?.name}
 	</div>
 {/each}
 

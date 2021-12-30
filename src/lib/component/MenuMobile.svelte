@@ -16,7 +16,7 @@
 		<button
 			class="filters"
 			on:click={(e) => {
-				$state.isOpen = true;
+				$state.isOpen = !$state.isOpen;
 				e.stopPropagation();
 			}}
 		>

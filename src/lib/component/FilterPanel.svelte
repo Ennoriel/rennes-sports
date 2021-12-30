@@ -14,8 +14,6 @@
 
 	let filter: Filter = {};
 
-	const locationIds = locations.map((location) => location.id);
-
 	function resetFilters() {
 		filter = {
 			day: [],
@@ -61,7 +59,7 @@
 		<Select
 			label="Lieu"
 			placeholder="Salle / Gymnase"
-			options={locationIds}
+			options={locations.map(o => ({label: o.name, value: o.id}))}
 			bind:value={filter.locationId}
 		/>
 

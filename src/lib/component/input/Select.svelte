@@ -2,7 +2,7 @@
 	export let label;
 	export let placeholder = label;
 	export let value;
-	export let options;
+	export let options: Array<{label: string, value: string}> | Array<string>;
 </script>
 
 <label>
@@ -10,7 +10,7 @@
 	<select bind:value>
 		<option value={undefined}>{placeholder}</option>
 		{#each options as option}
-			<option value={option}>{option}</option>
+			<option value={option.value || option}>{option.label || option}</option>
 		{/each}
 	</select>
 </label>
