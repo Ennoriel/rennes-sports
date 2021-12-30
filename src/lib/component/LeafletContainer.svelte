@@ -5,7 +5,7 @@
 
 	const mapOptions = {
 		center: [48.1113618, -1.6500957],
-		zoom: 13
+		zoom: 12
 	};
 	const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 	const tileLayerOptions = {

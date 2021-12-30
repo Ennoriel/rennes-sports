@@ -24,10 +24,10 @@
 
 <style>
     nav {
-        font-size: 18px;
+        font-size: 16px;
 
         width: calc(100vw - 240px);
-				padding: 0 120px;
+		padding: 0 120px;
         height: var(--header-height);
         background-color: var(--main-color);
         color: white;
@@ -51,7 +51,7 @@
     }
 
     nav ul a img {
-			padding: calc((var(--header-height) - 64px) / 2);
+		padding: calc((var(--header-height) - 64px) / 2);
     }
 
     nav ul li:not(:first-child) a {

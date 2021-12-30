@@ -5,7 +5,7 @@
 	import FilterPanel from '$lib/component/FilterPanel.svelte';
 	import { Filter } from '$lib/types/sport.type';
 	import { state } from '$lib/store/state';
-	import { filterSports } from '../lib/utils/filter';
+	import { filterSports } from '$lib/utils/filter';
 	import Menu from '../lib/component/Menu.svelte';
 
 	let rows = sports;
@@ -100,7 +100,7 @@
         padding-left: 300px;
     }
 
-    @media (min-width: 1024px) {
+    @media (min-width: 720px) {
         #table:not(.isPadded) {
             width: 1000px;
             margin: auto;

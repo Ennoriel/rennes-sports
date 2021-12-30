@@ -1,7 +1,5 @@
 # TODO
 
-hover
-sport filtrable
-sport multi-select
-hover
-deselection d'un checkbox
+  - [ ] sport multi select
+  - [ ] filtre conservé au changement de page
+  - [ ] implémenter la recherche (petit écran)
