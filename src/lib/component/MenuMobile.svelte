@@ -10,7 +10,7 @@
 <nav>
 	<span id="menu-bar">
 		<a href="{getHost()}/">
-			<img class="icon" src="svg/icon.svg" alt="icon app" />
+			<img class="icon" src="{getHost()}/svg/icon.svg" alt="icon app" />
 		</a>
 		<input bind:value={search} placeholder="Pour l'instant l'input ne marche pas" />
 		<button
@@ -23,7 +23,7 @@
 			Filtrer
 		</button>
 		<button class="menu" on:click={() => (isOpen = !isOpen)}>
-			<img alt="menu" src="svg/menu.svg" />
+			<img alt="menu" src="{getHost()}/svg/menu.svg" />
 		</button>
 	</span>
 
