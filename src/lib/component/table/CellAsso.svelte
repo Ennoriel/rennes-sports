@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { getHost } from '$lib/utils/static.util';
 	import type { Sport } from '$lib/types/sport.type';
 
 	export let row: Sport;
@@ -8,7 +9,7 @@
 	{row.assoName}
 </span>
 <a target="_blank" href={row.website}>
-	<img alt="lien" src="svg/right-up.svg" />
+	<img alt="lien" src="{getHost()}/svg/right-up.svg" />
 	consulter le site
 </a>
 

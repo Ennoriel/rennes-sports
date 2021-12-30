@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { getHost } from '$lib/utils/static.util';
 	import type { Sport } from '$lib/types/sport.type';
 
 	export let row: Sport;
@@ -6,7 +7,7 @@
 
 {#each row.slots as slot}
 	<div>
-		<img alt="localisation" src="svg/location.svg" />
+		<img alt="localisation" src="{getHost()}/svg/location.svg" />
 		{slot.location}
 	</div>
 {/each}

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { getHost } from '$lib/utils/static.util';
 	import type { Sport } from '$lib/types/sport.type';
 
 	export let row: Sport;
@@ -26,7 +27,7 @@
 {/if}
 
 <div class="flex">
-	<img alt={row.sex} src="svg/gender-{svg}.svg" />
+	<img alt={row.sex} src="{getHost()}/svg/gender-{svg}.svg" />
 	{row.sex}
 </div>
 
