@@ -2,21 +2,20 @@
 	import FloatingButton from './FloatingButton.svelte';
 	import { state } from '../store/state';
 
-	let panel;
-	let button;
+	export let pageRef;
 
 	function click({ target }) {
-		if ($state.isOpen && !panel.contains(target) && !button.contains(target)) $state.isOpen = false;
+		if ($state.isOpen && pageRef.contains(target)) $state.isOpen = false;
 	}
 </script>
 
 <svelte:window on:click={click} />
 
-<div bind:this={panel} class:isOpen={$state.isOpen}>
+<div class:isOpen={$state.isOpen}>
 	<slot />
 </div>
 
-<FloatingButton bind:button />
+<FloatingButton on:click={() => ($state.isOpen = true)} hidden={$state.isOpen} />
 
 <style>
 	div {

@@ -6,7 +6,8 @@
 	import { Filter } from '$lib/types/sport.type';
 	import { state } from '$lib/store/state';
 	import { filterSports } from '$lib/utils/filter';
-	import Menu from '../lib/component/Menu.svelte';
+
+	let pageRef;
 
 	let rows = sports;
 
@@ -51,11 +52,9 @@
 	}
 </script>
 
-<Menu />
+<FilterPanel {onSubmit} {pageRef}/>
 
-<FilterPanel {onSubmit} />
-
-<div id="table" class:isPadded={$state.isOpen}>
+<div bind:this={pageRef} id="table" class:isPadded={$state.isOpen} >
 	<h1>
 		Résultats ({rows.length})
 	</h1>

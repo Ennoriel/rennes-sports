@@ -7,9 +7,8 @@
 	import FilterPanel from '../lib/component/FilterPanel.svelte';
 	import { Filter } from '$lib/types/sport.type';
 	import { filterSports, getMarkers } from '$lib/utils/filter';
-	import Menu from '../lib/component/Menu.svelte';
-	import ResponsiveWrapper from '$lib/component/ResponsiveWrapper.svelte';
-	import MenuMobile from '$lib/component/MenuMobile.svelte';
+
+	let pageRef;
 
 	let rows = sports;
 
@@ -29,21 +28,16 @@
 	}
 </script>
 
-<ResponsiveWrapper>
-	<MenuMobile slot="s" />
-	<Menu slot="l" />
-</ResponsiveWrapper>
+<FilterPanel {onSubmit} {pageRef}/>
 
-<FilterPanel {onSubmit} />
-
-<div class="map">
+<div bind:this={pageRef} id="map">
 	{#if browser && window}
 		<svelte:component this={LeafletContainer} {markers} />
 	{/if}
 </div>
 
 <style>
-	.map {
+	#map {
 		height: calc(100vh - var(--header-height));
 		width: 100vw;
 		transition: all 0.4s;

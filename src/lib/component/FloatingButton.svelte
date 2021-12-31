@@ -1,10 +1,8 @@
 <script>
-	import { state } from '../store/state';
-
-	export let button;
+	export let hidden
 </script>
 
-<button bind:this={button} on:click={() => ($state.isOpen = true)} class:isOpen={$state.isOpen}>
+<button on:click class:hidden>
 	Filtrer
 </button>
 
@@ -32,7 +30,7 @@
 	button:hover {
 		box-shadow: 0 0 10px black;
 	}
-	button.isOpen {
+	button.hidden {
 		pointer-events: none;
 		opacity: 0;
 	}

@@ -11,6 +11,7 @@
 	import Range from './input/Range.svelte';
 
 	export let onSubmit;
+	export let pageRef;
 
 	let filter: Filter = {};
 
@@ -23,7 +24,7 @@
 	}
 </script>
 
-<Panel>
+<Panel {pageRef}>
 	<div class="panel-wrapper">
 		<h2>Filtres</h2>
 
