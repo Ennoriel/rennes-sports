@@ -13,7 +13,7 @@
 	export let onSubmit;
 	export let pageRef;
 
-	let filter: Filter = {};
+	let filter: Filter = JSON.parse(JSON.stringify($state.filter));
 
 	function resetFilters() {
 		filter = {
@@ -60,7 +60,7 @@
 		<Select
 			label="Lieu"
 			placeholder="Salle / Gymnase"
-			options={locations.map(o => ({label: o.name, value: o.id}))}
+			options={locations.map((o) => ({ label: o.name, value: o.id }))}
 			bind:value={filter.locationId}
 		/>
 

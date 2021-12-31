@@ -1,6 +1,6 @@
 import type { Filter, Sport } from '$lib/types/sport.type';
 import { hourRangeOverlaps } from '$lib/utils/time';
-import type { Location } from '$lib/types/location.type';
+import type { Location, Marker } from '$lib/types/location.type';
 
 export function filterSports(filter: Filter, sports: Array<Sport>): Array<Sport> {
 	return sports
@@ -35,7 +35,7 @@ export function filterSports(filter: Filter, sports: Array<Sport>): Array<Sport>
 		.filter((sport) => !filter.assoName || sport.assoName === filter.assoName);
 }
 
-export function getMarkers(sports: Array<Sport>, locations: Array<Location>): any {
+export function getMarkers(sports: Array<Sport>, locations: Array<Location>): Array<Marker> {
 	return locations
 		.filter((location) => !!location.coordinates)
 		.filter((location) =>

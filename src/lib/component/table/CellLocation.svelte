@@ -9,7 +9,7 @@
 {#each row.slots as slot}
 	<div>
 		<img alt="localisation" src="{getHost()}/svg/location.svg" />
-		{locations.find(location => location.id === slot.locationId)?.name}
+		{locations.find((location) => location.id === slot.locationId)?.name}
 	</div>
 {/each}
 

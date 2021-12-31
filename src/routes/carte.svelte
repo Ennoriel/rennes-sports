@@ -7,12 +7,13 @@
 	import FilterPanel from '../lib/component/FilterPanel.svelte';
 	import { Filter } from '$lib/types/sport.type';
 	import { filterSports, getMarkers } from '$lib/utils/filter';
+	import { state } from '$lib/store/state';
 
 	let pageRef;
-
-	let rows = sports;
-
 	let LeafletContainer;
+
+	let rows = filterSports($state.filter, sports);
+	let markers = getMarkers(rows, locations);
 
 	onMount(async () => {
 		if (browser) {
@@ -20,15 +21,14 @@
 		}
 	});
 
-	let markers = getMarkers(sports, locations);
-
 	function onSubmit(filter: Filter) {
+		$state.filter = filter;
 		rows = filterSports(filter, sports);
 		markers = getMarkers(rows, locations);
 	}
 </script>
 
-<FilterPanel {onSubmit} {pageRef}/>
+<FilterPanel {onSubmit} {pageRef} />
 
 <div bind:this={pageRef} id="map">
 	{#if browser && window}

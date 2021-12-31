@@ -9,7 +9,7 @@
 
 	let pageRef;
 
-	let rows = sports;
+	let rows = filterSports($state.filter, sports);
 
 	const columns = [
 		{
@@ -48,13 +48,14 @@
 	];
 
 	function onSubmit(filter: Filter) {
+		$state.filter = filter;
 		rows = filterSports(filter, sports);
 	}
 </script>
 
-<FilterPanel {onSubmit} {pageRef}/>
+<FilterPanel {onSubmit} {pageRef} />
 
-<div bind:this={pageRef} id="table" class:isPadded={$state.isOpen} >
+<div bind:this={pageRef} id="table" class:isPadded={$state.isOpen}>
 	<h1>
 		Résultats ({rows.length})
 	</h1>

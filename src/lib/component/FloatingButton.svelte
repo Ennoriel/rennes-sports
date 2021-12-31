@@ -1,10 +1,8 @@
 <script>
-	export let hidden
+	export let hidden;
 </script>
 
-<button on:click class:hidden>
-	Filtrer
-</button>
+<button on:click class:hidden> Filtrer </button>
 
 <style>
 	button {

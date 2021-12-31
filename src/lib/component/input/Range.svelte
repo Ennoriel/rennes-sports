@@ -6,8 +6,8 @@
 	export let label: string;
 	export let min: number; // in minutes
 	export let max: number; // in minutes
-	export let range: HourRange = [min, max]; // in minutes
-	export let step: number; // in minutes
+	export let range: HourRange = [0, 0]; // in minutes
+	export let step: number; // in minutes;
 
 	let intervals;
 
@@ -18,18 +18,13 @@
 			intervals.push(i);
 			i += step;
 		}
-		range = [min, intervals[intervals.length - 1]];
+		if (range[0] === 0 && range[1] === 0) range = [min, intervals[intervals.length - 1]];
 	});
 
 	let rangeEl;
 
-	let minValue;
-	let maxValue;
-
 	let minPressed = false;
 	let maxPressed = false;
-
-	$: range = [minValue, maxValue];
 
 	// Triggers the first position rendering
 	$: if (rangeEl) range = range;

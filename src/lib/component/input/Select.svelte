@@ -2,7 +2,7 @@
 	export let label;
 	export let placeholder = label;
 	export let value;
-	export let options: Array<{label: string, value: string}> | Array<string>;
+	export let options: Array<{ label: string; value: string }> | Array<string>;
 </script>
 
 <label>
