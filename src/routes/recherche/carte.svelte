@@ -4,7 +4,7 @@
 	import { sports } from '$lib/data/sports';
 	import { locations } from '$lib/data/locations';
 	import 'leaflet/dist/leaflet.css';
-	import FilterPanel from '../lib/component/FilterPanel.svelte';
+	import FilterPanel from '$lib/component/FilterPanel.svelte';
 	import { Filter } from '$lib/types/sport.type';
 	import { filterSports, getMarkers } from '$lib/utils/filter';
 	import { state } from '$lib/store/state';
@@ -17,7 +17,7 @@
 
 	onMount(async () => {
 		if (browser) {
-			LeafletContainer = (await import('../lib/component/LeafletContainer.svelte')).default;
+			LeafletContainer = (await import('$lib/component/LeafletContainer.svelte')).default;
 		}
 	});
 

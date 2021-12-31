@@ -6,14 +6,14 @@
 	<ul>
 		<li>
 			<a href="{getHost()}/">
-				<img src="{getHost()}/svg/icon.svg" alt="icon app" />
+				<img class="icon" src="{getHost()}/svg/icon.svg" alt="icon app" />
 			</a>
 		</li>
 		<li>
-			<a href="{getHost()}/sports"> Liste </a>
+			<a href="{getHost()}/recherche/liste"> Liste </a>
 		</li>
 		<li>
-			<a href="{getHost()}/carte"> Carte </a>
+			<a href="{getHost()}/recherche/carte"> Carte </a>
 		</li>
 	</ul>
 </nav>
@@ -22,8 +22,9 @@
 	nav {
 		font-size: 16px;
 
-		width: calc(100vw - 240px);
-		padding: 0 120px;
+		width: 100vw;
+		padding: 0 10px;
+		box-sizing: border-box;
 		height: var(--header-height);
 		background-color: var(--main-color);
 		color: white;
@@ -37,20 +38,21 @@
 
 		display: flex;
 		align-items: stretch;
-		gap: 32px;
 	}
 
-	nav ul a {
+	a {
 		height: var(--header-height);
 		line-height: var(--header-height);
 		display: block;
 	}
 
-	nav ul a img {
-		padding: calc((var(--header-height) - 64px) / 2);
+	img {
+		padding: 0 8px;
+		height: calc(var(--header-height) - 15px);
+		vertical-align: middle;
 	}
 
-	nav ul li:not(:first-child) a {
+	li:not(:first-child) a {
 		padding: 0 16px;
 	}
 
@@ -64,10 +66,11 @@
 	}
 
 	a:hover {
-		top: -2px;
+		top: -4px;
 	}
 
-	nav ul a:hover {
-		top: -4px;
+	a:focus-visible {
+		outline: 2px solid red;
+		outline-offset: -4px;
 	}
 </style>

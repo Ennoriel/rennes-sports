@@ -13,10 +13,10 @@
 				</a>
 			</li>
 			<li>
-				<a href="{getHost()}/sports"> Liste </a>
+				<a href="{getHost()}/recherche/liste"> Liste </a>
 			</li>
 			<li>
-				<a href="{getHost()}/carte"> Carte </a>
+				<a href="{getHost()}/recherche/carte"> Carte </a>
 			</li>
 		</ul>
 	</nav>
@@ -38,12 +38,14 @@
 
 		<ul class="details">
 			<li data-type="Liste">
-				<a href="{getHost()}/sports">
+				<a href="{getHost()}/recherche/liste">
 					Tri des créneaux par sport, âge, sexe, jour, type de pratique...
 				</a>
 			</li>
 			<li data-type="Carte">
-				<a href="{getHost()}/carte"> Localisation des équipements sportifs à proximité </a>
+				<a href="{getHost()}/recherche/carte">
+					Localisation des équipements sportifs à proximité
+				</a>
 			</li>
 		</ul>
 	</div>

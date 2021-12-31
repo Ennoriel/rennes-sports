@@ -30,10 +30,10 @@
 	{#if isOpen}
 		<ul transition:fly={{ y: -50, duration: 200 }}>
 			<li>
-				<a href="{getHost()}/sports"> Liste </a>
+				<a href="{getHost()}/recherche/liste"> Liste </a>
 			</li>
 			<li>
-				<a href="{getHost()}/carte"> Carte </a>
+				<a href="{getHost()}/recherche/carte"> Carte </a>
 			</li>
 		</ul>
 	{/if}
