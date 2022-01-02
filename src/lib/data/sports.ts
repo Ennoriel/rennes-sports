@@ -153,7 +153,7 @@ export const sports: Sport[] = [
 		assoName: 'CPB Ginguené',
 		website: 'https://cerclepaulbert.asso.fr/',
 		birthYear: [2005, 2004],
-		adult: true,
+		adult: false,
 		sex: 'Mixte',
 		sport: 'Rink Hockey',
 		level: 'Compétition',

@@ -2,6 +2,8 @@
 	import { fly } from 'svelte/transition';
 	import { getHost } from '$lib/utils/static.util';
 	import { state } from '../store/state';
+	import {routes} from "$lib/routes/search";
+	import {capitalize} from "$lib/utils/string.util";
 
 	let search;
 	let isOpen = false;
@@ -17,24 +19,32 @@
 			class="filters"
 			on:click={(e) => {
 				$state.isOpen = !$state.isOpen;
+				isOpen = false;
 				e.stopPropagation();
 			}}
 		>
 			Filtrer
 		</button>
-		<button class="menu" on:click={() => (isOpen = !isOpen)}>
+		<button class="menu" on:click={() => {
+			$state.isOpen = false;
+			isOpen = !isOpen;
+		}}>
 			<img alt="menu" src="{getHost()}/svg/menu.svg" />
 		</button>
 	</span>
 
 	{#if isOpen}
 		<ul transition:fly={{ y: -50, duration: 200 }}>
-			<li>
-				<a href="{getHost()}/recherche/liste"> Liste </a>
-			</li>
-			<li>
-				<a href="{getHost()}/recherche/carte"> Carte </a>
-			</li>
+			{#each routes as route}
+				<li>
+					<a
+						on:click={() => isOpen = false}
+						href="{getHost()}/recherche/{route}"
+					>
+						{capitalize(route)}
+					</a>
+				</li>
+			{/each}
 		</ul>
 	{/if}
 </nav>

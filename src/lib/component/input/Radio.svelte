@@ -25,14 +25,12 @@
 		gap: 10px;
 		margin-top: 20px;
 	}
-	div {
-		line-height: 35px;
-	}
 	label {
-		background-color: #f7f7fa;
+		display: inline-block;
+		background-color: #eeeeee;
 		border-radius: 5px;
 		padding: 8px 16px;
-		margin-right: 5px;
+		margin: 0 5px 5px 0;
 		font-size: 14px;
 		cursor: pointer;
 		transition: all 0.2s;

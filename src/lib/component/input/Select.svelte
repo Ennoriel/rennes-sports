@@ -7,7 +7,7 @@
 
 <label>
 	{label}
-	<select bind:value>
+	<select bind:value on:input>
 		<option value={undefined}>{placeholder}</option>
 		{#each options as option}
 			<option value={option.value || option}>{option.label || option}</option>
@@ -28,6 +28,7 @@
 		outline: none;
 		margin: 0;
 		border: 1px solid #e3e3e3;
+		background-color: #eeeeee;
 		height: 33px;
 		border-radius: 5px;
 		padding: 0 0 0 10px;

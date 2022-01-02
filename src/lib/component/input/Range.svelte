@@ -1,15 +1,18 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { displayHour } from '$lib/utils/time';
-	import { HourRange } from '$lib/types/sport.type';
+	import { RangeType } from '$lib/types/sport.type';
 
 	export let label: string;
-	export let min: number; // in minutes
-	export let max: number; // in minutes
-	export let range: HourRange = [0, 0]; // in minutes
-	export let step: number; // in minutes;
+	export let labelInHour = false;
+	export let min: number;
+	export let max: number;
+	export let range: RangeType = [0, 0];
+	export let step: number;
 
 	let intervals;
+
+	$: console.warn(range)
 
 	onMount(() => {
 		let i = min;
@@ -93,7 +96,7 @@
 			style="left: {valToPos(range[0])}px"
 		>
 			<span>
-				{displayHour(range[0])}
+				{labelInHour ? displayHour(range[0]) : range[0]}
 			</span>
 		</div>
 		<div
@@ -103,8 +106,8 @@
 			on:mousedown={() => (maxPressed = true)}
 			style="left: {valToPos(range[1])}px"
 		>
-			<span class:top={range[1] - range[0] <= 180}>
-				{displayHour(range[1])}
+			<span class:top={range[1] - range[0] <= ((max - min) / 6)}>
+				{labelInHour ? displayHour(range[1]) : range[1]}
 			</span>
 		</div>
 	</div>

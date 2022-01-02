@@ -1,5 +1,7 @@
 <script>
 	import { getHost } from '$lib/utils/static.util';
+	import {routes} from "$lib/routes/search";
+	import {capitalize} from "$lib/utils/string.util";
 </script>
 
 <nav>
@@ -9,12 +11,15 @@
 				<img class="icon" src="{getHost()}/svg/icon.svg" alt="icon app" />
 			</a>
 		</li>
-		<li>
-			<a href="{getHost()}/recherche/liste"> Liste </a>
-		</li>
-		<li>
-			<a href="{getHost()}/recherche/carte"> Carte </a>
-		</li>
+		{#each routes as route}
+			<li>
+				<a
+					href="{getHost()}/recherche/{route}"
+				>
+					{capitalize(route)}
+				</a>
+			</li>
+		{/each}
 	</ul>
 </nav>
 

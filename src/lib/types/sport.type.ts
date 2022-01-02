@@ -13,7 +13,7 @@ export type Sport = {
 export type Slot = {
 	details: string;
 	day: string;
-	hour: HourRange;
+	hour: RangeType;
 	locationId: number;
 };
 
@@ -25,7 +25,7 @@ export type Filter = {
 	day?: string[];
 	locationId?: number;
 	assoName?: string;
-	minutes?: HourRange;
+	minutes?: RangeType;
 };
 
-export type HourRange = [number, number];
+export type RangeType = [number, number];
