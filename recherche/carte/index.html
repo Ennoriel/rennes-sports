@@ -15,26 +15,26 @@
 
 		
 
-		<link rel="modulepreload" href="https://ennoriel.github.io/rennes-sports/_app/start-277a71d9.js">
+		<link rel="modulepreload" href="https://ennoriel.github.io/rennes-sports/_app/start-348d34df.js">
 		<link rel="modulepreload" href="https://ennoriel.github.io/rennes-sports/_app/chunks/vendor-ade4d69d.js">
 		<link rel="modulepreload" href="https://ennoriel.github.io/rennes-sports/_app/chunks/preload-helper-bf851ef5.js">
 		<link rel="modulepreload" href="https://ennoriel.github.io/rennes-sports/_app/pages/__layout.svelte-abe806ea.js">
-		<link rel="modulepreload" href="https://ennoriel.github.io/rennes-sports/_app/pages/recherche/__layout.svelte-03f80ed1.js">
+		<link rel="modulepreload" href="https://ennoriel.github.io/rennes-sports/_app/pages/recherche/__layout.svelte-02113c0c.js">
 		<link rel="modulepreload" href="https://ennoriel.github.io/rennes-sports/_app/chunks/static.util-d334ae03.js">
 		<link rel="modulepreload" href="https://ennoriel.github.io/rennes-sports/_app/chunks/state-0630aed0.js">
-		<link rel="modulepreload" href="https://ennoriel.github.io/rennes-sports/_app/pages/recherche/carte.svelte-cf0253cc.js">
-		<link rel="modulepreload" href="https://ennoriel.github.io/rennes-sports/_app/chunks/locations-54597f16.js">
-		<link rel="modulepreload" href="https://ennoriel.github.io/rennes-sports/_app/chunks/filter-496a7b22.js">
+		<link rel="modulepreload" href="https://ennoriel.github.io/rennes-sports/_app/pages/recherche/carte.svelte-f2b2395a.js">
+		<link rel="modulepreload" href="https://ennoriel.github.io/rennes-sports/_app/chunks/locations-6fd4666d.js">
+		<link rel="modulepreload" href="https://ennoriel.github.io/rennes-sports/_app/chunks/filter-27650649.js">
 		<link rel="stylesheet" href="https://ennoriel.github.io/rennes-sports/_app/assets/start-61d1577b.css">
 		<link rel="stylesheet" href="https://ennoriel.github.io/rennes-sports/_app/assets/vendor-dc7f80af.css">
 		<link rel="stylesheet" href="https://ennoriel.github.io/rennes-sports/_app/assets/pages/__layout.svelte-7468c8ff.css">
 		<link rel="stylesheet" href="https://ennoriel.github.io/rennes-sports/_app/assets/pages/recherche/__layout.svelte-ebab0d92.css">
 		<link rel="stylesheet" href="https://ennoriel.github.io/rennes-sports/_app/assets/pages/recherche/carte.svelte-fc873d40.css">
-		<link rel="stylesheet" href="https://ennoriel.github.io/rennes-sports/_app/assets/locations-79b93758.css">
+		<link rel="stylesheet" href="https://ennoriel.github.io/rennes-sports/_app/assets/locations-3b0818b9.css">
 		<link rel="stylesheet" href="https://ennoriel.github.io/rennes-sports/_app/assets/filter-264e0cb2.css">
 
 		<script type="module">
-			import { start } from "https://ennoriel.github.io/rennes-sports/_app/start-277a71d9.js";
+			import { start } from "https://ennoriel.github.io/rennes-sports/_app/start-348d34df.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"/rennes-sports","assets":"https://ennoriel.github.io/rennes-sports"},
@@ -48,8 +48,8 @@
 					error: null,
 					nodes: [
 						import("https://ennoriel.github.io/rennes-sports/_app/pages/__layout.svelte-abe806ea.js"),
-						import("https://ennoriel.github.io/rennes-sports/_app/pages/recherche/__layout.svelte-03f80ed1.js"),
-						import("https://ennoriel.github.io/rennes-sports/_app/pages/recherche/carte.svelte-cf0253cc.js")
+						import("https://ennoriel.github.io/rennes-sports/_app/pages/recherche/__layout.svelte-02113c0c.js"),
+						import("https://ennoriel.github.io/rennes-sports/_app/pages/recherche/carte.svelte-f2b2395a.js")
 					],
 					page: {
 						host: location.host, // TODO this is redundant
@@ -73,7 +73,7 @@
 </nav></span>
 <span class="s svelte-kssro3"><nav class="svelte-8ct64x"><span id="menu-bar" class="svelte-8ct64x"><a href="/rennes-sports/" class="svelte-8ct64x"><img class="icon svelte-8ct64x" src="/rennes-sports/svg/icon.svg" alt="icon app"></a>
 		<input placeholder="Pour l'instant l'input ne marche pas" class="svelte-8ct64x">
-		<button class="filters svelte-8ct64x">Filtrer
+		<button class="filters svelte-8ct64x" aria-label="Recherche globale">Filtrer
 		</button>
 		<button class="menu svelte-8ct64x"><img alt="menu" src="/rennes-sports/svg/menu.svg" class="svelte-8ct64x"></button></span>
 
@@ -83,7 +83,7 @@
 
 
 
-<div class="svelte-1ly1wgg"><div class="panel-wrapper svelte-1kljkqh"><h1 class="svelte-1crlxjt">Filtres
+<div class="svelte-1ly1wgg"><div class="panel-wrapper svelte-1kljkqh"><h1 class="svelte-15inzsq">Filtres
 </h1>
 
 		<label class="svelte-bnqo3b">Sport
@@ -146,10 +146,10 @@
 	<select class="svelte-bnqo3b"><option>Association</option><option value="CPB Blosne Pôle Landrel">CPB Blosne Pôle Landrel</option><option value="ASPTT Rennes">ASPTT Rennes</option><option value="CPB Ginguené">CPB Ginguené</option><option value="La Tour d&#39;Auvergne">La Tour d&#39;Auvergne</option></select>
 </label>
 
-		<div class="svelte-1jy1r6a"><button type="submit" class="primary svelte-4pipc3">Valider
+		<div class="svelte-1jy1r6a"><button type="submit" class="primary svelte-qk7pta">Valider
 			
 </button>
-			<button type="reset" class="secondary svelte-4pipc3">Effacer
+			<button type="reset" class="secondary svelte-qk7pta">Effacer
 			
 </button>
 </div></div></div>
