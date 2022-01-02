@@ -4,8 +4,8 @@
 	export let options;
 </script>
 
-<legend>
-	{label}
+<fieldset>
+	<legend>{label}</legend>
 	<div>
 		{#each options as option}
 			<label class:selected={value && value.includes(option)}>
@@ -14,16 +14,21 @@
 			</label>
 		{/each}
 	</div>
-</legend>
+</fieldset>
 
 <style>
-	legend {
+	fieldset {
 		display: flex;
 		flex-direction: column;
+		border: none;
 		font-size: 17px;
 		font-weight: 500;
 		gap: 10px;
 		margin-top: 20px;
+		padding: 0;
+	}
+	legend {
+		margin-bottom: 10px;
 	}
 	label {
 		display: inline-block;

@@ -18,10 +18,13 @@
 				alt="icon app"
 			/>
 		</a>
-		<input bind:value={search} placeholder="Pour l'instant l'input ne marche pas" />
+		<input
+			bind:value={search}
+			placeholder="Pour l'instant l'input ne marche pas"
+			aria-label="Recherche globale"
+		/>
 		<button
 			class="filters"
-			aria-label="Recherche globale"
 			on:click={(e) => {
 				$state.isOpen = !$state.isOpen;
 				isOpen = false;
