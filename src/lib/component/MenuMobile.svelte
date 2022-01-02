@@ -12,11 +12,16 @@
 <nav>
 	<span id="menu-bar">
 		<a href="{getHost()}/">
-			<img class="icon" src="{getHost()}/svg/icon.svg" alt="icon app" />
+			<img
+				class="icon"
+				src="{getHost()}/svg/icon.svg"
+				alt="icon app"
+			/>
 		</a>
 		<input bind:value={search} placeholder="Pour l'instant l'input ne marche pas" />
 		<button
 			class="filters"
+			aria-label="Recherche globale"
 			on:click={(e) => {
 				$state.isOpen = !$state.isOpen;
 				isOpen = false;

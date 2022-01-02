@@ -14,12 +14,10 @@
 <style>
     button {
         flex-grow: 1;
-        background-color: #eeeeee;
         border-radius: 5px;
         padding: 8px 16px;
         cursor: pointer;
         border: none;
-        color: #c4c4c4;
         transition: all .4s;
     }
 
@@ -34,6 +32,11 @@
         background-color: #eeeeee;
         color: black;
         border: 1px solid var(--main-color);
+    }
+
+    .secondary {
+        background-color: #eeeeee;
+        color: #4F4F4F;
     }
 
     .secondary:hover {

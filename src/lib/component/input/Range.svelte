@@ -12,8 +12,6 @@
 
 	let intervals;
 
-	$: console.warn(range)
-
 	onMount(() => {
 		let i = min;
 		intervals = [];
