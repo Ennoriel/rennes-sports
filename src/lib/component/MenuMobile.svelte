@@ -2,8 +2,8 @@
 	import { fly } from 'svelte/transition';
 	import { getHost } from '$lib/utils/static.util';
 	import { state } from '../store/state';
-	import {routes} from "$lib/routes/search";
-	import {capitalize} from "$lib/utils/string.util";
+	import { routes } from '$lib/routes/search';
+	import { capitalize } from '$lib/utils/string.util';
 
 	let search;
 	let isOpen = false;
@@ -11,12 +11,8 @@
 
 <nav>
 	<span id="menu-bar">
-		<a href="{getHost()}/">
-			<img
-				class="icon"
-				src="{getHost()}/svg/icon.svg"
-				alt="icon app"
-			/>
+		<a href="{getHost()}/" class="icon">
+			<img src="{getHost()}/svg/icon.svg" alt="icon app" />
 		</a>
 		<input
 			bind:value={search}
@@ -33,10 +29,13 @@
 		>
 			Filtrer
 		</button>
-		<button class="menu" on:click={() => {
-			$state.isOpen = false;
-			isOpen = !isOpen;
-		}}>
+		<button
+			class="menu"
+			on:click={() => {
+				$state.isOpen = false;
+				isOpen = !isOpen;
+			}}
+		>
 			<img alt="menu" src="{getHost()}/svg/menu.svg" />
 		</button>
 	</span>
@@ -45,10 +44,7 @@
 		<ul transition:fly={{ y: -50, duration: 200 }}>
 			{#each routes as route}
 				<li>
-					<a
-						on:click={() => isOpen = false}
-						href="{getHost()}/recherche/{route}"
-					>
+					<a on:click={() => (isOpen = false)} href="{getHost()}/recherche/{route}">
 						{capitalize(route)}
 					</a>
 				</li>
@@ -70,7 +66,7 @@
 		align-items: center;
 		gap: 16px;
 
-		width: 100vw;
+		width: 100%;
 		padding: 0 10px;
 		box-sizing: border-box;
 		background-color: var(--main-color);
@@ -79,8 +75,8 @@
 		z-index: 1002;
 	}
 
-	a,
-	.icon {
+	.icon,
+	.icon img {
 		height: calc(var(--header-height) - 15px);
 	}
 
@@ -126,7 +122,7 @@
 	ul {
 		position: absolute;
 		top: var(--header-height);
-		width: 100vw;
+		width: 100%;
 		box-sizing: border-box;
 		left: 0;
 		z-index: 1001;
@@ -137,9 +133,16 @@
 	}
 
 	ul a {
+		display: block;
 		text-decoration: none;
 		color: inherit;
-		height: 16px;
-		line-height: 24px;
+		font-size: 16px;
+		line-height: 32px;
+
+		transition: all 0.4s;
+	}
+
+	ul a:hover {
+		margin-left: 8px;
 	}
 </style>

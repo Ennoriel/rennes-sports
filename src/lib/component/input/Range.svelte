@@ -104,7 +104,7 @@
 			on:mousedown={() => (maxPressed = true)}
 			style="left: {valToPos(range[1])}px"
 		>
-			<span class:top={range[1] - range[0] <= ((max - min) / 6)}>
+			<span class:top={range[1] - range[0] <= (max - min) / 6}>
 				{labelInHour ? displayHour(range[1]) : range[1]}
 			</span>
 		</div>

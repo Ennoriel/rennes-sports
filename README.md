@@ -5,4 +5,4 @@
 - [ ] implémenter la recherche (petit écran)
 - [x] régler le problème des salles
 - [x] formulaire de création de cours
-- [x] formulaire de création de lieu
+- [ ] formulaire de création de lieu

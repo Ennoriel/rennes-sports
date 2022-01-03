@@ -29,7 +29,7 @@
 		margin: 0;
 		border: 1px solid #e3e3e3;
 		background-color: #eeeeee;
-		height: 33px;
+		height: 37px;
 		border-radius: 5px;
 		padding: 0 0 0 10px;
 		transition: all 0.2s;

@@ -9,9 +9,9 @@
 	import { state } from '../store/state';
 	import Checkbox from './input/Checkbox.svelte';
 	import Range from './input/Range.svelte';
-	import ButtonGroup from "$lib/component/ButtonGroup.svelte";
-	import Button from "$lib/component/Button.svelte";
-	import Title from "$lib/component/Title.svelte";
+	import ButtonGroup from '$lib/component/ButtonGroup.svelte';
+	import Button from '$lib/component/Button.svelte';
+	import Title from '$lib/component/Title.svelte';
 
 	export let onSubmit;
 	export let pageRef;
@@ -50,11 +50,7 @@
 			bind:value={filter.birthYear}
 		/>
 
-		<Radio
-				label="Sexe"
-				options={['Mixte', 'Féminin', 'Masculin']}
-				bind:value={filter.sex}
-		/>
+		<Radio label="Sexe" options={['Mixte', 'Féminin', 'Masculin']} bind:value={filter.sex} />
 
 		<Checkbox
 			label="Jour"
@@ -94,13 +90,7 @@
 			>
 				Valider
 			</Button>
-			<Button
-				type="reset"
-				variant="secondary"
-				on:click={resetFilters}
-			>
-				Effacer
-			</Button>
+			<Button type="reset" variant="secondary" on:click={resetFilters}>Effacer</Button>
 		</ButtonGroup>
 	</div>
 </Panel>

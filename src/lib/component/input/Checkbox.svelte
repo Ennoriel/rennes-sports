@@ -24,7 +24,7 @@
 		font-size: 17px;
 		font-weight: 500;
 		gap: 10px;
-		margin-top: 20px;
+		margin: 20px 0 0;
 		padding: 0;
 	}
 	legend {

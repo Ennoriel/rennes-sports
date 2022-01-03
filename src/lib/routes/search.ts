@@ -1,3 +1,1 @@
-export const routes = [
-    'liste', 'carte', 'nouveau'
-]
+export const routes = ['liste', 'carte', 'nouveau'];

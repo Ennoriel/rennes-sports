@@ -1,7 +1,7 @@
 <script>
 	import { getHost } from '$lib/utils/static.util';
-	import {routes} from "$lib/routes/search";
-	import {capitalize} from "$lib/utils/string.util";
+	import { routes } from '$lib/routes/search';
+	import { capitalize } from '$lib/utils/string.util';
 </script>
 
 <nav>
@@ -13,9 +13,7 @@
 		</li>
 		{#each routes as route}
 			<li>
-				<a
-					href="{getHost()}/recherche/{route}"
-				>
+				<a href="{getHost()}/recherche/{route}">
 					{capitalize(route)}
 				</a>
 			</li>
@@ -27,7 +25,7 @@
 	nav {
 		font-size: 16px;
 
-		width: 100vw;
+		width: 100%;
 		padding: 0 10px;
 		box-sizing: border-box;
 		height: var(--header-height);
