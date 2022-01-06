@@ -77,16 +77,14 @@
 		font-size: 10px;
 		text-transform: uppercase;
 		color: #7f7f7f;
-		box-shadow: 0 0 5px #888;
 
 		position: sticky;
-		background-color: #fafafa;
-		height: 40px;
+		background-color: var(--bg-color);
 		top: 0;
 	}
 
 	#table :global(tbody td:not(:first-of-type)) {
-		padding: 4px 0;
+		padding: 8px 0;
 		min-height: 32px;
 	}
 

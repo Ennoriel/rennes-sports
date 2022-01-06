@@ -34,6 +34,7 @@
 <style>
 	div {
 		text-align: center;
+		line-height: 17px;
 	}
 	.flex {
 		display: flex;

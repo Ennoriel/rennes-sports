@@ -13,11 +13,13 @@
 {/each}
 
 <style>
-	.slot {
+	.slot:not(:last-of-type) {
+		margin-bottom: 8px;
 	}
 	.slot-day,
 	.slot-hour {
 		text-align: center;
+		line-height: 17px;
 	}
 	.slot-day {
 		font-weight: bolder;

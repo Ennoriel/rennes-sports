@@ -18,6 +18,7 @@
 	a {
 		display: block;
 		text-align: center;
+		line-height: 17px;
 	}
 	span {
 		font-weight: 700;
