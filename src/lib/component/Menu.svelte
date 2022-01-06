@@ -2,6 +2,7 @@
 	import { getHost } from '$lib/utils/static.util';
 	import { routes } from '$lib/routes/search';
 	import { capitalize } from '$lib/utils/string.util';
+	import { page } from '$app/stores';
 </script>
 
 <nav>
@@ -14,7 +15,9 @@
 		{#each routes as route}
 			<li>
 				<a href="{getHost()}/recherche/{route}">
-					{capitalize(route)}
+					<span class:active={$page.path.indexOf(route) > 0}>
+						{capitalize(route)}
+					</span>
 				</a>
 			</li>
 		{/each}
@@ -68,12 +71,17 @@
 		transition: top ease 0.5s;
 	}
 
+	.active {
+		border-bottom: 2px solid var(--secondary-color);
+		padding: 4px 0;
+	}
+
 	a:hover {
 		top: -4px;
 	}
 
 	a:focus-visible {
-		outline: 2px solid red;
+		outline: 2px solid var(--secondary-color);
 		outline-offset: -4px;
 	}
 </style>

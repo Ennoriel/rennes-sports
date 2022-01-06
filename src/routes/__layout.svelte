@@ -3,6 +3,7 @@
 <style>
 	:global(body) {
 		--main-color: #002395;
+        --secondary-color: #ED1F3A;
 		--header-height: 60px;
 	}
 	:global(body) {

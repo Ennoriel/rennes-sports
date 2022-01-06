@@ -4,6 +4,7 @@
 	import { state } from '../store/state';
 	import { routes } from '$lib/routes/search';
 	import { capitalize } from '$lib/utils/string.util';
+	import { page } from '$app/stores';
 
 	let search;
 	let isOpen = false;
@@ -45,6 +46,9 @@
 			{#each routes as route}
 				<li>
 					<a on:click={() => (isOpen = false)} href="{getHost()}/recherche/{route}">
+						{#if $page.path.indexOf(route) > 0}
+							>
+						{/if}
 						{capitalize(route)}
 					</a>
 				</li>
