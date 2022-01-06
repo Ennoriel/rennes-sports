@@ -1,13 +1,14 @@
 <script lang="ts">
 	export let label;
-	export let placeholder = label;
+	export let ariaLabel = label;
+	export let placeholder;
 	export let value;
 	export let options: Array<{ label: string; value: string }> | Array<string>;
 </script>
 
 <label>
 	{label}
-	<select bind:value on:input>
+	<select bind:value on:input aria-label={ariaLabel}>
 		<option value={undefined}>{placeholder}</option>
 		{#each options as option}
 			<option value={option.value || option}>{option.label || option}</option>

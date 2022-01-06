@@ -12,12 +12,12 @@
 <nav>
 	<span id="menu-bar">
 		<a href="{getHost()}/" class="icon">
-			<img src="{getHost()}/svg/icon.svg" alt="icon app" />
+			<img src="{getHost()}/svg/icon.svg" alt="Icone de l'application permettant de revenir à l'accueil" />
 		</a>
 		<input
 			bind:value={search}
-			placeholder="Pour l'instant l'input ne marche pas"
 			aria-label="Recherche globale"
+			placeholder="Ski nautique"
 		/>
 		<button
 			class="filters"

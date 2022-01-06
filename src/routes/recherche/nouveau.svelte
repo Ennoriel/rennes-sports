@@ -86,6 +86,7 @@
 		<div class="select-alternative-group" class:column={formConfig.newSport}>
 			<Select
 				label="Sport"
+				ariaLabel="Sport. Si le sport n'est pas disponible, appuyer sur X"
 				options={[...new Set(sports.map((sport) => sport.sport))]}
 				bind:value={sport.sport}
 				on:input={() => {
@@ -214,11 +215,11 @@
 	</ButtonGroup>
 
 	{#if validated}
-		<div>
+		<div class="block">
 			<Title>Sport</Title>
 			<pre>
-            {JSON.stringify(createdSport, null, 2)}
-        </pre>
+				{JSON.stringify(createdSport, null, 2)}
+			</pre>
 		</div>
 	{/if}
 </form>
