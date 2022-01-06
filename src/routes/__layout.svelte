@@ -1,10 +1,19 @@
+<script>
+	function keydown(e) {
+		console.log('!!');
+		if (e.key === 'Tab') document.body.classList.add('has-been-tabbed');
+	}
+</script>
+
+<svelte:window on:keydown={keydown} />
+
 <slot />
 
 <style>
 	:global(body) {
 		--main-color: #002395;
-        --secondary-color: #ED1F3A;
-        --bg-color: #f7f7fa;
+		--secondary-color: #ed1f3a;
+		--bg-color: #f7f7fa;
 		--header-height: 60px;
 	}
 	:global(body) {

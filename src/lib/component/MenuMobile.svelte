@@ -13,13 +13,12 @@
 <nav>
 	<span id="menu-bar">
 		<a href="{getHost()}/" class="icon">
-			<img src="{getHost()}/svg/icon.svg" alt="Icone de l'application permettant de revenir à l'accueil" />
+			<img
+				src="{getHost()}/svg/icon.svg"
+				alt="Icone de l'application permettant de revenir à l'accueil"
+			/>
 		</a>
-		<input
-			bind:value={search}
-			aria-label="Recherche globale"
-			placeholder="Ski nautique"
-		/>
+		<input bind:value={search} aria-label="Recherche globale" placeholder="Ski nautique" />
 		<button
 			class="filters"
 			on:click={(e) => {
@@ -99,7 +98,7 @@
 		width: 50px;
 	}
 
-	input:focus {
+	input:focus-visible {
 		box-shadow: 0 0 5px #eee;
 	}
 

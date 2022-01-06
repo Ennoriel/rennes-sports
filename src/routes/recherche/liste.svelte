@@ -1,15 +1,10 @@
 <script lang="ts">
-	import { sports } from '$lib/data/sports';
 	import SvelteTable from 'svelte-table';
 	import Row from '$lib/component/table/Row.svelte';
 	import FilterPanel from '$lib/component/FilterPanel.svelte';
-	import { Filter } from '$lib/types/sport.type';
-	import { state } from '$lib/store/state';
-	import { filterSports } from '$lib/utils/filter';
+	import { state, sports } from '$lib/store/state';
 
 	let pageRef;
-
-	let rows = filterSports($state.filter, sports);
 
 	const columns = [
 		{
@@ -46,21 +41,16 @@
 			sortable: true
 		}
 	];
-
-	function onSubmit(filter: Filter) {
-		$state.filter = filter;
-		rows = filterSports(filter, sports);
-	}
 </script>
 
-<FilterPanel {onSubmit} {pageRef} />
+<FilterPanel {pageRef} />
 
 <div bind:this={pageRef} id="table" class:isPadded={$state.isOpen}>
 	<h1>
-		Résultats ({rows.length})
+		Résultats ({$sports.length})
 	</h1>
 
-	<SvelteTable {columns} {rows}>
+	<SvelteTable {columns} rows={$sports}>
 		<Row slot="row" let:row let:n {row} />
 	</SvelteTable>
 </div>

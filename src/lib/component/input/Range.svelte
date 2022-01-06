@@ -115,8 +115,8 @@
 	label {
 		display: flex;
 		flex-direction: column;
-		font-size: 17px;
-		font-weight: 500;
+		font-size: 14px;
+		font-weight: 700;
 		gap: 10px;
 		margin: 20px 0 35px;
 	}
@@ -140,7 +140,7 @@
 		margin: 0 -10px;
 		cursor: pointer;
 	}
-	.indicator:focus {
+	.indicator:focus-visible {
 		box-shadow: 0 0 5px black;
 		font-weight: 700;
 	}

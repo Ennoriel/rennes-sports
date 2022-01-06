@@ -10,17 +10,15 @@
 		font-size: 16px;
 		font-weight: 500;
 		position: fixed;
-		bottom: 50px;
-		left: 50px;
+		bottom: 24px;
+		left: 24px;
 		outline: none;
 		border-radius: 5px;
-		padding: 12px 24px;
+		padding: 8px 16px;
 		border: none;
 		cursor: pointer;
 
-		background: linear-gradient(90deg, var(--main-color), #0035e2 50%, var(--main-color) 100%);
-		background-size: 200% 100%;
-		animation: background-gradient 5s infinite linear;
+		background-color: var(--main-color);
 		transition: all 0.4s;
 
 		z-index: 401;
