@@ -3,6 +3,7 @@
 	import Row from '$lib/component/table/Row.svelte';
 	import FilterPanel from '$lib/component/FilterPanel.svelte';
 	import { state, sports } from '$lib/store/state';
+	import Title from "$lib/component/Title.svelte";
 
 	let pageRef;
 
@@ -46,9 +47,9 @@
 <FilterPanel {pageRef} />
 
 <div bind:this={pageRef} id="table" class:isPadded={$state.isOpen}>
-	<h1>
+	<Title>
 		Résultats ({$sports.length})
-	</h1>
+	</Title>
 
 	<SvelteTable {columns} rows={$sports}>
 		<Row slot="row" let:row let:n {row} />
@@ -104,11 +105,7 @@
 		}
 	}
 
-	h1 {
-		text-transform: uppercase;
-		font-size: 16px;
-		color: var(--main-color);
-		font-weight: normal;
+	#table :global(h1) {
 		margin: 12px 0 12px 24px;
 	}
 </style>

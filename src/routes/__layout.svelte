@@ -1,6 +1,5 @@
 <script>
 	function keydown(e) {
-		console.log('!!');
 		if (e.key === 'Tab') document.body.classList.add('has-been-tabbed');
 	}
 </script>
