@@ -18,7 +18,7 @@ export const locations: Array<Location> = [
 	},
 	{
 		id: 3,
-		name: 'en attente'
+		name: 'localisation en attente'
 	},
 	{
 		id: 4,

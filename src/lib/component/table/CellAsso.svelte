@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Sport } from '$lib/types/sport.type';
-	import Link from "$lib/component/Link.svelte";
+	import Link from '$lib/component/Link.svelte';
 
 	export let row: Sport;
 </script>
@@ -8,7 +8,7 @@
 <span>
 	{row.assoName}
 </span>
-<Link target="_blank" href={row.website} alt="lien" imgSrc="/svg/right-up.svg" >
+<Link target="_blank" href={row.website} alt="lien" imgSrc="/svg/right-up.svg">
 	consulter le site
 </Link>
 

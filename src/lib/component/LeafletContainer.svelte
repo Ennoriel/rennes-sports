@@ -21,7 +21,7 @@
 	{#each markers as marker}
 		<Marker latLng={marker.location.coordinates}>
 			<Popup>
-				<MapPopup sports={marker.sports} />
+				<MapPopup location={marker.location} sports={marker.sports} />
 			</Popup>
 		</Marker>
 	{/each}

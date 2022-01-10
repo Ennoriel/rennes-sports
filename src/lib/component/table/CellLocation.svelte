@@ -2,14 +2,18 @@
 	import { getHost } from '$lib/utils/static.util';
 	import type { Sport } from '$lib/types/sport.type';
 	import { locations } from '$lib/data/locations';
-	import Link from "$lib/component/Link.svelte";
+	import Link from '$lib/component/Link.svelte';
 
 	export let row: Sport;
 </script>
 
 {#each row.slots as slot}
 	<div>
-		<Link alt="localisation" imgSrc="/svg/location.svg" href="{getHost()}/recherche/carte/{slot.locationId}">
+		<Link
+			alt="localisation"
+			imgSrc="/svg/location.svg"
+			href="{getHost()}/recherche/carte/{slot.locationId}"
+		>
 			{locations.find((location) => location.id === slot.locationId)?.name}
 		</Link>
 	</div>

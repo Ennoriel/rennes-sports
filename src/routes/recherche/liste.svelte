@@ -3,7 +3,7 @@
 	import Row from '$lib/component/table/Row.svelte';
 	import FilterPanel from '$lib/component/FilterPanel.svelte';
 	import { state, sports } from '$lib/store/state';
-	import Title from "$lib/component/Title.svelte";
+	import Title from '$lib/component/Title.svelte';
 
 	let pageRef;
 
