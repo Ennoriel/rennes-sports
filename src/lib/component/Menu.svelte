@@ -14,8 +14,8 @@
 		</li>
 		{#each routes as route}
 			<li>
-				<a href="{getHost()}/recherche/{route}">
-					<span class:active={$page.path.indexOf(route) > 0}>
+				<a href="{getHost()}/recherche/{route}" class:active={$page.path.indexOf(route) > 0}>
+					<span>
 						{capitalize(route)}
 					</span>
 				</a>
@@ -68,15 +68,19 @@
 
 		position: relative;
 		top: 0;
-		transition: top ease 0.5s;
+		transition: top ease 0.4s;
 	}
 
 	.active {
+		cursor: default;
+	}
+
+	.active span {
 		border-bottom: 2px solid var(--secondary-color);
 		padding: 4px 0;
 	}
 
-	a:hover {
+	a:not(.active):hover {
 		top: -4px;
 	}
 

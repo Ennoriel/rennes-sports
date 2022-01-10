@@ -12,6 +12,7 @@
 	import { Sport, RangeType } from '$lib/types/sport.type';
 	import { sports } from '$lib/data/sports';
 	import { locations } from '$lib/data/locations';
+	import X from '$lib/component/svg/X.svelte';
 
 	let sport = {
 		sport: undefined,
@@ -72,7 +73,12 @@
 		}, 10);
 		setTimeout(() => {
 			clearInterval(intervalId);
-		}, 2000);
+		}, 800);
+	}
+
+	function removeSlot(index: number) {
+		sport.slots.splice(index, 1);
+		sport.slots = sport.slots;
 	}
 
 	$: if (sport.birthYear && !sport.birthYear.includes(2004)) sport.adult = 'Non';
@@ -162,8 +168,13 @@
 
 	<!-- Slots -->
 	{#each sport.slots as slot, index}
-		<div transition:slide|local={{ duration: 2000 }} class="block">
-			<Title>Créneau {index + 1}</Title>
+		<div transition:slide|local={{ duration: 800 }} class="block slot">
+			<ButtonGroup>
+				<Title>Créneau {index + 1}</Title>
+				<Button variant="secondary" shape="circle" on:click={() => removeSlot(index)}>
+					<X />
+				</Button>
+			</ButtonGroup>
 
 			<!-- Slot details -->
 			<TextInput
@@ -241,6 +252,19 @@
 		display: flex;
 		flex-direction: column;
 		gap: 10px;
+	}
+
+	.slot :global(.button-group) {
+		margin: 0;
+	}
+
+	.slot :global(h1) {
+		margin: 0;
+		line-height: 33px;
+		flex-grow: 1;
+	}
+	.slot :global(button) {
+		flex-grow: 0;
 	}
 
 	@media (min-width: 532px) {

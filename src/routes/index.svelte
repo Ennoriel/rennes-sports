@@ -92,7 +92,7 @@
 
 		position: relative;
 		top: 0;
-		transition: top ease 0.5s;
+		transition: top ease 0.4s;
 	}
 
 	a:hover {

@@ -9,13 +9,25 @@
 	import Checkbox from './input/Checkbox.svelte';
 	import Range from './input/Range.svelte';
 	import Title from '$lib/component/Title.svelte';
+	import Button from '$lib/component/Button.svelte';
+	import ButtonGroup from '$lib/component/ButtonGroup.svelte';
+	import X from '$lib/component/svg/X.svelte';
 
 	export let pageRef;
 </script>
 
 <Panel {pageRef}>
 	<div class="panel-wrapper">
-		<Title>Filtres</Title>
+		<ButtonGroup>
+			<Title>Filtres</Title>
+			<Button
+				variant="secondary"
+				on:click={() => ($state.filter = { day: [], minutes: [360, 1410] })}>Réinitialiser</Button
+			>
+			<Button variant="secondary" shape="circle" on:click={() => ($state.isOpen = false)}>
+				<X />
+			</Button>
+		</ButtonGroup>
 
 		<Select
 			label="Sport"
@@ -74,5 +86,13 @@
 	}
 	.panel-wrapper > :global(label:first-child) {
 		margin: 0;
+	}
+	.panel-wrapper :global(h1) {
+		margin: 0;
+		line-height: 33px;
+		flex-grow: 1;
+	}
+	.panel-wrapper :global(button) {
+		flex-grow: 0;
 	}
 </style>

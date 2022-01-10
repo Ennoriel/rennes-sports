@@ -1,18 +1,18 @@
 <script lang="ts">
 	export let variant: 'primary' | 'secondary' = 'primary';
+	export let shape: 'square' | 'circle' = 'square';
 	export let type = 'button';
 </script>
 
-<button {type} on:click class={variant}>
+<button {type} on:click class={`${variant} ${shape}`}>
 	<slot />
 </button>
 
 <style>
 	button {
 		flex-grow: 1;
-		height: 37px;
-		border-radius: 5px;
-		padding: 8px 16px;
+		height: 33px;
+		padding: 4px 16px;
 		cursor: pointer;
 		border: none;
 		transition: all 0.4s;
@@ -39,5 +39,15 @@
 	.secondary:hover {
 		background-color: var(--main-color);
 		color: white;
+	}
+
+	.square {
+		border-radius: 5px;
+	}
+
+	.circle {
+		border-radius: 16.5px;
+		background-color: transparent;
+		padding: 4px;
 	}
 </style>
