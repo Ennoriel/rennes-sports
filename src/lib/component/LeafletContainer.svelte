@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { LeafletMap, TileLayer, Marker, Popup } from 'svelte-leafletjs';
+	import { LeafletMap, TileLayer, Marker, Popup, Polyline, Circle, Tooltip } from 'svelte-leafletjs';
 	import MapPopup from './MapPopup.svelte';
+	import {metros} from "$lib/data/metro";
 	export let markers;
 
 	const mapOptions = {
@@ -24,5 +25,11 @@
 				<MapPopup location={marker.location} sports={marker.sports} />
 			</Popup>
 		</Marker>
+	{/each}
+	<Polyline latLngs={metros.map(metro => metro.coordinates)} color="#ff0000" fillColor="#ff0000" />
+	{#each metros as metro}
+		<Circle latLng={metro.coordinates} radius={40} color="#ff0000" fillColor="#ff0000" fillOpacity=1>
+			<Tooltip>{metro.name}</Tooltip>
+		</Circle>
 	{/each}
 </LeafletMap>

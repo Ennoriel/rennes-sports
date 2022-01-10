@@ -10,3 +10,9 @@ export type Marker = {
 	location: Location;
 	sports: Array<Sport>;
 };
+
+export type Metro = {
+	name: string;
+	address: string;
+	coordinates: [number, number];
+}
