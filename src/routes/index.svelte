@@ -1,25 +1,18 @@
 <script>
+	import ResponsiveWrapper from '$lib/component/ResponsiveWrapper.svelte';
+	import MenuMobile from '$lib/component/MenuMobile.svelte';
+	import Menu from '$lib/component/Menu.svelte';
+
 	import { getHost } from '$lib/utils/static.util';
 </script>
 
 <main>
 	<img class="background-image" src="{getHost()}/home-background.png" alt="3 sportifs en action." />
 
-	<nav>
-		<ul>
-			<li>
-				<a href="{getHost()}/">
-					<img src="{getHost()}/svg/icon.svg" alt="icon app" />
-				</a>
-			</li>
-			<li>
-				<a href="{getHost()}/recherche/liste"> Liste </a>
-			</li>
-			<li>
-				<a href="{getHost()}/recherche/carte"> Carte </a>
-			</li>
-		</ul>
-	</nav>
+	<ResponsiveWrapper>
+		<MenuMobile slot="s" filtrable={false}/>
+		<Menu slot="l"/>
+	</ResponsiveWrapper>
 
 	<div id="content">
 		<h1>
@@ -36,7 +29,7 @@
 			de ton sport préféré à proximité !
 		</p>
 
-		<ul class="details">
+		<ul>
 			<li data-type="Liste">
 				<a href="{getHost()}/recherche/liste">
 					Tri des créneaux par sport, âge, sexe, jour, type de pratique...
@@ -60,32 +53,6 @@
 		color: white;
 	}
 
-	nav {
-		font-size: 18px;
-		padding: 16px 0;
-	}
-
-	nav ul {
-		height: 64px;
-		margin: 0;
-		padding: 0;
-		list-style: none;
-
-		display: flex;
-		align-items: stretch;
-		gap: 32px;
-	}
-
-	nav ul a {
-		height: 64px;
-		line-height: 64px;
-		display: block;
-	}
-
-	nav ul li:not(:first-child) a {
-		padding: 0 16px;
-	}
-
 	a {
 		text-decoration: none;
 		color: inherit;
@@ -97,10 +64,6 @@
 
 	a:hover {
 		top: -2px;
-	}
-
-	nav ul a:hover {
-		top: -4px;
 	}
 
 	#content {
@@ -119,16 +82,16 @@
 		font-size: 18px;
 	}
 
-	ul.details {
+	ul {
 		list-style: none;
 		padding: 0;
 	}
 
-	ul.details li {
+	ul li {
 		margin: 8px;
 	}
 
-	ul.details li::before {
+	ul li::before {
 		content: attr(data-type);
 		display: inline-block;
 		color: black;

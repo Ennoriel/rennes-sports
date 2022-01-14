@@ -3,11 +3,13 @@
 	import { getHost } from '$lib/utils/static.util';
 	import { state } from '../store/state';
 	import { routes } from '$lib/routes/search';
-	import { capitalize } from '$lib/utils/string.util';
 	import { page } from '$app/stores';
+	import XOrMenu from "$lib/component/svg/XOrMenu.svelte";
 
 	let search;
 	let isOpen = false;
+
+	export let filtrable = true;
 </script>
 
 <nav>
@@ -18,17 +20,19 @@
 				alt="Icone de l'application permettant de revenir à l'accueil"
 			/>
 		</a>
-		<input bind:value={search} aria-label="Recherche globale" placeholder="Ski nautique" />
-		<button
-			class="filters"
-			on:click={(e) => {
-				$state.isOpen = !$state.isOpen;
-				isOpen = false;
-				e.stopPropagation();
-			}}
-		>
-			Filtrer
-		</button>
+		{#if filtrable}
+			<input bind:value={search} aria-label="Recherche globale" placeholder="Ski nautique" />
+			<button
+				class="filters"
+				on:click={(e) => {
+					$state.isOpen = !$state.isOpen;
+					isOpen = false;
+					e.stopPropagation();
+				}}
+			>
+				Filtrer
+			</button>
+		{/if}
 		<button
 			class="menu"
 			on:click={() => {
@@ -36,19 +40,19 @@
 				isOpen = !isOpen;
 			}}
 		>
-			<img alt="menu" src="{getHost()}/svg/menu.svg" />
+			<XOrMenu visible={!isOpen}/>
 		</button>
 	</span>
 
 	{#if isOpen}
-		<ul transition:fly={{ y: -50, duration: 200 }}>
+		<ul transition:fly={{ x: -200, duration: 400 }}>
 			{#each routes as route}
 				<li>
-					<a on:click={() => (isOpen = false)} href="{getHost()}/recherche/{route}">
+					<a on:click={() => (isOpen = false)} href="{getHost()}/{route.route}">
 						{#if $page.path.indexOf(route) > 0}
 							>
 						{/if}
-						{capitalize(route)}
+						{route.label}
 					</a>
 				</li>
 			{/each}
@@ -67,14 +71,13 @@
 		height: var(--header-height);
 		display: flex;
 		align-items: center;
+		justify-content: space-between;
 		gap: 16px;
 
-		width: 100%;
 		padding: 0 10px;
 		box-sizing: border-box;
 		background-color: var(--main-color);
 
-		position: absolute;
 		z-index: 1002;
 	}
 
@@ -88,7 +91,6 @@
 		height: calc(var(--header-height) - 25px);
 		border-radius: calc((var(--header-height) - 25px) / 2);
 		border: none;
-		box-shadow: 0 0 4px #ddd;
 	}
 
 	input {
@@ -96,6 +98,7 @@
 		padding: 0 16px;
 		transition: all 0.2s;
 		width: 50px;
+		box-shadow: 0 0 4px #ddd;
 	}
 
 	input:focus-visible {
@@ -103,19 +106,22 @@
 	}
 
 	button {
-		background: white;
 		cursor: pointer;
 	}
 
 	button.filters {
+		background: white;
 		padding: 0 16px;
 	}
 
 	button.menu {
-		width: calc(var(--header-height) - 25px);
+		/*width: calc(var(--header-height) - 25px);*/
+		background-color: var(--main-color);
 		display: flex;
 		align-items: center;
 		justify-content: center;
+
+		color: white;
 	}
 
 	button.menu img {
@@ -124,14 +130,17 @@
 
 	ul {
 		position: absolute;
-		top: var(--header-height);
-		width: 100%;
+		top: 0;
+		width: 200px;
+		height: 100vh;
 		box-sizing: border-box;
 		left: 0;
 		z-index: 1001;
-		background-color: #1033a5;
+		background-color: white;
+		color: var(--main-color);
+		box-shadow: 5px 0 20px -5px #333;
 		margin: 0;
-		padding: 16px 48px;
+		padding: 16px 32px;
 		list-style: none;
 	}
 

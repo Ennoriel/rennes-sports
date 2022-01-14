@@ -1,6 +1,7 @@
 <script>
 	import FloatingButton from './FloatingButton.svelte';
 	import { state } from '../store/state';
+	import { fly } from 'svelte/transition';
 
 	export let pageRef;
 
@@ -11,9 +12,11 @@
 
 <svelte:window on:click={click} />
 
-<div class:isOpen={$state.isOpen}>
-	<slot />
-</div>
+{#if $state.isOpen}
+	<div transition:fly={{ x: -200, duration: 400 }}>
+		<slot />
+	</div>
+{/if}
 
 <FloatingButton on:click={() => ($state.isOpen = true)} hidden={$state.isOpen} />
 
@@ -23,16 +26,11 @@
 		position: fixed;
 		height: calc(100vh - var(--header-height));
 		width: 300px;
-		transform: translateX(-300px);
 		transition: all 0.4s;
-		box-shadow: 0 0 10px black;
+		box-shadow: 5px 0 20px -5px #333;
 		overflow-y: auto;
 		overflow-x: hidden;
 
 		z-index: 1001;
-	}
-
-	.isOpen {
-		transform: translateX(0);
 	}
 </style>

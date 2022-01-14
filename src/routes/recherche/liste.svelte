@@ -46,7 +46,7 @@
 
 <FilterPanel {pageRef} />
 
-<div bind:this={pageRef} id="table" class:isPadded={$state.isOpen}>
+<div bind:this={pageRef} id="table">
 	<Title>
 		Résultats ({$sports.length})
 	</Title>
@@ -84,22 +84,9 @@
 		height: calc(100vh - var(--header-height));
 		overflow-y: auto;
 	}
-	#table.isPadded {
-		padding-left: 300px;
-	}
 
 	@media (min-width: 720px) {
-		#table:not(.isPadded) {
-			width: 1000px;
-			margin: auto;
-		}
-		#table.isPadded {
-			width: calc(100% - 300px);
-			margin: auto;
-		}
-	}
-	@media (min-width: 1324px) {
-		#table.isPadded {
+		#table {
 			width: 1000px;
 			margin: auto;
 		}

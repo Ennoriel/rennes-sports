@@ -1,7 +1,6 @@
 <script>
 	import { getHost } from '$lib/utils/static.util';
 	import { routes } from '$lib/routes/search';
-	import { capitalize } from '$lib/utils/string.util';
 	import { page } from '$app/stores';
 </script>
 
@@ -14,9 +13,9 @@
 		</li>
 		{#each routes as route}
 			<li>
-				<a href="{getHost()}/recherche/{route}" class:active={$page.path.indexOf(route) > 0}>
+				<a href="{getHost()}/{route.route}" class:active={$page.path.indexOf(route.route) > 0}>
 					<span>
-						{capitalize(route)}
+						{route.label}
 					</span>
 				</a>
 			</li>
