@@ -9,6 +9,14 @@
 <slot />
 
 <style>
+    :global(*) {
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+    }
+    :global(a) {
+        color: inherit;
+    }
 	:global(body) {
 		--main-color: #002395;
 		--secondary-color: #ed1f3a;
