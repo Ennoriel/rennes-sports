@@ -3,7 +3,7 @@
 	export async function load(ctx) {
 		return {
 			props: {
-				locationId: Number.parseInt(ctx?.page?.params?.slug) || undefined
+				locationId: Number.parseInt(ctx?.page?.params?.slug) ?? undefined
 			}
 		};
 	}
