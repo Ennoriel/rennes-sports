@@ -59,6 +59,14 @@
 			level: sport.level,
 			slots: sport.slots
 		};
+
+		fetch('/api/sports.json', {
+			body: JSON.stringify(createdSport),
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		}).then(res => res.json()).then(res => console.log(res))
 	}
 
 	function addSlot() {

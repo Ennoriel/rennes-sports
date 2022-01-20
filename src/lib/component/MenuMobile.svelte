@@ -2,7 +2,7 @@
 	import { fly } from 'svelte/transition';
 	import { getHost } from '$lib/utils/static.util';
 	import { state } from '../store/state';
-	import { routes } from '$lib/routes/search';
+	import { routes } from '$lib/data/routes';
 	import { page } from '$app/stores';
 	import XOrMenu from "$lib/component/svg/XOrMenu.svelte";
 

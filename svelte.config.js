@@ -13,6 +13,10 @@ const config = {
 			fallback: null
 		}),
 
+		files: {
+			hooks: 'src/hooks'
+		},
+
 		paths: {
 			base: dev ? '' : '/rennes-sports',
 			assets: 'https://ennoriel.github.io/rennes-sports'

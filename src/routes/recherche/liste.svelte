@@ -1,9 +1,17 @@
-<script lang="ts">
+<script context="module" lang="ts">
+	import {loadSports} from "./_load";
+	export const load = loadSports
+</script>
+
+<script>
 	import SvelteTable from 'svelte-table';
 	import Row from '$lib/component/table/Row.svelte';
 	import FilterPanel from '$lib/component/FilterPanel.svelte';
 	import { state, sports } from '$lib/store/state';
 	import Title from '$lib/component/Title.svelte';
+
+	export let loadedSports = []
+	$: $state.allSports = loadedSports
 
 	let pageRef;
 

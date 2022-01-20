@@ -1,6 +1,6 @@
 <script>
 	import { getHost } from '$lib/utils/static.util';
-	import { routes } from '$lib/routes/search';
+	import { routes } from '$lib/data/routes';
 	import { page } from '$app/stores';
 </script>
 
