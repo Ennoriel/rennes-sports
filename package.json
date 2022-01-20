@@ -14,7 +14,7 @@
 	},
 	"main": "src/app.html",
 	"devDependencies": {
-		"@sveltejs/adapter-static": "next",
+		"@sveltejs/adapter-vercel": "next",
 		"@sveltejs/kit": "next",
 		"@types/cookie": "^0.4.1",
 		"@types/jest": "^27.4.0",

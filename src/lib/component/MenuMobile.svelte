@@ -49,7 +49,7 @@
 			{#each routes as route}
 				<li>
 					<a on:click={() => (isOpen = false)} href="{getHost()}/{route.route}">
-						{#if $page.path.indexOf(route) > 0}
+						{#if $page.url.pathname.indexOf(route) > 0}
 							>
 						{/if}
 						{route.label}

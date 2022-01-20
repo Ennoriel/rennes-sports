@@ -7,9 +7,10 @@ export const get: RequestHandler = async () => {
     };
 };
 
-export const post: RequestHandler = async (request) => {
+export const post: RequestHandler = async ({ params, request }) => {
+    const body = await request.json();
     return {
-        body: await mongoUtil.db.collection('sports').insertOne(request.body)
+        body: await mongoUtil.db.collection('sports').insertOne(body)
     };
 }
 
