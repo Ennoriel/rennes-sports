@@ -21,6 +21,7 @@
 		text-decoration: none;
 		outline: none;
 		cursor: pointer;
+		transition: all .1s;
 	}
 	a:hover,
 	a:focus {
