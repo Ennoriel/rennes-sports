@@ -45,9 +45,11 @@
 		return min + (pos * (max - min)) / rangeEl.getBoundingClientRect().width;
 	}
 
-	function mouseMove(e) {
+	function mouseMove(e: MouseEvent | TouchEvent) {
 		if (minPressed || maxPressed) {
-			let pos = e.clientX - rangeEl.getBoundingClientRect().left;
+			let pos = "clientX" in e ? e.clientX : e.changedTouches?.[0]?.pageX;
+			pos -= rangeEl.getBoundingClientRect().left;
+
 			let val = posToVal(pos);
 			let closestVal = closest(intervals, val);
 			range = [
@@ -77,7 +79,12 @@
 	}
 </script>
 
-<svelte:window on:mousemove={mouseMove} on:mouseup={mouseUp} />
+<svelte:window
+	on:mousemove={mouseMove}
+	on:mouseup={mouseUp}
+	on:touchmove={mouseMove}
+	on:touchend={mouseUp}
+/>
 
 <label>
 	{label}
@@ -91,6 +98,7 @@
 			tabindex="0"
 			on:keydown={(e) => keyDown(e, true)}
 			on:mousedown={() => (minPressed = true)}
+			on:touchstart={() => (minPressed = true)}
 			style="left: {valToPos(range[0])}px"
 		>
 			<span>
@@ -102,6 +110,7 @@
 			tabindex="0"
 			on:keydown={(e) => keyDown(e, false)}
 			on:mousedown={() => (maxPressed = true)}
+			on:touchstart={() => (maxPressed = true)}
 			style="left: {valToPos(range[1])}px"
 		>
 			<span class:top={range[1] - range[0] <= (max - min) / 6}>

@@ -20,6 +20,7 @@
 		color: black;
 		text-decoration: none;
 		outline: none;
+		cursor: pointer;
 	}
 	a:hover,
 	a:focus {

@@ -50,7 +50,7 @@
 			sport: sport.newSport || sport.sport,
 			assoName: sport.newAssoName || sport.assoName,
 			website: sport.newWebsite || sport.website,
-			sex: sport.sex,
+			sex: sport.sex || 'Mixte',
 			adult: sport.adult === 'Oui' && sport.birthYear[0] === 2004,
 			otherYear: sport.parentChild === 'Oui' ? 'Parent-enfant' : undefined,
 			birthYear: [...new Array(sport.birthYear[1] - sport.birthYear[0] + 1)].map(
