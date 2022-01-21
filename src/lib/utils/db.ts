@@ -1,4 +1,4 @@
-import { MongoClient } from 'mongodb';
+import {MongoClient, MongoClientOptions} from 'mongodb';
 
 class MongoUtil {
     db: any;
@@ -9,7 +9,7 @@ class MongoUtil {
             console.log(import.meta.env.VITE_MONGO_URI)
             this.client = new MongoClient(
                 import.meta.env.VITE_MONGO_URI as string,
-                { authSource: import.meta.env.VITE_MONGO_DB as string }
+                { useNewUrlParser: true, useUnifiedTopology: true } as MongoClientOptions
             );
             await this.client.connect();
             this.db = this.client.db(import.meta.env.VITE_MONGO_DB);
