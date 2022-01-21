@@ -115,7 +115,7 @@
 	}
 
 	button.menu {
-		/*width: calc(var(--header-height) - 25px);*/
+		width: calc(var(--header-height) - 25px);
 		background-color: var(--main-color);
 		display: flex;
 		align-items: center;
