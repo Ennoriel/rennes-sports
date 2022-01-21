@@ -1,4 +1,4 @@
-import type {Metro} from "$lib/types/location.type";
+import type { Metro } from '$lib/types/location.type';
 
 export const metros: Array<Metro> = [
 	{

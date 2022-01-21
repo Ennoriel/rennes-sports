@@ -1,21 +1,20 @@
 <script context="module" lang="ts">
-	import {loadSports} from "./_load";
-	export const load = loadSports
+	import { loadSports } from './_load';
+	export const load = loadSports;
 </script>
 
 <script>
 	import FilterPanel from '$lib/component/FilterPanel.svelte';
 	import { state, sports } from '$lib/store/state';
 	import Title from '$lib/component/Title.svelte';
-	import List from "$lib/component/List.svelte";
-	import ResponsiveWrapper from "$lib/component/ResponsiveWrapper.svelte";
-	import ListMobile from "$lib/component/ListMobile.svelte";
+	import List from '$lib/component/List.svelte';
+	import ResponsiveWrapper from '$lib/component/ResponsiveWrapper.svelte';
+	import ListMobile from '$lib/component/ListMobile.svelte';
 
-	export let loadedSports = []
-	$: $state.allSports = loadedSports
+	export let loadedSports = [];
+	$: $state.allSports = loadedSports;
 
 	let pageRef;
-
 </script>
 
 <FilterPanel {pageRef} />

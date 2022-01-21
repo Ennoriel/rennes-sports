@@ -1,5 +1,5 @@
 import { derived, writable } from 'svelte/store';
-import type {Filter, Sport} from '$lib/types/sport.type';
+import type { Filter, Sport } from '$lib/types/sport.type';
 import { filterSports, getMarkers } from '$lib/utils/filter';
 import { locations } from '$lib/data/locations';
 

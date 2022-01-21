@@ -6,10 +6,9 @@
 	import { getHost } from '$lib/utils/static.util';
 </script>
 
-
 <ResponsiveWrapper>
-	<MenuMobile slot="s" filtrable={false}/>
-	<Menu slot="l"/>
+	<MenuMobile slot="s" filtrable={false} />
+	<Menu slot="l" />
 </ResponsiveWrapper>
 
 <main>
@@ -23,7 +22,9 @@
 		</h1>
 
 		<p>
-			Grâce à nos outils, trouve facilement le créneau <span>de ton sport préféré à proximité !</span>
+			Grâce à nos outils, trouve facilement le créneau <span
+				>de ton sport préféré à proximité !</span
+			>
 		</p>
 
 		<ul>
@@ -41,7 +42,6 @@
 	</div>
 
 	<img class="background-image" src="{getHost()}/home-background.png" alt="3 sportifs en action." />
-
 </main>
 
 <style>
@@ -56,7 +56,7 @@
 	h1 {
 		font-size: 50px;
 		line-height: 1.1;
-		margin: .5em 0;
+		margin: 0.5em 0;
 	}
 	p {
 		font-size: 20px;
@@ -72,7 +72,7 @@
 	ul li {
 		font-size: 16px;
 		margin: 2em;
-		transition: all .2s;
+		transition: all 0.2s;
 	}
 
 	ul li::before {
@@ -85,13 +85,14 @@
 		padding: 4px 8px;
 		width: 45px;
 		text-align: center;
-		transition: all .2s;
+		transition: all 0.2s;
 	}
 
 	a:focus {
 		outline: none;
 	}
-	li:hover::before, li:focus-within::before {
+	li:hover::before,
+	li:focus-within::before {
 		background-color: var(--main-color);
 		outline: 2px solid white;
 		color: white;

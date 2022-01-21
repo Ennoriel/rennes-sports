@@ -13,7 +13,10 @@
 		</li>
 		{#each routes as route}
 			<li>
-				<a href="{getHost()}/{route.route}" class:active={$page.url.pathname.indexOf(route.route) > 0}>
+				<a
+					href="{getHost()}/{route.route}"
+					class:active={$page.url.pathname.indexOf(route.route) > 0}
+				>
 					<span>
 						{route.label}
 					</span>

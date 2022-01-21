@@ -4,7 +4,7 @@
 	import { state } from '../store/state';
 	import { routes } from '$lib/data/routes';
 	import { page } from '$app/stores';
-	import XOrMenu from "$lib/component/svg/XOrMenu.svelte";
+	import XOrMenu from '$lib/component/svg/XOrMenu.svelte';
 
 	let search;
 	let isOpen = false;
@@ -40,7 +40,7 @@
 				isOpen = !isOpen;
 			}}
 		>
-			<XOrMenu visible={!isOpen}/>
+			<XOrMenu visible={!isOpen} />
 		</button>
 	</span>
 

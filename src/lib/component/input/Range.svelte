@@ -47,7 +47,7 @@
 
 	function mouseMove(e: MouseEvent | TouchEvent) {
 		if (minPressed || maxPressed) {
-			let pos = "clientX" in e ? e.clientX : e.changedTouches?.[0]?.pageX;
+			let pos = 'clientX' in e ? e.clientX : e.changedTouches?.[0]?.pageX;
 			pos -= rangeEl.getBoundingClientRect().left;
 
 			let val = posToVal(pos);
