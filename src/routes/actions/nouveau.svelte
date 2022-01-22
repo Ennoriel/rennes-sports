@@ -78,12 +78,18 @@
 			hour: [360, 1410],
 			locationId: undefined
 		});
+	}
+
+	function slideAndScroll(node, params) {
 		let intervalId = setInterval(() => {
 			window.scrollTo(0, document.body.scrollHeight);
 		}, 10);
+
 		setTimeout(() => {
 			clearInterval(intervalId);
-		}, 800);
+		}, params.duration || 800);
+
+		return slide(node, params);
 	}
 
 	function removeSlot(index: number) {
@@ -178,7 +184,7 @@
 
 	<!-- Slots -->
 	{#each sport.slots as slot, index}
-		<div transition:slide|local={{ duration: 800 }} class="block slot">
+		<div transition:slideAndScroll|local={{ duration: 800 }} class="block slot">
 			<ButtonGroup>
 				<Title>Créneau {index + 1}</Title>
 				<Button variant="secondary" shape="circle" on:click={() => removeSlot(index)}>
@@ -231,16 +237,16 @@
 			on:click={() => {
 				sport = {};
 				validated = false;
-			}}>Réinitialiser</Button
+			}}
 		>
+			Réinitialiser
+		</Button>
 	</ButtonGroup>
 
 	{#if validated}
-		<div class="block">
-			<Title>Sport</Title>
-			<pre>
-				{JSON.stringify(createdSport, null, 2)}
-			</pre>
+		<div in:slideAndScroll|local={{ duration: 400 }} class="block slot">
+			<Title>Merci !</Title>
+			<p>Entrainement enregistré !</p>
 		</div>
 	{/if}
 </form>
@@ -298,9 +304,5 @@
 		.select-alternative-group :global(label) {
 			flex-grow: 8;
 		}
-	}
-
-	pre {
-		margin: 0;
 	}
 </style>

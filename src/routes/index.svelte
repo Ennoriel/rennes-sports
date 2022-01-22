@@ -2,8 +2,6 @@
 	import ResponsiveWrapper from '$lib/component/ResponsiveWrapper.svelte';
 	import MenuMobile from '$lib/component/MenuMobile.svelte';
 	import Menu from '$lib/component/Menu.svelte';
-
-	import { getHost } from '$lib/utils/static.util';
 </script>
 
 <ResponsiveWrapper>
@@ -29,19 +27,17 @@
 
 		<ul>
 			<li data-type="Liste">
-				<a href="{getHost()}/recherche/liste">
+				<a href="/recherche/liste">
 					Tri des créneaux par sport, âge, sexe, jour, type de pratique...
 				</a>
 			</li>
 			<li data-type="Carte">
-				<a href="{getHost()}/recherche/carte">
-					Localisation des équipements sportifs à proximité
-				</a>
+				<a href="/recherche/carte"> Localisation des équipements sportifs à proximité </a>
 			</li>
 		</ul>
 	</div>
 
-	<img class="background-image" src="{getHost()}/home-background.png" alt="3 sportifs en action." />
+	<img class="background-image" src="/home-background.png" alt="3 sportifs en action." />
 </main>
 
 <style>

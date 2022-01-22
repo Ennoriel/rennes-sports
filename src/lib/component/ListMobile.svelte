@@ -86,7 +86,7 @@
 		font-weight: 700;
 	}
 
-	.asso-name :global a {
+	.asso-name :global(a) {
 		display: inline;
 		font-weight: 300;
 		margin-left: 16px;

@@ -1,5 +1,4 @@
 <script>
-	import { getHost } from '$lib/utils/static.util';
 	import { routes } from '$lib/data/routes';
 	import { page } from '$app/stores';
 </script>
@@ -7,16 +6,13 @@
 <nav>
 	<ul>
 		<li>
-			<a href="{getHost()}/">
-				<img class="icon" src="{getHost()}/svg/icon.svg" alt="icon app" />
+			<a href="/">
+				<img class="icon" src="/svg/icon.svg" alt="icon app" />
 			</a>
 		</li>
 		{#each routes as route}
 			<li>
-				<a
-					href="{getHost()}/{route.route}"
-					class:active={$page.url.pathname.indexOf(route.route) > 0}
-				>
+				<a href="/{route.route}" class:active={$page.url.pathname.indexOf(route.route) > 0}>
 					<span>
 						{route.label}
 					</span>

@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { getHost } from '$lib/utils/static.util';
-
 	export let imgSrc;
 	export let target;
 	export let alt;
@@ -8,7 +6,7 @@
 </script>
 
 <a {target} {href}>
-	<img {alt} src="{getHost()}{imgSrc}" />
+	<img {alt} src={imgSrc} />
 	<slot />
 </a>
 

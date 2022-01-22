@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
-	import { getHost } from '$lib/utils/static.util';
 	import { state } from '../store/state';
 	import { routes } from '$lib/data/routes';
 	import { page } from '$app/stores';
@@ -14,11 +13,8 @@
 
 <nav>
 	<span id="menu-bar">
-		<a href="{getHost()}/" class="icon">
-			<img
-				src="{getHost()}/svg/icon.svg"
-				alt="Icone de l'application permettant de revenir à l'accueil"
-			/>
+		<a href="/" class="icon">
+			<img src="/svg/icon.svg" alt="Icone de l'application permettant de revenir à l'accueil" />
 		</a>
 		{#if filtrable}
 			<input bind:value={search} aria-label="Recherche globale" placeholder="Ski nautique" />
@@ -48,7 +44,7 @@
 		<ul transition:fly={{ x: -200, duration: 400 }}>
 			{#each routes as route}
 				<li>
-					<a on:click={() => (isOpen = false)} href="{getHost()}/{route.route}">
+					<a on:click={() => (isOpen = false)} href="/{route.route}">
 						{#if $page.url.pathname.indexOf(route) > 0}
 							>
 						{/if}
@@ -122,10 +118,6 @@
 		justify-content: center;
 
 		color: white;
-	}
-
-	button.menu img {
-		width: 16px;
 	}
 
 	ul {
