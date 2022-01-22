@@ -1,6 +1,5 @@
 export type Sport = {
-	assoName: string;
-	website: string;
+	assoId: number;
 	birthYear: number[];
 	adult: boolean;
 	otherYear?: string;

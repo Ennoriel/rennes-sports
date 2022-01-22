@@ -1,14 +1,17 @@
 <script lang="ts">
 	import type { Sport } from '$lib/types/sport.type';
 	import Link from '$lib/component/Link.svelte';
+	import {assos} from "$lib/data/assos";
 
 	export let row: Sport;
+
+	$: asso = assos.find(asso => asso.id === row.assoId)
 </script>
 
 <span>
-	{row.assoName}
+	{asso.name}
 </span>
-<Link target="_blank" href={row.website} alt="lien" imgSrc="/svg/right-up.svg">
+<Link target="_blank" href={asso.website} alt="lien" imgSrc="/svg/right-up.svg">
 	consulter le site
 </Link>
 

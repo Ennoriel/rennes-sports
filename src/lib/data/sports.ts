@@ -2,8 +2,7 @@ import type { Sport } from '$lib/types/sport.type';
 
 export const sports: Sport[] = [
 	{
-		assoName: 'CPB Blosne Pôle Landrel',
-		website: 'https://cerclepaulbert.asso.fr/',
+		assoId: 0,
 		birthYear: [2013],
 		adult: false,
 		sex: 'Mixte',
@@ -19,8 +18,7 @@ export const sports: Sport[] = [
 		]
 	},
 	{
-		assoName: 'CPB Blosne Pôle Landrel',
-		website: 'https://cerclepaulbert.asso.fr/',
+		assoId: 0,
 		birthYear: [2013, 2014, 2015],
 		adult: false,
 		sex: 'Mixte',
@@ -36,8 +34,7 @@ export const sports: Sport[] = [
 		]
 	},
 	{
-		assoName: 'CPB Blosne Pôle Landrel',
-		website: 'https://cerclepaulbert.asso.fr/',
+		assoId: 0,
 		birthYear: [2011, 2012],
 		adult: false,
 		sex: 'Masculin',
@@ -53,8 +50,7 @@ export const sports: Sport[] = [
 		]
 	},
 	{
-		assoName: 'ASPTT Rennes',
-		website: 'https://www.asptt-rennes-basket.fr/',
+		assoId: 1,
 		birthYear: [2013, 2014, 2015, 2016],
 		adult: false,
 		sex: 'Mixte',
@@ -82,8 +78,7 @@ export const sports: Sport[] = [
 		]
 	},
 	{
-		assoName: 'CPB Ginguené',
-		website: 'https://cerclepaulbert.asso.fr/',
+		assoId: 2,
 		birthYear: [2007, 2006, 2005, 2004],
 		adult: true,
 		sex: 'Mixte',
@@ -99,8 +94,7 @@ export const sports: Sport[] = [
 		]
 	},
 	{
-		assoName: 'CPB Ginguené',
-		website: 'https://cerclepaulbert.asso.fr/',
+		assoId: 2,
 		birthYear: [2007, 2006, 2005, 2004],
 		adult: true,
 		sex: 'Mixte',
@@ -116,8 +110,7 @@ export const sports: Sport[] = [
 		]
 	},
 	{
-		assoName: 'CPB Ginguené',
-		website: 'https://cerclepaulbert.asso.fr/',
+		assoId: 2,
 		birthYear: [2007, 2006, 2005, 2004],
 		adult: true,
 		sex: 'Mixte',
@@ -133,8 +126,7 @@ export const sports: Sport[] = [
 		]
 	},
 	{
-		assoName: 'CPB Ginguené',
-		website: 'https://cerclepaulbert.asso.fr/',
+		assoId: 2,
 		birthYear: [2007, 2006, 2005, 2004],
 		adult: true,
 		sex: 'Mixte',
@@ -150,8 +142,7 @@ export const sports: Sport[] = [
 		]
 	},
 	{
-		assoName: 'CPB Ginguené',
-		website: 'https://cerclepaulbert.asso.fr/',
+		assoId: 2,
 		birthYear: [2005, 2004],
 		adult: false,
 		sex: 'Mixte',
@@ -167,8 +158,7 @@ export const sports: Sport[] = [
 		]
 	},
 	{
-		assoName: 'CPB Ginguené',
-		website: 'https://cerclepaulbert.asso.fr/',
+		assoId: 2,
 		birthYear: [2007, 2006, 2005, 2004],
 		adult: true,
 		sex: 'Mixte',
@@ -184,8 +174,7 @@ export const sports: Sport[] = [
 		]
 	},
 	{
-		assoName: 'CPB Ginguené',
-		website: 'https://cerclepaulbert.asso.fr/',
+		assoId: 2,
 		birthYear: [2012, 2011, 2010, 2009, 2008, 2007, 2006, 2005],
 		adult: false,
 		sex: 'Mixte',
@@ -201,8 +190,7 @@ export const sports: Sport[] = [
 		]
 	},
 	{
-		assoName: 'CPB Ginguené',
-		website: 'https://cerclepaulbert.asso.fr/',
+		assoId: 2,
 		birthYear: [2015, 2014, 2013, 2012, 2011, 2010, 2009, 2008, 2007],
 		adult: false,
 		sex: 'Mixte',
@@ -230,8 +218,7 @@ export const sports: Sport[] = [
 		]
 	},
 	{
-		assoName: 'CPB Ginguené',
-		website: 'https://cerclepaulbert.asso.fr/',
+		assoId: 2,
 		birthYear: [2007, 2006, 2005, 2004],
 		adult: true,
 		sex: 'Mixte',
@@ -259,8 +246,7 @@ export const sports: Sport[] = [
 		]
 	},
 	{
-		assoName: 'CPB Ginguené',
-		website: 'https://cerclepaulbert.asso.fr/',
+		assoId: 2,
 		birthYear: [],
 		adult: true,
 		otherYear: 'Parent-enfant',
@@ -277,8 +263,7 @@ export const sports: Sport[] = [
 		]
 	},
 	{
-		assoName: "La Tour d'Auvergne",
-		website: 'https://www.tourdauvergneasso.com/roller/',
+		assoId: 3,
 		birthYear: [2015, 2014, 2013, 2012, 2011, 2010, 2009],
 		adult: false,
 		sex: 'Mixte',
@@ -300,8 +285,7 @@ export const sports: Sport[] = [
 		]
 	},
 	{
-		assoName: "La Tour d'Auvergne",
-		website: 'https://www.tourdauvergneasso.com/roller/',
+		assoId: 3,
 		birthYear: [2013, 2012, 2011, 2010, 2009, 2008, 2007, 2006, 2005, 2004],
 		adult: true,
 		sex: 'Mixte',

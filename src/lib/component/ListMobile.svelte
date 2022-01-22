@@ -3,12 +3,23 @@
 	import { displayHours, displayYear } from '$lib/utils/time';
 	import { locations } from '$lib/data/locations';
 	import Link from '$lib/component/Link.svelte';
+	import {assos} from "$lib/data/assos";
 
 	export let sports: Array<Sport>;
+
+	// FIXME replace with @const (https://github.com/sveltejs/svelte/issues/7134)
+	$: _sports = sports.map(sport => {
+		const asso = assos.find(asso => asso.id === sport.assoId)
+		return {
+			...sport,
+			assoName: asso.name,
+			website: asso.website
+		}
+	})
 </script>
 
 <div class="wrapper">
-	{#each sports as sport}
+	{#each _sports as sport}
 		<div class="card">
 			<h2>
 				<strong>{sport.sport}</strong>

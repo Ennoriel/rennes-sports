@@ -13,14 +13,12 @@
 	import { sports } from '$lib/data/sports';
 	import { locations } from '$lib/data/locations';
 	import X from '$lib/component/svg/X.svelte';
+	import {assos} from "$lib/data/assos";
 
 	let sport = {
 		sport: undefined,
 		newSport: undefined,
-		assoName: undefined,
-		newAssoName: undefined,
-		website: undefined,
-		newWebsite: undefined,
+		assoId: undefined as number,
 		sex: undefined,
 		adult: undefined as 'Oui' | 'Non',
 		parentChild: undefined,
@@ -38,8 +36,7 @@
 	let createdSport: Partial<Sport>;
 
 	let formConfig = {
-		newSport: false,
-		newAsso: false
+		newSport: false
 	};
 
 	let validated = false;
@@ -48,8 +45,7 @@
 		validated = true;
 		createdSport = {
 			sport: sport.newSport || sport.sport,
-			assoName: sport.newAssoName || sport.assoName,
-			website: sport.newWebsite || sport.website,
+			assoId: sport.assoId || 0,
 			sex: sport.sex || 'Mixte',
 			adult: sport.adult === 'Oui' && sport.birthYear[0] === 2004,
 			otherYear: sport.parentChild === 'Oui' ? 'Parent-enfant' : undefined,
@@ -127,34 +123,12 @@
 		</div>
 
 		<!-- Association -->
-		<div class="select-alternative-group" class:column={formConfig.newAsso}>
+		<div class="select-alternative-group">
 			<Select
 				label="Association"
-				options={[...new Set(sports.map((sport) => sport.assoName))]}
-				bind:value={sport.assoName}
-				on:input={() => {
-					formConfig.newAsso = false;
-					sport.newAssoName = undefined;
-					sport.newWebsite = undefined;
-				}}
+				options={assos.map(asso => ({label: asso.name, value: asso.id}))}
+				bind:value={sport.assoId}
 			/>
-
-			{#if !formConfig.newAsso}
-				<Button on:click={() => (formConfig.newAsso = true)}
-					>L'association n'est pas dans la liste</Button
-				>
-			{:else}
-				<TextInput
-					label="Nom de l'association"
-					placeholder="Association du haricot rouge"
-					bind:value={sport.newAssoName}
-				/>
-				<TextInput
-					label="Site web"
-					placeholder="https://mon.association.fr"
-					bind:value={sport.newWebsite}
-				/>
-			{/if}
 		</div>
 
 		<!-- Sex -->
