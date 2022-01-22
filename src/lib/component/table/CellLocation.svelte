@@ -20,6 +20,9 @@
 		justify-content: center;
 		gap: 0.2em;
 		text-align: center;
+	}
+
+	div :global(a) {
 		line-height: 3em;
 	}
 </style>

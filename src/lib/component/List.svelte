@@ -43,12 +43,24 @@
 </script>
 
 <div id="table">
-	<SvelteTable {columns} rows={sports}>
+	<SvelteTable
+		{columns}
+		rows={sports}
+		sortOrders={[1, -1, 0]}
+		iconSortable={`<svg style="width: 12px; height: 12px; margin-bottom: -2px;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round"><path d="M12   0  L4  10  L20  10Z"/><path d="M12  24  L4  14  L20  14Z"/></svg>`}
+		iconAsc={`<svg style="width: 12px; height: 12px; margin-bottom: -2px;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" stroke-linejoin="round"><path d="M12   0  L4  10  L20  10Z"/></svg>`}
+		iconDesc={`<svg style="width: 12px; height: 12px; margin-bottom: -2px;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" stroke-linejoin="round"><path d="M12  24  L4  14  L20  14Z"/></svg>`}
+	>
 		<Row slot="row" let:row let:n {row} />
 	</SvelteTable>
 </div>
 
 <style>
+	#table {
+		transition: all 0.4s;
+		overflow-y: auto;
+	}
+
 	#table :global(table) {
 		width: calc(100% - 48px);
 		border-collapse: separate;
@@ -60,7 +72,7 @@
 		font-size: 10px;
 		text-transform: uppercase;
 		color: #7f7f7f;
-
+		user-select: none;
 		position: sticky;
 		background-color: var(--bg-color);
 		top: 0;
@@ -71,13 +83,7 @@
 		min-height: 32px;
 	}
 
-	#table {
-		transition: all 0.4s;
-		height: calc(100vh - var(--header-height));
-		overflow-y: auto;
-	}
-
-	@media (min-width: 720px) {
+	@media (min-width: 1000px) {
 		#table {
 			width: 1000px;
 			margin: auto;

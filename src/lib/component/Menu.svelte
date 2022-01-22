@@ -48,6 +48,7 @@
 		height: var(--header-height);
 		line-height: var(--header-height);
 		display: block;
+		user-select: none;
 	}
 
 	img {

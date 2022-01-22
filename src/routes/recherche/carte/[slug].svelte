@@ -1,9 +1,9 @@
 <script context="module">
 	/** @type {import('@sveltejs/kit').Load} */
-	export async function load(ctx) {
+	export async function load({ params }) {
 		return {
 			props: {
-				locationId: Number.parseInt(ctx?.page?.params?.slug) ?? undefined
+				locationId: Number.parseInt(params?.slug) ?? undefined
 			}
 		};
 	}
