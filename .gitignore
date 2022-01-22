@@ -2,6 +2,7 @@
 node_modules
 /.svelte-kit
 /build
+/.vercel_build_output
 /package
 /.idea
 .env
