@@ -13,7 +13,7 @@
 <svelte:window on:click={click} />
 
 {#if $state.isOpen}
-	<div transition:fly={{ x: -200, duration: 400 }}>
+	<div transition:fly|local={{ x: -200, duration: 400 }}>
 		<slot />
 	</div>
 {/if}
