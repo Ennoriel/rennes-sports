@@ -23,7 +23,7 @@ export type Filter = {
 	sex?: string;
 	day?: string[];
 	locationId?: number;
-	assoName?: string;
+	assoId?: string;
 	minutes?: RangeType;
 };
 

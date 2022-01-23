@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Panel from './Panel.svelte';
 	import { range } from '../utils/array';
-	import { sports } from '../data/sports';
+	import { assos } from "$lib/data/assos";
 	import { locations } from '../data/locations';
 	import Select from './input/Select.svelte';
 	import Radio from './input/Radio.svelte';
@@ -14,6 +14,10 @@
 	import X from '$lib/component/svg/X.svelte';
 
 	export let pageRef;
+
+	$: availableAssos = assos
+			.filter(asso => $state.allSports.some(sport => sport.assoId === asso.id))
+			.map(asso => ({label: asso.name, value: asso.id}))
 </script>
 
 <Panel {pageRef}>
@@ -31,13 +35,13 @@
 
 		<Select
 			label="Sport"
-			options={[...new Set(sports.map((sport) => sport.sport))]}
+			options={[...new Set($state.allSports.map((sport) => sport.sport))]}
 			bind:value={$state.filter.sport}
 		/>
 
 		<Radio
 			label="Pratique"
-			options={[...new Set(sports.map((sport) => sport.level))]}
+			options={[...new Set($state.allSports.map((sport) => sport.level))]}
 			bind:value={$state.filter.level}
 		/>
 
@@ -74,8 +78,8 @@
 
 		<Select
 			label="Association"
-			options={[...new Set(sports.map((sport) => sport.assoName))]}
-			bind:value={$state.filter.assoName}
+			options={availableAssos}
+			bind:value={$state.filter.assoId}
 		/>
 	</div>
 </Panel>

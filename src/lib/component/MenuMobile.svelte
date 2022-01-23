@@ -18,16 +18,6 @@
 		</a>
 		{#if filtrable}
 			<input bind:value={search} aria-label="Recherche globale" placeholder="Ski nautique" />
-			<button
-				class="filters"
-				on:click={(e) => {
-					$state.isOpen = !$state.isOpen;
-					isOpen = false;
-					e.stopPropagation();
-				}}
-			>
-				Filtrer
-			</button>
 		{/if}
 		<button
 			class="menu"
@@ -103,11 +93,6 @@
 
 	button {
 		cursor: pointer;
-	}
-
-	button.filters {
-		background: white;
-		padding: 0 16px;
 	}
 
 	button.menu {
