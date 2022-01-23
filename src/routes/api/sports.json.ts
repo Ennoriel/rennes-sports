@@ -3,7 +3,7 @@ import mongoUtil from '$lib/utils/db';
 
 export const get: RequestHandler = async () => {
 	return {
-		body: await mongoUtil.db?.collection('sports').find({})?.toArray()
+		body: await mongoUtil.db?.collection('sports').find({})?.toArray() || []
 	};
 };
 

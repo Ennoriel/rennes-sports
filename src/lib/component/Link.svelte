@@ -22,7 +22,7 @@
 		transition: all 0.1s;
 	}
 	a:hover,
-	a:focus {
+	a:focus-visible {
 		color: var(--secondary-color);
 	}
 </style>

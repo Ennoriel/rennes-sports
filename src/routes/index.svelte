@@ -26,13 +26,17 @@
 		</p>
 
 		<ul>
-			<li data-type="Liste">
+			<li>
 				<a href="/recherche/liste">
+					<span>Liste</span>
 					Tri des créneaux par sport, âge, sexe, jour, type de pratique...
 				</a>
 			</li>
-			<li data-type="Carte">
-				<a href="/recherche/carte"> Localisation des équipements sportifs à proximité </a>
+			<li>
+				<a href="/recherche/carte">
+					<span>Carte</span>
+					Localisation des équipements sportifs à proximité
+				</a>
 			</li>
 		</ul>
 	</div>
@@ -71,8 +75,7 @@
 		transition: all 0.2s;
 	}
 
-	ul li::before {
-		content: attr(data-type);
+	a span {
 		display: block;
 		color: black;
 		background-color: white;
@@ -87,8 +90,8 @@
 	a:focus {
 		outline: none;
 	}
-	li:hover::before,
-	li:focus-within::before {
+
+	a:hover span, a:focus-visible span {
 		background-color: var(--main-color);
 		outline: 2px solid white;
 		color: white;
@@ -121,7 +124,7 @@
 		ul li {
 			margin: 1em 0;
 		}
-		ul li::before {
+		a span {
 			display: inline-block;
 			margin: 0 12px 0 0;
 		}
