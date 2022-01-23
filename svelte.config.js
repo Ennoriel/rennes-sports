@@ -8,10 +8,6 @@ const config = {
 	kit: {
 		adapter: vercel(),
 
-		files: {
-			hooks: 'src/hooks'
-		},
-
 		target: '#svelte'
 	}
 };
