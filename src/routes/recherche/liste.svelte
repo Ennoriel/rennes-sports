@@ -32,10 +32,11 @@
 
 <style>
 	div {
-		margin-bottom: 96px;
+		margin: 16px 0 96px;
+		min-height: calc(100vh - var(--header-height) - 16px - 96px);
 	}
 
 	div :global(h1) {
-		margin: 16px 16px 0;
+		margin: 0 16px;
 	}
 </style>
