@@ -1,14 +1,13 @@
 <script>
 	import { routes } from '$lib/data/routes';
 	import { page } from '$app/stores';
+	import Fav from '$lib/component/Fav.svelte';
 </script>
 
 <nav>
 	<ul>
 		<li>
-			<a href="/">
-				<img class="icon" src="/svg/icon.svg" alt="icon app" />
-			</a>
+			<Fav />
 		</li>
 		{#each routes as route}
 			{@const active = $page.url.pathname.indexOf(route.route) > 0}
@@ -50,12 +49,6 @@
 		line-height: var(--header-height);
 		display: block;
 		user-select: none;
-	}
-
-	img {
-		padding: 0 8px;
-		height: calc(var(--header-height) - 15px);
-		vertical-align: middle;
 	}
 
 	li:not(:first-child) a {

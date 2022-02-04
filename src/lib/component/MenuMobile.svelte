@@ -4,24 +4,30 @@
 	import { routes } from '$lib/data/routes';
 	import { page } from '$app/stores';
 	import XOrMenu from '$lib/component/svg/XOrMenu.svelte';
+	import Fav from '$lib/component/Fav.svelte';
+
+	export let filtrable = true;
 
 	let search;
 	let isOpen = false;
+	let burgerMenu;
 
-	export let filtrable = true;
+	function click({ target }) {
+		if (isOpen && !burgerMenu.contains(target)) isOpen = false;
+	}
 </script>
+
+<svelte:window on:click={click} />
 
 <nav>
 	<span id="menu-bar">
-		<a href="/" class="icon">
-			<img src="/svg/icon.svg" alt="Icone de l'application permettant de revenir à l'accueil" />
-		</a>
+		<Fav />
 		{#if filtrable}
 			<input bind:value={search} aria-label="Recherche globale" placeholder="Ski nautique" />
 		{/if}
 		<button
 			class="menu"
-			on:click={() => {
+			on:click|stopPropagation={() => {
 				$state.isOpen = false;
 				isOpen = !isOpen;
 			}}
@@ -31,11 +37,16 @@
 	</span>
 
 	{#if isOpen}
-		<ul transition:fly={{ x: -200, duration: 400 }}>
+		<ul transition:fly={{ x: -200, duration: 400 }} bind:this={burgerMenu}>
+			<li>
+				<a on:click={() => (isOpen = false)} href="/">
+					<img src="/favicon.png" />
+				</a>
+			</li>
 			{#each routes as route}
 				<li>
 					<a on:click={() => (isOpen = false)} href="/{route.route}">
-						{#if $page.url.pathname.indexOf(route) > 0}
+						{#if $page.url.pathname.indexOf(route.route) > 0}
 							>
 						{/if}
 						{route.label}
@@ -65,11 +76,6 @@
 		background-color: var(--main-color);
 
 		z-index: 1002;
-	}
-
-	.icon,
-	.icon img {
-		height: calc(var(--header-height) - 15px);
 	}
 
 	input,
@@ -133,5 +139,10 @@
 
 	ul a:hover {
 		margin-left: 8px;
+	}
+
+	ul img {
+		width: 40px;
+		margin-top: 10px;
 	}
 </style>
