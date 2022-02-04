@@ -11,9 +11,9 @@
 			</a>
 		</li>
 		{#each routes as route}
-		{@const active = $page.url.pathname.indexOf(route.route) > 0}
+			{@const active = $page.url.pathname.indexOf(route.route) > 0}
 			<li>
-				<a href="/{route.route}" class:active aria-current={active && "page" || undefined}>
+				<a href="/{route.route}" class:active aria-current={(active && 'page') || undefined}>
 					<span>
 						{route.label}
 					</span>

@@ -6,7 +6,9 @@
 </script>
 
 <a {target} {href}>
-	<img {alt} src={imgSrc} />
+	{#if imgSrc}
+		<img {alt} src={imgSrc} />
+	{/if}
 	<slot />
 </a>
 
@@ -15,7 +17,6 @@
 		display: block;
 		text-align: center;
 		line-height: 17px;
-		color: black;
 		text-decoration: none;
 		outline: none;
 		cursor: pointer;

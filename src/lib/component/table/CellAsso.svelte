@@ -1,11 +1,11 @@
 <script lang="ts">
 	import type { Sport } from '$lib/types/sport.type';
 	import Link from '$lib/component/Link.svelte';
-	import {assos} from "$lib/data/assos";
+	import { assos } from '$lib/data/assos';
 
 	export let row: Sport;
 
-	$: asso = assos.find(asso => asso.id === row.assoId)
+	$: asso = assos.find((asso) => asso.id === row.assoId);
 </script>
 
 <span>

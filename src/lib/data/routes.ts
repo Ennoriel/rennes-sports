@@ -10,5 +10,9 @@ export const routes = [
 	{
 		route: 'actions/nouveau',
 		label: 'Nouveau'
+	},
+	{
+		route: 'a-propos',
+		label: 'A propos'
 	}
 ];

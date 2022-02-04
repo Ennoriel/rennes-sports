@@ -91,7 +91,8 @@
 		outline: none;
 	}
 
-	a:hover span, a:focus-visible span {
+	a:hover span,
+	a:focus-visible span {
 		background-color: var(--main-color);
 		outline: 2px solid white;
 		color: white;

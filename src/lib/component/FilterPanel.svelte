@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Panel from './Panel.svelte';
 	import { range } from '../utils/array';
-	import { assos } from "$lib/data/assos";
+	import { assos } from '$lib/data/assos';
 	import { locations } from '../data/locations';
 	import Select from './input/Select.svelte';
 	import Radio from './input/Radio.svelte';
@@ -16,8 +16,8 @@
 	export let pageRef;
 
 	$: availableAssos = assos
-			.filter(asso => $state.allSports.some(sport => sport.assoId === asso.id))
-			.map(asso => ({label: asso.name, value: asso.id}))
+		.filter((asso) => $state.allSports.some((sport) => sport.assoId === asso.id))
+		.map((asso) => ({ label: asso.name, value: asso.id }));
 </script>
 
 <Panel {pageRef}>
@@ -76,11 +76,7 @@
 			bind:value={$state.filter.locationId}
 		/>
 
-		<Select
-			label="Association"
-			options={availableAssos}
-			bind:value={$state.filter.assoId}
-		/>
+		<Select label="Association" options={availableAssos} bind:value={$state.filter.assoId} />
 	</div>
 </Panel>
 

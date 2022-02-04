@@ -13,7 +13,7 @@
 	import { sports } from '$lib/data/sports';
 	import { locations } from '$lib/data/locations';
 	import X from '$lib/component/svg/X.svelte';
-	import {assos} from "$lib/data/assos";
+	import { assos } from '$lib/data/assos';
 
 	let sport = {
 		sport: undefined,
@@ -126,7 +126,7 @@
 		<div class="select-alternative-group">
 			<Select
 				label="Association"
-				options={assos.map(asso => ({label: asso.name, value: asso.id}))}
+				options={assos.map((asso) => ({ label: asso.name, value: asso.id }))}
 				bind:value={sport.assoId}
 			/>
 		</div>

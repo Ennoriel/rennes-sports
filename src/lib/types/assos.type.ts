@@ -1,5 +1,5 @@
 export type Asso = {
-    id: number,
-    name: string,
-    website: string,
-}
+	id: number;
+	name: string;
+	website: string;
+};
