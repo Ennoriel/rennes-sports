@@ -6,9 +6,7 @@ const config = {
 	preprocess: preprocess(),
 
 	kit: {
-		adapter: vercel(),
-
-		target: '#svelte'
+		adapter: vercel()
 	}
 };
 
