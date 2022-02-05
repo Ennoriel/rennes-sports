@@ -29,7 +29,7 @@
 	class="feather feather-x"
 >
 	{#if visible}
-		<g transition:tr>
+		<g transition:tr|local>
 			<path d="M5 5 L19 5" />
 			<path d="M5 12 L19 12" />
 			<path d="M5 19 L19 19" />
