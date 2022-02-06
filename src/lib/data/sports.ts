@@ -3,22 +3,6 @@ import type { Sport } from '$lib/types/sport.type';
 export const sports: Sport[] = [
 	{
 		assoId: 0,
-		birthYear: [2013],
-		adult: false,
-		sex: 'Mixte',
-		sport: '! Cas particulier',
-		level: 'Compétition',
-		slots: [
-			{
-				details: '',
-				day: 'Mercredi',
-				hour: [990, 1080],
-				locationId: 0
-			}
-		]
-	},
-	{
-		assoId: 0,
 		birthYear: [2013, 2014, 2015],
 		adult: false,
 		sex: 'Mixte',

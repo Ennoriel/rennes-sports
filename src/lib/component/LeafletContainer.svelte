@@ -8,6 +8,8 @@
 		Circle,
 		Tooltip
 	} from 'svelte-leafletjs';
+	import L from 'leaflet';
+
 	import MapPopup from './MapPopup.svelte';
 	import { metros } from '$lib/data/metro';
 	export let markers;
@@ -23,12 +25,19 @@
 		maxNativeZoom: 18,
 		attribution: '© OpenStreetMap contributors' // link to https://www.openstreetmap.org/copyright
 	};
+
+	const icon = L.icon({
+		iconUrl: '/svg/location-blue.svg',
+		iconSize: [36, 36],
+		iconAnchor: [18, 36],
+		popupAnchor: [0, -40],
+	});
 </script>
 
 <LeafletMap options={mapOptions}>
 	<TileLayer url={tileUrl} options={tileLayerOptions} />
 	{#each markers as marker}
-		<Marker latLng={marker.location.coordinates}>
+		<Marker latLng={marker.location.coordinates} {icon}>
 			<Popup>
 				<MapPopup location={marker.location} sports={marker.sports} />
 			</Popup>
