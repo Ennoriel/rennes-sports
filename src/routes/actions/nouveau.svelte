@@ -41,6 +41,13 @@
 
 	let validated = false;
 
+	function resetDb() {
+		validated = true;
+		fetch('/api/sports.json', {
+			method: 'PUT'
+		});
+	}
+
 	function createSport() {
 		validated = true;
 		createdSport = {
@@ -205,6 +212,7 @@
 	</ButtonGroup>
 
 	<ButtonGroup>
+		<Button on:click={resetDb}>Réinitialiser la BDD</Button>
 		<Button on:click={createSport}>Créer</Button>
 		<Button
 			variant="secondary"

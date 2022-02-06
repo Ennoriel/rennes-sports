@@ -1,5 +1,6 @@
 import type { RequestHandler } from '@sveltejs/kit';
 import mongoClient from '$lib/utils/db';
+import { sports } from '$lib/data/sports';
 
 export const get: RequestHandler = async () => {
 	return {
@@ -23,5 +24,13 @@ export const del: RequestHandler = async () => {
 			string,
 			any
 		>
+	};
+};
+
+export const put: RequestHandler = async () => {
+	await await (await mongoClient).db()?.collection('sports')?.deleteMany({});
+	await await (await mongoClient).db()?.collection('sports')?.insertMany(sports);
+	return {
+		body: 0
 	};
 };
