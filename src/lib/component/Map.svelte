@@ -5,6 +5,7 @@
 	import FilterPanel from '$lib/component/FilterPanel.svelte';
 
 	export let markers;
+	export let center;
 
 	let pageRef;
 	let LeafletContainer;
@@ -20,7 +21,7 @@
 
 <div bind:this={pageRef} id="map">
 	{#if browser && window}
-		<svelte:component this={LeafletContainer} {markers} />
+		<svelte:component this={LeafletContainer} {markers} {center} />
 	{/if}
 </div>
 

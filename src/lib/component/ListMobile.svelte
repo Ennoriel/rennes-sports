@@ -34,7 +34,7 @@
 					<Link
 						alt="localisation"
 						imgSrc="/svg/location.svg"
-						href="recherche/carte/{slot.locationId}"
+						href="recherche/carte/location/{slot.locationId}"
 					>
 						{locations.find((location) => location.id === slot.locationId)?.name}
 					</Link>

@@ -39,7 +39,7 @@
 	}
 	:global(*) {
 		--dark: #ccc;
-		--light: var(--bg-color);
+		--light: #00000000;
 		scrollbar-width: thin;
 		scrollbar-color: var(--dark) var(--light);
 		scroll-behavior: smooth;

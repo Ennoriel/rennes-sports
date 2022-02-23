@@ -8,3 +8,11 @@ export function range(min: number, max: number): Array<number> {
 	}
 	return arr;
 }
+
+export function uniqBy(a, key) {
+	var seen = {};
+	return a.filter(function (item) {
+		var k = key(item);
+		return seen.hasOwnProperty(k) ? false : (seen[k] = true);
+	});
+}

@@ -8,7 +8,11 @@
 
 {#each row.slots as slot}
 	<div>
-		<Link alt="localisation" imgSrc="/svg/location.svg" href="/recherche/carte/{slot.locationId}">
+		<Link
+			alt="localisation"
+			imgSrc="/svg/location.svg"
+			href="/recherche/carte/location/{slot.locationId}"
+		>
 			{locations.find((location) => location.id === slot.locationId)?.name}
 		</Link>
 	</div>

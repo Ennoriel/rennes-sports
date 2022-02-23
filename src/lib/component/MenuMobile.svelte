@@ -5,12 +5,21 @@
 	import { page } from '$app/stores';
 	import XOrMenu from '$lib/component/svg/XOrMenu.svelte';
 	import Fav from '$lib/component/Fav.svelte';
+	import { cities } from '$lib/data/cities';
+
+	import { clickAway } from '$lib/utils/clickAway';
+	import { uniqBy } from '$lib/utils/array';
 
 	export let filtrable = true;
 
-	let search;
+	let search = "";
+	let isSearching = false;
 	let isOpen = false;
 	let burgerMenu;
+
+	$: reSearch = new RegExp(search, 'i');
+
+	const uniqCities = uniqBy(cities, (c) => c.id);
 
 	function click({ target }) {
 		if (isOpen && !burgerMenu.contains(target)) isOpen = false;
@@ -23,7 +32,15 @@
 	<span id="menu-bar">
 		<Fav />
 		{#if filtrable}
-			<input bind:value={search} aria-label="Recherche globale" placeholder="Ski nautique" />
+			<input
+				bind:value={search}
+				on:click={(e) => {
+					isSearching = true;
+					e.stopPropagation();
+				}}
+				aria-label="Recherche globale"
+				placeholder="Rennes"
+			/>
 		{/if}
 		<button
 			class="menu"
@@ -40,7 +57,7 @@
 		<ul transition:fly={{ x: -200, duration: 400 }} bind:this={burgerMenu}>
 			<li>
 				<a on:click={() => (isOpen = false)} href="/">
-					<img src="/favicon.png" />
+					<img src="/favicon.png" alt="Icone de l'application" />
 				</a>
 			</li>
 			{#each routes as route}
@@ -56,6 +73,18 @@
 		</ul>
 	{/if}
 </nav>
+
+{#if isSearching}
+	<div
+		class="options"
+		use:clickAway={() => (isSearching = false)}
+		on:click={() => (isSearching = false)}
+	>
+		{#each uniqCities.filter((city) => city.name.match(reSearch)) as city}
+			<a href="/recherche/carte/ville/{city.zipCode}">{city.name}</a>
+		{/each}
+	</div>
+{/if}
 
 <style>
 	nav {
@@ -144,5 +173,23 @@
 	ul img {
 		width: 40px;
 		margin-top: 10px;
+	}
+
+	.options {
+		position: absolute;
+		inset: 80px 20px;
+		padding: 10px;
+		background-color: #00000088;
+		z-index: 10000;
+		overflow-y: auto;
+
+		--dark: #333;
+	}
+	.options a {
+		display: block;
+	}
+	.options a:hover,
+	.options a:focus-visible {
+		color: var(--secondary-color);
 	}
 </style>
