@@ -18,7 +18,7 @@
 		border: none;
 		cursor: pointer;
 
-		background-color: var(--main-color);
+		background-color: var(--secondary-color);
 		transition: all 0.4s;
 
 		z-index: 401;

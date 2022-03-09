@@ -32,7 +32,7 @@ export function filterSports(filter: Filter, sports: Array<Sport>): Array<Sport>
 			(sport) =>
 				!filter.locationId || sport.slots.some((slot) => slot.locationId === filter.locationId)
 		)
-		.filter((sport) => !filter.assoName || sport.assoName === filter.assoName);
+		.filter((sport) => !filter.assoId || sport.assoId === filter.assoId);
 }
 
 export function getMarkers(sports: Array<Sport>, locations: Array<Location>): Array<Marker> {
@@ -41,8 +41,19 @@ export function getMarkers(sports: Array<Sport>, locations: Array<Location>): Ar
 		.filter((location) =>
 			sports.some((sport) => sport.slots.some((slot) => slot.locationId === location.id))
 		)
-		.map((location) => ({
-			location,
-			sports: sports.filter((sport) => sport.slots.some((slot) => slot.locationId === location.id))
-		}));
+		.map((location) => {
+			const locatedSports = sports.filter((sport) =>
+				sport.slots.some((slot) => slot.locationId === location.id)
+			);
+			const groupedSports: Map<string, Array<Sport>> = locatedSports.reduce(
+				(acc, s) => (
+					acc.get(s.sport) ? acc.set(s.sport, [...acc.get(s.sport), s]) : acc.set(s.sport, [s]), acc
+				),
+				new Map()
+			);
+			return {
+				location,
+				sports: [...groupedSports.entries()].map(([sportName, sports]) => ({ sportName, sports }))
+			};
+		});
 }

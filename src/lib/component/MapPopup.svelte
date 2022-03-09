@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { Sport } from '../types/sport.type';
-	import type { Location } from '$lib/types/location.type';
+	import type { GroupSport, Location } from '$lib/types/location.type';
 	import { displayHours, displayYear } from '$lib/utils/time';
 	import { locations } from '$lib/data/locations';
+	import { assos } from '$lib/data/assos';
 
 	export let location: Location;
-	export let sports: Array<Sport>;
+	export let sports: Array<GroupSport>;
 </script>
 
 <h2>
@@ -14,23 +14,25 @@
 <div class="wrapper">
 	{#each sports as sport}
 		<h3>
-			{sport.sport}
+			{sport.sportName}
 		</h3>
-		<div>
-			{sport.level}, {displayYear(sport.birthYear, sport.otherYear, sport.adult)}, {sport.sex}
-		</div>
-		{#each sport.slots as slot}
-			<div class="slots">
-				{slot.day}
-				{displayHours(slot.hour)}
-				{#if slot.locationId !== location.id}
-					({locations.find((l) => l.id === slot.locationId).name})
-				{/if}
+		{#each sport.sports as s}
+			<div class="sport">
+				- {s.level}, {displayYear(s.birthYear, s.otherYear, s.adult)}, {s.sex}
+			</div>
+			{#each s.slots as slot}
+				<div class="slots">
+					{slot.day}
+					{displayHours(slot.hour)}
+					{#if slot.locationId !== location.id}
+						({locations.find((l) => l.id === slot.locationId).name})
+					{/if}
+				</div>
+			{/each}
+			<div>
+				{assos.find((asso) => asso.id === s.assoId)?.name}
 			</div>
 		{/each}
-		<div>
-			{sport.assoName}
-		</div>
 	{/each}
 </div>
 
@@ -50,7 +52,6 @@
 	}
 
 	.wrapper {
-		/*overflow: hidden;*/
 		width: 268px;
 		max-height: 200px;
 		overflow-y: auto;
@@ -83,6 +84,10 @@
 	h3::before {
 		content: '•';
 		margin-right: 5px;
+	}
+
+	.sport {
+		margin-top: 6px;
 	}
 
 	.slots {

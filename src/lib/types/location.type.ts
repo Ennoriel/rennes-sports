@@ -6,9 +6,14 @@ export type Location = {
 	coordinates?: [number, number];
 };
 
+export type GroupSport = {
+	sportName: string;
+	sports: Array<Sport>;
+};
+
 export type Marker = {
 	location: Location;
-	sports: Array<Sport>;
+	sports: Array<GroupSport>;
 };
 
 export type Metro = {

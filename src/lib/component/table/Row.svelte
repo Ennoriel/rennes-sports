@@ -21,6 +21,7 @@
 <style>
 	tr {
 		background-color: white;
+		box-shadow: 0 0 4px #eee;
 		transition: all 0.4s ease-in-out;
 	}
 	td:first-of-type {
