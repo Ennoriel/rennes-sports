@@ -2,6 +2,8 @@
 	import { routes } from '$lib/data/routes';
 	import { page } from '$app/stores';
 	import Fav from '$lib/component/Fav.svelte';
+
+	import { session } from '$app/stores';
 </script>
 
 <nav>
@@ -11,13 +13,15 @@
 		</li>
 		{#each routes as route}
 			{@const active = $page.url.pathname.indexOf(route.route) > 0}
-			<li>
-				<a href="/{route.route}" class:active aria-current={(active && 'page') || undefined}>
-					<span>
-						{route.label}
-					</span>
-				</a>
-			</li>
+			{#if !route.guard || route.guard() === !!$session}
+				<li>
+					<a href="/{route.route}" class:active aria-current={(active && 'page') || undefined}>
+						<span>
+							{route.label}
+						</span>
+					</a>
+				</li>
+			{/if}
 		{/each}
 	</ul>
 </nav>

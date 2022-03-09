@@ -1,4 +1,4 @@
-export function clickAway(node, method) {
+export function clickAway(node: HTMLElement, method: () => void): { destroy: () => void } {
 	function listener(e) {
 		if (!node.contains(e.target)) {
 			method();

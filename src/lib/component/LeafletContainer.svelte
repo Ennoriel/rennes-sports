@@ -46,7 +46,7 @@
 	bind:this={leafletMap}
 	options={mapOptions}
 	events={['moveend']}
-	on:moveend={(e) => {
+	on:moveend={() => {
 		currCenter = leafletMap.getMap().getCenter();
 	}}
 >

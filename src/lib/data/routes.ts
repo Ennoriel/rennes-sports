@@ -1,4 +1,10 @@
-export const routes = [
+export type Route = {
+	route: string;
+	label: string;
+	guard?: () => boolean;
+};
+
+export const routes: Array<Route> = [
 	{
 		route: 'recherche/liste',
 		label: 'Liste'
@@ -9,10 +15,26 @@ export const routes = [
 	},
 	{
 		route: 'actions/nouveau',
-		label: 'Nouveau'
+		label: 'Nouveau',
+		guard: () => true
 	},
 	{
 		route: 'a-propos',
 		label: 'A propos'
+	},
+	{
+		route: 'utilisateur/connexion',
+		label: 'Connexion',
+		guard: () => false
+	},
+	{
+		route: 'utilisateur/creation-compte',
+		label: 'Créer un compte',
+		guard: () => false
+	},
+	{
+		route: 'utilisateur/deconnexion',
+		label: 'Se déconnecter',
+		guard: () => true
 	}
 ];

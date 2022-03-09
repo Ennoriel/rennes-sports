@@ -12,7 +12,7 @@
 
 	export let filtrable = true;
 
-	let search = "";
+	let search = '';
 	let isSearching = false;
 	let isOpen = false;
 	let burgerMenu;

@@ -1,6 +1,6 @@
 export function range(min: number, max: number): Array<number> {
-	const trueMin = Math.min(min, max),
-		trueMax = Math.max(min, max);
+	const trueMin = Math.min(min, max);
+	const trueMax = Math.max(min, max);
 	const len = trueMax - trueMin + 1;
 	const arr = new Array(len);
 	for (let i = 0; i < len; i++) {
@@ -9,10 +9,10 @@ export function range(min: number, max: number): Array<number> {
 	return arr;
 }
 
-export function uniqBy(a, key) {
-	var seen = {};
-	return a.filter(function (item) {
-		var k = key(item);
-		return seen.hasOwnProperty(k) ? false : (seen[k] = true);
+export function uniqBy<T>(array: Array<T>, key: (T) => string): Array<T> {
+	const seen = {};
+	return array.filter(function (item) {
+		const k = key(item);
+		return Object.prototype.hasOwnProperty.call(seen, k) ? false : (seen[k] = true);
 	});
 }
