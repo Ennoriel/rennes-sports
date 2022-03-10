@@ -2,7 +2,7 @@
 	import { Sport } from '$lib/types/sport.type';
 	import { displayHours, displayYear } from '$lib/utils/time';
 	import { locations } from '$lib/data/locations';
-	import Link from '$lib/component/Link.svelte';
+	import Link from '$lib/component/atom/Link.svelte';
 	import { assos } from '$lib/data/assos';
 
 	export let sports: Array<Sport>;

@@ -4,7 +4,7 @@
 </script>
 
 <script>
-	import Map from '$lib/component/Map.svelte';
+	import Map from '$lib/component/map/Map.svelte';
 	import { markers, state } from '$lib/store/state';
 
 	export let loadedSports = [];

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Link from '$lib/component/Link.svelte';
+	import Link from '$lib/component/atom/Link.svelte';
 
 	export let name: string;
 	export let description: string;

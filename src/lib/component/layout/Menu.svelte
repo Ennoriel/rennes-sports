@@ -1,7 +1,7 @@
 <script>
-	import { routes } from '$lib/data/routes';
+	import {guard, routes} from '$lib/data/routes';
 	import { page } from '$app/stores';
-	import Fav from '$lib/component/Fav.svelte';
+	import Fav from '$lib/component/atom/Fav.svelte';
 
 	import { session } from '$app/stores';
 </script>
@@ -11,7 +11,7 @@
 		<li>
 			<Fav />
 		</li>
-		{#each routes as route}
+		{#each guard(routes, $session) as route}
 			{@const active = $page.url.pathname.indexOf(route.route) > 0}
 			{#if !route.guard || route.guard() === !!$session}
 				<li>

@@ -1,16 +1,16 @@
 <script lang="ts">
 	import Panel from './Panel.svelte';
-	import { range } from '../utils/array';
+	import { range } from '$lib/utils/array';
 	import { assos } from '$lib/data/assos';
-	import { locations } from '../data/locations';
-	import Select from './input/Select.svelte';
-	import Radio from './input/Radio.svelte';
-	import { state } from '../store/state';
-	import Checkbox from './input/Checkbox.svelte';
-	import Range from './input/Range.svelte';
-	import Title from '$lib/component/Title.svelte';
-	import Button from '$lib/component/Button.svelte';
-	import ButtonGroup from '$lib/component/ButtonGroup.svelte';
+	import { locations } from '$lib/data/locations';
+	import Select from '../input/Select.svelte';
+	import Radio from '../input/Radio.svelte';
+	import { state } from '$lib/store/state';
+	import Checkbox from '../input/Checkbox.svelte';
+	import Range from '../input/Range.svelte';
+	import Title from '$lib/component/atom/Title.svelte';
+	import Button from '$lib/component/atom/Button.svelte';
+	import ButtonGroup from '$lib/component/layout/ButtonGroup.svelte';
 	import X from '$lib/component/svg/X.svelte';
 
 	export let pageRef;

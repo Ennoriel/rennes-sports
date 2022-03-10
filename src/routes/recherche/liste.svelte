@@ -4,12 +4,12 @@
 </script>
 
 <script>
-	import FilterPanel from '$lib/component/FilterPanel.svelte';
+	import FilterPanel from '$lib/component/panel/FilterPanel.svelte';
 	import { state, sports } from '$lib/store/state';
-	import Title from '$lib/component/Title.svelte';
-	import List from '$lib/component/List.svelte';
-	import ResponsiveWrapper from '$lib/component/ResponsiveWrapper.svelte';
-	import ListMobile from '$lib/component/ListMobile.svelte';
+	import Title from '$lib/component/atom/Title.svelte';
+	import List from '$lib/component/list/List.svelte';
+	import ResponsiveWrapper from '$lib/component/layout/ResponsiveWrapper.svelte';
+	import ListMobile from '$lib/component/list/ListMobile.svelte';
 
 	export let loadedSports = [];
 	$: $state.allSports = loadedSports;

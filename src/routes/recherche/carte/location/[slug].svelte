@@ -11,7 +11,7 @@
 </script>
 
 <script>
-	import Map from '$lib/component/Map.svelte';
+	import Map from '$lib/component/map/Map.svelte';
 	import { onMount } from 'svelte';
 	import { locations } from '$lib/data/locations';
 	import { sports } from '$lib/data/sports';

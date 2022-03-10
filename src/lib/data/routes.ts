@@ -1,3 +1,5 @@
+import Session = App.Session;
+
 export type Route = {
 	route: string;
 	label: string;
@@ -38,3 +40,7 @@ export const routes: Array<Route> = [
 		guard: () => true
 	}
 ];
+
+export const guard = (routes: Array<Route>, session: Session) => {
+	return routes.filter(route => !route.guard || route.guard() === !!session)
+}

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Sport } from '$lib/types/sport.type';
-	import Link from '$lib/component/Link.svelte';
+	import Link from '$lib/component/atom/Link.svelte';
 	import { assos } from '$lib/data/assos';
 
 	export let row: Sport;

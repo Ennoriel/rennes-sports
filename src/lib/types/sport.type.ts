@@ -1,11 +1,11 @@
 export type Sport = {
-	assoId: number;
+	sport: string;
 	birthYear: number[];
 	adult: boolean;
 	otherYear?: string;
 	sex: string;
-	sport: string;
 	level: string;
+	assoId: number;
 	slots: Slot[];
 };
 

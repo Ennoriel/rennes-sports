@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Sport } from '$lib/types/sport.type';
 	import { locations } from '$lib/data/locations';
-	import Link from '$lib/component/Link.svelte';
+	import Link from '$lib/component/atom/Link.svelte';
 
 	export let row: Sport;
 </script>

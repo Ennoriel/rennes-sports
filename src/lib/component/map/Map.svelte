@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import { browser } from '$app/env';
 	import 'leaflet/dist/leaflet.css';
-	import FilterPanel from '$lib/component/FilterPanel.svelte';
+	import FilterPanel from '$lib/component/panel/FilterPanel.svelte';
 
 	export let markers;
 	export let center;
@@ -12,7 +12,7 @@
 
 	onMount(async () => {
 		if (browser) {
-			LeafletContainer = (await import('$lib/component/LeafletContainer.svelte')).default;
+			LeafletContainer = (await import('$lib/component/map/LeafletContainer.svelte')).default;
 		}
 	});
 </script>

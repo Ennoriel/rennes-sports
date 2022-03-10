@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
 
-	import Button from '$lib/component/Button.svelte';
-	import ButtonGroup from '$lib/component/ButtonGroup.svelte';
+	import Button from '$lib/component/atom/Button.svelte';
+	import ButtonGroup from '$lib/component/layout/ButtonGroup.svelte';
 	import Select from '$lib/component/input/Select.svelte';
-	import Title from '$lib/component/Title.svelte';
+	import Title from '$lib/component/atom/Title.svelte';
 	import TextInput from '$lib/component/input/TextInput.svelte';
 	import Radio from '$lib/component/input/Radio.svelte';
 	import Range from '$lib/component/input/Range.svelte';

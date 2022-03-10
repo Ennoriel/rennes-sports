@@ -1,6 +1,6 @@
 <script>
 	import FloatingButton from './FloatingButton.svelte';
-	import { state } from '../store/state';
+	import { state } from '../../store/state';
 	import { fly } from 'svelte/transition';
 
 	export let pageRef;
