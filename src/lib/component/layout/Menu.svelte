@@ -1,5 +1,5 @@
 <script>
-	import {guard, routes} from '$lib/data/routes';
+	import { guard, routes } from '$lib/data/routes';
 	import { page } from '$app/stores';
 	import Fav from '$lib/component/atom/Fav.svelte';
 
@@ -13,7 +13,7 @@
 		</li>
 		{#each guard(routes, $session) as route}
 			{@const active = $page.url.pathname.indexOf(route.route) > 0}
-			{#if !route.guard || route.guard() === !!$session}
+			{#if guard(routes, $session)}
 				<li>
 					<a href="/{route.route}" class:active aria-current={(active && 'page') || undefined}>
 						<span>

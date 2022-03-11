@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
 	import { state } from '$lib/store/state';
-	import {guard, routes} from '$lib/data/routes';
-	import {page, session} from '$app/stores';
+	import { guard, routes } from '$lib/data/routes';
+	import { page, session } from '$app/stores';
 	import XOrMenu from '$lib/component/svg/XOrMenu.svelte';
 	import Fav from '$lib/component/atom/Fav.svelte';
 	import { cities } from '$lib/data/cities';

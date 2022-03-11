@@ -7,9 +7,9 @@
 	import FilterPanel from '$lib/component/panel/FilterPanel.svelte';
 	import { state, sports } from '$lib/store/state';
 	import Title from '$lib/component/atom/Title.svelte';
-	import List from '$lib/component/list/List.svelte';
 	import ResponsiveWrapper from '$lib/component/layout/ResponsiveWrapper.svelte';
-	import ListMobile from '$lib/component/list/ListMobile.svelte';
+	import SportListDesktop from '$lib/component/list/SportListDesktop.svelte';
+	import SportListMobile from '$lib/component/list/SportListMobile.svelte';
 
 	export let loadedSports = [];
 	$: $state.allSports = loadedSports;
@@ -25,8 +25,8 @@
 	</Title>
 
 	<ResponsiveWrapper>
-		<ListMobile slot="s" sports={$sports} />
-		<List slot="l" sports={$sports} />
+		<SportListMobile slot="s" sports={$sports} />
+		<SportListDesktop slot="l" sports={$sports} />
 	</ResponsiveWrapper>
 </div>
 

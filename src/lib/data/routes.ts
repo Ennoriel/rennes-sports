@@ -1,9 +1,9 @@
-import Session = App.Session;
+import type { Load } from '@sveltejs/kit';
 
 export type Route = {
 	route: string;
 	label: string;
-	guard?: () => boolean;
+	guard?: (session: App.Session) => boolean;
 };
 
 export const routes: Array<Route> = [
@@ -25,22 +25,42 @@ export const routes: Array<Route> = [
 		label: 'A propos'
 	},
 	{
+		route: 'utilisateur',
+		label: 'Utilisateurs',
+		guard: (session) => session?.user?.role === 'admin'
+	},
+	{
 		route: 'utilisateur/connexion',
 		label: 'Connexion',
-		guard: () => false
+		guard: (session) => !session
 	},
 	{
 		route: 'utilisateur/creation-compte',
 		label: 'Créer un compte',
-		guard: () => false
+		guard: (session) => !session
 	},
 	{
 		route: 'utilisateur/deconnexion',
 		label: 'Se déconnecter',
-		guard: () => true
+		guard: (session) => !!session
 	}
 ];
 
-export const guard = (routes: Array<Route>, session: Session) => {
-	return routes.filter(route => !route.guard || route.guard() === !!session)
-}
+export const guard = (routes: Array<Route>, session: App.Session): Array<Route> => {
+	return routes.filter((route) => !route.guard || route.guard(session));
+};
+
+export const loadAdminGuard: Load = async ({ session }) => {
+	if (!session?.user) {
+		return {
+			status: 302,
+			redirect: '/'
+		};
+	}
+
+	return {
+		props: {
+			user: session.user
+		}
+	};
+};

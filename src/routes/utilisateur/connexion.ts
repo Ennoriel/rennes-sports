@@ -2,6 +2,8 @@ import jwt from 'jsonwebtoken';
 import { serialize } from 'cookie';
 import type { RequestHandler } from '@sveltejs/kit';
 import { errorResponse } from '$lib/utils/query';
+import { validate } from './_utils';
+import mongoClient from '$lib/utils/db';
 
 export const post: RequestHandler = async ({ request }) => {
 	const body = await request.formData();
@@ -11,10 +13,23 @@ export const post: RequestHandler = async ({ request }) => {
 	const password = body.get('password') as string;
 
 	if (!email || !password) {
-		return errorResponse(acceptsJson, 'Invalid credentials', 403);
+		return errorResponse(acceptsJson, "L'identifiant ou le mot des passe est incorrect", 403);
 	}
 
-	const token = jwt.sign({ uid: '1234567890', email }, import.meta.env.VITE_JWT_SECRET as string);
+	const users =
+		(await (await mongoClient).db()?.collection('users')?.find({ email })?.toArray()) || [];
+
+	if (users.length !== 1 || !validate(password, users[0].hash)) {
+		return errorResponse(acceptsJson, "L'identifiant ou le mot des passe est incorrect", 403);
+	}
+
+	const user = {
+		_id: users[0]._id,
+		email: users[0].email,
+		role: users[0].role
+	};
+
+	const token = jwt.sign(user, import.meta.env.VITE_JWT_SECRET as string);
 
 	const headers = {
 		'set-cookie': serialize('session', token, {
@@ -31,9 +46,7 @@ export const post: RequestHandler = async ({ request }) => {
 				status: 200,
 				headers,
 				body: {
-					user: {
-						email
-					}
+					user
 				}
 		  }
 		: {

@@ -5,12 +5,14 @@ declare namespace App {
 		session?: {
 			uid: string;
 			email: string;
+			role: string;
 		};
 	}
 
 	interface Session {
 		user: {
 			email: string;
+			role: string;
 		};
 	}
 }

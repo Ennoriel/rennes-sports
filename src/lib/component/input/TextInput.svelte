@@ -13,7 +13,7 @@
 	label {
 		display: flex;
 		flex-direction: column;
-		font-size: 17px;
+		font-size: 14px;
 		font-weight: 500;
 		gap: 10px;
 		margin-top: 20px;

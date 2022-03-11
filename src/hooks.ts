@@ -21,7 +21,8 @@ export const getSession: GetSession = async (event) => {
 	return event.locals.session
 		? {
 				user: {
-					email: event.locals.session.email
+					email: event.locals.session.email,
+					role: event.locals.session.role
 				}
 		  }
 		: undefined;
