@@ -5,11 +5,11 @@
 
 <script>
 	import FilterPanel from '$lib/component/panel/FilterPanel.svelte';
-	import { state, sports } from '$lib/store/state';
 	import Title from '$lib/component/atom/Title.svelte';
 	import ResponsiveWrapper from '$lib/component/layout/ResponsiveWrapper.svelte';
 	import SportListDesktop from '$lib/component/list/SportListDesktop.svelte';
 	import SportListMobile from '$lib/component/list/SportListMobile.svelte';
+	import { state, sports } from '$lib/store/state';
 
 	export let loadedSports = [];
 	$: $state.allSports = loadedSports;

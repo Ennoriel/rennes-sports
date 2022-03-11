@@ -9,7 +9,7 @@
 	import Radio from '$lib/component/input/Radio.svelte';
 	import Range from '$lib/component/input/Range.svelte';
 
-	import { Sport, RangeType } from '$lib/types/sport.type';
+	import type { Sport, RangeType } from '$lib/types/sport.type';
 	import { sports } from '$lib/data/sports';
 	import { locations } from '$lib/data/locations';
 	import X from '$lib/component/svg/X.svelte';

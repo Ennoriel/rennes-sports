@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { displayHour } from '$lib/utils/time';
-	import { RangeType } from '$lib/types/sport.type';
+	import type { RangeType } from '$lib/types/sport.type';
 
 	export let label: string;
 	export let labelInHour = false;
