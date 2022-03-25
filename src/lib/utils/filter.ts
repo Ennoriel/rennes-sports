@@ -15,8 +15,8 @@ export function filterSports(filter: Filter, sports: Array<Sport>): Array<Sport>
 		.filter(
 			(sport) =>
 				!filter.sex ||
-				sport.sex === filter.sex ||
-				(['Féminin', 'Masculin'].includes(filter.sex) && sport.sex === 'Mixte')
+				!filter.sex.length ||
+				filter.sex.includes(sport.sex)
 		)
 		.filter(
 			(sport) =>

@@ -20,7 +20,7 @@ export type Filter = {
 	sport?: string;
 	level?: string;
 	birthYear?: number;
-	sex?: string;
+	sex?: string[];
 	day?: string[];
 	locationId?: number;
 	assoId?: number;
