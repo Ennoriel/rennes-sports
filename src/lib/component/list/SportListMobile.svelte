@@ -14,7 +14,7 @@
 		<div class="card">
 			<h2>
 				<strong>{sport.sport}</strong>
-				{sport.level}, {displayYear(sport.birthYear, sport.otherYear, sport.adult)}, {sport.sex}
+				<span>{sport.level}, {displayYear(sport.birthYear, sport.otherYear, sport.adult)}, {sport.sex}</span>
 			</h2>
 			{#each sport.slots as slot}
 				<div class="slots">
@@ -59,15 +59,20 @@
 		color: white;
 		font-size: 13px;
 		font-weight: 300;
-		line-height: 32px;
+		line-height: 16px;
 		border-radius: 8px 8px 0 0;
-		padding: 0 16px;
+		padding: 8px 16px;
 	}
 
 	h2 strong {
 		font-size: 15px;
 		font-weight: 900;
 		margin-right: 16px;
+	}
+
+	h2 strong, h2 span {
+		display: inline-block;
+		vertical-align: middle;
 	}
 
 	.slots {
