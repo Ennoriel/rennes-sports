@@ -160,7 +160,7 @@
 		/>
 
 		<!-- Level -->
-		<Radio label="Pratique" options={['Compétition', 'Loisir']} bind:value={sport.level} />
+		<Radio label="Pratique" options={['Compétition', 'Handisport', 'Loisir']} bind:value={sport.level} />
 	</div>
 
 	<!-- Slots -->
