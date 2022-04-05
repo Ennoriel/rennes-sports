@@ -3,6 +3,13 @@
 </a>
 
 <style>
+	.icon {
+		border-radius: 8px;
+
+		display: block;
+		width: 60px;
+		height: 60px;
+	}
 	.icon div {
 		width: 46.45px;
 		height: 45px;
@@ -14,5 +21,15 @@
 	.icon:hover div {
 		background: url('/fav.gif');
 		background-size: 100% 100%;
+	}
+
+	.icon:focus-visible div {
+		background: url('/fav.gif');
+		background-size: 100% 100%;
+	}
+
+	.icon:focus-visible {
+		outline: 2px solid white;
+		outline-offset: -4px;
 	}
 </style>

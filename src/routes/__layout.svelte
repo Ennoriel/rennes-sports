@@ -27,6 +27,7 @@
 	:global(body) {
 		--main-color: #002395;
 		--secondary-color: #ed1f3a;
+		--focus-color: var(--main-color);
 		--bg-color: #f7f7fa;
 		--header-height: 60px;
 	}

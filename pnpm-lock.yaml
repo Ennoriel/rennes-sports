@@ -26,6 +26,7 @@ specifiers:
   svelte-check: ^2.4.6
   svelte-leafletjs: ^0.8.2
   svelte-preprocess: ^4.10.4
+  svelte-select: ^4.4.7
   svelte-table: ^0.3.4
   ts-jest: ^27.1.3
   ts-node: ^10.7.0
@@ -58,6 +59,7 @@ devDependencies:
   svelte-check: 2.4.6_@babel+core@7.17.7+svelte@3.46.4
   svelte-leafletjs: 0.8.2
   svelte-preprocess: 4.10.4_0c246f510dc9f803196231ae4701a847
+  svelte-select: 4.4.7
   svelte-table: 0.3.4
   ts-jest: 27.1.3_3aedd15540997aea680ab26eff791a7a
   ts-node: 10.7.0_e79e62fe450383fd2d418267dc75e645
@@ -4125,6 +4127,10 @@ packages:
       strip-indent: 3.0.0
       svelte: 3.46.4
       typescript: 4.6.2
+    dev: true
+
+  /svelte-select/4.4.7:
+    resolution: {integrity: sha512-fIf9Z8rPI6F8naHZ9wjXT0Pv5gLyhdHAFkHFJnCfVVfELE8e82uOoF0xEVQP6Kir+b4Q5yOvNAzZ61WbSU6A0A==}
     dev: true
 
   /svelte-table/0.3.4:

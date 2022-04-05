@@ -22,9 +22,13 @@
 		outline: none;
 		margin: 0;
 		border: 1px solid #e3e3e3;
-		height: 37px;
+		height: 33px;
 		border-radius: 5px;
 		padding: 0 0 0 10px;
-		transition: all 0.2s;
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--focus-color);
+		outline-offset: 2px;
 	}
 </style>

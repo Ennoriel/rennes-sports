@@ -8,7 +8,7 @@
 
 <nav>
 	<ul>
-		<li>
+		<li style:display="flex">
 			<Fav />
 		</li>
 		{#each guard(routes, $session) as route}
@@ -66,6 +66,7 @@
 		position: relative;
 		top: 0;
 		transition: top ease 0.4s;
+		border-radius: 8px;
 	}
 
 	.active {
@@ -82,7 +83,7 @@
 	}
 
 	a:focus-visible {
-		outline: 2px solid var(--secondary-color);
+		outline: 2px solid white;
 		outline-offset: -4px;
 	}
 </style>

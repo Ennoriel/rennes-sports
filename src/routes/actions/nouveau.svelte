@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
 
+	import Autocomplete from "$lib/component/input/Autocomplete.svelte";
 	import Button from '$lib/component/atom/Button.svelte';
 	import ButtonGroup from '$lib/component/layout/ButtonGroup.svelte';
 	import Select from '$lib/component/input/Select.svelte';
@@ -17,7 +18,6 @@
 
 	let sport = {
 		sport: undefined,
-		newSport: undefined,
 		assoId: undefined as number,
 		sex: undefined,
 		adult: undefined as 'Oui' | 'Non',
@@ -35,10 +35,6 @@
 	};
 	let createdSport: Partial<Sport>;
 
-	let formConfig = {
-		newSport: false
-	};
-
 	let validated = false;
 
 	function resetDb() {
@@ -51,7 +47,7 @@
 	function createSport() {
 		validated = true;
 		createdSport = {
-			sport: sport.newSport || sport.sport,
+			sport: sport.sport,
 			assoId: sport.assoId || 0,
 			sex: sport.sex || 'Mixte',
 			adult: sport.adult === 'Oui' && sport.birthYear[0] === 2004,
@@ -108,26 +104,14 @@
 		<Title>Ajouter une séance</Title>
 
 		<!-- Sport -->
-		<div class="select-alternative-group" class:column={formConfig.newSport}>
-			<Select
-				label="Sport"
-				ariaLabel="Sport. Si le sport n'est pas disponible, appuyer sur X"
-				options={[...new Set(sports.map((sport) => sport.sport))]}
-				bind:value={sport.sport}
-				on:input={() => {
-					formConfig.newSport = false;
-					sport.newSport = undefined;
-				}}
-			/>
-
-			{#if !formConfig.newSport}
-				<Button on:click={() => (formConfig.newSport = true)}
-					>Le sport n'est pas dans la liste</Button
-				>
-			{:else}
-				<TextInput label="Nouveau sport" bind:value={sport.newSport} />
-			{/if}
-		</div>
+		<Autocomplete
+			label="Sport"
+			placeholder="Choisissez un sport"
+			ariaLabel="Sport. Si le sport n'est pas disponible, appuyer sur X"
+			options={[...new Set(sports.map((sport) => sport.sport))]}
+			bind:value={sport.sport}
+			isCreatable
+		/>
 
 		<!-- Association -->
 		<div class="select-alternative-group">

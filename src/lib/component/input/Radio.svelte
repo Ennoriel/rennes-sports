@@ -43,7 +43,7 @@
 		margin: 0 5px 5px 0;
 		font-size: 14px;
 		cursor: pointer;
-		transition: all 0.2s;
+		transition: color 0.2s, background-color 0.2s;
 		outline: none;
 		user-select: none;
 	}
@@ -55,8 +55,8 @@
 		color: white;
 	}
 	:global(.has-been-tabbed) label:focus-within {
-		color: #777;
-		box-shadow: 0 0 5px black;
+		outline: 2px solid var(--focus-color);
+		outline-offset: 2px;
 	}
 	input {
 		opacity: 0;

@@ -12,13 +12,13 @@
 
 <svelte:window on:click={click} />
 
+<FloatingButton on:click={() => ($state.isOpen = true)} hidden={$state.isOpen} />
+
 {#if $state.isOpen}
 	<div transition:fly|local={{ x: -200, duration: 400 }}>
 		<slot />
 	</div>
 {/if}
-
-<FloatingButton on:click={() => ($state.isOpen = true)} hidden={$state.isOpen} />
 
 <style>
 	div {

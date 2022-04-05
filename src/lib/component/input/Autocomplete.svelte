@@ -1,0 +1,44 @@
+<script lang="ts">
+    import Autocomplete from 'svelte-select';
+
+    type Value = string | { label: string; value: string }
+
+    export let label: string;
+    export let placeholder = label;
+    export let value: Value;
+    export let options: Array<{ label: string; value: string }> | Array<string>;
+    export let isCreatable = false;
+    export let isDisabled = false;
+    export let isMulti = false;
+
+    let boundValue: { index: number, value: Value } | undefined;
+
+    $: value = boundValue?.value
+</script>
+
+<label>
+    {label}
+    <Autocomplete
+        label={label}
+        placeholder={placeholder}
+        items={options}
+        bind:value={boundValue}
+        {isCreatable}
+        {isDisabled}
+        {isMulti}
+        createMessage="Créer "
+    />
+</label>
+
+<style>
+    label {
+        --height: 33px;
+        --clearSelectTop: 8px;
+        --backgroundColor: #eee;
+        --borderColor: #e3e3e3;
+        --borderHoverColor: #e3e3e3;
+        --borderFocusColor: #e3e3e3;
+
+        --itemIsActiveBG: var(--main-color);
+    }
+</style>

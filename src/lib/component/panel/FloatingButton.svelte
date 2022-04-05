@@ -19,24 +19,17 @@
 		cursor: pointer;
 
 		background-color: var(--secondary-color);
-		transition: all 0.4s;
 
 		z-index: 401;
 	}
-	button:hover {
-		box-shadow: 0 0 10px black;
-	}
+
 	button.hidden {
 		pointer-events: none;
 		opacity: 0;
 	}
 
-	@keyframes background-gradient {
-		from {
-			background-position: 0 0;
-		}
-		to {
-			background-position: 200% 0;
-		}
-	}
+	button:focus-visible {
+        outline: 2px solid var(--focus-color);
+        outline-offset: 2px;
+    }
 </style>

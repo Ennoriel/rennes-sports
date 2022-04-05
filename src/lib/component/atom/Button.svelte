@@ -15,7 +15,7 @@
 		padding: 4px 16px;
 		cursor: pointer;
 		border: none;
-		transition: all 0.4s;
+		transition: color 0.2s, background-color 0.2s;
 	}
 
 	.primary {
@@ -49,5 +49,10 @@
 		border-radius: 16.5px;
 		background-color: transparent;
 		padding: 4px;
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--focus-color);
+		outline-offset: 2px;
 	}
 </style>

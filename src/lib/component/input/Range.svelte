@@ -150,8 +150,8 @@
 		cursor: pointer;
 	}
 	.indicator:focus-visible {
-		box-shadow: 0 0 5px black;
-		font-weight: 700;
+		outline: 2px solid var(--focus-color);
+		outline-offset: 2px;
 	}
 	.selected-range {
 		position: absolute;

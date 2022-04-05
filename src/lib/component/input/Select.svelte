@@ -35,11 +35,10 @@
 		height: 33px;
 		border-radius: 5px;
 		padding: 0 0 0 10px;
-		transition: all 0.2s;
 	}
 	select:focus-visible {
-		color: #777;
-		box-shadow: 0 0 5px black;
+		outline: 2px solid var(--focus-color);
+		outline-offset: 2px;
 	}
 	option {
 		color: black;

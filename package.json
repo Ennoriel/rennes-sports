@@ -39,6 +39,7 @@
 		"svelte-check": "^2.4.6",
 		"svelte-leafletjs": "^0.8.2",
 		"svelte-preprocess": "^4.10.4",
+		"svelte-select": "^4.4.7",
 		"svelte-table": "^0.3.4",
 		"ts-jest": "^27.1.3",
 		"ts-node": "^10.7.0",

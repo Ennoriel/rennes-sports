@@ -117,13 +117,13 @@
 	input {
 		flex-grow: 2;
 		padding: 0 16px;
-		transition: all 0.2s;
 		width: 50px;
 		box-shadow: 0 0 4px #ddd;
 	}
 
-	input:focus-visible {
-		box-shadow: 0 0 5px #eee;
+	#menu-bar :focus-visible {
+		outline: 2px solid white;
+		outline-offset: 2px;
 	}
 
 	button {
@@ -163,11 +163,17 @@
 		font-size: 16px;
 		line-height: 32px;
 
-		transition: all 0.4s;
+		transition: padding-left 0.4s;
 	}
 
-	ul a:hover {
-		margin-left: 8px;
+	ul a:hover, ul a:focus-visible {
+		padding-left: 8px;
+	}
+
+	ul a:focus-visible {
+		outline: 2px solid var(--focus-color);
+		outline-offset: 2px;
+		border-radius: 4px;
 	}
 
 	ul img {
