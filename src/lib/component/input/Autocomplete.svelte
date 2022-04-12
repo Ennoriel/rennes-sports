@@ -26,7 +26,7 @@
         {isCreatable}
         {isDisabled}
         {isMulti}
-        createMessage="Créer "
+        getOptionLabel={(option, filterText) => option.isCreator ? `Créer \"${filterText}\"` : option.label}
     />
 </label>
 
