@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 export function crypt(password: string, saltRounds = 12): string {
 	const salt = bcrypt.genSaltSync(saltRounds);
