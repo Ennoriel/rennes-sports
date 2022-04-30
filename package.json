@@ -2,7 +2,7 @@
 	"name": "rennes-sports",
 	"version": "0.0.1",
 	"scripts": {
-		"dev": "svelte-kit dev --open --host",
+		"dev": "svelte-kit dev --port 3001 --open --host",
 		"build": "rm -rf build && svelte-kit build",
 		"deploy": "npm run build && node gh-pages -d build -t true && rm -rf build",
 		"preview": "svelte-kit preview",

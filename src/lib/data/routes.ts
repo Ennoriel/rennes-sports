@@ -4,9 +4,25 @@ export type Route = {
 	route: string;
 	label: string;
 	guard?: (session: App.Session) => boolean;
+	display?: (config?: { mobile: boolean }) => boolean;
 };
 
-export const routes: Array<Route> = [
+export type Spacer = {
+	spacer: true;
+	display?: (config?: { mobile: boolean }) => boolean;
+}
+
+export const routes: Array<Route | Spacer> = [
+	{
+		route: 'utilisateur/espace-client',
+		label: 'Espace asso',
+		guard: (session) => !!session,
+		display: (config) => config.mobile
+	},
+	{
+		spacer: true,
+		display: (config) => config.mobile
+	},
 	{
 		route: 'recherche/liste',
 		label: 'Liste'
@@ -18,7 +34,7 @@ export const routes: Array<Route> = [
 	{
 		route: 'actions/nouveau',
 		label: 'Nouveau',
-		guard: () => true
+		guard: (session) => !!session
 	},
 	{
 		route: 'a-propos',
@@ -32,22 +48,33 @@ export const routes: Array<Route> = [
 	{
 		route: 'utilisateur/connexion',
 		label: 'Connexion',
-		guard: (session) => !session
+		guard: (session) => !session,
+		display: (config) => config.mobile
 	},
 	{
 		route: 'utilisateur/creation-compte',
 		label: 'Créer un compte',
-		guard: (session) => !session
+		guard: (session) => !session,
+		display: (config) => config.mobile
+	},
+	{
+		spacer: true,
+		display: (config) => config.mobile
 	},
 	{
 		route: 'utilisateur/deconnexion',
 		label: 'Se déconnecter',
-		guard: (session) => !!session
+		guard: (session) => !!session,
+		display: (config) => config.mobile
 	}
 ];
 
-export const guard = (routes: Array<Route>, session: App.Session): Array<Route> => {
-	return routes.filter((route) => !route.guard || route.guard(session));
+export const guard = (routes: Array<Route | Spacer>, session: App.Session): Array<Route | Spacer> => {
+	return routes.filter((route) => !("guard" in route) || !route.guard || route.guard(session));
+};
+
+export const display = (routes: Array<Route | Spacer>, config: { mobile: boolean }): Array<Route | Spacer> => {
+	return routes.filter((route) => !route.display || route.display(config));
 };
 
 export const loadAdminGuard: Load = async ({ session }) => {

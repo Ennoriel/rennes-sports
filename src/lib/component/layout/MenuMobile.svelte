@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
 	import { state } from '$lib/store/state';
-	import { guard, routes } from '$lib/data/routes';
+	import { display, guard, routes } from '$lib/data/routes';
 	import { page, session } from '$app/stores';
 	import XOrMenu from '$lib/component/svg/XOrMenu.svelte';
 	import Fav from '$lib/component/atom/Fav.svelte';
@@ -24,6 +24,8 @@
 	function click({ target }) {
 		if (isOpen && !burgerMenu.contains(target)) isOpen = false;
 	}
+
+	$: displayedRoutes = display(guard(routes, $session), { mobile: true })
 </script>
 
 <svelte:window on:click={click} />
@@ -60,15 +62,20 @@
 					<img src="/favicon.png" alt="Icone de l'application" />
 				</a>
 			</li>
-			{#each guard(routes, $session) as route}
-				<li>
-					<a on:click={() => (isOpen = false)} href="/{route.route}">
-						{#if $page.url.pathname.indexOf(route.route) > 0}
-							>
-						{/if}
-						{route.label}
-					</a>
-				</li>
+			{#each displayedRoutes as route}
+				{@const active = $page.url.pathname.indexOf(route.route) > 0}
+				{#if route.spacer}
+					<hr />
+				{:else}
+					<li>
+						<a on:click={() => (isOpen = false)} href="/{route.route}" class:active>
+							{#if active}
+								>
+							{/if}
+							{route.label}
+						</a>
+					</li>
+				{/if}
 			{/each}
 		</ul>
 	{/if}
@@ -156,6 +163,12 @@
 		list-style: none;
 	}
 
+	hr {
+		margin: 16px 96px 16px 0;
+		border: none;
+		border-bottom: 0.1px solid var(--main-color);
+	}
+
 	ul a {
 		display: block;
 		text-decoration: none;
@@ -166,7 +179,7 @@
 		transition: padding-left 0.4s;
 	}
 
-	ul a:hover, ul a:focus-visible {
+	ul a:not(.active):hover, ul a:focus-visible {
 		padding-left: 8px;
 	}
 

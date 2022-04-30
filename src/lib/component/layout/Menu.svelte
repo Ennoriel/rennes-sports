@@ -1,9 +1,13 @@
 <script>
-	import { guard, routes } from '$lib/data/routes';
+	import { display, guard, routes } from '$lib/data/routes';
 	import { page } from '$app/stores';
 	import Fav from '$lib/component/atom/Fav.svelte';
 
 	import { session } from '$app/stores';
+
+	$: displayedRoutes = display(guard(routes, $session), { mobile: false })
+	$: isCreateAccountActive = $page.url.pathname.indexOf('utilisateur/creation-compte') > 0
+	$: isLoginActive = $page.url.pathname.indexOf('utilisateur/connexion') > 0
 </script>
 
 <nav>
@@ -11,25 +15,61 @@
 		<li style:display="flex">
 			<Fav />
 		</li>
-		{#each guard(routes, $session) as route}
+		{#each displayedRoutes as route, index (route.route)}
 			{@const active = $page.url.pathname.indexOf(route.route) > 0}
-			{#if guard(routes, $session)}
-				<li>
-					<a href="/{route.route}" class:active aria-current={(active && 'page') || undefined}>
-						<span>
-							{route.label}
-						</span>
-					</a>
-				</li>
-			{/if}
+			{@const last = displayedRoutes.length - 1 === index}
+			<li style:flex-grow={last && "1"}>
+				<a href="/{route.route}" class:active aria-current={(active && 'page') || undefined}>
+					<span>
+						{route.label}
+					</span>
+				</a>
+			</li>
 		{/each}
+		{#if !$session}
+			<li>
+				<a
+						href="/utilisateur/creation-compte"
+						class:active={isCreateAccountActive}
+						aria-current={(isCreateAccountActive && 'page') || undefined}
+				>
+					<span>
+						S'inscrire
+					</span>
+				</a>
+			</li>
+			<li style:margin-right="12px">
+				<a
+						href="/utilisateur/connexion"
+						class:active={isLoginActive}
+						aria-current={(isLoginActive && 'page') || undefined}
+				>
+					<span>
+						Connexion
+					</span>
+				</a>
+			</li>
+		{:else}
+			<li>
+				<a href="/utilisateur/deconnexion">
+					<span>
+						Se déconnecter
+					</span>
+				</a>
+			</li>
+			<li>
+				<button on:click={() => alert('Cet espace n\'est pas encore disponible')}>
+					<span>
+						Espace asso
+					</span>
+				</button>
+			</li>
+		{/if}
 	</ul>
 </nav>
 
 <style>
 	nav {
-		font-size: 16px;
-
 		width: 100%;
 		padding: 0 10px;
 		box-sizing: border-box;
@@ -48,18 +88,18 @@
 		align-items: stretch;
 	}
 
-	a {
-		height: var(--header-height);
-		line-height: var(--header-height);
-		display: block;
-		user-select: none;
-	}
-
 	li:not(:first-child) a {
 		padding: 0 16px;
 	}
 
-	a {
+	a, button {
+		font-size: 16px;
+		height: var(--header-height);
+		line-height: var(--header-height);
+		font-weight: 300;
+		display: inline-block;
+		user-select: none;
+
 		text-decoration: none;
 		color: inherit;
 
@@ -67,6 +107,21 @@
 		top: 0;
 		transition: top ease 0.4s;
 		border-radius: 8px;
+	}
+
+	button {
+		background: none;
+		border: none;
+		padding: 0 8px;
+	}
+
+	button span {
+		border: 1px solid white;
+		height: 32px;
+		line-height: 32px;
+		display: block;
+		padding: 0 12px;
+		border-radius: 16px;
 	}
 
 	.active {
@@ -82,7 +137,7 @@
 		top: -4px;
 	}
 
-	a:focus-visible {
+	:focus-visible {
 		outline: 2px solid white;
 		outline-offset: -4px;
 	}

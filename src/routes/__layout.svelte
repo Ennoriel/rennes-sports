@@ -38,6 +38,11 @@
 		background-color: var(--bg-color);
 		margin: 0;
 	}
+	:global(button) {
+		font-family: 'Roboto', sans-serif;
+		font-size: 14px;
+		cursor: pointer;
+	}
 	:global(*) {
 		--dark: #ccc;
 		--light: #00000000;
