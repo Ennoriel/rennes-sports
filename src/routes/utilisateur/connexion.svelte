@@ -31,8 +31,21 @@
 		}
 	}}
 >
+	<h1>
+		Connexion
+	</h1>
+	<p>
+		Connectez-vous à votre compte.
+	</p>
+	<p>
+		Vous n'en avez pas encore ?
+		<br/>
+		<a class="log-on" href="/utilisateur/inscription">
+			Inscrivez-vous !
+		</a>
+	</p>
 	<label>
-		Adresse email
+		E-mail
 		<input name="email" type="email" />
 	</label>
 	<label>
@@ -40,10 +53,81 @@
 		<input name="password" type="password" />
 	</label>
 	{error || ''}
-	<button type="submit">Login</button>
-	<p>Vous n'avez pas encore de compte ? <a href="/accounts/register">Créez-en un !</a></p>
-	<p>
-		Pour l'instant, vous pouvez vous connecter avec n'importe quelle addresse email (donnée non
-		enregistrée) et un mot de passe non vide.
-	</p>
+	<div>
+		<button type="submit">Se connecter</button>
+	</div>
+	<div>
+		<a class="forgot-pwd" href="/utilisateur/mot-de-passe-oublie">
+			Mot de passe oublié ?
+		</a>
+	</div>
 </form>
+
+<style>
+	form, label {
+		display: flex;
+		flex-direction: column;
+	}
+
+	form {
+		margin: 0 auto;
+		padding: 48px 24px 0;
+		max-width: 320px;
+	}
+
+	h1, p, label, a {
+		text-align: center;
+	}
+
+	h1 {
+		color: var(--main-color);
+		margin-bottom: 32px;
+	}
+
+	a.log-on {
+		color: var(--main-color);
+	}
+
+	p {
+		margin-bottom: 8px;
+		line-height: 1.2;
+	}
+
+	label {
+		margin-bottom: 16px;
+		font-weight: 100;
+	}
+
+	input {
+		height: 42px;
+		border-radius: 21px;
+		border: none;
+		box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+		padding: 0 16px;
+		color: var(--main-color);
+		text-align: center;
+	}
+
+	div {
+		text-align: center;
+	}
+
+	button {
+		height: 42px;
+		border-radius: 21px;
+		border: none;
+		background-color: var(--main-color);
+		color: white;
+		padding: 0 24px;
+		margin: 8px;
+	}
+
+	a.forgot-pwd {
+		font-weight: 100;
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--focus-color);
+		outline-offset: 2px;
+	}
+</style>
