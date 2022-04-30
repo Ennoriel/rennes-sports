@@ -12,12 +12,16 @@ export const post: RequestHandler = async ({ request }) => {
 	const email = body.get('email') as string;
 	const password = body.get('password') as string;
 
+	console.error(email, password);
+
 	if (!email || !password) {
 		return errorResponse(acceptsJson, "L'identifiant ou le mot des passe est incorrect", 403);
 	}
 
 	const users =
 		(await (await mongoClient).db()?.collection('users')?.find({ email })?.toArray()) || [];
+
+	console.error(users, users[0].hash);
 
 	if (users.length !== 1 || !validate(password, users[0].hash)) {
 		return errorResponse(acceptsJson, "L'identifiant ou le mot des passe est incorrect", 403);
