@@ -98,7 +98,7 @@
 		font-weight: 100;
 	}
 
-	input {
+	input[type="text"], input[type="email"], input[type="password"] {
 		height: 42px;
 		border-radius: 21px;
 		border: none;
@@ -112,7 +112,7 @@
 		text-align: center;
 	}
 
-	button {
+	button[type="submit"] {
 		height: 42px;
 		border-radius: 21px;
 		border: none;
