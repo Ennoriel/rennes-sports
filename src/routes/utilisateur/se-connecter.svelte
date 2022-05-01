@@ -15,12 +15,15 @@
 	import { session } from '$app/stores';
 
 	export let error;
+
+	let pending = false;
 </script>
 
 <form
-	action="/utilisateur/connexion"
+	action="/utilisateur/se-connecter"
 	method="post"
 	use:enhance={{
+		pending: () => { pending = true; console.log('!!') },
 		result: async ({ response }) => {
 			$session = await response.json();
 			goto('/recherche/liste');
@@ -28,6 +31,7 @@
 		error: async (p) => {
 			const body = await p.response.json();
 			error = body?.error;
+			pending = false;
 		}
 	}}
 >
@@ -40,7 +44,7 @@
 	<p>
 		Vous n'en avez pas encore ?
 		<br/>
-		<a class="log-on" href="/utilisateur/inscription">
+		<a class="log-on" href="/utilisateur/creer-son-compte">
 			Inscrivez-vous !
 		</a>
 	</p>
@@ -54,7 +58,7 @@
 	</label>
 	{error || ''}
 	<div>
-		<button type="submit">Se connecter</button>
+		<button type="submit" disabled={pending}>Se connecter</button>
 	</div>
 	<div>
 		<a class="forgot-pwd" href="/utilisateur/mot-de-passe-oublie">
@@ -72,7 +76,7 @@
 	form {
 		margin: 0 auto;
 		padding: 48px 24px 0;
-		max-width: 320px;
+		max-width: 350px;
 	}
 
 	h1, p, label, a {
@@ -106,6 +110,7 @@
 		padding: 0 16px;
 		color: var(--main-color);
 		text-align: center;
+		margin-top: 6px;
 	}
 
 	div {
@@ -120,6 +125,12 @@
 		color: white;
 		padding: 0 24px;
 		margin: 8px;
+	}
+
+	button[disabled] {
+		background: #eee;
+		color: black;
+		cursor: default;
 	}
 
 	a.forgot-pwd {

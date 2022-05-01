@@ -46,23 +46,23 @@ export const routes: Array<Route | Spacer> = [
 		guard: (session) => session?.user?.role === 'admin'
 	},
 	{
-		route: 'utilisateur/connexion',
-		label: 'Connexion',
+		spacer: true,
+		display: (config) => config.mobile
+	},
+	{
+		route: 'utilisateur/se-connecter',
+		label: 'Se connecter',
 		guard: (session) => !session,
 		display: (config) => config.mobile
 	},
 	{
-		route: 'utilisateur/creation-compte',
+		route: 'utilisateur/creer-son-compte',
 		label: 'Créer un compte',
 		guard: (session) => !session,
 		display: (config) => config.mobile
 	},
 	{
-		spacer: true,
-		display: (config) => config.mobile
-	},
-	{
-		route: 'utilisateur/deconnexion',
+		route: 'utilisateur/se-deconnecter',
 		label: 'Se déconnecter',
 		guard: (session) => !!session,
 		display: (config) => config.mobile

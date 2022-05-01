@@ -6,7 +6,7 @@
 	import { session } from '$app/stores';
 
 	$: displayedRoutes = display(guard(routes, $session), { mobile: false })
-	$: isCreateAccountActive = $page.url.pathname.indexOf('utilisateur/creation-compte') > 0
+	$: isCreateAccountActive = $page.url.pathname.indexOf('utilisateur/creer-son-compte') > 0
 	$: isLoginActive = $page.url.pathname.indexOf('utilisateur/connexion') > 0
 </script>
 
@@ -29,7 +29,7 @@
 		{#if !$session}
 			<li>
 				<a
-						href="/utilisateur/creation-compte"
+						href="/utilisateur/creer-son-compte"
 						class:active={isCreateAccountActive}
 						aria-current={(isCreateAccountActive && 'page') || undefined}
 				>
@@ -40,29 +40,29 @@
 			</li>
 			<li style:margin-right="12px">
 				<a
-						href="/utilisateur/connexion"
-						class:active={isLoginActive}
-						aria-current={(isLoginActive && 'page') || undefined}
+					class="button"
+					href="/utilisateur/se-connecter"
+					aria-current={(isLoginActive && 'page') || undefined}
 				>
 					<span>
-						Connexion
+						Se connecter
 					</span>
 				</a>
 			</li>
 		{:else}
 			<li>
-				<a href="/utilisateur/deconnexion">
+				<a href="/utilisateur/se-deconnecter">
 					<span>
 						Se déconnecter
 					</span>
 				</a>
 			</li>
 			<li>
-				<button on:click={() => alert('Cet espace n\'est pas encore disponible')}>
+				<a class="button" href="/utilisateur/espace-client">
 					<span>
 						Espace asso
 					</span>
-				</button>
+				</a>
 			</li>
 		{/if}
 	</ul>
@@ -92,7 +92,7 @@
 		padding: 0 16px;
 	}
 
-	a, button {
+	a {
 		font-size: 16px;
 		height: var(--header-height);
 		line-height: var(--header-height);
@@ -109,16 +109,17 @@
 		border-radius: 8px;
 	}
 
-	button {
+	.button {
 		background: none;
 		border: none;
 		padding: 0 8px;
 	}
 
-	button span {
+	.button span {
 		border: 1px solid white;
 		height: 32px;
 		line-height: 32px;
+		margin: calc(var(--header-height) / 2 - 16px) 0;
 		display: block;
 		padding: 0 12px;
 		border-radius: 16px;

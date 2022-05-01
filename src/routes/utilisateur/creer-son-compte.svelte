@@ -22,12 +22,12 @@
 </script>
 
 <form
-	action="/utilisateur/creation-compte"
+	action="/utilisateur/creer-son-compte"
 	method="post"
 	use:enhance={{
 		result: async ({ response }) => {
 			$session = await response.json();
-			goto('/utilisateur/connexion');
+			goto('/utilisateur/se-connecter');
 		},
 		error: async (p) => {
 			const body = await p.response.json();
@@ -36,7 +36,7 @@
 	}}
 >
 	<h1>
-		Incsription
+		Inscription
 	</h1>
 	<p>
 		Créez un compte pour votre <strong>association</strong> afin de pouvoir répertorier tous vos créneaux.
@@ -44,7 +44,7 @@
 	<p>
 		Vous avez déjà un compte ?
 		<br/>
-		<a class="log-on" href="/utilisateur/connexion">
+		<a class="log-on" href="/utilisateur/se-connecter">
 			Connectez-vous !
 		</a>
 	</p>
@@ -80,7 +80,6 @@
 	</label>
 	{error || ''}
 	<button type="submit">S'inscrire</button>
-	<p>Vous inscrire permet de créer des créneaux sportifs pour votre association.</p>
 </form>
 
 <style>
@@ -92,7 +91,7 @@
 	form {
 		margin: 0 auto;
 		padding: 48px 24px 0;
-		max-width: 320px;
+		max-width: 350px;
 	}
 
 	h1, p, label, a {
@@ -141,6 +140,7 @@
 		padding: 0 16px;
 		color: var(--main-color);
 		text-align: center;
+		margin-top: 6px;
 	}
 
 	div {
@@ -155,6 +155,7 @@
 		color: white;
 		padding: 0 24px;
 		margin: 8px;
+		margin-bottom: 48px;
 	}
 
 	a.forgot-pwd {

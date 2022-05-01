@@ -3,7 +3,7 @@
 
 	export const load: Load = async ({ session }) => {
 		if (!session || !Object.keys(session).length)
-			return { status: 302, redirect: '/utilisateur/connexion' };
+			return { status: 302, redirect: '/utilisateur/se-connecter' };
 		return {};
 	};
 </script>
