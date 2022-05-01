@@ -1,5 +1,5 @@
 <script lang="ts">
-	export let variant: 'primary' | 'secondary' = 'primary';
+	export let variant: 'primary' | 'secondary' | 'transparent' = 'primary';
 	export let shape: 'square' | 'circle' = 'square';
 	export let type = 'button';
 </script>
@@ -36,7 +36,11 @@
 		color: #4f4f4f;
 	}
 
-	.secondary:hover {
+	.transparent {
+		background-color: transparent;
+	}
+
+	.secondary:hover, .transparent:hover {
 		background-color: var(--main-color);
 		color: white;
 	}
@@ -47,7 +51,6 @@
 
 	.circle {
 		border-radius: 16.5px;
-		background-color: transparent;
 		padding: 4px;
 	}
 

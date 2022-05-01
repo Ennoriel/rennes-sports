@@ -46,6 +46,11 @@ export const routes: Array<Route | Spacer> = [
 		guard: (session) => session?.user?.role === 'admin'
 	},
 	{
+		route: 'book',
+		label: 'Book',
+		guard: (session) => session?.user?.role === 'admin'
+	},
+	{
 		spacer: true,
 		display: (config) => config.mobile
 	},

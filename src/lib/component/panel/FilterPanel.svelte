@@ -28,7 +28,7 @@
 				variant="secondary"
 				on:click={() => ($state.filter = { day: [], minutes: [360, 1410] })}>Réinitialiser</Button
 			>
-			<Button variant="secondary" shape="circle" on:click={() => ($state.isOpen = false)}>
+			<Button variant="transparent" shape="circle" on:click={() => ($state.isOpen = false)}>
 				<X />
 			</Button>
 		</ButtonGroup>
