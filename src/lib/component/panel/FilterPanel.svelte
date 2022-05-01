@@ -52,7 +52,11 @@
 			bind:value={$state.filter.birthYear}
 		/>
 
-		<Checkbox label="Sexe" options={['Mixte', 'Féminin', 'Masculin']} bind:value={$state.filter.sex} />
+		<Checkbox
+			label="Sexe"
+			options={['Mixte', 'Féminin', 'Masculin']}
+			bind:value={$state.filter.sex}
+		/>
 
 		<Checkbox
 			label="Jour"

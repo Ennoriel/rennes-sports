@@ -7,7 +7,7 @@ const config = {
 
 	kit: {
 		adapter: vercel()
-	},
+	}
 };
 
 export default config;

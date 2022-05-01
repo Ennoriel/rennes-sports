@@ -42,11 +42,11 @@ erDiagram
         string name
         string website
     }
-    
+
     USER {
         string email
         string password
-		
+
 		string associationName
 		string website
     }

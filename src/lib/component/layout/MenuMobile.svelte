@@ -25,7 +25,7 @@
 		if (isOpen && !burgerMenu.contains(target)) isOpen = false;
 	}
 
-	$: displayedRoutes = display(guard(routes, $session), { mobile: true })
+	$: displayedRoutes = display(guard(routes, $session), { mobile: true });
 </script>
 
 <svelte:window on:click={click} />
@@ -179,7 +179,8 @@
 		transition: padding-left 0.4s;
 	}
 
-	ul a:not(.active):hover, ul a:focus-visible {
+	ul a:not(.active):hover,
+	ul a:focus-visible {
 		padding-left: 8px;
 	}
 

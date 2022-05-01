@@ -29,7 +29,7 @@
 	}
 
 	button:focus-visible {
-        outline: 2px solid var(--focus-color);
-        outline-offset: 2px;
-    }
+		outline: 2px solid var(--focus-color);
+		outline-offset: 2px;
+	}
 </style>

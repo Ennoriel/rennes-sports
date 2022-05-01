@@ -35,18 +35,14 @@
 		}
 	}}
 >
-	<h1>
-		Inscription
-	</h1>
+	<h1>Inscription</h1>
 	<p>
 		Créez un compte pour votre <strong>association</strong> afin de pouvoir répertorier tous vos créneaux.
 	</p>
 	<p>
 		Vous avez déjà un compte ?
-		<br/>
-		<a class="log-on" href="/utilisateur/se-connecter">
-			Connectez-vous !
-		</a>
+		<br />
+		<a class="log-on" href="/utilisateur/se-connecter"> Connectez-vous ! </a>
 	</p>
 	<label>
 		E-mail
@@ -83,7 +79,8 @@
 </form>
 
 <style>
-	form, label {
+	form,
+	label {
 		display: flex;
 		flex-direction: column;
 	}
@@ -94,7 +91,10 @@
 		max-width: 350px;
 	}
 
-	h1, p, label, a {
+	h1,
+	p,
+	label,
+	a {
 		text-align: center;
 	}
 
@@ -126,13 +126,16 @@
 		right: 15px;
 	}
 
-	label button, label button img {
+	label button,
+	label button img {
 		width: 20px;
 		height: 20px;
 		border-radius: 10px;
 	}
 
-	input[type="text"], input[type="email"], input[type="password"] {
+	input[type='text'],
+	input[type='email'],
+	input[type='password'] {
 		height: 42px;
 		border-radius: 21px;
 		border: none;
@@ -147,7 +150,7 @@
 		text-align: center;
 	}
 
-	button[type="submit"] {
+	button[type='submit'] {
 		height: 42px;
 		border-radius: 21px;
 		border: none;

@@ -10,7 +10,7 @@ export type Route = {
 export type Spacer = {
 	spacer: true;
 	display?: (config?: { mobile: boolean }) => boolean;
-}
+};
 
 export const routes: Array<Route | Spacer> = [
 	{
@@ -74,11 +74,17 @@ export const routes: Array<Route | Spacer> = [
 	}
 ];
 
-export const guard = (routes: Array<Route | Spacer>, session: App.Session): Array<Route | Spacer> => {
-	return routes.filter((route) => !("guard" in route) || !route.guard || route.guard(session));
+export const guard = (
+	routes: Array<Route | Spacer>,
+	session: App.Session
+): Array<Route | Spacer> => {
+	return routes.filter((route) => !('guard' in route) || !route.guard || route.guard(session));
 };
 
-export const display = (routes: Array<Route | Spacer>, config: { mobile: boolean }): Array<Route | Spacer> => {
+export const display = (
+	routes: Array<Route | Spacer>,
+	config: { mobile: boolean }
+): Array<Route | Spacer> => {
 	return routes.filter((route) => !route.display || route.display(config));
 };
 

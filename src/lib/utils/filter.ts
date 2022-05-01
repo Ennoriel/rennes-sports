@@ -12,12 +12,7 @@ export function filterSports(filter: Filter, sports: Array<Sport>): Array<Sport>
 				sport.birthYear.includes(filter.birthYear) ||
 				(sport.adult && filter.birthYear <= 2003)
 		)
-		.filter(
-			(sport) =>
-				!filter.sex ||
-				!filter.sex.length ||
-				filter.sex.includes(sport.sex)
-		)
+		.filter((sport) => !filter.sex || !filter.sex.length || filter.sex.includes(sport.sex))
 		.filter(
 			(sport) =>
 				!filter.day ||

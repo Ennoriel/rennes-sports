@@ -23,7 +23,10 @@
 	action="/utilisateur/se-connecter"
 	method="post"
 	use:enhance={{
-		pending: () => { pending = true; console.log('!!') },
+		pending: () => {
+			pending = true;
+			console.log('!!');
+		},
 		result: async ({ response }) => {
 			$session = await response.json();
 			goto('/recherche/liste');
@@ -35,18 +38,12 @@
 		}
 	}}
 >
-	<h1>
-		Connexion
-	</h1>
-	<p>
-		Connectez-vous à votre compte.
-	</p>
+	<h1>Connexion</h1>
+	<p>Connectez-vous à votre compte.</p>
 	<p>
 		Vous n'en avez pas encore ?
-		<br/>
-		<a class="log-on" href="/utilisateur/creer-son-compte">
-			Inscrivez-vous !
-		</a>
+		<br />
+		<a class="log-on" href="/utilisateur/creer-son-compte"> Inscrivez-vous ! </a>
 	</p>
 	<label>
 		E-mail
@@ -61,14 +58,13 @@
 		<button type="submit" disabled={pending}>Se connecter</button>
 	</div>
 	<div>
-		<a class="forgot-pwd" href="/utilisateur/mot-de-passe-oublie">
-			Mot de passe oublié ?
-		</a>
+		<a class="forgot-pwd" href="/utilisateur/mot-de-passe-oublie"> Mot de passe oublié ? </a>
 	</div>
 </form>
 
 <style>
-	form, label {
+	form,
+	label {
 		display: flex;
 		flex-direction: column;
 	}
@@ -79,7 +75,10 @@
 		max-width: 350px;
 	}
 
-	h1, p, label, a {
+	h1,
+	p,
+	label,
+	a {
 		text-align: center;
 	}
 
@@ -102,7 +101,9 @@
 		font-weight: 100;
 	}
 
-	input[type="text"], input[type="email"], input[type="password"] {
+	input[type='text'],
+	input[type='email'],
+	input[type='password'] {
 		height: 42px;
 		border-radius: 21px;
 		border: none;
@@ -117,7 +118,7 @@
 		text-align: center;
 	}
 
-	button[type="submit"] {
+	button[type='submit'] {
 		height: 42px;
 		border-radius: 21px;
 		border: none;

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
 
-	import Autocomplete from "$lib/component/input/Autocomplete.svelte";
+	import Autocomplete from '$lib/component/input/Autocomplete.svelte';
 	import Button from '$lib/component/atom/Button.svelte';
 	import ButtonGroup from '$lib/component/layout/ButtonGroup.svelte';
 	import Select from '$lib/component/input/Select.svelte';
@@ -144,7 +144,11 @@
 		/>
 
 		<!-- Level -->
-		<Radio label="Pratique" options={['Compétition', 'Handisport', 'Loisir']} bind:value={sport.level} />
+		<Radio
+			label="Pratique"
+			options={['Compétition', 'Handisport', 'Loisir']}
+			bind:value={sport.level}
+		/>
 	</div>
 
 	<!-- Slots -->

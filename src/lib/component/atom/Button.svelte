@@ -40,7 +40,8 @@
 		background-color: transparent;
 	}
 
-	.secondary:hover, .transparent:hover {
+	.secondary:hover,
+	.transparent:hover {
 		background-color: var(--main-color);
 		color: white;
 	}

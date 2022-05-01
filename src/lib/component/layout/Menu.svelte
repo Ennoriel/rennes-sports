@@ -5,9 +5,9 @@
 
 	import { session } from '$app/stores';
 
-	$: displayedRoutes = display(guard(routes, $session), { mobile: false })
-	$: isCreateAccountActive = $page.url.pathname.indexOf('utilisateur/creer-son-compte') > 0
-	$: isLoginActive = $page.url.pathname.indexOf('utilisateur/connexion') > 0
+	$: displayedRoutes = display(guard(routes, $session), { mobile: false });
+	$: isCreateAccountActive = $page.url.pathname.indexOf('utilisateur/creer-son-compte') > 0;
+	$: isLoginActive = $page.url.pathname.indexOf('utilisateur/connexion') > 0;
 </script>
 
 <nav>
@@ -18,7 +18,7 @@
 		{#each displayedRoutes as route, index (route.route)}
 			{@const active = $page.url.pathname.indexOf(route.route) > 0}
 			{@const last = displayedRoutes.length - 1 === index}
-			<li style:flex-grow={last && "1"}>
+			<li style:flex-grow={last && '1'}>
 				<a href="/{route.route}" class:active aria-current={(active && 'page') || undefined}>
 					<span>
 						{route.label}
@@ -29,13 +29,11 @@
 		{#if !$session}
 			<li>
 				<a
-						href="/utilisateur/creer-son-compte"
-						class:active={isCreateAccountActive}
-						aria-current={(isCreateAccountActive && 'page') || undefined}
+					href="/utilisateur/creer-son-compte"
+					class:active={isCreateAccountActive}
+					aria-current={(isCreateAccountActive && 'page') || undefined}
 				>
-					<span>
-						S'inscrire
-					</span>
+					<span> S'inscrire </span>
 				</a>
 			</li>
 			<li style:margin-right="12px">
@@ -44,24 +42,18 @@
 					href="/utilisateur/se-connecter"
 					aria-current={(isLoginActive && 'page') || undefined}
 				>
-					<span>
-						Se connecter
-					</span>
+					<span> Se connecter </span>
 				</a>
 			</li>
 		{:else}
 			<li>
 				<a href="/utilisateur/se-deconnecter">
-					<span>
-						Se déconnecter
-					</span>
+					<span> Se déconnecter </span>
 				</a>
 			</li>
 			<li>
 				<a class="button" href="/utilisateur/espace-client">
-					<span>
-						Espace asso
-					</span>
+					<span> Espace asso </span>
 				</a>
 			</li>
 		{/if}
