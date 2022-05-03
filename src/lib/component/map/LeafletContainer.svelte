@@ -58,21 +58,23 @@
 			</Popup>
 		</Marker>
 	{/each}
-	<Polyline
-		latLngs={metros.map((metro) => metro.coordinates)}
-		color="#ff0000"
-		fillColor="#ff0000"
-	/>
 	{#each metros as metro}
-		<Circle
-			latLng={metro.coordinates}
-			radius={40}
-			color="#ff0000"
-			fillColor="#ff0000"
-			fillOpacity="1"
-		>
-			<Tooltip>{metro.name}</Tooltip>
-		</Circle>
+		<Polyline
+				latLngs={metro.stations.map((metro) => metro.coordinates)}
+				color={metro.color}
+				fillColor={metro.color}
+		/>
+		{#each metro.stations as station}
+			<Circle
+					latLng={station.coordinates}
+					radius={40}
+					color={metro.color}
+					fillColor={metro.color}
+					fillOpacity="1"
+			>
+				<Tooltip>{station.name}</Tooltip>
+			</Circle>
+		{/each}
 	{/each}
 	<ScaleControl position="bottomright" options={{ imperial: false }} />
 </LeafletMap>

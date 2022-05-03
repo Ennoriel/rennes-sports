@@ -18,6 +18,10 @@ export type Marker = {
 
 export type Metro = {
 	name: string;
-	address: string;
-	coordinates: [number, number];
+	color: string;
+	stations: Array<{
+		name: string;
+		address: string;
+		coordinates: [number, number];
+	}>
 };
