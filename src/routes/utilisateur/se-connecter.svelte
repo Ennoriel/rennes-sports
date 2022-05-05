@@ -13,6 +13,8 @@
 	import { goto } from '$app/navigation';
 	import { enhance } from '$lib/utils/form';
 	import { session } from '$app/stores';
+	import EmailInput from "$lib/component/input/EmailInput.svelte";
+	import PasswordInput from "$lib/component/input/PasswordInput.svelte";
 
 	export let error;
 
@@ -44,14 +46,8 @@
 		<br />
 		<a class="log-on" href="/utilisateur/creer-son-compte"> Inscrivez-vous ! </a>
 	</p>
-	<label>
-		E-mail
-		<input name="email" type="email" />
-	</label>
-	<label>
-		Mot de passe
-		<input name="password" type="password" />
-	</label>
+	<EmailInput name="email" />
+	<PasswordInput name="password" />
 	{error || ''}
 	<div>
 		<button type="submit" disabled={pending}>Se connecter</button>
@@ -62,13 +58,9 @@
 </form>
 
 <style>
-	form,
-	label {
+	form {
 		display: flex;
 		flex-direction: column;
-	}
-
-	form {
 		margin: 0 auto;
 		padding: 48px 24px 0;
 		max-width: 350px;
@@ -76,7 +68,6 @@
 
 	h1,
 	p,
-	label,
 	a {
 		text-align: center;
 	}
@@ -93,24 +84,6 @@
 	p {
 		margin-bottom: 8px;
 		line-height: 1.2;
-	}
-
-	label {
-		margin-bottom: 16px;
-		font-weight: 100;
-	}
-
-	input[type='text'],
-	input[type='email'],
-	input[type='password'] {
-		height: 42px;
-		border-radius: 21px;
-		border: none;
-		box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-		padding: 0 16px;
-		color: var(--main-color);
-		text-align: center;
-		margin-top: 6px;
 	}
 
 	div {
@@ -135,10 +108,5 @@
 
 	a.forgot-pwd {
 		font-weight: 100;
-	}
-
-	:focus-visible {
-		outline: 2px solid var(--focus-color);
-		outline-offset: 2px;
 	}
 </style>

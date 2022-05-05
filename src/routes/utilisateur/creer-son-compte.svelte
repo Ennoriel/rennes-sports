@@ -13,12 +13,10 @@
 	import { goto } from '$app/navigation';
 	import { enhance } from '$lib/utils/form';
 	import { session } from '$app/stores';
-	import Button from '$lib/component/atom/Button.svelte';
+	import EmailInput from "$lib/component/input/EmailInput.svelte";
+	import PasswordInput from "$lib/component/input/PasswordInput.svelte";
 
 	export let error;
-
-	let password;
-	let showPassword = false;
 </script>
 
 <form
@@ -44,24 +42,8 @@
 		<br />
 		<a class="log-on" href="/utilisateur/se-connecter"> Connectez-vous ! </a>
 	</p>
-	<label>
-		E-mail
-		<input name="email" type="email" />
-	</label>
-	<label>
-		Mot de passe
-		{#if showPassword}
-			<input name="password" type="text" bind:value={password} />
-			<button type="button" on:click={() => (showPassword = false)}>
-				<img src="/svg/eye-strike.svg" alt="cacher" />
-			</button>
-		{:else}
-			<input name="password" type="password" bind:value={password} />
-			<button type="button" on:click={() => (showPassword = true)}>
-				<img src="/svg/eye.svg" alt="cacher" />
-			</button>
-		{/if}
-	</label>
+	<EmailInput name="email" />
+	<PasswordInput name="password" />
 	<label>
 		Nom de votre association
 		<input name="association" type="text" />
@@ -115,27 +97,9 @@
 	label {
 		margin-bottom: 16px;
 		font-weight: 100;
-		position: relative;
 	}
 
-	label button {
-		border: none;
-		background-color: transparent;
-		position: absolute;
-		bottom: 10.5px;
-		right: 15px;
-	}
-
-	label button,
-	label button img {
-		width: 20px;
-		height: 20px;
-		border-radius: 10px;
-	}
-
-	input[type='text'],
-	input[type='email'],
-	input[type='password'] {
+	input[type='text'] {
 		height: 42px;
 		border-radius: 21px;
 		border: none;
@@ -161,9 +125,6 @@
 		margin-bottom: 48px;
 	}
 
-	a.forgot-pwd {
-		font-weight: 100;
-	}
 	a.cgu {
 		color: var(--secondary-color)
 	}
