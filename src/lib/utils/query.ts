@@ -20,7 +20,7 @@ export const parseUrlSearchParams: Load = async ({ url }) => {
 	};
 };
 
-export const formDataToObject = (formData: FormData): Record<string, any> => {
+export const formDataToObject = <T>(formData: FormData): T => {
 	const linearizedObject = [...formData.entries()].reduce((acc, [key, value]: [string, string]) => {
 		if (value)
 			acc[key] = isStringANumber(value)
@@ -31,5 +31,5 @@ export const formDataToObject = (formData: FormData): Record<string, any> => {
 		return acc;
 	}, {} as any);
 
-	return fdto.toObj(linearizedObject);
+	return fdto.toObj<T>(linearizedObject);
 };

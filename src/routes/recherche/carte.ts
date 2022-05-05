@@ -1,12 +1,12 @@
 import type { RequestHandler } from '@sveltejs/kit';
 import mongoClient from '$lib/utils/db';
-import { ObjectId } from 'mongodb';
 import { getMarkers } from '$lib/utils/filter';
 import type { Sport } from '$lib/types/sport.type';
-import type { Location } from '$lib/types/location.type';
 import type { WithId } from 'mongodb';
+import type { Location } from '$lib/types/location.type';
 
 type DSport = WithId<Document> & Sport;
+type DLocation = WithId<Document> & Location;
 
 export const get: RequestHandler = async () => {
 	const locations =
@@ -14,7 +14,7 @@ export const get: RequestHandler = async () => {
 
 	if (locations) {
 		const sports = (await (await mongoClient).db()?.collection('sports').find().toArray()) || [];
-		const markers = getMarkers(sports as any, locations as any);
+		const markers = getMarkers(sports as Array<DSport>, locations as Array<DLocation>);
 
 		return {
 			body: { markers }

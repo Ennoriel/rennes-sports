@@ -1,16 +1,27 @@
 <script lang="ts">
-	export let label;
+	import type { SelectableOption, SelectableValue } from '$lib/types/input.type';
+
+	export let label: string;
+	export let name: string;
 	export let value = [];
-	export let options;
+	export let options: Array<SelectableValue> = [];
+
+	let _options: Array<SelectableOption>;
+
+	$: _options = (
+		options.some((o: SelectableValue) => typeof o === 'object' && 'value' in o && 'label' in o)
+			? options
+			: options.map((o) => ({ label: o, value: o }))
+	) as Array<SelectableOption>;
 </script>
 
 <fieldset>
 	<legend>{label}</legend>
 	<div>
-		{#each options as option}
-			<label class:selected={value && value.includes(option)}>
-				{option}
-				<input type="checkbox" bind:group={value} value={option} />
+		{#each _options as option}
+			<label class:selected={value && value.includes(option.value)}>
+				{option.label}
+				<input type="checkbox" {name} bind:group={value} value={option.value} />
 			</label>
 		{/each}
 	</div>

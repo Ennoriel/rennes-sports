@@ -12,11 +12,10 @@
 	import Range from '$lib/component/input/Range.svelte';
 	import LocationAutocomplete from '$lib/component/input/LocationAutocomplete.svelte';
 
-	import type { Sport, RangeType } from '$lib/types/sport.type';
-	import { sports } from '$lib/data/sports';
+	import type { RangeType } from '$lib/types/sport.type';
 	import X from '$lib/component/svg/X.svelte';
 
-	export let error;
+	export let error: string | undefined = undefined;
 
 	let pending = false;
 
@@ -26,7 +25,7 @@
 		sex: undefined,
 		adult: undefined as 'Oui' | 'Non',
 		parentChild: undefined,
-		birthYear: undefined as Array<number>,
+		birthYear: undefined as RangeType,
 		level: undefined,
 		slots: [
 			{
@@ -47,7 +46,7 @@
 		});
 	}
 
-	function slideAndScroll(node, params) {
+	function slideAndScroll(node: Element, params: { duration?: number }) {
 		let intervalId = setInterval(() => {
 			window.scrollTo(0, document.body.scrollHeight);
 		}, 10);
@@ -71,7 +70,7 @@
 	action="/actions/creer-creneau"
 	method="post"
 	use:enhance={{
-		pending: ({ data, form }) => {
+		pending: () => {
 			pending = true;
 		},
 		result: async () => {
@@ -93,7 +92,7 @@
 			name="sport"
 			required
 			placeholder="Choisissez un sport"
-			options={[...new Set(sports.map((sport) => sport.sport))]}
+			options={['Basket-ball', 'Rink Hockey', 'Roller']}
 			isCreatable
 		/>
 
@@ -132,7 +131,7 @@
 	</div>
 
 	<!-- Slots -->
-	{#each sport.slots as slot, index}
+	{#each sport.slots as _, index}
 		<div transition:slideAndScroll|local={{ duration: 800 }} class="block slot">
 			<ButtonGroup>
 				<Title>Créneau {index + 1}</Title>
@@ -174,33 +173,8 @@
 
 	<ButtonGroup>
 		<Button on:click={addSlot}>Ajouter un créneau</Button>
+		<Button type="submit" disabled={pending}>Créer</Button>
 	</ButtonGroup>
-
-	<ButtonGroup>
-		<Button type="submit">Créer</Button>
-		<Button
-			variant="secondary"
-			on:click={() => {
-				sport = {
-					birthYear: [2004, 2020],
-					slots: [
-						{
-							hour: [360, 1410]
-						}
-					]
-				};
-			}}
-		>
-			Réinitialiser le formulaire
-		</Button>
-	</ButtonGroup>
-
-	<!--{#if validated}-->
-	<!--	<div in:slideAndScroll|local={{ duration: 400 }} class="block slot">-->
-	<!--		<Title>Merci !</Title>-->
-	<!--		<p>Entrainement enregistré !</p>-->
-	<!--	</div>-->
-	<!--{/if}-->
 </form>
 
 <style>
@@ -240,10 +214,6 @@
 			box-shadow: 0 0 3px #777;
 			padding: 16px;
 			margin: 16px 0;
-		}
-
-		.select-alternative-group :global(label) {
-			flex-grow: 8;
 		}
 	}
 </style>

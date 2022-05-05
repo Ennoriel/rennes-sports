@@ -1,19 +1,30 @@
 <script lang="ts">
-	export let label;
-	export let ariaLabel = label;
+	import type { SelectableOption, SelectableValue } from '$lib/types/input.type';
+
+	export let label: string;
+	export let name: string;
+	export let ariaLabel: string | undefined = undefined;
 	export let placeholder = label;
-	export let value;
-	export let options: Array<{ label: string; value: string }> | Array<string>;
+	export let value: any = '';
+	export let options: Array<SelectableValue> = [];
+
+	let _options: Array<SelectableOption>;
+
+	$: _options = (
+		options.some((o) => typeof o === 'object' && 'value' in o && 'label' in o)
+			? options
+			: options.map((o) => ({ label: o, value: o }))
+	) as Array<SelectableOption>;
 </script>
 
 <label>
 	{label}
-	<select bind:value on:input aria-label={ariaLabel}>
+	<select bind:value on:input {name} aria-label={ariaLabel}>
 		<option value={undefined}>{placeholder || ''}</option>
-		{#each options as option}
-			<option value={option.value !== undefined ? option.value : option}
-				>{option.label || option}</option
-			>
+		{#each _options as option}
+			<option value={option.value}>
+				{option.label}
+			</option>
 		{/each}
 	</select>
 </label>

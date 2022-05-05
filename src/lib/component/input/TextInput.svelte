@@ -1,9 +1,9 @@
 <script lang="ts">
-	export let label;
-	export let name;
-	export let required;
+	export let label: string;
+	export let name: string;
+	export let required = false;
 	export let placeholder = label;
-	export let value;
+	export let value = '';
 </script>
 
 <label>

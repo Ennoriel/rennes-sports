@@ -1,8 +1,8 @@
-<script>
+<script lang="ts">
 	import fdto from 'form-data-to-object';
 
-	export let name;
-	export let value;
+	export let name: string;
+	export let value: Record<string, any> | string;
 </script>
 
 {#if name && value}

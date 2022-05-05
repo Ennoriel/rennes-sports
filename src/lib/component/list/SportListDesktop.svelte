@@ -10,13 +10,13 @@
 		{
 			key: 'sport',
 			title: 'sport',
-			value: (v) => v.sport,
+			value: (v: Sport) => v.sport,
 			sortable: true
 		},
 		{
 			key: 'level',
 			title: 'pratique',
-			value: (v) => v.level,
+			value: (v: Sport) => v.level,
 			sortable: true
 		},
 		{
@@ -37,7 +37,6 @@
 		{
 			key: 'assoName',
 			title: 'association',
-			value: (v) => v.assoName,
 			sortable: true
 		}
 	];
@@ -52,7 +51,7 @@
 		iconAsc={icons.asc}
 		iconDesc={icons.desc}
 	>
-		<Row slot="row" let:row let:n {row} />
+		<Row slot="row" let:row {row} />
 	</SvelteTable>
 </div>
 

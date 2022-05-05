@@ -3,22 +3,22 @@
 	import Spinner from '../atom/Spinner.svelte';
 	import InputHidden from './InputHidden.svelte';
 
-	type Value = string | { label: string; value: string };
+	type Value = string | object;
 
 	export let id = Math.random().toString(36);
 	export let name: string;
 	export let label: string;
-	export let required: boolean;
+	export let required = false;
 	export let placeholder = label;
-	export let options: Array<{ label: string; value: string }> | Array<string>;
-	export let loadOptions: (query: string) => Promise<Array<{ label: string; value: string }>>;
-	export let labelIdentifier;
-	export let optionIdentifier;
-	export let value: Value;
+	export let options: Array<object> | Array<string> | undefined = undefined;
+	export let loadOptions: (query: string) => Promise<Array<object>> | undefined = undefined;
+	export let labelIdentifier: string | undefined = undefined;
+	export let optionIdentifier: string | undefined = undefined;
+	export let value: Value | undefined = undefined;
 	export let isCreatable = false;
 	export let isDisabled = false;
 	export let isMulti = false;
-	export let isWaiting;
+	export let isWaiting = false;
 	export let noOptionsMessage = 'Aucun résultat';
 
 	let boundValue: { index: number; value: Value } | any | undefined;

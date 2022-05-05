@@ -28,10 +28,6 @@
 		display: flex;
 	}
 
-	img,
-	.user-details {
-	}
-
 	img {
 		border-radius: 50%;
 		width: 150px;

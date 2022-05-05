@@ -12,7 +12,7 @@
 	export let range: RangeType = [0, 0];
 	export let step: number;
 
-	let intervals;
+	let intervals: Array<number>;
 
 	onMount(() => {
 		let i = min;
@@ -24,7 +24,7 @@
 		if (range[0] === 0 && range[1] === 0) range = [min, intervals[intervals.length - 1]];
 	});
 
-	let rangeEl;
+	let rangeEl: HTMLDivElement;
 
 	let minPressed = false;
 	let maxPressed = false;
@@ -32,18 +32,18 @@
 	// Triggers the first position rendering
 	$: if (rangeEl) range = range;
 
-	function closest(array, value) {
+	function closest(array: Array<number>, value: number): number {
 		return array.reduce((prev, curr) =>
 			Math.abs(curr - value) < Math.abs(prev - value) ? curr : prev
 		);
 	}
 
-	function valToPos(val) {
+	function valToPos(val: number): number {
 		if (!rangeEl) return 0;
 		return ((val - min) * rangeEl.getBoundingClientRect().width) / (max - min);
 	}
 
-	function posToVal(pos) {
+	function posToVal(pos: number): number {
 		return min + (pos * (max - min)) / rangeEl.getBoundingClientRect().width;
 	}
 
@@ -66,7 +66,7 @@
 		maxPressed = false;
 	}
 
-	function keyDown(e, isMinIndicator) {
+	function keyDown(e: KeyboardEvent, isMinIndicator: boolean) {
 		if (e.key === 'ArrowLeft') {
 			range = [
 				isMinIndicator ? Math.max(min, range[0] - step) : range[0],

@@ -1,9 +1,9 @@
-<script>
+<script lang="ts">
 	import { goto } from '$app/navigation';
 	import { enhance } from '$lib/utils/form';
-	import AddressAutocomplete from '../../lib/component/input/AddressAutocomplete.svelte';
+	import AddressAutocomplete from '$lib/component/input/AddressAutocomplete.svelte';
 
-	export let error;
+	export let error: string | undefined = undefined;
 
 	let pending = false;
 </script>
@@ -12,9 +12,8 @@
 	action="/actions/creer-lieu"
 	method="post"
 	use:enhance={{
-		pending: ({ data, form }) => {
+		pending: () => {
 			pending = true;
-			console.log('!!', [...data.entries()], form);
 		},
 		result: async () => {
 			goto('/recherche/liste'); //FIXME
@@ -41,7 +40,7 @@
 	<AddressAutocomplete />
 
 	<div>
-		<button type="submit">Enregistrer le lieu</button>
+		<button type="submit" disabled={pending}>Enregistrer le lieu</button>
 	</div>
 </form>
 
@@ -65,13 +64,8 @@
 
 	h1,
 	p,
-	label,
-	a {
+	label {
 		text-align: center;
-	}
-
-	a.log-on {
-		color: var(--main-color);
 	}
 
 	p {
@@ -113,10 +107,6 @@
 		background: #eee;
 		color: black;
 		cursor: default;
-	}
-
-	a.forgot-pwd {
-		font-weight: 100;
 	}
 
 	:focus-visible {

@@ -2,12 +2,13 @@ import type { RequestHandler } from '@sveltejs/kit';
 import { errorResponse, formDataToObject } from '$lib/utils/query';
 import mongoClient from '$lib/utils/db';
 import type { InsertOneReturnType } from '$lib/types/mongo.type';
+import type { Sport } from '$lib/types/sport.type';
 
 export const post: RequestHandler = async ({ request }) => {
 	const body = await request.formData();
 	const acceptsJson = request.headers.get('accept') == 'application/json';
 
-	const sport = formDataToObject(body);
+	const sport = formDataToObject<Sport>(body);
 
 	if (sport.birthYear) {
 		sport.birthYear = [...new Array(sport.birthYear[1] - sport.birthYear[0] + 1)].map(

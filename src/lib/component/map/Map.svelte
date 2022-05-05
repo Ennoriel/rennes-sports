@@ -3,12 +3,13 @@
 	import { browser } from '$app/env';
 	import 'leaflet/dist/leaflet.css';
 	import FilterPanel from '$lib/component/panel/FilterPanel.svelte';
+	import type { Coordinates, Marker } from '$lib/types/location.type';
 
-	export let markers;
-	export let center;
+	export let markers: Array<Marker>;
+	export let center: Coordinates | undefined = undefined;
 
-	let pageRef;
-	let LeafletContainer;
+	let pageRef: HTMLElement;
+	let LeafletContainer: any;
 
 	onMount(async () => {
 		if (browser) {

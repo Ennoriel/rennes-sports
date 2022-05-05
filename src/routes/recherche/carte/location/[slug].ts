@@ -21,7 +21,7 @@ export const get: RequestHandler = async ({ params }) => {
 		const markers = getMarkers(sports, [location as WithId<Document> & Location]);
 
 		return {
-			body: { location, sports, markers }
+			body: { location, markers }
 		};
 	}
 

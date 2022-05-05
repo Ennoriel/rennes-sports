@@ -1,13 +1,12 @@
 <script lang="ts">
-	export let imgSrc;
-	export let target;
-	export let alt;
-	export let href;
+	export let target: string | undefined = undefined;
+	export let href: string;
+	export let img: { src: string; alt?: string } | undefined = undefined;
 </script>
 
 <a {target} {href}>
-	{#if imgSrc}
-		<img {alt} src={imgSrc} />
+	{#if img?.src}
+		<img src={img?.src} alt={img?.alt} aria-hidden={img?.alt ? 'false' : 'true'} />
 	{/if}
 	<slot />
 </a>

@@ -7,11 +7,7 @@
 
 {#each row.slots as slot}
 	<div>
-		<Link
-			alt="localisation"
-			imgSrc="/svg/location.svg"
-			href="/recherche/carte/location/{slot.location._id}"
-		>
+		<Link img={{ src: '/svg/location.svg' }} href="/recherche/carte/location/{slot.location._id}">
 			{slot.location.name}
 		</Link>
 	</div>

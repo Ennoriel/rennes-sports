@@ -1,5 +1,5 @@
-<script>
-	export let hidden;
+<script lang="ts">
+	export let hidden: boolean = false;
 </script>
 
 <button on:click class:hidden> Filtrer </button>

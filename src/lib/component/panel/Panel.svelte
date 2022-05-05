@@ -1,9 +1,9 @@
-<script>
+<script lang="ts">
 	import FloatingButton from './FloatingButton.svelte';
-	import { state } from '../../store/state';
+	import { state } from '$lib/store/state';
 	import { fly } from 'svelte/transition';
 
-	export let pageRef;
+	export let pageRef: HTMLElement;
 
 	function click({ target }) {
 		if ($state.isOpen && pageRef.contains(target)) $state.isOpen = false;

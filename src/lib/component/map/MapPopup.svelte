@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { GroupSport, Location } from '$lib/types/location.type';
 	import { displayHours, displayYear } from '$lib/utils/time';
-	import { locations } from '$lib/data/locations';
 	import { assos } from '$lib/data/assos';
 
 	export let location: Location;
@@ -24,8 +23,8 @@
 				<div class="slots">
 					{slot.day}
 					{displayHours(slot.hour)}
-					{#if slot.locationId !== location.id}
-						({locations.find((l) => l.id === slot.locationId).name})
+					{#if slot.location._id !== location._id}
+						({slot.location.name})
 					{/if}
 				</div>
 			{/each}

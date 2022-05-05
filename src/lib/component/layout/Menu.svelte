@@ -1,11 +1,12 @@
-<script>
+<script lang="ts">
 	import { display, guard, routes } from '$lib/data/routes';
+	import type { Route } from '$lib/data/routes';
 	import { page } from '$app/stores';
 	import Fav from '$lib/component/atom/Fav.svelte';
 
 	import { session } from '$app/stores';
 
-	$: displayedRoutes = display(guard(routes, $session), { mobile: false });
+	$: displayedRoutes = display(guard(routes, $session), { mobile: false }) as Array<Route>;
 	$: isCreateAccountActive = $page.url.pathname.indexOf('utilisateur/creer-son-compte') > 0;
 	$: isLoginActive = $page.url.pathname.indexOf('utilisateur/connexion') > 0;
 </script>

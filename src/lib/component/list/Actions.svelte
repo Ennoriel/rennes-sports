@@ -1,11 +1,11 @@
 <script lang="ts">
-	import Button from '$lib/component/atom/Button.svelte';
-	import type { User } from '$lib/types/user.type';
+	import Button from '../atom/Button.svelte';
+	import type { Role, User } from '$lib/types/user.type';
 
 	export let row: User;
-	export let callback;
+	export let callback: (user: User) => void;
 
-	async function changeRole(role) {
+	async function changeRole(role: Role) {
 		const response = await fetch('/utilisateur/changer-role', {
 			method: 'POST',
 			headers: {

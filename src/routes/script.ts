@@ -1,7 +1,6 @@
 import type { RequestHandler } from '@sveltejs/kit';
 import mongoClient from '$lib/utils/db';
-import type { InsertOneReturnType } from '../lib/types/mongo.type';
-import { locations } from '../lib/data/locations';
+import { locations } from '$lib/data/locations';
 
 export const get: RequestHandler = async () => {
 	await (await mongoClient).db()?.collection('locations').deleteMany({});
@@ -23,7 +22,7 @@ export const get: RequestHandler = async () => {
 	await (await mongoClient).db()?.collection('sports2').insertMany(sports);
 
 	sports.forEach((sport) => {
-		sport.slots.forEach((slot) => {
+		sport.slots.forEach((slot: any) => {
 			slot.location = {
 				...savedLocations.find((l) => l.id === slot.locationId)
 			};

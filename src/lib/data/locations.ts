@@ -1,6 +1,4 @@
-import type { Location } from '$lib/types/location.type';
-
-export const locations: Array<Location> = [
+export const locations: Array<{ id: number; name: string; coordinates?: [number, number] }> = [
 	{
 		id: 0,
 		name: 'Gymnase Guillevic',

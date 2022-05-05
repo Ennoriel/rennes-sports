@@ -1,11 +1,7 @@
-<script>
+<script lang="ts">
 	import Map from '$lib/component/map/Map.svelte';
-	// import { markers, state } from '$lib/store/state';
-
-	// export let loadedSports = [];
-	// $: $state.allSports = loadedSports;
-
-	export let markers;
+	import type { Marker } from '$lib/types/location.type';
+	export let markers: Array<Marker>;
 </script>
 
 <Map {markers} />

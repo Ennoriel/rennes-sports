@@ -15,7 +15,7 @@
 	let search = '';
 	let isSearching = false;
 	let isOpen = false;
-	let burgerMenu;
+	let burgerMenu: HTMLUListElement;
 
 	$: reSearch = new RegExp(search, 'i');
 
@@ -63,14 +63,14 @@
 				</a>
 			</li>
 			{#each displayedRoutes as route}
-				{@const active = $page.url.pathname.indexOf(route.route) > 0}
-				{#if route.spacer}
+				{@const active = !('spacer' in route) && $page.url.pathname.indexOf(route.route) > 0}
+				{#if 'spacer' in route}
 					<hr />
 				{:else}
 					<li>
 						<a on:click={() => (isOpen = false)} href="/{route.route}" class:active>
 							{#if active}
-								>
+								&gt;
 							{/if}
 							{route.label}
 						</a>

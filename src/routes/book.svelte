@@ -1,19 +1,19 @@
-<script>
+<script lang="ts">
 	import ResponsiveWrapper from '$lib/component/layout/ResponsiveWrapper.svelte';
 	import MenuMobile from '$lib/component/layout/MenuMobile.svelte';
 	import Menu from '$lib/component/layout/Menu.svelte';
 
-	import Button from '../lib/component/atom/Button.svelte';
-	import X from '../lib/component/svg/X.svelte';
-	import Link from '../lib/component/atom/Link.svelte';
-	import Spinner from '../lib/component/atom/Spinner.svelte';
-	import Title from '../lib/component/atom/Title.svelte';
-	import TextInput from '../lib/component/input/TextInput.svelte';
-	import Radio from '../lib/component/input/Radio.svelte';
-	import Checkbox from '../lib/component/input/Checkbox.svelte';
-	import Range from '../lib/component/input/Range.svelte';
-	import Select from '../lib/component/input/Select.svelte';
-	import Autocomplete from '../lib/component/input/Autocomplete.svelte';
+	import Button from '$lib/component/atom/Button.svelte';
+	import X from '$lib/component/svg/X.svelte';
+	import Link from '$lib/component/atom/Link.svelte';
+	import Spinner from '$lib/component/atom/Spinner.svelte';
+	import Title from '$lib/component/atom/Title.svelte';
+	import TextInput from '$lib/component/input/TextInput.svelte';
+	import Radio from '$lib/component/input/Radio.svelte';
+	import Checkbox from '$lib/component/input/Checkbox.svelte';
+	import Range from '$lib/component/input/Range.svelte';
+	import Select from '$lib/component/input/Select.svelte';
+	import Autocomplete from '$lib/component/input/Autocomplete.svelte';
 
 	let pending = false;
 </script>
@@ -43,7 +43,7 @@
 	<div class="container">
 		<Link href="https://www.machyme.fr">Link</Link>
 		<span style:width="20px" />
-		<Link href="https://www.machyme.fr" imgSrc="/svg/right-up.svg">Link with icon</Link>
+		<Link href="https://www.machyme.fr" img={{ src: '/svg/right-up.svg' }}>Link with icon</Link>
 	</div>
 
 	<Title>Spinner</Title>
@@ -52,12 +52,13 @@
 	</div>
 
 	<Title>Input</Title>
-	<TextInput label="text input" />
-	<Radio label="radio input" options={['option 1', 'option 2']} />
-	<Checkbox label="checkbox input" options={['option 1', 'option 2']} />
-	<Range label="range input" min={0} max={1200} step={20} />
-	<Select label="select input" options={['option 1', 'option 2']} />
+	<TextInput label="text input" name="text" />
+	<Radio label="radio input" name="radio" options={['option 1', 'option 2']} />
+	<Checkbox label="checkbox input" name="checkbox" options={['option 1', 'option 2']} />
+	<Range label="range input" name="range" min={0} max={1200} step={20} />
+	<Select label="select input" name="select" options={['option 1', 'option 2']} />
 	<Autocomplete
+		name="autocomplete"
 		label="select input"
 		options={['option 1', 'option 2', 'option 3', 'option 4']}
 		isCreatable={true}

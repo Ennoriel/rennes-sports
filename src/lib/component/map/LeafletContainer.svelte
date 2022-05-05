@@ -2,21 +2,23 @@
 	import {
 		LeafletMap,
 		TileLayer,
-		Marker,
+		Marker as LeafletMarker,
 		Popup,
 		Polyline,
 		Circle,
 		Tooltip,
 		ScaleControl
 	} from 'svelte-leafletjs';
-	import L from 'leaflet';
+	import { icon as LeafletIcon } from 'leaflet';
+	import type { Map, LatLng } from 'leaflet';
 
 	import MapPopup from './MapPopup.svelte';
 	import { metros } from '$lib/data/metro';
+	import type { Coordinates, Marker } from '$lib/types/location.type';
 
-	export let markers;
-	export let center = [48.1113618, -1.6500957];
-	let currCenter = center;
+	export let markers: Array<Marker>;
+	export let center: Coordinates = [48.1113618, -1.6500957];
+	let currCenter: LatLng;
 
 	const mapOptions = {
 		center,
@@ -30,41 +32,41 @@
 		attribution: '© OpenStreetMap contributors' // link to https://www.openstreetmap.org/copyright
 	};
 
-	const icon = L.icon({
+	const icon = LeafletIcon({
 		iconUrl: '/svg/location-blue.svg',
 		iconSize: [36, 36],
 		iconAnchor: [18, 36],
 		popupAnchor: [0, -40]
 	});
 
-	$: if (leafletMap) leafletMap.getMap().setView(center);
+	$: if (getMap) getMap().setView(center);
 
-	// setInterval(() => {
-	// 	if (leafletMap) {
-	// 		leafletMap.getMap().invalidateSize();
-	// 	}
-	// }, 1000);
+	setInterval(() => {
+		if (getMap) {
+			getMap().invalidateSize();
+		}
+	}, 1000);
 
-	$: console.log(leafletMap);
+	$: console.log(currCenter);
 
-	let leafletMap;
+	let getMap: () => Map;
 </script>
 
 <LeafletMap
-	bind:this={leafletMap}
+	bind:getMap
 	options={mapOptions}
 	events={['moveend']}
 	on:moveend={() => {
-		currCenter = leafletMap.getMap().getCenter();
+		currCenter = getMap && getMap().getCenter();
 	}}
 >
 	<TileLayer url={tileUrl} options={tileLayerOptions} />
 	{#each markers as marker}
-		<Marker latLng={marker.location.coordinates} {icon}>
+		<LeafletMarker latLng={marker.location.coordinates} {icon}>
 			<Popup>
 				<MapPopup location={marker.location} sports={marker.sports} />
 			</Popup>
-		</Marker>
+		</LeafletMarker>
 	{/each}
 	{#each metros as metro}
 		<Polyline
@@ -78,7 +80,7 @@
 				radius={40}
 				color={metro.color}
 				fillColor={metro.color}
-				fillOpacity="1"
+				fillOpacity={1}
 			>
 				<Tooltip>{station.name}</Tooltip>
 			</Circle>

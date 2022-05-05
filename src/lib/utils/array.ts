@@ -9,8 +9,8 @@ export function range(min: number, max: number): Array<number> {
 	return arr;
 }
 
-export function uniqBy<T>(array: Array<T>, key: (T) => string): Array<T> {
-	const seen = {};
+export function uniqBy<T>(array: Array<T>, key: (item: T) => string): Array<T> {
+	const seen: Record<string, boolean> = {};
 	return array.filter(function (item) {
 		const k = key(item);
 		return Object.prototype.hasOwnProperty.call(seen, k) ? false : (seen[k] = true);

@@ -1,8 +1,8 @@
-<script>
+<script lang="ts">
 	import { navigating } from '$app/stores';
 	import PreloadingIndicator from '$lib/component/atom/PreloadingIndicator.svelte';
 
-	function keydown(e) {
+	function keydown(e: KeyboardEvent) {
 		if (e.key === 'Tab') document.body.classList.add('has-been-tabbed');
 	}
 </script>

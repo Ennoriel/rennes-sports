@@ -3,7 +3,7 @@
 	export const load = loadSports;
 </script>
 
-<script>
+<script lang="ts">
 	import FilterPanel from '$lib/component/panel/FilterPanel.svelte';
 	import Title from '$lib/component/atom/Title.svelte';
 	import ResponsiveWrapper from '$lib/component/layout/ResponsiveWrapper.svelte';
@@ -14,7 +14,7 @@
 	export let loadedSports = [];
 	$: $state.allSports = loadedSports;
 
-	let pageRef;
+	let pageRef: HTMLElement;
 </script>
 
 <FilterPanel {pageRef} />

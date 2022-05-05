@@ -24,8 +24,7 @@
 						{displayHours(slot.hour)}
 					</span>
 					<Link
-						alt="localisation"
-						imgSrc="/svg/location.svg"
+						img={{ src: '/svg/location.svg' }}
 						href="recherche/carte/location/{slot.location._id}"
 					>
 						{slot.location.name}
@@ -34,7 +33,7 @@
 			{/each}
 			<div class="asso-name">
 				{asso.name}
-				<Link target="_blank" href={asso.website} alt="lien" imgSrc="/svg/right-up.svg">
+				<Link target="_blank" href={asso.website} img={{ src: '/svg/right-up.svg' }}>
 					consulter le site
 				</Link>
 			</div>

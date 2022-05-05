@@ -24,6 +24,4 @@
 	.slot-day {
 		font-weight: bolder;
 	}
-	.slot-hour {
-	}
 </style>

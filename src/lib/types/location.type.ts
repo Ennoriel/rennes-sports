@@ -1,9 +1,12 @@
 import type { Sport } from '$lib/types/sport.type';
 
+export type Coordinates = [number, number];
+
 export type Location = {
-	id: number;
+	_id: number;
 	name: string;
-	coordinates?: [number, number];
+	address?: string;
+	coordinates?: Coordinates;
 };
 
 export type GroupSport = {
@@ -22,6 +25,41 @@ export type Metro = {
 	stations: Array<{
 		name: string;
 		address: string;
-		coordinates: [number, number];
+		coordinates: Coordinates;
 	}>;
+};
+
+export type AddressFeature = {
+	type: string;
+	geometry: {
+		type: string;
+		coordinates: Coordinates;
+	};
+	properties: {
+		label: string;
+		score: number;
+		id: string;
+		name: string;
+		postcode: string;
+		citycode: string;
+		x: number;
+		y: number;
+		city: string;
+		context: string;
+		type: string;
+		importance: number;
+	};
+};
+
+export type Address = {
+	type: string;
+	version: string;
+	features: Array<AddressFeature>;
+	attribution: string;
+	licence: string;
+	query: string;
+	filters: {
+		type: string;
+	};
+	limit: number;
 };

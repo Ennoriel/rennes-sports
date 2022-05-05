@@ -3,14 +3,14 @@
 
 	export let visible = false;
 
-	function tr(node) {
+	function tr(node: SVGElement) {
 		return {
 			delay: 0,
 			duration: 200,
-			tick: (t) => {
-				node.childNodes[0].setAttribute('d', `M5 5 L12 ${12 - 7 * t} L19 5`);
-				node.childNodes[1].setAttribute('d', `M${12 - 7 * t} 12 L${12 + 7 * t} 12`);
-				node.childNodes[2].setAttribute('d', `M5 19 L12 ${12 + 7 * t} L19 19`);
+			tick: (t: number) => {
+				(node.childNodes[0] as SVGElement).setAttribute('d', `M5 5 L12 ${12 - 7 * t} L19 5`);
+				(node.childNodes[1] as SVGElement).setAttribute('d', `M${12 - 7 * t} 12 L${12 + 7 * t} 12`);
+				(node.childNodes[2] as SVGElement).setAttribute('d', `M5 19 L12 ${12 + 7 * t} L19 19`);
 			}
 		};
 	}

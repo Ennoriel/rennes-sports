@@ -1,4 +1,5 @@
-<script>
+<script lang="ts">
+	import type { Sport } from '../../types/sport.type';
 	import CellYearSex from './CellYearSex.svelte';
 	import CellSlot from './CellSlot.svelte';
 	import CellLocation from './CellLocation.svelte';
@@ -6,7 +7,7 @@
 	import CellAsso from './CellAsso.svelte';
 	import CellLevel from './CellLevel.svelte';
 
-	export let row;
+	export let row: Sport;
 </script>
 
 <tr>

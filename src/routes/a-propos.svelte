@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import ResponsiveWrapper from '$lib/component/layout/ResponsiveWrapper.svelte';
 	import MenuMobile from '$lib/component/layout/MenuMobile.svelte';
 	import Menu from '$lib/component/layout/Menu.svelte';
@@ -142,11 +142,6 @@
 			position: absolute;
 			bottom: 5px;
 			right: max(25px, calc((100vw - 1000px) / 2) - 75px);
-		}
-	}
-
-	@media (min-width: 1200px) {
-		article {
 		}
 	}
 </style>

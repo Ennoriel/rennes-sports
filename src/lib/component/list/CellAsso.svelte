@@ -11,7 +11,7 @@
 <span class="asso-name">
 	{asso.name}
 </span>
-<Link target="_blank" href={asso.website} alt="lien" imgSrc="/svg/right-up.svg">
+<Link target="_blank" href={asso.website} img={{ src: '/svg/right-up.svg' }}>
 	<span class="link"> consulter le site </span>
 </Link>
 

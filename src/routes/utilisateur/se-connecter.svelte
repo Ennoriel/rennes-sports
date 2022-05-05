@@ -9,14 +9,14 @@
 	};
 </script>
 
-<script>
+<script lang="ts">
 	import { goto } from '$app/navigation';
 	import { enhance } from '$lib/utils/form';
 	import { session } from '$app/stores';
 	import EmailInput from '$lib/component/input/EmailInput.svelte';
 	import PasswordInput from '$lib/component/input/PasswordInput.svelte';
 
-	export let error;
+	export let error: string | null = null;
 
 	let pending = false;
 </script>

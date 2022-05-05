@@ -13,7 +13,6 @@ export const post: RequestHandler = async ({ request }) => {
 	const location = { name, address, coordinates };
 
 	const result = await (await mongoClient).db()?.collection('locations')?.insertOne(location);
-	console.log(result);
 
 	if (!result.insertedId) {
 		return errorResponse(

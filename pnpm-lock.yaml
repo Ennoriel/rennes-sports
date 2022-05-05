@@ -9,6 +9,7 @@ specifiers:
   '@types/jest': ^27.4.1
   '@types/jsonwebtoken': ^8.5.8
   '@types/node': ^17.0.21
+  '@types/svelte-leafletjs': ^0.8.0
   '@typescript-eslint/eslint-plugin': ^4.33.0
   '@typescript-eslint/parser': ^4.33.0
   babel-jest: ^27.5.1
@@ -49,6 +50,7 @@ devDependencies:
   '@types/jest': 27.4.1
   '@types/jsonwebtoken': 8.5.8
   '@types/node': 17.0.21
+  '@types/svelte-leafletjs': 0.8.0
   '@typescript-eslint/eslint-plugin': 4.33.0_65e88d2733f36d3624b406e590cf0b3b
   '@typescript-eslint/parser': 4.33.0_eslint@7.32.0+typescript@4.6.2
   babel-jest: 27.5.1_@babel+core@7.17.7
@@ -1059,6 +1061,13 @@ packages:
       }
     dev: true
 
+  /@types/geojson/7946.0.8:
+    resolution:
+      {
+        integrity: sha512-1rkryxURpr6aWP7R786/UQOkJ3PcpQiWkAXBmdWc7ryFWqN6a4xfK7BtjXvFBKO9LjQ+MWQSWxYeZX1OApnArA==
+      }
+    dev: true
+
   /@types/graceful-fs/4.1.5:
     resolution:
       {
@@ -1119,6 +1128,15 @@ packages:
       '@types/node': 17.0.21
     dev: true
 
+  /@types/leaflet/1.7.9:
+    resolution:
+      {
+        integrity: sha512-H8vPgD49HKzqM41ArHGZM70g/tfhp8W+JcPxfnF+5H/Xvp+xiP+KQOUNWU8U89fqS1Jj3cpRY/+nbnaHFzwnFA==
+      }
+    dependencies:
+      '@types/geojson': 7946.0.8
+    dev: true
+
   /@types/node/17.0.21:
     resolution:
       {
@@ -1133,11 +1151,39 @@ packages:
       }
     dev: true
 
+  /@types/prop-types/15.7.5:
+    resolution:
+      {
+        integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==
+      }
+    dev: true
+
   /@types/pug/2.0.6:
     resolution:
       {
         integrity: sha512-SnHmG9wN1UVmagJOnyo/qkk0Z7gejYxOYYmaAwr5u2yFYfsupN3sg10kyzN8Hep/2zbHxCnsumxOoRIRMBwKCg==
       }
+    dev: true
+
+  /@types/react-leaflet/2.8.2:
+    resolution:
+      {
+        integrity: sha512-Iel8Vd1bSCD38Yhiqcmm/+9hjPEdd39LFE3tBMbOytq3QAQsC3LDrbo6ifoh8JbpqPbCsQPo9Wx5OELHixEShg==
+      }
+    dependencies:
+      '@types/leaflet': 1.7.9
+      '@types/react': 18.0.9
+    dev: true
+
+  /@types/react/18.0.9:
+    resolution:
+      {
+        integrity: sha512-9bjbg1hJHUm4De19L1cHiW0Jvx3geel6Qczhjd0qY5VKVE2X5+x77YxAepuCwVh4vrgZJdgEJw48zrhRIeF4Nw==
+      }
+    dependencies:
+      '@types/prop-types': 15.7.5
+      '@types/scheduler': 0.16.2
+      csstype: 3.0.11
     dev: true
 
   /@types/sass/1.43.1:
@@ -1149,11 +1195,29 @@ packages:
       '@types/node': 17.0.21
     dev: true
 
+  /@types/scheduler/0.16.2:
+    resolution:
+      {
+        integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==
+      }
+    dev: true
+
   /@types/stack-utils/2.0.1:
     resolution:
       {
         integrity: sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==
       }
+    dev: true
+
+  /@types/svelte-leafletjs/0.8.0:
+    resolution:
+      {
+        integrity: sha512-xhU3OyWkM3lQwFXWRMhgPIlezTPoFblWEhwVvjucsOP9enPgoOW28du12ZA7pCT04S3E8oqqGU3y451Jm/D+Mg==
+      }
+    dependencies:
+      '@types/leaflet': 1.7.9
+      '@types/react-leaflet': 2.8.2
+      svelte: 3.46.4
     dev: true
 
   /@types/webidl-conversions/6.1.1:
@@ -1955,6 +2019,13 @@ packages:
     engines: { node: '>=8' }
     dependencies:
       cssom: 0.3.8
+    dev: true
+
+  /csstype/3.0.11:
+    resolution:
+      {
+        integrity: sha512-sa6P2wJ+CAbgyy4KFssIb/JNMLxFvKF1pCYCSXS8ZMuqZnMsrxqI2E5sPyoTpxoPU/gVZMzr2zjOfg8GIZOMsw==
+      }
     dev: true
 
   /data-urls/2.0.0:

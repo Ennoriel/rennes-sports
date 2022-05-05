@@ -1,14 +1,20 @@
 <script lang="ts">
-	export let label;
-	export let name;
-	export let required;
-	export let value;
-	export let options: Array<{ label: string; value: string }> | Array<string>;
-	export let disabled;
+	import type { SelectableOption, SelectableValue } from '$lib/types/input.type';
 
-	$: _options = options.some((o) => typeof o === 'object' && 'value' in o && 'label' in o)
-		? options
-		: options.map((o) => ({ label: o, value: o }));
+	export let label: string;
+	export let name: string;
+	export let required = false;
+	export let value: any = '';
+	export let options: Array<SelectableValue> = [];
+	export let disabled = false;
+
+	let _options: Array<SelectableOption>;
+
+	$: _options = (
+		options.some((o) => typeof o === 'object' && 'value' in o && 'label' in o)
+			? options
+			: options.map((o) => ({ label: o, value: o }))
+	) as Array<SelectableOption>;
 </script>
 
 <fieldset>

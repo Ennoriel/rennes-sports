@@ -1,6 +1,5 @@
 import type { RequestHandler } from '@sveltejs/kit';
 import mongoClient from '$lib/utils/db';
-import { sports } from '$lib/data/sports';
 import type { DeleteResultType, InsertOneReturnType } from '$lib/types/mongo.type';
 
 export const get: RequestHandler = async () => {
@@ -22,13 +21,5 @@ export const post: RequestHandler = async ({ request }) => {
 export const del: RequestHandler = async () => {
 	return {
 		body: (await (await mongoClient).db()?.collection('sports')?.deleteMany({})) as DeleteResultType
-	};
-};
-
-export const put: RequestHandler = async () => {
-	await (await mongoClient).db()?.collection('sports')?.deleteMany({});
-	await (await mongoClient).db()?.collection('sports')?.insertMany(sports);
-	return {
-		body: 0
 	};
 };
