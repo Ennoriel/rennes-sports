@@ -72,7 +72,7 @@
 	</label>
 	<label>
 		<input name="cgu" type="checkbox" required />
-		J'accepte les <a href="/cgu">conditions générales d'utilisation</a>
+		J'accepte les <a class="cgu" href="/cgu">conditions générales d'utilisation</a>
 	</label>
 	{error || ''}
 	<button type="submit">S'inscrire</button>
@@ -163,6 +163,9 @@
 
 	a.forgot-pwd {
 		font-weight: 100;
+	}
+	a.cgu {
+		color: var(--secondary-color)
 	}
 
 	:focus-visible {

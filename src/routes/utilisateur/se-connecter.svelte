@@ -25,7 +25,6 @@
 	use:enhance={{
 		pending: () => {
 			pending = true;
-			console.log('!!');
 		},
 		result: async ({ response }) => {
 			$session = await response.json();

@@ -82,7 +82,7 @@
 		border-radius: 5px;
 		margin: 8px auto;
 		padding: 4px 8px;
-		width: 45px;
+		width: 55px;
 		text-align: center;
 		transition: all 0.2s;
 	}
@@ -107,7 +107,7 @@
 	@media (min-width: 1024px) {
 		main {
 			padding: 1em 5em;
-			min-height: calc(100vh - var(--header-height) - 2em);
+			min-height: calc(100vh - var(--header-height));
 		}
 		#content {
 			position: relative;

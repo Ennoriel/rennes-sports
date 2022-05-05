@@ -35,7 +35,7 @@
 	:global(body) {
 		font-family: 'Roboto', sans-serif;
 		font-size: 14px;
-		line-height: 1.5em;
+		line-height: 1.5;
 		background-color: var(--bg-color);
 		margin: 0;
 	}

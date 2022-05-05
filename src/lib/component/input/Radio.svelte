@@ -1,21 +1,23 @@
 <script lang="ts">
 	export let label;
+	export let name;
+	export let required;
 	export let value;
-	export let options;
+	export let options: Array<{ label: string; value: string }> | Array<string>;
 	export let disabled;
 
-	function click(e) {
-		value = value === e.target.value ? undefined : e.target.value;
-	}
+	$: _options = options.some(o => typeof o === 'object' && 'value' in o && 'label' in o) ?
+			options :
+			options.map(o => ({ label: o, value: o }));
 </script>
 
 <fieldset>
 	<legend>{label}{(disabled && ' (inactif)') || ''}</legend>
 	<div>
-		{#each options as option}
-			<label class:selected={value === option} class:disabled>
-				{option}
-				<input type="radio" checked={value === option} value={option} {disabled} on:click={click} />
+		{#each _options as option}
+			<label class:selected={value === option.value} class:disabled>
+				{option.label}
+				<input type="radio" {name} {required} bind:group={value} value={option.value} {disabled} />
 			</label>
 		{/each}
 	</div>

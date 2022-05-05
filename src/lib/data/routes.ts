@@ -37,6 +37,11 @@ export const routes: Array<Route | Spacer> = [
 		guard: (session) => !!session
 	},
 	{
+		route: 'actions/creer-lieu',
+		label: 'Nouveau lieu',
+		guard: (session) => !!session
+	},
+	{
 		route: 'a-propos',
 		label: 'A propos'
 	},

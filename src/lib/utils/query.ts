@@ -1,5 +1,8 @@
 import type { Load, RequestHandler } from '@sveltejs/kit';
-import { urlSearchParamsToString } from '$lib/utils/url';
+import { urlSearchParamsToString } from './url';
+import {isStringANumber} from "./number";
+import fdto from 'form-data-to-object';
+import {isStringABool} from "./bool";
 
 export const errorResponse = (
 	acceptsJson: boolean,
@@ -15,4 +18,14 @@ export const parseUrlSearchParams: Load = async ({ url }) => {
 	return {
 		props: urlSearchParamsToString(url.searchParams)
 	};
+};
+
+export const formDataToObject = (formData: FormData): Record<string, any> => {
+
+	const linearizedObject = [...formData.entries()].reduce((acc, [key, value]: [string, string]) => {
+		if (value) acc[key] = isStringANumber(value) ? parseFloat(value) : isStringABool(value) ? value === 'true' : value;
+		return acc;
+	}, {} as any);
+
+	return fdto.toObj(linearizedObject);
 };

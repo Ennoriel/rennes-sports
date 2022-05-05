@@ -39,6 +39,14 @@
 
 	$: if (leafletMap) leafletMap.getMap().setView(center);
 
+	// setInterval(() => {
+	// 	if (leafletMap) {
+	// 		leafletMap.getMap().invalidateSize();
+	// 	}
+	// }, 1000);
+
+	$: console.log(leafletMap)
+
 	let leafletMap;
 </script>
 

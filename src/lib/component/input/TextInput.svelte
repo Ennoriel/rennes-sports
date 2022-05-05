@@ -1,12 +1,14 @@
 <script lang="ts">
 	export let label;
+	export let name;
+	export let required
 	export let placeholder = label;
 	export let value;
 </script>
 
 <label>
 	{label}
-	<input type="text" bind:value {placeholder} />
+	<input type="text" {name} {required} bind:value {placeholder} />
 </label>
 
 <style>

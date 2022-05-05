@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { Sport } from '$lib/types/sport.type';
 	import { displayHours, displayYear } from '$lib/utils/time';
-	import { locations } from '$lib/data/locations';
 	import Link from '$lib/component/atom/Link.svelte';
 	import { assos } from '$lib/data/assos';
 
@@ -27,9 +26,9 @@
 					<Link
 						alt="localisation"
 						imgSrc="/svg/location.svg"
-						href="recherche/carte/location/{slot.locationId}"
+						href="recherche/carte/location/{slot.location._id}"
 					>
-						{locations.find((location) => location.id === slot.locationId)?.name}
+						{slot.location.name}
 					</Link>
 				</div>
 			{/each}

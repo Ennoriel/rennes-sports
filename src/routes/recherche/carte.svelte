@@ -1,14 +1,11 @@
-<script context="module" lang="ts">
-	import { loadSports } from './_load';
-	export const load = loadSports;
-</script>
-
 <script>
 	import Map from '$lib/component/map/Map.svelte';
-	import { markers, state } from '$lib/store/state';
+	// import { markers, state } from '$lib/store/state';
 
-	export let loadedSports = [];
-	$: $state.allSports = loadedSports;
+	// export let loadedSports = [];
+	// $: $state.allSports = loadedSports;
+
+    export let markers
 </script>
 
-<Map markers={$markers} />
+<Map markers={markers} />

@@ -14,6 +14,8 @@
 	import Range from '../lib/component/input/Range.svelte';
 	import Select from '../lib/component/input/Select.svelte';
 	import Autocomplete from '../lib/component/input/Autocomplete.svelte';
+
+	let pending = false;
 </script>
 
 <ResponsiveWrapper>
@@ -30,6 +32,9 @@
 		<Button variant="primary" shape="circle"><X /></Button>
 		<Button variant="secondary" shape="circle"><X /></Button>
 		<Button variant="transparent" shape="circle"><X /></Button>
+	</div>
+	<div class="container">
+		<Button variant="primary" shape="square" on:click={() => pending = true} {pending}>Click me</Button>
 	</div>
 
 	<Title>Links</Title>
@@ -50,7 +55,7 @@
 	<Checkbox label="checkbox input" options={['option 1', 'option 2']} />
 	<Range label="range input" min={0} max={1200} step={20} />
 	<Select label="select input" options={['option 1', 'option 2']} />
-	<Autocomplete label="select input" options={['option 1', 'option 2']} isCreatable={true} />
+	<Autocomplete label="select input" options={['option 1', 'option 2', 'option 3', 'option 4']} isCreatable={true} />
 </div>
 
 <style>

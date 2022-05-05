@@ -1,20 +1,24 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import { slide } from 'svelte/transition';
+	import { enhance } from '$lib/utils/form';
 
 	import Autocomplete from '$lib/component/input/Autocomplete.svelte';
 	import Button from '$lib/component/atom/Button.svelte';
 	import ButtonGroup from '$lib/component/layout/ButtonGroup.svelte';
-	import Select from '$lib/component/input/Select.svelte';
 	import Title from '$lib/component/atom/Title.svelte';
 	import TextInput from '$lib/component/input/TextInput.svelte';
 	import Radio from '$lib/component/input/Radio.svelte';
 	import Range from '$lib/component/input/Range.svelte';
+	import LocationAutocomplete from '$lib/component/input/LocationAutocomplete.svelte';
 
 	import type { Sport, RangeType } from '$lib/types/sport.type';
 	import { sports } from '$lib/data/sports';
-	import { locations } from '$lib/data/locations';
 	import X from '$lib/component/svg/X.svelte';
-	import { assos } from '$lib/data/assos';
+
+	export let error;
+
+	let pending = false;
 
 	let sport = {
 		sport: undefined,
@@ -33,42 +37,6 @@
 			}
 		]
 	};
-	let createdSport: Partial<Sport>;
-
-	let validated = false;
-
-	function resetDb() {
-		validated = true;
-		fetch('/api/sports.json', {
-			method: 'PUT'
-		});
-	}
-
-	function createSport() {
-		validated = true;
-		createdSport = {
-			sport: sport.sport,
-			assoId: sport.assoId || 0,
-			sex: sport.sex || 'Mixte',
-			adult: sport.adult === 'Oui' && sport.birthYear[0] === 2004,
-			otherYear: sport.parentChild === 'Oui' ? 'Parent-enfant' : undefined,
-			birthYear: [...new Array(sport.birthYear[1] - sport.birthYear[0] + 1)].map(
-				(_, i) => sport.birthYear[0] + i
-			),
-			level: sport.level,
-			slots: sport.slots
-		};
-
-		fetch('/api/sports.json', {
-			body: JSON.stringify(createdSport),
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		})
-			.then((res) => res.json())
-			.then((res) => console.log(res));
-	}
 
 	function addSlot() {
 		sport.slots = sport.slots.concat({
@@ -96,58 +64,67 @@
 		sport.slots = sport.slots;
 	}
 
-	$: if (sport.birthYear && !sport.birthYear.includes(2004)) sport.adult = 'Non';
+	$: if (sport.birthYear && !sport.birthYear?.includes(2004)) sport.adult = 'Non';
 </script>
 
-<form>
+<form
+	action="/actions/creer-creneau"
+	method="post"
+	use:enhance={{
+		pending: ({ data, form }) => {
+			pending = true;
+		},
+		result: async () => {
+			goto('/recherche/liste'); //FIXME
+		},
+		error: async (p) => {
+			const body = await p.response.json();
+			error = body?.error;
+			pending = false;
+		}
+	}}
+>
 	<div class="block">
 		<Title>Ajouter une séance</Title>
 
 		<!-- Sport -->
 		<Autocomplete
 			label="Sport"
+			name="sport"
+			required
 			placeholder="Choisissez un sport"
-			ariaLabel="Sport. Si le sport n'est pas disponible, appuyer sur X"
 			options={[...new Set(sports.map((sport) => sport.sport))]}
-			bind:value={sport.sport}
 			isCreatable
-		/>
-
-		<!-- Association -->
-		<div class="select-alternative-group">
-			<Select
-				label="Association"
-				options={assos.map((asso) => ({ label: asso.name, value: asso.id }))}
-				bind:value={sport.assoId}
-			/>
-		</div>
-
-		<!-- Sex -->
-		<Radio label="Sexe" options={['Mixte', 'Féminin', 'Masculin']} bind:value={sport.sex} />
-
-		<!-- Birth year -->
-		<Range label="Année de naissance" min={2004} max={2020} step={1} bind:range={sport.birthYear} />
-
-		<!-- Adult -->
-		<Radio
-			label="Ouvert aux adultes"
-			disabled={!sport.birthYear?.includes(2004)}
-			options={['Oui', 'Non']}
-			bind:value={sport.adult}
-		/>
-
-		<!-- Adult-child -->
-		<Radio
-			label="Cours spécial Parents Enfants"
-			options={['Oui', 'Non']}
-			bind:value={sport.parentChild}
 		/>
 
 		<!-- Level -->
 		<Radio
 			label="Pratique"
+			name="level"
+			required
 			options={['Compétition', 'Handisport', 'Loisir']}
-			bind:value={sport.level}
+		/>
+
+		<!-- Sex -->
+		<Radio label="Sexe" name="sex" required options={['Mixte', 'Féminin', 'Masculin']} />
+
+		<!-- Birth year -->
+		<Range
+			label="Catégorie d'âge (années de naissance)"
+			name="brithYear"
+			min={2004}
+			max={2020}
+			step={1}
+			bind:range={sport.birthYear}
+		/>
+
+		<!-- Adult -->
+		<Radio
+			label="Séance ouverte aux adultes (>= 2004)"
+			name="adult"
+			required={sport.birthYear?.includes(2004)}
+			disabled={!sport.birthYear?.includes(2004)}
+			options={[{label: "Oui", value: true}, {label: "Non", value: false}]}
 		/>
 	</div>
 
@@ -161,36 +138,33 @@
 				</Button>
 			</ButtonGroup>
 
-			<!-- Slot details -->
-			<TextInput
-				label="Détails du créneau"
-				placeholder="Niveau poussin"
-				bind:value={slot.details}
-			/>
-
 			<!-- Slot day -->
 			<Radio
 				label="Jour"
+				name="slots[{index}][day]"
+				required
 				options={['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche']}
-				bind:value={slot.day}
 			/>
 
 			<!-- Slot hours -->
 			<Range
 				label="Horaire"
+				name="slots[{index}][hour]"
 				labelInHour={true}
 				min={360}
 				max={1410}
 				step={15}
-				bind:range={slot.hour}
 			/>
 
 			<!-- Slot location -->
-			<Select
-				label="Lieu"
-				placeholder="Salle / Gymnase"
-				options={locations.map((o) => ({ label: o.name, value: o.id }))}
-				bind:value={slot.locationId}
+            <LocationAutocomplete required name="slots[{index}][location]"/>
+
+			<!-- Slot details -->
+			<TextInput
+				label="Détails du créneau"
+				name="slots[{index}][details]"
+				required
+				placeholder="Niveau poussin"
 			/>
 		</div>
 	{/each}
@@ -200,25 +174,30 @@
 	</ButtonGroup>
 
 	<ButtonGroup>
-		<Button on:click={resetDb}>Réinitialiser la BDD</Button>
-		<Button on:click={createSport}>Créer</Button>
+		<Button type="submit">Créer</Button>
 		<Button
 			variant="secondary"
 			on:click={() => {
-				sport = {};
-				validated = false;
+				sport = {
+					birthYear: [2004, 2020],
+					slots: [
+						{
+							hour: [360, 1410],
+						}
+					]
+				};
 			}}
 		>
-			Réinitialiser
+			Réinitialiser le formulaire
 		</Button>
 	</ButtonGroup>
 
-	{#if validated}
-		<div in:slideAndScroll|local={{ duration: 400 }} class="block slot">
-			<Title>Merci !</Title>
-			<p>Entrainement enregistré !</p>
-		</div>
-	{/if}
+	<!--{#if validated}-->
+	<!--	<div in:slideAndScroll|local={{ duration: 400 }} class="block slot">-->
+	<!--		<Title>Merci !</Title>-->
+	<!--		<p>Entrainement enregistré !</p>-->
+	<!--	</div>-->
+	<!--{/if}-->
 </form>
 
 <style>
@@ -232,12 +211,6 @@
 
 	.block:first-of-type {
 		margin: 16px 0;
-	}
-
-	.select-alternative-group {
-		display: flex;
-		flex-direction: column;
-		gap: 10px;
 	}
 
 	.slot :global(.button-group) {
@@ -264,11 +237,6 @@
 			box-shadow: 0 0 3px #777;
 			padding: 16px;
 			margin: 16px 0;
-		}
-
-		.select-alternative-group:not(.column) {
-			flex-direction: row;
-			align-items: flex-end;
 		}
 
 		.select-alternative-group :global(label) {

@@ -2,8 +2,10 @@
 	import { onMount } from 'svelte';
 	import { displayHour } from '$lib/utils/time';
 	import type { RangeType } from '$lib/types/sport.type';
+	import InputHidden from "./InputHidden.svelte";
 
 	export let label: string;
+	export let name: string;
 	export let labelInHour = false;
 	export let min: number;
 	export let max: number;
@@ -118,6 +120,8 @@
 			</span>
 		</div>
 	</div>
+
+	<InputHidden name="{name}" value={range} />
 </label>
 
 <style>

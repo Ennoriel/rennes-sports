@@ -48,7 +48,7 @@
 	}
 
 	:global(.leaflet-popup a.leaflet-popup-close-button) {
-		padding: 8px;
+		padding: 8px 24px;
 	}
 
 	.wrapper {

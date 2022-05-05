@@ -1,6 +1,7 @@
 import type { Filter, Sport } from '$lib/types/sport.type';
 import { hourRangeOverlaps } from '$lib/utils/time';
 import type { Location, Marker } from '$lib/types/location.type';
+import type {GroupSport} from "$lib/types/location.type";
 
 export function filterSports(filter: Filter, sports: Array<Sport>): Array<Sport> {
 	return sports
@@ -30,15 +31,15 @@ export function filterSports(filter: Filter, sports: Array<Sport>): Array<Sport>
 		.filter((sport) => !filter.assoId || sport.assoId === filter.assoId);
 }
 
-export function getMarkers(sports: Array<Sport>, locations: Array<Location>): Array<Marker> {
+export function getMarkers(sports: Array<Sport>, locations: Array<Location>): any {
 	return locations
 		.filter((location) => !!location.coordinates)
 		.filter((location) =>
-			sports.some((sport) => sport.slots.some((slot) => slot.locationId === location.id))
+			sports.some((sport) => sport.slots.some((slot) => (slot as any).location._id.toString() === (location as any)._id.toString()))
 		)
 		.map((location) => {
 			const locatedSports = sports.filter((sport) =>
-				sport.slots.some((slot) => slot.locationId === location.id)
+				sport.slots.some((slot) => (slot as any).location._id.toString() === (location as any)._id.toString())
 			);
 			const groupedSports: Map<string, Array<Sport>> = locatedSports.reduce(
 				(acc, s) => (

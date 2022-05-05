@@ -1,18 +1,14 @@
-<script>
-	export let size = 32;
-</script>
-
-<div style:--spinner-size={`${size}px`} />
+<div/>
 
 <style>
 	div {
 		margin: 0 auto;
 		position: relative;
-		width: var(--spinner-size);
-		height: var(--spinner-size);
+		width: var(--spinner-size, 32px);
+		height: var(--spinner-size, 32px);
 		border-radius: 50%;
 		border: 2px solid;
-		border-color: transparent currentColor;
+		border-color: transparent transparent var(--spinner-color, var(--main-color));
 		animation: rotation 0.5s linear infinite;
 	}
 	@keyframes rotation {
@@ -23,4 +19,14 @@
 			transform: rotate(360deg);
 		}
 	}
+    @media (prefers-reduced-motion) {
+        div {
+            animation: none;
+            border: none;
+            width: 100px;
+        }
+        div:after {
+            content: "chargement...";
+        }
+    }
 </style>
