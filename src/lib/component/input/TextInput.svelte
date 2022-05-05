@@ -1,7 +1,7 @@
 <script lang="ts">
 	export let label;
 	export let name;
-	export let required
+	export let required;
 	export let placeholder = label;
 	export let value;
 </script>

@@ -45,7 +45,7 @@
 	// 	}
 	// }, 1000);
 
-	$: console.log(leafletMap)
+	$: console.log(leafletMap);
 
 	let leafletMap;
 </script>
@@ -68,17 +68,17 @@
 	{/each}
 	{#each metros as metro}
 		<Polyline
-				latLngs={metro.stations.map((metro) => metro.coordinates)}
-				color={metro.color}
-				fillColor={metro.color}
+			latLngs={metro.stations.map((metro) => metro.coordinates)}
+			color={metro.color}
+			fillColor={metro.color}
 		/>
 		{#each metro.stations as station}
 			<Circle
-					latLng={station.coordinates}
-					radius={40}
-					color={metro.color}
-					fillColor={metro.color}
-					fillOpacity="1"
+				latLng={station.coordinates}
+				radius={40}
+				color={metro.color}
+				fillColor={metro.color}
+				fillOpacity="1"
 			>
 				<Tooltip>{station.name}</Tooltip>
 			</Circle>

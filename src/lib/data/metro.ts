@@ -2,8 +2,8 @@ import type { Metro } from '$lib/types/location.type';
 
 export const metros: Array<Metro> = [
 	{
-		name: "Metro a",
-		color: "#ee161d",
+		name: 'Metro a',
+		color: '#ee161d',
 		stations: [
 			{
 				name: 'La poterie',
@@ -83,8 +83,8 @@ export const metros: Array<Metro> = [
 		]
 	},
 	{
-		name: "Metro b",
-		color: "#06acfa",
+		name: 'Metro b',
+		color: '#06acfa',
 		stations: [
 			{
 				name: 'Saint-Jacques - Gaîté',
@@ -161,20 +161,20 @@ export const metros: Array<Metro> = [
 			{
 				name: 'Beaulieu - Université',
 				address: '4 Avenue Pierre Donzelot, 35000 Rennes, France',
-				coordinates: [ 48.122222, -1.639444]
+				coordinates: [48.122222, -1.639444]
 			},
 
 			{
 				name: 'Atalante',
 				address: '4 Avenue de Belle Fontaine, 35510 Cesson-Sévigné, France',
-				coordinates: [ 48.127222, -1.628056]
+				coordinates: [48.127222, -1.628056]
 			},
 
 			{
 				name: 'Cesson - Viasilva',
 				address: '1 place ViaSilva, 35510 Cesson-Sévigné, France',
-				coordinates: [ 48.131667, -1.62]
-			},
+				coordinates: [48.131667, -1.62]
+			}
 		]
 	}
 ];

@@ -6,9 +6,9 @@
 	export let options: Array<{ label: string; value: string }> | Array<string>;
 	export let disabled;
 
-	$: _options = options.some(o => typeof o === 'object' && 'value' in o && 'label' in o) ?
-			options :
-			options.map(o => ({ label: o, value: o }));
+	$: _options = options.some((o) => typeof o === 'object' && 'value' in o && 'label' in o)
+		? options
+		: options.map((o) => ({ label: o, value: o }));
 </script>
 
 <fieldset>

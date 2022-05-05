@@ -1,8 +1,7 @@
 <script lang="ts">
-
 	import Autocomplete from 'svelte-select/no-styles/Select.svelte';
-	import Spinner from "../atom/Spinner.svelte";
-	import InputHidden from "./InputHidden.svelte";
+	import Spinner from '../atom/Spinner.svelte';
+	import InputHidden from './InputHidden.svelte';
 
 	type Value = string | { label: string; value: string };
 
@@ -20,7 +19,7 @@
 	export let isDisabled = false;
 	export let isMulti = false;
 	export let isWaiting;
-	export let noOptionsMessage = "Aucun résultat";
+	export let noOptionsMessage = 'Aucun résultat';
 
 	let boundValue: { index: number; value: Value } | any | undefined;
 
@@ -28,8 +27,8 @@
 
 	// hack to make select required in a native way
 	$: inputAttributes = {
-		required: required && !value,
-	}
+		required: required && !value
+	};
 </script>
 
 <span class="autocomplete">
@@ -59,7 +58,8 @@
 		{noOptionsMessage}
 		ariaValues={(values) => `Option ${values}, selectionné.`}
 		ariaListOpen={(label, count) => `Focus sur l'option ${label} parmi ${count} résultats.`}
-		ariaFocused={() => `Le select a le focus, tapez pour filtrer les résultats, appuyez sur la touche "bas" pour ouvrir les options.`}
+		ariaFocused={() =>
+			`Le select a le focus, tapez pour filtrer les résultats, appuyez sur la touche "bas" pour ouvrir les options.`}
 	/>
 </span>
 
@@ -77,7 +77,7 @@
 		gap: 10px;
 		margin-top: 20px;
 	}
-	.autocomplete :global(.svelte-select){
+	.autocomplete :global(.svelte-select) {
 		height: var(--select-height);
 		border-radius: var(--select-height-half);
 		display: flex;
@@ -122,17 +122,19 @@
 		gap: 8px;
 		right: calc(var(--select-height) / 4);
 		top: calc((var(--select-height) - 20px) / 2);
-		transition: color .2s;
+		transition: color 0.2s;
 	}
-	.autocomplete :global(.clear-select), .autocomplete :global(.chevron), .autocomplete :global(svg) {
+	.autocomplete :global(.clear-select),
+	.autocomplete :global(.chevron),
+	.autocomplete :global(svg) {
 		width: 20px;
 		height: 20px;
 		color: #c5cacf;
-		transition: color .2s;
+		transition: color 0.2s;
 		cursor: pointer;
 	}
 	.autocomplete :global(svg:hover) {
-		transition: color .2s;
+		transition: color 0.2s;
 	}
 	.autocomplete :global(svg:hover) {
 		color: var(--main-color);
@@ -164,7 +166,8 @@
 		padding: 5px 0 5px var(--select-height-half);
 		font-weight: 300;
 	}
-	.autocomplete :global(.item.hover), .autocomplete :global(.item.active) {
+	.autocomplete :global(.item.hover),
+	.autocomplete :global(.item.active) {
 		font-weight: bold;
 		background-color: #e3eaff;
 		letter-spacing: -0.1px;

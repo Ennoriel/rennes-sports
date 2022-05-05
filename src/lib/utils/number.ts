@@ -1,3 +1,3 @@
 export const isStringANumber = (value: string): boolean => {
-    return !isNaN(+value) && isFinite(+value);
+	return !isNaN(+value) && isFinite(+value);
 };

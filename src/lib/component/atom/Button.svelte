@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Spinner from "./Spinner.svelte";
+	import Spinner from './Spinner.svelte';
 
 	export let variant: 'primary' | 'secondary' | 'transparent' = 'primary';
 	export let shape: 'square' | 'circle' = 'square';
@@ -74,7 +74,8 @@
 		outline-offset: 2px;
 	}
 
-	[disabled], [disabled]:hover {
+	[disabled],
+	[disabled]:hover {
 		background-color: #eeeeee;
 		color: #4f4f4f;
 		border: 1px solid #eeeeee;

@@ -1,4 +1,4 @@
-<div/>
+<div />
 
 <style>
 	div {
@@ -19,14 +19,14 @@
 			transform: rotate(360deg);
 		}
 	}
-    @media (prefers-reduced-motion) {
-        div {
-            animation: none;
-            border: none;
-            width: 100px;
-        }
-        div:after {
-            content: "chargement...";
-        }
-    }
+	@media (prefers-reduced-motion) {
+		div {
+			animation: none;
+			border: none;
+			width: 100px;
+		}
+		div:after {
+			content: 'chargement...';
+		}
+	}
 </style>

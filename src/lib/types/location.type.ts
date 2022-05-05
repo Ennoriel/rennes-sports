@@ -23,5 +23,5 @@ export type Metro = {
 		name: string;
 		address: string;
 		coordinates: [number, number];
-	}>
+	}>;
 };

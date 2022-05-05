@@ -5,7 +5,7 @@
 	// export let loadedSports = [];
 	// $: $state.allSports = loadedSports;
 
-    export let markers
+	export let markers;
 </script>
 
-<Map markers={markers} />
+<Map {markers} />

@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import { displayHour } from '$lib/utils/time';
 	import type { RangeType } from '$lib/types/sport.type';
-	import InputHidden from "./InputHidden.svelte";
+	import InputHidden from './InputHidden.svelte';
 
 	export let label: string;
 	export let name: string;
@@ -121,7 +121,7 @@
 		</div>
 	</div>
 
-	<InputHidden name="{name}" value={range} />
+	<InputHidden {name} value={range} />
 </label>
 
 <style>

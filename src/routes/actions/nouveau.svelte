@@ -124,7 +124,10 @@
 			name="adult"
 			required={sport.birthYear?.includes(2004)}
 			disabled={!sport.birthYear?.includes(2004)}
-			options={[{label: "Oui", value: true}, {label: "Non", value: false}]}
+			options={[
+				{ label: 'Oui', value: true },
+				{ label: 'Non', value: false }
+			]}
 		/>
 	</div>
 
@@ -157,7 +160,7 @@
 			/>
 
 			<!-- Slot location -->
-            <LocationAutocomplete required name="slots[{index}][location]"/>
+			<LocationAutocomplete required name="slots[{index}][location]" />
 
 			<!-- Slot details -->
 			<TextInput
@@ -182,7 +185,7 @@
 					birthYear: [2004, 2020],
 					slots: [
 						{
-							hour: [360, 1410],
+							hour: [360, 1410]
 						}
 					]
 				};

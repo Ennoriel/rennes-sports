@@ -13,8 +13,8 @@
 	import { goto } from '$app/navigation';
 	import { enhance } from '$lib/utils/form';
 	import { session } from '$app/stores';
-	import EmailInput from "$lib/component/input/EmailInput.svelte";
-	import PasswordInput from "$lib/component/input/PasswordInput.svelte";
+	import EmailInput from '$lib/component/input/EmailInput.svelte';
+	import PasswordInput from '$lib/component/input/PasswordInput.svelte';
 
 	export let error;
 </script>
@@ -126,7 +126,7 @@
 	}
 
 	a.cgu {
-		color: var(--secondary-color)
+		color: var(--secondary-color);
 	}
 
 	:focus-visible {
