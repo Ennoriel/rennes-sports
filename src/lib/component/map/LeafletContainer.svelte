@@ -20,9 +20,23 @@
 	export let center: Coordinates = [48.1113618, -1.6500957];
 	let currCenter: LatLng;
 
+	let zoom = 13;
+
+	const config = {
+		'18': { radius: 10, weight: 6, size: 60 },
+		'17': { radius: 12, weight: 4, size: 50 },
+		'16': { radius: 15, weight: 3.5, size: 45 },
+		'15': { radius: 20, weight: 3, size: 40 },
+		'14': { radius: 25, weight: 2.5, size: 35 },
+		'13': { radius: 25, weight: 2, size: 30 },
+		'12': { radius: 25, weight: 1, size: 25 }
+	};
+
+	$: currConfig = config[Math.max(12, zoom).toString()];
+
 	const mapOptions = {
 		center,
-		zoom: 13
+		zoom
 	};
 	const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 	const tileLayerOptions = {
@@ -32,22 +46,16 @@
 		attribution: '© OpenStreetMap contributors' // link to https://www.openstreetmap.org/copyright
 	};
 
-	const icon = LeafletIcon({
+	$: icon = LeafletIcon({
 		iconUrl: '/svg/location-blue.svg',
-		iconSize: [36, 36],
-		iconAnchor: [18, 36],
-		popupAnchor: [0, -40]
+		iconSize: [currConfig.size, currConfig.size],
+		iconAnchor: [currConfig.size / 2, currConfig.size],
+		popupAnchor: [0, -1.1 * currConfig.size]
 	});
 
+	$: console.log(icon);
+
 	$: if (getMap) getMap().setView(center);
-
-	setInterval(() => {
-		if (getMap) {
-			getMap().invalidateSize();
-		}
-	}, 1000);
-
-	$: console.log(currCenter);
 
 	let getMap: () => Map;
 </script>
@@ -55,9 +63,16 @@
 <LeafletMap
 	bind:getMap
 	options={mapOptions}
-	events={['moveend']}
+	events={['moveend', 'zoom', 'resize']}
 	on:moveend={() => {
 		currCenter = getMap && getMap().getCenter();
+		getMap && getMap()?.invalidateSize();
+	}}
+	on:resize={() => {
+		getMap && getMap()?.invalidateSize();
+	}}
+	on:zoom={() => {
+		zoom = getMap && getMap().getZoom();
 	}}
 >
 	<TileLayer url={tileUrl} options={tileLayerOptions} />
@@ -73,11 +88,12 @@
 			latLngs={metro.stations.map((metro) => metro.coordinates)}
 			color={metro.color}
 			fillColor={metro.color}
+			weight={currConfig.weight}
 		/>
 		{#each metro.stations as station}
 			<Circle
 				latLng={station.coordinates}
-				radius={40}
+				radius={currConfig.radius}
 				color={metro.color}
 				fillColor={metro.color}
 				fillOpacity={1}
