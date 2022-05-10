@@ -11,8 +11,8 @@
 
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { enhance } from '$lib/utils/form';
 	import { session } from '$app/stores';
+	import { enhance } from '$lib/utils/form';
 	import EmailInput from '$lib/component/input/EmailInput.svelte';
 	import PasswordInput from '$lib/component/input/PasswordInput.svelte';
 
@@ -46,8 +46,8 @@
 		<br />
 		<a class="log-on" href="/utilisateur/creer-son-compte"> Inscrivez-vous ! </a>
 	</p>
-	<EmailInput name="email" />
-	<PasswordInput name="password" />
+	<EmailInput />
+	<PasswordInput />
 	{error || ''}
 	<div>
 		<button type="submit" disabled={pending}>Se connecter</button>

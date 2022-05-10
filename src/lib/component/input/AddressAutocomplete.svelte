@@ -7,6 +7,7 @@
 	export let required = false;
 	export let placeholder = 'Ex : 2 Rue du Bosphore, 35200 Rennes';
 	export let value: Location | undefined = undefined;
+	export let variant: 'square' | 'rounded' = 'rounded';
 
 	let isWaiting = false;
 
@@ -48,6 +49,7 @@
 	{name}
 	{required}
 	{placeholder}
+	{variant}
 	bind:isWaiting
 	noOptionsMessage={isWaiting ? 'Chargement des addresses...' : 'Aucune adresse trouvée'}
 	bind:value

@@ -1,6 +1,6 @@
 <script lang="ts">
 	export let label = 'Mot de passe';
-	export let name: string;
+	export let name = 'password';
 
 	let password: string;
 	let showPassword = false;

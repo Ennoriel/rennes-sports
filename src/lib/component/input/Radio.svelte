@@ -4,7 +4,7 @@
 	export let label: string;
 	export let name: string;
 	export let required = false;
-	export let value: any = '';
+	export let value: any = undefined;
 	export let options: Array<SelectableValue> = [];
 	export let disabled = false;
 

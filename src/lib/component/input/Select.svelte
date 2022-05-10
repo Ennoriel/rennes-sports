@@ -5,7 +5,7 @@
 	export let name: string;
 	export let ariaLabel: string | undefined = undefined;
 	export let placeholder = label;
-	export let value: any = '';
+	export let value: any = undefined;
 	export let options: Array<SelectableValue> = [];
 
 	let _options: Array<SelectableOption>;
@@ -42,7 +42,7 @@
 		outline: none;
 		margin: 0;
 		border: 1px solid #e3e3e3;
-		background-color: #eeeeee;
+		background-color: white;
 		height: 33px;
 		border-radius: 5px;
 		padding: 0 0 0 10px;

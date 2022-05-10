@@ -21,6 +21,7 @@
 	export let isMulti = false;
 	export let isWaiting = false;
 	export let noOptionsMessage = 'Aucun résultat';
+	export let variant: 'square' | 'rounded' = 'rounded';
 
 	let boundValue: { index: number; value: Value } | any | undefined;
 
@@ -32,7 +33,11 @@
 	};
 </script>
 
-<span class="autocomplete">
+<span
+	class="autocomplete"
+	class:square={variant === 'square'}
+	class:rounded={variant === 'rounded'}
+>
 	<label for={id}>
 		{label}
 	</label>
@@ -68,12 +73,23 @@
 <InputHidden {name} {value} />
 
 <style>
-	.autocomplete {
+	.autocomplete.rounded {
 		--select-height: 42px;
-		--select-bg-color: white;
 		--select-height-half: calc(var(--select-height) / 2);
+		--border-radius: var(--select-height-half);
+		--border-radius-list: 16px;
+		--select-bg-color: white;
 		--spinner-size: 20px;
-
+	}
+	.autocomplete.square {
+		--select-height: 33px;
+		--select-height-half: calc(var(--select-height) / 2);
+		--border-radius: 5px;
+		--border-radius-list: 5px;
+		--select-bg-color: white;
+		--spinner-size: 18px;
+	}
+	.autocomplete {
 		display: flex;
 		flex-direction: column;
 		gap: 10px;
@@ -81,7 +97,7 @@
 	}
 	.autocomplete :global(.svelte-select) {
 		height: var(--select-height);
-		border-radius: var(--select-height-half);
+		border-radius: var(--border-radius);
 		display: flex;
 		position: relative;
 		background-color: var(--select-bg-color);
@@ -91,7 +107,7 @@
 		background-color: transparent;
 		height: var(--select-height);
 		padding: 0 var(--select-height-half);
-		border-radius: var(--select-height-half);
+		border-radius: var(--border-radius);
 		color: var(--main-color);
 		border: none;
 		width: 100%;
@@ -143,7 +159,7 @@
 	}
 	.autocomplete :global(.list) {
 		background-color: var(--select-bg-color);
-		border-radius: calc(3 * var(--select-height) / 8);
+		border-radius: var(--border-radius-list);
 		z-index: 1;
 		box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
 
@@ -151,12 +167,12 @@
 		overflow-y: auto;
 	}
 	.autocomplete :global(.list-item:first-of-type .item) {
-		border-top-left-radius: calc(3 * var(--select-height) / 8);
-		border-top-right-radius: calc(3 * var(--select-height) / 8);
+		border-top-left-radius: var(--border-radius-list);
+		border-top-right-radius: var(--border-radius-list);
 	}
 	.autocomplete :global(.list-item:last-of-type .item) {
-		border-bottom-left-radius: calc(3 * var(--select-height) / 8);
-		border-bottom-right-radius: calc(3 * var(--select-height) / 8);
+		border-bottom-left-radius: var(--border-radius-list);
+		border-bottom-right-radius: var(--border-radius-list);
 	}
 	.autocomplete :global(.item) {
 		padding: 5px 0 5px var(--select-height-half);

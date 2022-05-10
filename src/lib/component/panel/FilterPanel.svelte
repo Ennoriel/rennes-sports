@@ -35,7 +35,7 @@
 			</Button>
 		</ButtonGroup>
 
-		<SportAutocomplete bind:value={$state.filter.sport} />
+		<SportAutocomplete bind:value={$state.filter.sport} variant="square" />
 
 		<Radio label="Pratique" name="level" options={LEVELS} bind:value={$state.filter.level} />
 
@@ -71,7 +71,7 @@
 			bind:range={$state.filter.minutes}
 		/>
 
-		<LocationAutocomplete name="location" bind:value={$state.filter.location} />
+		<LocationAutocomplete name="location" bind:value={$state.filter.location} variant="square" />
 
 		<Select
 			label="Association"

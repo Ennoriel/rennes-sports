@@ -7,6 +7,8 @@
 	export let required = false;
 	export let placeholder = 'Ex : Parc de la Poterie';
 	export let value: Location | undefined = undefined;
+	export let filterText: string | undefined = undefined;
+	export let variant: 'square' | 'rounded' = 'rounded';
 
 	let isWaiting = false;
 
@@ -25,11 +27,15 @@
 	{name}
 	{required}
 	{placeholder}
+	{variant}
 	bind:isWaiting
 	noOptionsMessage={isWaiting
 		? 'Chargement des lieux...'
-		: 'Aucun lieu trouvé. Vous pouvez le créer ;)'}
+		: filterText?.length > 3
+		? 'Aucun lieu trouvé !'
+		: 'Commencez à taper un lieu'}
 	labelIdentifier="name"
 	bind:value
+	bind:filterText
 	loadOptions={getLocations}
 />

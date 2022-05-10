@@ -8,6 +8,7 @@
 	export let filterText: string | undefined = undefined;
 	export let placeholder = 'Ex : Patin sur glace';
 	export let value: string | undefined = undefined;
+	export let variant: 'square' | 'rounded' = 'rounded';
 
 	let isWaiting = false;
 
@@ -27,6 +28,7 @@
 	{required}
 	{isCreatable}
 	{placeholder}
+	{variant}
 	bind:isWaiting
 	noOptionsMessage={isWaiting
 		? 'Chargement des sports...'

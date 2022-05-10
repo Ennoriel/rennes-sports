@@ -42,8 +42,8 @@
 		<br />
 		<a class="log-on" href="/utilisateur/se-connecter"> Connectez-vous ! </a>
 	</p>
-	<EmailInput name="email" />
-	<PasswordInput name="password" />
+	<EmailInput />
+	<PasswordInput />
 	<label>
 		Nom de votre association
 		<input name="association" type="text" />

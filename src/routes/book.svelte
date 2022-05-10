@@ -14,6 +14,10 @@
 	import Range from '$lib/component/input/Range.svelte';
 	import Select from '$lib/component/input/Select.svelte';
 	import Autocomplete from '$lib/component/input/Autocomplete.svelte';
+	import EmailInput from '../lib/component/input/EmailInput.svelte';
+	import PasswordInput from '../lib/component/input/PasswordInput.svelte';
+	import LeftRight from '../lib/component/book/LeftRight.svelte';
+	import AddressAutocomplete from '../lib/component/input/AddressAutocomplete.svelte';
 
 	let pending = false;
 </script>
@@ -29,6 +33,8 @@
 		<Button variant="primary" shape="square">Primary square</Button>
 		<Button variant="secondary" shape="square">Secondary square</Button>
 		<Button variant="transparent" shape="square">Transparent square</Button>
+	</div>
+	<div class="container">
 		<Button variant="primary" shape="circle"><X /></Button>
 		<Button variant="secondary" shape="circle"><X /></Button>
 		<Button variant="transparent" shape="circle"><X /></Button>
@@ -52,17 +58,44 @@
 	</div>
 
 	<Title>Input</Title>
-	<TextInput label="text input" name="text" />
+
+	<LeftRight>
+		<TextInput slot="left" label="text input" name="text" variant="square" />
+		<TextInput slot="right" label="text input" name="text" />
+	</LeftRight>
+	<LeftRight>
+		<EmailInput slot="right" />
+	</LeftRight>
+	<LeftRight>
+		<PasswordInput slot="right" />
+	</LeftRight>
+	<LeftRight>
+		<Autocomplete
+			slot="left"
+			name="autocomplete"
+			label="select input"
+			options={['option 1', 'option 2', 'option 3', 'option 4']}
+			isCreatable={true}
+			variant="square"
+		/>
+		<Autocomplete
+			slot="right"
+			name="autocomplete"
+			label="select input"
+			options={['option 1', 'option 2', 'option 3', 'option 4']}
+			isCreatable={true}
+		/>
+	</LeftRight>
+	<LeftRight>
+		<Select slot="left" label="select input" name="select" options={['option 1', 'option 2']} />
+	</LeftRight>
+	<LeftRight>
+		<AddressAutocomplete slot="left" variant="square" />
+	</LeftRight>
+
 	<Radio label="radio input" name="radio" options={['option 1', 'option 2']} />
 	<Checkbox label="checkbox input" name="checkbox" options={['option 1', 'option 2']} />
 	<Range label="range input" name="range" min={0} max={1200} step={20} />
-	<Select label="select input" name="select" options={['option 1', 'option 2']} />
-	<Autocomplete
-		name="autocomplete"
-		label="select input"
-		options={['option 1', 'option 2', 'option 3', 'option 4']}
-		isCreatable={true}
-	/>
 </div>
 
 <style>

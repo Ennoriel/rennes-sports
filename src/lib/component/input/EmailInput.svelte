@@ -1,6 +1,6 @@
 <script lang="ts">
 	export let label = 'E-mail';
-	export let name: string;
+	export let name = 'email';
 </script>
 
 <label>
