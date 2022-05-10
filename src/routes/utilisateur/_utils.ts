@@ -1,10 +1,10 @@
-import bcrypt from 'bcryptjs';
+import { genSaltSync, hashSync, compareSync } from 'bcryptjs';
 
 export function crypt(password: string, saltRounds = 12): string {
-	const salt = bcrypt.genSaltSync(saltRounds);
-	return bcrypt.hashSync(password, salt);
+	const salt = genSaltSync(saltRounds);
+	return hashSync(password, salt);
 }
 
 export function validate(password: string, hash: string): boolean {
-	return bcrypt.compareSync(password, hash);
+	return compareSync(password, hash);
 }

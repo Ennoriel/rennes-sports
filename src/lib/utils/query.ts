@@ -1,7 +1,7 @@
 import type { Load, RequestHandler } from '@sveltejs/kit';
 import { urlSearchParamsToString } from './url';
 import { isStringANumber } from './number';
-import fdto from 'form-data-to-object';
+import { toObj } from 'form-data-to-object';
 import { isStringABool } from './bool';
 
 export const errorResponse = (
@@ -31,5 +31,5 @@ export const formDataToObject = <T>(formData: FormData): T => {
 		return acc;
 	}, {} as any);
 
-	return fdto.toObj<T>(linearizedObject);
+	return toObj<T>(linearizedObject);
 };

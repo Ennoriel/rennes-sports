@@ -53,8 +53,6 @@
 		popupAnchor: [0, -1.1 * currConfig.size]
 	});
 
-	$: console.log(icon);
-
 	$: if (getMap) getMap().setView(center);
 
 	let getMap: () => Map;

@@ -1,11 +1,11 @@
 import { parse } from 'cookie';
-import jwt from 'jsonwebtoken';
+import { verify } from 'jsonwebtoken';
 import type { GetSession, Handle } from '@sveltejs/kit';
 import type { LocalsSession } from '$lib/types/session.type';
 
 const verifySession = (token: string): LocalsSession => {
 	try {
-		return jwt.verify(token, import.meta.env.VITE_JWT_SECRET as string) as unknown as LocalsSession;
+		return verify(token, import.meta.env.VITE_JWT_SECRET as string) as unknown as LocalsSession;
 	} catch (ex) {
 		return null;
 	}

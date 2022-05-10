@@ -3,6 +3,9 @@
 	import { slide } from 'svelte/transition';
 	import { enhance } from '$lib/utils/form';
 
+	import type { RangeType } from '$lib/types/sport.type';
+	import { LEVELS } from '$lib/data/sport';
+
 	import Autocomplete from '$lib/component/input/Autocomplete.svelte';
 	import Button from '$lib/component/atom/Button.svelte';
 	import ButtonGroup from '$lib/component/layout/ButtonGroup.svelte';
@@ -11,8 +14,6 @@
 	import Radio from '$lib/component/input/Radio.svelte';
 	import Range from '$lib/component/input/Range.svelte';
 	import LocationAutocomplete from '$lib/component/input/LocationAutocomplete.svelte';
-
-	import type { RangeType } from '$lib/types/sport.type';
 	import X from '$lib/component/svg/X.svelte';
 
 	export let error: string | undefined = undefined;
@@ -97,12 +98,7 @@
 		/>
 
 		<!-- Level -->
-		<Radio
-			label="Pratique"
-			name="level"
-			required
-			options={['Compétition', 'Handisport', 'Loisir']}
-		/>
+		<Radio label="Pratique" name="level" required options={LEVELS} />
 
 		<!-- Sex -->
 		<Radio label="Sexe" name="sex" required options={['Mixte', 'Féminin', 'Masculin']} />

@@ -12,6 +12,7 @@
 	export let placeholder = label;
 	export let options: Array<object> | Array<string> | undefined = undefined;
 	export let loadOptions: (query: string) => Promise<Array<object>> | undefined = undefined;
+	export let filterText: string | undefined = undefined;
 	export let labelIdentifier: string | undefined = undefined;
 	export let optionIdentifier: string | undefined = undefined;
 	export let value: Value | undefined = undefined;
@@ -44,6 +45,7 @@
 		{labelIdentifier}
 		{optionIdentifier}
 		bind:value={boundValue}
+		bind:filterText
 		{isCreatable}
 		{isDisabled}
 		{isMulti}
@@ -143,7 +145,7 @@
 		background-color: var(--select-bg-color);
 		border-radius: calc(3 * var(--select-height) / 8);
 		z-index: 1;
-		box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+		box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
 
 		max-height: calc(4 * var(--select-height));
 		overflow-y: auto;

@@ -10,7 +10,6 @@
 
 	let isWaiting = false;
 
-	// fixme remove line res.map((l) => ({ ...l, label: l.name }) ??
 	async function getLocations(filterText = ''): Promise<Location[]> {
 		return new Promise((resolve) =>
 			fetch(`/api/locations.json?filter=${encodeURIComponent(filterText)}`)

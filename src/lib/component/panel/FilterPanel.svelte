@@ -1,17 +1,19 @@
 <script lang="ts">
-	import Panel from './Panel.svelte';
+	import { state } from '$lib/store/state';
 	import { range } from '$lib/utils/array';
 	import { assos } from '$lib/data/assos';
-	import Select from '../input/Select.svelte';
-	import Radio from '../input/Radio.svelte';
-	import { state } from '$lib/store/state';
-	import Checkbox from '../input/Checkbox.svelte';
-	import Range from '../input/Range.svelte';
+	import { LEVELS } from '$lib/data/sport';
+	import Panel from './Panel.svelte';
+	import Select from '$lib/component/input/Select.svelte';
+	import Radio from '$lib/component/input/Radio.svelte';
+	import Checkbox from '$lib/component/input/Checkbox.svelte';
+	import Range from '$lib/component/input/Range.svelte';
 	import Title from '$lib/component/atom/Title.svelte';
 	import Button from '$lib/component/atom/Button.svelte';
 	import ButtonGroup from '$lib/component/layout/ButtonGroup.svelte';
 	import X from '$lib/component/svg/X.svelte';
 	import LocationAutocomplete from '$lib/component/input/LocationAutocomplete.svelte';
+	import SportAutocomplete from '$lib/component/input/SportAutocomplete.svelte';
 
 	export let pageRef: HTMLElement;
 
@@ -33,19 +35,9 @@
 			</Button>
 		</ButtonGroup>
 
-		<Select
-			label="Sport"
-			name="sport"
-			options={[...new Set($state.allSports.map((sport) => sport.sport))]}
-			bind:value={$state.filter.sport}
-		/>
+		<SportAutocomplete bind:value={$state.filter.sport} />
 
-		<Radio
-			label="Pratique"
-			name="level"
-			options={[...new Set($state.allSports.map((sport) => sport.level))]}
-			bind:value={$state.filter.level}
-		/>
+		<Radio label="Pratique" name="level" options={LEVELS} bind:value={$state.filter.level} />
 
 		<Select
 			label="Année de naissance"
