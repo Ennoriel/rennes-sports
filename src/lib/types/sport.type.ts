@@ -7,8 +7,14 @@ export type Sport = {
 	otherYear?: string;
 	sex: string;
 	level: string;
-	assoId: number;
+	association: Association;
 	slots: Slot[];
+};
+
+export type Association = {
+	_id: string;
+	name: string;
+	website: string;
 };
 
 export type Slot = {
@@ -25,7 +31,7 @@ export type Filter = {
 	sex?: string[];
 	day?: string[];
 	location?: Location;
-	assoId?: number;
+	associationId?: string;
 	minutes?: RangeType;
 };
 

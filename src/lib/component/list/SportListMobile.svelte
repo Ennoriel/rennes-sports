@@ -2,14 +2,12 @@
 	import type { Sport } from '$lib/types/sport.type';
 	import { displayHours, displayYear } from '$lib/utils/time';
 	import Link from '$lib/component/atom/Link.svelte';
-	import { assos } from '$lib/data/assos';
 
 	export let sports: Array<Sport>;
 </script>
 
 <div class="wrapper">
 	{#each sports as sport}
-		{@const asso = assos.find((a) => a.id === sport.assoId)}
 		<div class="card">
 			<h2>
 				<strong>{sport.sport}</strong>
@@ -32,8 +30,8 @@
 				</div>
 			{/each}
 			<div class="asso-name">
-				{asso.name}
-				<Link target="_blank" href={asso.website} img={{ src: '/svg/right-up.svg' }}>
+				{sport.association.name}
+				<Link target="_blank" href={sport.association.website} img={{ src: '/svg/right-up.svg' }}>
 					consulter le site
 				</Link>
 			</div>

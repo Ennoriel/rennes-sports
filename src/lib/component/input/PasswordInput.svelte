@@ -1,13 +1,14 @@
 <script lang="ts">
 	export let label = 'Mot de passe';
 	export let name = 'password';
+	export let variant: 'square' | 'rounded' = 'rounded';
 
 	let password: string;
 	let showPassword = false;
 </script>
 
 <!-- svelte-ignore a11y-label-has-associated-control -->
-<label>
+<label class="input" class:square={variant === 'square'} class:rounded={variant === 'rounded'}>
 	{label}
 	{#if showPassword}
 		<input type="text" {name} bind:value={password} />
@@ -24,30 +25,8 @@
 
 <style>
 	label {
-		display: flex;
-		flex-direction: column;
-		text-align: center;
-		margin-bottom: 16px;
-		font-weight: 100;
 		position: relative;
 	}
-
-	input {
-		height: 42px;
-		border-radius: 21px;
-		border: none;
-		box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-		padding: 0 16px;
-		color: var(--main-color);
-		text-align: center;
-		margin-top: 6px;
-	}
-
-	:focus-visible {
-		outline: 2px solid var(--focus-color);
-		outline-offset: 2px;
-	}
-
 	button {
 		border: none;
 		background-color: transparent;

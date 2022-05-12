@@ -1,5 +1,5 @@
 import { parse } from 'cookie';
-import jwt from 'jsonwebtoken';
+import * as jwt from 'jsonwebtoken';
 import type { GetSession, Handle } from '@sveltejs/kit';
 import type { LocalsSession } from '$lib/types/session.type';
 
@@ -22,7 +22,9 @@ export const getSession: GetSession = async (event) => {
 		? {
 				user: {
 					email: event.locals.session.email,
-					role: event.locals.session.role
+					role: event.locals.session.role,
+					name: event.locals.session.name,
+					website: event.locals.session.website
 				}
 		  }
 		: undefined;

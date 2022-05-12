@@ -36,7 +36,7 @@
 		border: none;
 		font-size: 14px;
 		gap: 10px;
-		margin: 20px 0 0;
+		margin: 0 0 16px 0;
 		padding: 0;
 	}
 	legend {

@@ -16,7 +16,7 @@ export const get: RequestHandler = async ({ locals }) => {
 					await mongoClient
 				)
 					.db()
-					?.collection('users')
+					?.collection('associations')
 					.find({}, { projection: { email: 1, role: 1, association: 1 } })
 					?.toArray()) || []
 		}

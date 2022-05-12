@@ -15,6 +15,7 @@
 	import { session } from '$app/stores';
 	import EmailInput from '$lib/component/input/EmailInput.svelte';
 	import PasswordInput from '$lib/component/input/PasswordInput.svelte';
+	import TextInput from '../../lib/component/input/TextInput.svelte';
 
 	export let error: string | null = null;
 </script>
@@ -44,14 +45,8 @@
 	</p>
 	<EmailInput />
 	<PasswordInput />
-	<label>
-		Nom de votre association
-		<input name="association" type="text" />
-	</label>
-	<label>
-		Lien vers votre site internet / réseau social
-		<input name="website" type="text" />
-	</label>
+	<TextInput name="name" label="Nom de votre association" />
+	<TextInput name="website" label="Lien vers votre site internet / réseau social" />
 	<label>
 		<input name="cgu" type="checkbox" required />
 		J'accepte les <a class="cgu" href="/cgu">conditions générales d'utilisation</a>
@@ -97,17 +92,6 @@
 	label {
 		margin-bottom: 16px;
 		font-weight: 100;
-	}
-
-	input[type='text'] {
-		height: 42px;
-		border-radius: 21px;
-		border: none;
-		box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-		padding: 0 16px;
-		color: var(--main-color);
-		text-align: center;
-		margin-top: 6px;
 	}
 
 	button[type='submit'] {

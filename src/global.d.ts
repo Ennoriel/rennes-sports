@@ -3,9 +3,12 @@
 declare namespace App {
 	interface Locals {
 		session?: {
-			uid: string;
+			_id: string;
 			email: string;
 			role: string;
+			name: string;
+			website: string;
+			iat: number;
 		};
 	}
 
@@ -13,6 +16,8 @@ declare namespace App {
 		user: {
 			email: string;
 			role: string;
+			name: string;
+			website: string;
 		};
 	}
 }

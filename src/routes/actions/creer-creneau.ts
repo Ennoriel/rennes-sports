@@ -3,8 +3,9 @@ import { errorResponse, formDataToObject } from '$lib/utils/query';
 import mongoClient from '$lib/utils/db';
 import type { InsertOneReturnType } from '$lib/types/mongo.type';
 import type { Sport } from '$lib/types/sport.type';
+import { ObjectId } from 'mongodb';
 
-export const post: RequestHandler = async ({ request }) => {
+export const post: RequestHandler = async ({ locals, request }) => {
 	const body = await request.formData();
 	const acceptsJson = request.headers.get('accept') == 'application/json';
 
@@ -15,6 +16,12 @@ export const post: RequestHandler = async ({ request }) => {
 			(_, i) => sport.birthYear[0] + i
 		);
 	}
+
+	sport.association = {
+		_id: new ObjectId(locals.session._id) as unknown as string,
+		name: locals.session.name,
+		website: locals.session.website
+	};
 
 	const result = (await (await mongoClient)
 		.db()

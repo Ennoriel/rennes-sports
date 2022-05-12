@@ -64,6 +64,7 @@
 		<TextInput slot="right" label="text input" name="text" />
 	</LeftRight>
 	<LeftRight>
+		<EmailInput slot="left" variant="square" />
 		<EmailInput slot="right" />
 	</LeftRight>
 	<LeftRight>

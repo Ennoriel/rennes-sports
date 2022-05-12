@@ -9,15 +9,16 @@ export const post: RequestHandler = async ({ request }) => {
 
 	const email = body.get('email') as string;
 	const password = body.get('password') as string;
-	const association = body.get('association') as string;
+	const name = body.get('name') as string;
+	const website = body.get('website') as string;
 	const role = 'user';
 
-	if (!email || !password || !association) {
+	if (!email || !password || !name) {
 		return errorResponse(acceptsJson, 'Toutes les informations sont obligatoires', 403);
 	}
 
 	const users =
-		(await (await mongoClient).db()?.collection('users').find({ email })?.toArray()) || [];
+		(await (await mongoClient).db()?.collection('associations').find({ email })?.toArray()) || [];
 
 	if (users.length) {
 		return errorResponse(acceptsJson, `Un compte avec l'email ${email} existe déjà !`, 403);
@@ -27,8 +28,8 @@ export const post: RequestHandler = async ({ request }) => {
 
 	const result = await (await mongoClient)
 		.db()
-		?.collection('users')
-		?.insertOne({ email, hash, association, role });
+		?.collection('associations')
+		?.insertOne({ email, hash, name, website, role });
 
 	if (!result.insertedId) {
 		return errorResponse(

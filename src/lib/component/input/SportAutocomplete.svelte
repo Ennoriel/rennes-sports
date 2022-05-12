@@ -17,7 +17,7 @@
 			fetch(`/api/sports/distinct?filter=${encodeURIComponent(filterText)}`)
 				.then((res) => res.json())
 				.then((res: Array<string>) => res.map((s) => ({ label: s, value: s })))
-				.then((sports) => resolve(sports))
+				.then(resolve)
 		);
 	}
 </script>

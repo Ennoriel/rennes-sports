@@ -16,7 +16,7 @@ export const post: RequestHandler = async ({ request, locals }) => {
 		await mongoClient
 	)
 		.db()
-		?.collection('users')
+		?.collection('associations')
 		.updateOne({ _id: new ObjectId(_id) }, { $set: { role } });
 
 	if (response.modifiedCount === 1) {
@@ -26,7 +26,7 @@ export const post: RequestHandler = async ({ request, locals }) => {
 				await mongoClient
 			)
 				.db()
-				?.collection('users')
+				?.collection('associations')
 				.findOne({ _id: new ObjectId(_id) })
 		};
 	} else {

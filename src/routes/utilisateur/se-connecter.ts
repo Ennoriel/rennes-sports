@@ -16,21 +16,22 @@ export const post: RequestHandler = async ({ request }) => {
 		return errorResponse(acceptsJson, "L'identifiant ou le mot des passe est incorrect", 403);
 	}
 
-	const users =
-		(await (await mongoClient).db()?.collection('users')?.find({ email })?.toArray()) || [];
+	const associations =
+		(await (await mongoClient).db()?.collection('associations')?.find({ email })?.toArray()) || [];
 
-	//  || !validate(password, users[0].hash)
-	if (users.length !== 1 || !validate(password, users[0].hash)) {
+	if (associations.length !== 1 || !validate(password, associations[0].hash)) {
 		return errorResponse(acceptsJson, "L'identifiant ou le mot des passe est incorrect", 403);
 	}
 
-	const user = {
-		_id: users[0]._id,
-		email: users[0].email,
-		role: users[0].role
+	const association = {
+		_id: associations[0]._id,
+		email: associations[0].email,
+		role: associations[0].role,
+		name: associations[0].name,
+		website: associations[0].website
 	};
 
-	const token = sign(user, import.meta.env.VITE_JWT_SECRET as string);
+	const token = sign(association, import.meta.env.VITE_JWT_SECRET as string);
 
 	const headers = {
 		'set-cookie': serialize('session', token, {
@@ -47,7 +48,7 @@ export const post: RequestHandler = async ({ request }) => {
 				status: 200,
 				headers,
 				body: {
-					user
+					association
 				}
 		  }
 		: {

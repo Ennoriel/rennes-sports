@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { GroupSport, Location } from '$lib/types/location.type';
 	import { displayHours, displayYear } from '$lib/utils/time';
-	import { assos } from '$lib/data/assos';
 
 	export let location: Location;
 	export let sports: Array<GroupSport>;
@@ -29,7 +28,7 @@
 				</div>
 			{/each}
 			<div>
-				{assos.find((asso) => asso.id === s.assoId)?.name}
+				{s.association.name}
 			</div>
 		{/each}
 	{/each}

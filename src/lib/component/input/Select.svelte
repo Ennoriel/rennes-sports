@@ -7,6 +7,7 @@
 	export let placeholder = label;
 	export let value: any = undefined;
 	export let options: Array<SelectableValue> = [];
+	export let variant: 'square' | 'rounded' = 'rounded';
 
 	let _options: Array<SelectableOption>;
 
@@ -17,7 +18,7 @@
 	) as Array<SelectableOption>;
 </script>
 
-<label>
+<label class="input" class:square={variant === 'square'} class:rounded={variant === 'rounded'}>
 	{label}
 	<select bind:value on:input {name} aria-label={ariaLabel}>
 		<option value={undefined}>{placeholder || ''}</option>
@@ -30,27 +31,6 @@
 </label>
 
 <style>
-	label {
-		display: flex;
-		flex-direction: column;
-		font-size: 14px;
-		font-weight: 700;
-		gap: 10px;
-		margin-top: 20px;
-	}
-	select {
-		outline: none;
-		margin: 0;
-		border: 1px solid #e3e3e3;
-		background-color: white;
-		height: 33px;
-		border-radius: 5px;
-		padding: 0 0 0 10px;
-	}
-	select:focus-visible {
-		outline: 2px solid var(--focus-color);
-		outline-offset: 2px;
-	}
 	option {
 		color: black;
 	}

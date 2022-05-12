@@ -1,10 +1,8 @@
 <script lang="ts">
 	import { state } from '$lib/store/state';
 	import { range } from '$lib/utils/array';
-	import { assos } from '$lib/data/assos';
 	import { LEVELS } from '$lib/data/sport';
 	import Panel from './Panel.svelte';
-	import Select from '$lib/component/input/Select.svelte';
 	import Radio from '$lib/component/input/Radio.svelte';
 	import Checkbox from '$lib/component/input/Checkbox.svelte';
 	import Range from '$lib/component/input/Range.svelte';
@@ -14,12 +12,10 @@
 	import X from '$lib/component/svg/X.svelte';
 	import LocationAutocomplete from '$lib/component/input/LocationAutocomplete.svelte';
 	import SportAutocomplete from '$lib/component/input/SportAutocomplete.svelte';
+	import Autocomplete from '../input/Autocomplete.svelte';
+	import AssociationAutocomplete from '../input/AssociationAutocomplete.svelte';
 
 	export let pageRef: HTMLElement;
-
-	$: availableAssos = assos
-		.filter((asso) => $state.allSports.some((sport) => sport.assoId === asso.id))
-		.map((asso) => ({ label: asso.name, value: asso.id }));
 </script>
 
 <Panel {pageRef}>
@@ -39,12 +35,13 @@
 
 		<Radio label="Pratique" name="level" options={LEVELS} bind:value={$state.filter.level} />
 
-		<Select
+		<Autocomplete
 			label="Année de naissance"
 			placeholder="Année"
 			name="birthYear"
 			options={range(2021, 1920)}
 			bind:value={$state.filter.birthYear}
+			variant="square"
 		/>
 
 		<Checkbox
@@ -71,13 +68,16 @@
 			bind:range={$state.filter.minutes}
 		/>
 
-		<LocationAutocomplete name="location" bind:value={$state.filter.location} variant="square" />
+		<LocationAutocomplete
+			bind:value={$state.filter.location}
+			listPlacement="top"
+			variant="square"
+		/>
 
-		<Select
-			label="Association"
-			name="association"
-			options={availableAssos}
-			bind:value={$state.filter.assoId}
+		<AssociationAutocomplete
+			bind:value={$state.filter.associationId}
+			listPlacement="top"
+			variant="square"
 		/>
 	</div>
 </Panel>

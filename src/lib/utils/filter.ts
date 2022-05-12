@@ -28,7 +28,7 @@ export function filterSports(filter: Filter, sports: Array<Sport>): Array<Sport>
 				!filter.location?._id ||
 				sport.slots.some((slot) => slot.location._id === filter.location._id)
 		)
-		.filter((sport) => !filter.assoId || sport.assoId === filter.assoId);
+		.filter((sport) => !filter.associationId || sport.association._id === filter.associationId);
 }
 
 export function getMarkers(sports: Array<Sport>, locations: Array<Location>): Array<Marker> {

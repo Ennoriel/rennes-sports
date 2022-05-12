@@ -1,4 +1,6 @@
 <script lang="ts">
+	import './_input.css';
+
 	import { navigating } from '$app/stores';
 	import PreloadingIndicator from '$lib/component/atom/PreloadingIndicator.svelte';
 
@@ -28,16 +30,17 @@
 	:global(body) {
 		--main-color: #002395;
 		--secondary-color: #ed1f3a;
+		--text-color: #333;
 		--focus-color: var(--main-color);
 		--bg-color: #f7f7fa;
 		--header-height: 60px;
-	}
-	:global(body) {
+
 		font-family: 'Roboto', sans-serif;
 		font-size: 14px;
 		line-height: 1.5;
 		background-color: var(--bg-color);
 		margin: 0;
+		color: var(--text-color);
 	}
 	:global(button) {
 		font-family: 'Roboto', sans-serif;

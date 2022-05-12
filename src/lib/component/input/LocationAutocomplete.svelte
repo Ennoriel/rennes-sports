@@ -3,11 +3,12 @@
 	import type { Location } from '$lib/types/location.type';
 
 	export let label = 'Lieu';
-	export let name = 'name';
+	export let name = 'location';
 	export let required = false;
 	export let placeholder = 'Ex : Parc de la Poterie';
 	export let value: Location | undefined = undefined;
 	export let filterText: string | undefined = undefined;
+	export let listPlacement: 'auto' | 'top' | 'bottom' = 'bottom';
 	export let variant: 'square' | 'rounded' = 'rounded';
 
 	let isWaiting = false;
@@ -17,7 +18,7 @@
 			fetch(`/api/locations.json?filter=${encodeURIComponent(filterText)}`)
 				.then((res) => res.json())
 				.then((res: Array<Location>) => res.map((l) => ({ ...l, label: l.name })))
-				.then((locations) => resolve(locations))
+				.then(resolve)
 		);
 	}
 </script>
@@ -28,6 +29,7 @@
 	{required}
 	{placeholder}
 	{variant}
+	{listPlacement}
 	bind:isWaiting
 	noOptionsMessage={isWaiting
 		? 'Chargement des lieux...'

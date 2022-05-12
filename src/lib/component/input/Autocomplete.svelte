@@ -3,14 +3,14 @@
 	import Spinner from '../atom/Spinner.svelte';
 	import InputHidden from './InputHidden.svelte';
 
-	type Value = string | object;
+	type Value = string | number | object;
 
 	export let id = Math.random().toString(36);
 	export let name: string;
 	export let label: string;
 	export let required = false;
 	export let placeholder = label;
-	export let options: Array<object> | Array<string> | undefined = undefined;
+	export let options: Array<object> | Array<string> | Array<number> | undefined = undefined;
 	export let loadOptions: (query: string) => Promise<Array<object>> | undefined = undefined;
 	export let filterText: string | undefined = undefined;
 	export let labelIdentifier: string | undefined = undefined;
@@ -20,6 +20,7 @@
 	export let isDisabled = false;
 	export let isMulti = false;
 	export let isWaiting = false;
+	export let listPlacement: 'auto' | 'top' | 'bottom' = 'bottom';
 	export let noOptionsMessage = 'Aucun résultat';
 	export let variant: 'square' | 'rounded' = 'rounded';
 
@@ -55,7 +56,7 @@
 		{isDisabled}
 		{isMulti}
 		bind:isWaiting
-		listPlacement="bottom"
+		{listPlacement}
 		LoadingIcon={Spinner}
 		showChevron={true}
 		listOffset={8}
@@ -80,6 +81,7 @@
 		--border-radius-list: 16px;
 		--select-bg-color: white;
 		--spinner-size: 20px;
+		--input-color: var(--main-color);
 	}
 	.autocomplete.square {
 		--select-height: 33px;
@@ -88,14 +90,15 @@
 		--border-radius-list: 5px;
 		--select-bg-color: white;
 		--spinner-size: 18px;
+		--input-color: var(--text-color);
 	}
 	.autocomplete {
 		display: flex;
 		flex-direction: column;
 		gap: 10px;
-		margin-top: 20px;
 	}
 	.autocomplete :global(.svelte-select) {
+		margin-bottom: 16px;
 		height: var(--select-height);
 		border-radius: var(--border-radius);
 		display: flex;
@@ -108,15 +111,14 @@
 		height: var(--select-height);
 		padding: 0 var(--select-height-half);
 		border-radius: var(--border-radius);
-		color: var(--main-color);
+		color: var(--input-color);
 		border: none;
 		width: 100%;
 
 		box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
 	}
 	.autocomplete :global(:focus-visible) {
-		outline: 2px solid var(--focus-color);
-		outline-offset: 2px;
+		outline: 1px solid var(--focus-color);
 	}
 	.autocomplete :global(.a11y-text) {
 		position: absolute;
