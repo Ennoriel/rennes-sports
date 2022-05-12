@@ -8,14 +8,15 @@
 </span>
 
 <style>
-	@media (max-width: 720px) {
-		.l {
-			display: none;
-		}
+	.l {
+		display: none;
 	}
 	@media (min-width: 721px) {
 		.s {
 			display: none;
+		}
+		.l {
+			display: block;
 		}
 	}
 </style>
