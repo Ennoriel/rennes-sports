@@ -2,7 +2,9 @@
 	export let hidden: boolean = false;
 </script>
 
-<button on:click class:hidden> Filtrer </button>
+{#if !hidden}
+	<button on:click>Filtrer</button>
+{/if}
 
 <style>
 	button {
@@ -21,11 +23,6 @@
 		background-color: var(--secondary-color);
 
 		z-index: 401;
-	}
-
-	button.hidden {
-		pointer-events: none;
-		opacity: 0;
 	}
 
 	button:focus-visible {

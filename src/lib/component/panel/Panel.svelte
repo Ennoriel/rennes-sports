@@ -8,9 +8,13 @@
 	function click({ target }) {
 		if ($state.isOpen && pageRef.contains(target)) $state.isOpen = false;
 	}
+
+	function keydown(e: KeyboardEvent) {
+		if (e.key === 'Escape') $state.isOpen = false;
+	}
 </script>
 
-<svelte:window on:click={click} />
+<svelte:window on:click={click} on:keydown={keydown} />
 
 <FloatingButton on:click={() => ($state.isOpen = true)} hidden={$state.isOpen} />
 
