@@ -53,6 +53,7 @@ export const routes: Array<Route | Spacer> = [
 	{
 		route: 'book',
 		label: 'Book',
+		guard: (session) => session?.user?.role === 'admin'
 	},
 	{
 		spacer: true,

@@ -106,7 +106,7 @@
 		<!-- Birth year -->
 		<Range
 			label="Catégorie d'âge (années de naissance)"
-			name="brithYear"
+			name="birthYear"
 			min={2004}
 			max={2020}
 			step={1}
