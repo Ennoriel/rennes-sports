@@ -20,7 +20,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 export const getSession: GetSession = async (event) => {
 	return event.locals.session
 		? {
-				user: {
+				association: {
 					email: event.locals.session.email,
 					role: event.locals.session.role,
 					name: event.locals.session.name,

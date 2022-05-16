@@ -13,7 +13,7 @@ declare namespace App {
 	}
 
 	interface Session {
-		user: {
+		association: {
 			email: string;
 			role: string;
 			name: string;

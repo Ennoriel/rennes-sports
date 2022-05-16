@@ -1,5 +1,3 @@
-import type { Load } from '@sveltejs/kit';
-
 export type Route = {
 	route: string;
 	label: string;
@@ -48,12 +46,12 @@ export const routes: Array<Route | Spacer> = [
 	{
 		route: 'utilisateur',
 		label: 'Utilisateurs',
-		guard: (session) => session?.user?.role === 'admin'
+		guard: (session) => session?.association?.role === 'admin'
 	},
 	{
 		route: 'book',
 		label: 'Book',
-		guard: (session) => session?.user?.role === 'admin'
+		guard: (session) => session?.association?.role === 'admin'
 	},
 	{
 		spacer: true,
@@ -91,19 +89,4 @@ export const display = (
 	config: { mobile: boolean }
 ): Array<Route | Spacer> => {
 	return routes.filter((route) => !route.display || route.display(config));
-};
-
-export const loadAdminGuard: Load = async ({ session }) => {
-	if (!session?.user) {
-		return {
-			status: 302,
-			redirect: '/'
-		};
-	}
-
-	return {
-		props: {
-			user: session.user
-		}
-	};
 };
