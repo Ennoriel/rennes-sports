@@ -41,7 +41,7 @@ export const routes: Array<Route | Spacer> = [
 	},
 	{
 		route: 'a-propos',
-		label: 'A propos'
+		label: 'À propos'
 	},
 	{
 		route: 'utilisateur',
