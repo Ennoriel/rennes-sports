@@ -6,7 +6,6 @@
 	import type { RangeType } from '$lib/types/sport.type';
 	import { LEVELS } from '$lib/data/sport';
 
-	import Autocomplete from '$lib/component/input/Autocomplete.svelte';
 	import Button from '$lib/component/atom/Button.svelte';
 	import ButtonGroup from '$lib/component/layout/ButtonGroup.svelte';
 	import Title from '$lib/component/atom/Title.svelte';
@@ -15,6 +14,7 @@
 	import Range from '$lib/component/input/Range.svelte';
 	import LocationAutocomplete from '$lib/component/input/LocationAutocomplete.svelte';
 	import X from '$lib/component/svg/X.svelte';
+	import SportAutocomplete from '../../lib/component/input/SportAutocomplete.svelte';
 
 	export let error: string | undefined = undefined;
 
@@ -75,7 +75,7 @@
 			pending = true;
 		},
 		result: async () => {
-			goto('/recherche/liste'); //FIXME
+			goto('/recherche/liste');
 		},
 		error: async (p) => {
 			const body = await p.response.json();
@@ -88,14 +88,7 @@
 		<Title>Ajouter une séance</Title>
 
 		<!-- Sport -->
-		<Autocomplete
-			label="Sport"
-			name="sport"
-			required
-			placeholder="Choisissez un sport"
-			options={['Basket-ball', 'Rink Hockey', 'Roller']}
-			isCreatable
-		/>
+		<SportAutocomplete required isCreatable />
 
 		<!-- Level -->
 		<Radio label="Pratique" name="level" required options={LEVELS} />

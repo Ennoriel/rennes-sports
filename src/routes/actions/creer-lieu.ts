@@ -28,6 +28,6 @@ export const post: RequestHandler = async ({ request }) => {
 		  }
 		: {
 				status: 302,
-				headers: { Location: '/recherche/liste' } // FIXME goto my slots
+				headers: { Location: '/recherche/liste' }
 		  };
 };

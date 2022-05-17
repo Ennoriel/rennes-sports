@@ -42,6 +42,6 @@ export const post: RequestHandler = async ({ locals, request }) => {
 		  }
 		: {
 				status: 302,
-				headers: { Location: '/recherche/liste' } // FIXME goto my sports
+				headers: { Location: '/recherche/liste' }
 		  };
 };
