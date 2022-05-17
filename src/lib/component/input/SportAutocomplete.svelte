@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Autocomplete from './Autocomplete.svelte';
+	import type { AutocompleteSetValue } from '$lib/types/input.type';
 
 	export let label = 'Sport';
 	export let name = 'sport';
@@ -9,6 +10,7 @@
 	export let placeholder = 'Ex : Patin sur glace';
 	export let value: string | undefined = undefined;
 	export let variant: 'square' | 'rounded' = 'rounded';
+	export let setValue: AutocompleteSetValue = undefined;
 
 	let isWaiting = false;
 
@@ -35,6 +37,7 @@
 		: filterText?.length > 3
 		? 'Aucun sport trouvé !'
 		: 'Commencez à taper un sport'}
+	bind:setValue
 	bind:value
 	bind:filterText
 	loadOptions={getSports}

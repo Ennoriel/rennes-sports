@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Autocomplete from './Autocomplete.svelte';
 	import type { Association } from '$lib/types/sport.type';
+	import type { AutocompleteSetValue } from '$lib/types/input.type';
 
 	export let label = 'Association';
 	export let name = 'association';
@@ -10,6 +11,7 @@
 	export let filterText: string | undefined = undefined;
 	export let listPlacement: 'auto' | 'top' | 'bottom' = 'bottom';
 	export let variant: 'square' | 'rounded' = 'rounded';
+	export let setValue: AutocompleteSetValue = undefined;
 
 	let isWaiting = false;
 
@@ -38,6 +40,7 @@
 		: filterText?.length > 3
 		? 'Aucune association trouvée !'
 		: "Commencez à taper le nom d'une association"}
+	bind:setValue
 	bind:value
 	bind:filterText
 	loadOptions={getAssociations}

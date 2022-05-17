@@ -8,6 +8,7 @@
 
 	let _options: Array<SelectableOption>;
 
+	$: if (!value) value = [];
 	$: _options = (
 		options.some((o: SelectableValue) => typeof o === 'object' && 'value' in o && 'label' in o)
 			? options

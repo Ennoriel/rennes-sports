@@ -3,8 +3,7 @@
 	import Spinner from '../atom/Spinner.svelte';
 	import InputHidden from './InputHidden.svelte';
 	import Label from './Label.svelte';
-
-	type Value = string | number | object;
+	import type { AutocompleteSetValue, AutocompleteValue } from '$lib/types/input.type';
 
 	export let id = Math.random().toString(36);
 	export let name: string;
@@ -16,7 +15,7 @@
 	export let filterText: string | undefined = undefined;
 	export let labelIdentifier: string | undefined = undefined;
 	export let optionIdentifier: string | undefined = undefined;
-	export let value: Value | undefined = undefined;
+	export let value: AutocompleteValue | undefined = undefined;
 	export let isCreatable = false;
 	export let isDisabled = false;
 	export let isMulti = false;
@@ -24,8 +23,11 @@
 	export let listPlacement: 'auto' | 'top' | 'bottom' = 'bottom';
 	export let noOptionsMessage = 'Aucun résultat';
 	export let variant: 'square' | 'rounded' = 'rounded';
+	export const setValue: AutocompleteSetValue = (v) => {
+		boundValue = v;
+	};
 
-	let boundValue: { index: number; value: Value } | any | undefined;
+	let boundValue: { index: number; value: AutocompleteValue } | any | undefined;
 
 	$: value = boundValue?.value || boundValue?.[optionIdentifier] || boundValue;
 

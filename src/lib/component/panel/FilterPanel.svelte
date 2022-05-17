@@ -14,8 +14,14 @@
 	import SportAutocomplete from '$lib/component/input/SportAutocomplete.svelte';
 	import Autocomplete from '../input/Autocomplete.svelte';
 	import AssociationAutocomplete from '../input/AssociationAutocomplete.svelte';
+	import type { AutocompleteSetValue } from '$lib/types/input.type';
 
 	export let pageRef: HTMLElement;
+
+	let setSport: AutocompleteSetValue;
+	let setBirthYear: AutocompleteSetValue;
+	let setLocation: AutocompleteSetValue;
+	let setAssociation: AutocompleteSetValue;
 </script>
 
 <Panel {pageRef}>
@@ -26,8 +32,16 @@
 				theme="secondary"
 				variant="rounded"
 				size="s"
-				on:click={() => ($state.filter = { day: [], minutes: [360, 1410] })}>Réinitialiser</Button
+				on:click={() => {
+					$state.filter = { day: [], minutes: [360, 1410] };
+					setSport();
+					setBirthYear();
+					setLocation();
+					setAssociation();
+				}}
 			>
+				Réinitialiser
+			</Button>
 			<Button
 				theme="transparent"
 				variant="rounded"
@@ -37,7 +51,7 @@
 			/>
 		</ButtonGroup>
 
-		<SportAutocomplete bind:value={$state.filter.sport} variant="square" />
+		<SportAutocomplete bind:value={$state.filter.sport} variant="square" bind:setValue={setSport} />
 
 		<Radio label="Pratique" name="level" options={LEVELS} bind:value={$state.filter.level} />
 
@@ -48,6 +62,7 @@
 			options={range(2021, 1920)}
 			bind:value={$state.filter.birthYear}
 			variant="square"
+			bind:setValue={setBirthYear}
 		/>
 
 		<Checkbox
@@ -78,12 +93,14 @@
 			bind:value={$state.filter.location}
 			listPlacement="top"
 			variant="square"
+			bind:setValue={setLocation}
 		/>
 
 		<AssociationAutocomplete
 			bind:value={$state.filter.associationId}
 			listPlacement="top"
 			variant="square"
+			bind:setValue={setAssociation}
 		/>
 	</div>
 </Panel>

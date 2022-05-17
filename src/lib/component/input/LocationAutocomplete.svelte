@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Autocomplete from './Autocomplete.svelte';
 	import type { Location } from '$lib/types/location.type';
+	import type { AutocompleteSetValue } from '$lib/types/input.type';
 
 	export let label = 'Lieu';
 	export let name = 'location';
@@ -10,6 +11,7 @@
 	export let filterText: string | undefined = undefined;
 	export let listPlacement: 'auto' | 'top' | 'bottom' = 'bottom';
 	export let variant: 'square' | 'rounded' = 'rounded';
+	export let setValue: AutocompleteSetValue = undefined;
 
 	let isWaiting = false;
 
@@ -37,6 +39,7 @@
 		? 'Aucun lieu trouvé !'
 		: 'Commencez à taper un lieu'}
 	labelIdentifier="name"
+	bind:setValue
 	bind:value
 	bind:filterText
 	loadOptions={getLocations}
