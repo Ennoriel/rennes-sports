@@ -2,9 +2,8 @@
 	import ResponsiveWrapper from '$lib/component/layout/ResponsiveWrapper.svelte';
 	import MenuMobile from '$lib/component/layout/MenuMobile.svelte';
 	import Menu from '$lib/component/layout/Menu.svelte';
+	import BookButton from './_bookButtons.svelte';
 
-	import Button from '$lib/component/atom/Button.svelte';
-	import X from '$lib/component/svg/X.svelte';
 	import Link from '$lib/component/atom/Link.svelte';
 	import Spinner from '$lib/component/atom/Spinner.svelte';
 	import Title from '$lib/component/atom/Title.svelte';
@@ -18,8 +17,6 @@
 	import PasswordInput from '../lib/component/input/PasswordInput.svelte';
 	import LeftRight from '../lib/component/book/LeftRight.svelte';
 	import AddressAutocomplete from '../lib/component/input/AddressAutocomplete.svelte';
-
-	let pending = false;
 </script>
 
 <ResponsiveWrapper>
@@ -29,21 +26,7 @@
 
 <div id="wrapper">
 	<Title>Buttons</Title>
-	<div class="container">
-		<Button variant="primary" shape="square">Primary square</Button>
-		<Button variant="secondary" shape="square">Secondary square</Button>
-		<Button variant="transparent" shape="square">Transparent square</Button>
-	</div>
-	<div class="container">
-		<Button variant="primary" shape="circle"><X /></Button>
-		<Button variant="secondary" shape="circle"><X /></Button>
-		<Button variant="transparent" shape="circle"><X /></Button>
-	</div>
-	<div class="container">
-		<Button variant="primary" shape="square" on:click={() => (pending = true)} {pending}
-			>Click me</Button
-		>
-	</div>
+	<BookButton />
 
 	<Title>Links</Title>
 	<div class="container">
@@ -107,6 +90,7 @@
 	.container {
 		display: flex;
 		justify-content: center;
+		align-items: center;
 		margin: 8px 8px 64px;
 		gap: 8px;
 	}

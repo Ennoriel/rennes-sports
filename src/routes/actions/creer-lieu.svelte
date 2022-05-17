@@ -2,6 +2,8 @@
 	import { goto } from '$app/navigation';
 	import { enhance } from '$lib/utils/form';
 	import AddressAutocomplete from '$lib/component/input/AddressAutocomplete.svelte';
+	import TextInput from '../../lib/component/input/TextInput.svelte';
+	import Button from '../../lib/component/atom/Button.svelte';
 
 	export let error: string | undefined = undefined;
 
@@ -16,7 +18,7 @@
 			pending = true;
 		},
 		result: async () => {
-			goto('/recherche/liste'); //FIXME
+			goto('/recherche/liste');
 		},
 		error: async (p) => {
 			const body = await p.response.json();
@@ -29,29 +31,22 @@
 
 	<p>Si l’un de vos lieux de pratique n’apparait pas dans la liste, veuillez l’ajouter.</p>
 
-	<label>
-		Nom du lieu
-		<input
-			name="name"
-			placeholder="Ex : Gymnase Les Chalais, Skatepark de La Poterie, Salle Belle-Ile..."
-		/>
-	</label>
-
+	<TextInput
+		name="name"
+		label="Nom du lieu"
+		placeholder="Ex : Gymnase Les Chalais, Skatepark de La Poterie, Salle Belle-Ile..."
+	/>
 	<AddressAutocomplete />
 
 	<div>
-		<button type="submit" disabled={pending}>Enregistrer le lieu</button>
+		<Button type="submit" disabled={pending}>Enregistrer le lieu</Button>
 	</div>
 </form>
 
 <style>
-	form,
-	label {
+	form {
 		display: flex;
 		flex-direction: column;
-	}
-
-	form {
 		margin: 0 auto;
 		padding: 48px 24px 0;
 		max-width: 550px;
@@ -63,8 +58,7 @@
 	}
 
 	h1,
-	p,
-	label {
+	p {
 		text-align: center;
 	}
 
@@ -73,44 +67,7 @@
 		line-height: 1.2;
 	}
 
-	label {
-		margin-bottom: 16px;
-		font-weight: 100;
-	}
-
-	input {
-		height: 42px;
-		border-radius: 21px;
-		border: none;
-		box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-		padding: 0 16px;
-		color: var(--main-color);
-		text-align: center;
-		margin-top: 6px;
-	}
-
 	div {
 		text-align: center;
-	}
-
-	button[type='submit'] {
-		height: 42px;
-		border-radius: 21px;
-		border: none;
-		background-color: var(--main-color);
-		color: white;
-		padding: 0 24px;
-		margin: 8px;
-	}
-
-	button[disabled] {
-		background: #eee;
-		color: black;
-		cursor: default;
-	}
-
-	:focus-visible {
-		outline: 2px solid var(--focus-color);
-		outline-offset: 2px;
 	}
 </style>

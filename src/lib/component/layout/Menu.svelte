@@ -94,11 +94,11 @@
 		user-select: none;
 
 		text-decoration: none;
-		color: inherit;
+		color: white;
 
 		position: relative;
 		top: 0;
-		transition: top ease 0.4s;
+		transition: color 0.2s;
 		border-radius: 8px;
 	}
 
@@ -116,6 +116,7 @@
 		display: block;
 		padding: 0 12px;
 		border-radius: 16px;
+		transition: border-color 0.2s;
 	}
 
 	.active {
@@ -128,7 +129,10 @@
 	}
 
 	a:not(.active):hover {
-		top: -4px;
+		color: var(--secondary-color);
+	}
+	a.button:not(.active):hover span {
+		border-color: var(--secondary-color);
 	}
 
 	:focus-visible {

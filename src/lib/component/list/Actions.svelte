@@ -24,7 +24,7 @@
 </script>
 
 {#if row.role === 'user'}
-	<Button on:click={() => changeRole('admin')}>Administrateur ?</Button>
+	<Button variant="rounded" size="s" on:click={() => changeRole('admin')}>Administrateur ?</Button>
 {:else}
-	<Button on:click={() => changeRole('user')}>Utilisateur ?</Button>
+	<Button variant="rounded" size="s" on:click={() => changeRole('user')}>Utilisateur ?</Button>
 {/if}

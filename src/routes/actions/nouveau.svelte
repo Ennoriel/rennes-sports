@@ -131,9 +131,13 @@
 		<div transition:slideAndScroll|local={{ duration: 800 }} class="block slot">
 			<ButtonGroup>
 				<Title>Créneau {index + 1}</Title>
-				<Button variant="transparent" shape="circle" on:click={() => removeSlot(index)}>
-					<X />
-				</Button>
+				<Button
+					theme="transparent"
+					variant="rounded"
+					size="s"
+					on:click={() => removeSlot(index)}
+					icon={X}
+				/>
 			</ButtonGroup>
 
 			<!-- Slot day -->

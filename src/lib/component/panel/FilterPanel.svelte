@@ -23,12 +23,18 @@
 		<ButtonGroup>
 			<Title>Filtres</Title>
 			<Button
-				variant="secondary"
+				theme="secondary"
+				variant="rounded"
+				size="s"
 				on:click={() => ($state.filter = { day: [], minutes: [360, 1410] })}>Réinitialiser</Button
 			>
-			<Button variant="transparent" shape="circle" on:click={() => ($state.isOpen = false)}>
-				<X />
-			</Button>
+			<Button
+				theme="transparent"
+				variant="rounded"
+				size="s"
+				on:click={() => ($state.isOpen = false)}
+				icon={X}
+			/>
 		</ButtonGroup>
 
 		<SportAutocomplete bind:value={$state.filter.sport} variant="square" />

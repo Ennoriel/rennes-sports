@@ -7,7 +7,7 @@
 		width: var(--spinner-size, 32px);
 		height: var(--spinner-size, 32px);
 		border-radius: 50%;
-		border: 2px solid;
+		border: var(--spinner-width, 2px) solid;
 		border-color: transparent transparent var(--spinner-color, var(--main-color));
 		animation: rotation 0.5s linear infinite;
 	}

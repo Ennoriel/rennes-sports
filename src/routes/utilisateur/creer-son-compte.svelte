@@ -16,6 +16,7 @@
 	import EmailInput from '$lib/component/input/EmailInput.svelte';
 	import PasswordInput from '$lib/component/input/PasswordInput.svelte';
 	import TextInput from '../../lib/component/input/TextInput.svelte';
+	import Button from '../../lib/component/atom/Button.svelte';
 
 	export let error: string | null = null;
 </script>
@@ -52,7 +53,7 @@
 		J'accepte les <a class="cgu" href="/cgu">conditions générales d'utilisation</a>
 	</label>
 	{error || ''}
-	<button type="submit">S'inscrire</button>
+	<Button type="submit">S'inscrire</Button>
 </form>
 
 <style>
@@ -94,23 +95,11 @@
 		font-weight: 100;
 	}
 
-	button[type='submit'] {
-		height: 42px;
-		border-radius: 21px;
-		border: none;
-		background-color: var(--main-color);
-		color: white;
-		padding: 0 24px;
-		margin: 8px;
-		margin-bottom: 48px;
+	input {
+		margin: auto;
 	}
 
 	a.cgu {
 		color: var(--secondary-color);
-	}
-
-	:focus-visible {
-		outline: 2px solid var(--focus-color);
-		outline-offset: 2px;
 	}
 </style>

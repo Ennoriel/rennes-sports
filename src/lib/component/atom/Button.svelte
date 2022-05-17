@@ -1,84 +1,125 @@
 <script lang="ts">
+	import type { SvelteComponent } from 'svelte';
 	import Spinner from './Spinner.svelte';
 
-	export let variant: 'primary' | 'secondary' | 'transparent' = 'primary';
-	export let shape: 'square' | 'circle' = 'square';
+	export let size: 's' | 'l' = 'l';
+	export let variant: 'square' | 'squarish' | 'rounded' = 'rounded';
+	export let theme: 'primary' | 'secondary' | 'transparent' = 'primary';
 	export let type = 'button';
 	export let disabled = false;
 	export let pending = false;
+	export let icon: typeof SvelteComponent | undefined = undefined;
 </script>
 
-<button {type} on:click class={`${variant} ${shape}`} disabled={disabled || pending}>
-	{#if pending}
-		<Spinner />
+<button
+	{type}
+	on:click
+	disabled={disabled || pending}
+	class="{variant} {theme} {size}"
+	class:icon
+	class:pending
+>
+	{#if icon}
+		<svelte:component this={icon} />
+	{:else}
+		{#if pending}
+			<Spinner />
+		{/if}
+		<slot />
 	{/if}
-	<slot />
 </button>
 
 <style>
-	button {
-		display: flex;
-		flex-grow: 1;
-		flex-shrink: 0;
-		justify-content: center;
-		height: 33px;
-		gap: 8px;
-		padding: 4px 16px;
-		align-items: center;
-		cursor: pointer;
-		border: none;
-		transition: color 0.2s, background-color 0.2s;
+	.s {
+		--height: 32px;
+		--padding: 0 16px;
+		--margin: 0 0 16px;
 
-		--spinner-size: 18px;
+		--spinner-size: 16px;
+	}
+
+	.l {
+		--height: 40px;
+		--padding: 0 24px;
+		--margin: 0 0 24px;
+
+		--spinner-width: 3px;
+		--spinner-size: 24px;
+	}
+	.pending.s:not(.icon) {
+		--padding: 0 16px 0 8px;
+	}
+	.pending.l:not(.icon) {
+		--padding: 0 24px 0 12px;
+	}
+
+	.icon {
+		min-width: var(--height);
+		--padding: 0;
+	}
+
+	.squarish {
+		--border-radius: 8px;
+	}
+
+	.rounded {
+		--border-radius: calc(var(--height) / 2);
 	}
 
 	.primary {
-		background-color: var(--main-color);
-		color: white;
-		border: 1px solid #eeeeee;
-		flex-grow: 3;
+		--bg: var(--main-color);
+		--color: #fff;
+		--border: 1px solid var(--main-color);
 	}
 
 	.primary:hover {
-		background-color: #eeeeee;
-		color: black;
-		border: 1px solid var(--main-color);
+		--bg: #eeeeee;
+		--color: var(--text-color);
 	}
 
 	.secondary {
-		background-color: #eeeeee;
-		color: #4f4f4f;
+		--bg: #eeeeee;
+		--color: #4f4f4f;
 	}
 
 	.transparent {
-		background-color: transparent;
+		--bg: transparent;
 	}
 
 	.secondary:hover,
 	.transparent:hover {
-		background-color: var(--main-color);
-		color: white;
+		--bg: var(--main-color);
+		--color: white;
 	}
 
-	.square {
-		border-radius: 5px;
+	[disabled],
+	[disabled]:hover {
+		--bg: #eeeeee;
+		--color: #4f4f4f;
+		--border: 1px solid #eeeeee;
+		--cursor: default;
 	}
 
-	.circle {
-		border-radius: 16.5px;
-		padding: 4px;
+	button {
+		display: inline-flex;
+		flex-grow: 1;
+		flex-shrink: 0;
+		gap: 8px;
+		justify-content: center;
+		height: var(--height);
+		border-radius: var(--border-radius);
+		padding: var(--padding);
+		margin: var(--margin);
+		align-items: center;
+		cursor: var(--cursor, pointer);
+		color: var(--color, var(--text-color));
+		background-color: var(--bg, var(--main-color));
+		border: var(--border, none);
+		transition: color 0.2s, background-color 0.2s;
 	}
 
 	:focus-visible {
 		outline: 2px solid var(--focus-color);
 		outline-offset: 2px;
-	}
-
-	[disabled],
-	[disabled]:hover {
-		background-color: #eeeeee;
-		color: #4f4f4f;
-		border: 1px solid #eeeeee;
-		cursor: default;
 	}
 </style>

@@ -7,7 +7,7 @@ const options = {
 	useNewUrlParser: true
 } as MongoClientOptions;
 
-let client;
+let client: MongoClient;
 let clientPromise: Promise<MongoClient>;
 
 if (!uri) {
