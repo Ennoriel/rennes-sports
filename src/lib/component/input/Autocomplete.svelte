@@ -2,6 +2,7 @@
 	import Autocomplete from 'svelte-select/no-styles/Select.svelte';
 	import Spinner from '../atom/Spinner.svelte';
 	import InputHidden from './InputHidden.svelte';
+	import Label from './Label.svelte';
 
 	type Value = string | number | object;
 
@@ -39,9 +40,9 @@
 	class:square={variant === 'square'}
 	class:rounded={variant === 'rounded'}
 >
-	<label for={id}>
+	<Label {variant} for={id}>
 		{label}
-	</label>
+	</Label>
 	<Autocomplete
 		{id}
 		{placeholder}
@@ -74,6 +75,9 @@
 <InputHidden {name} {value} />
 
 <style>
+	.autocomplete :global(label.input) {
+		margin: 0;
+	}
 	.autocomplete.rounded {
 		--select-height: 42px;
 		--select-height-half: calc(var(--select-height) / 2);

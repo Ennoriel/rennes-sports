@@ -11,7 +11,6 @@
 	import Radio from '$lib/component/input/Radio.svelte';
 	import Checkbox from '$lib/component/input/Checkbox.svelte';
 	import Range from '$lib/component/input/Range.svelte';
-	import Select from '$lib/component/input/Select.svelte';
 	import Autocomplete from '$lib/component/input/Autocomplete.svelte';
 	import EmailInput from '../lib/component/input/EmailInput.svelte';
 	import PasswordInput from '../lib/component/input/PasswordInput.svelte';
@@ -69,9 +68,6 @@
 			options={['option 1', 'option 2', 'option 3', 'option 4']}
 			isCreatable={true}
 		/>
-	</LeftRight>
-	<LeftRight>
-		<Select slot="left" label="select input" name="select" options={['option 1', 'option 2']} />
 	</LeftRight>
 	<LeftRight>
 		<AddressAutocomplete slot="left" variant="square" />

@@ -54,7 +54,6 @@
 
 	h1 {
 		color: var(--secondary-color);
-		text-shadow: 0 3px 3px #ccc;
 	}
 
 	h1,

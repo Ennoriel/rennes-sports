@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Label from './Label.svelte';
+
 	export let label: string;
 	export let name: string;
 	export let required = false;
@@ -7,7 +9,7 @@
 	export let variant: 'square' | 'rounded' = 'rounded';
 </script>
 
-<label class="input" class:square={variant === 'square'} class:rounded={variant === 'rounded'}>
+<Label {variant}>
 	{label}
 	<input type="text" {name} {required} bind:value {placeholder} />
-</label>
+</Label>
