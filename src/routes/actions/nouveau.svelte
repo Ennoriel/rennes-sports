@@ -75,7 +75,7 @@
 			pending = true;
 		},
 		result: async () => {
-			goto('/recherche/liste');
+			setTimeout(() => goto('/recherche/liste'), 0);
 		},
 		error: async (p) => {
 			const body = await p.response.json();
@@ -158,7 +158,6 @@
 			<TextInput
 				label="Détails du créneau"
 				name="slots[{index}][details]"
-				required
 				placeholder="Niveau poussin"
 			/>
 		</div>

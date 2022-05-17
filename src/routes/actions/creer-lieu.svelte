@@ -18,7 +18,7 @@
 			pending = true;
 		},
 		result: async () => {
-			goto('/recherche/liste');
+			setTimeout(() => goto('/recherche/liste'), 0);
 		},
 		error: async (p) => {
 			const body = await p.response.json();

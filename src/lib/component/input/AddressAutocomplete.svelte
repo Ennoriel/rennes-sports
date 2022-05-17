@@ -1,9 +1,9 @@
 <script lang="ts">
 	import Autocomplete from './Autocomplete.svelte';
-	import type { Address, Location } from '../../types/location.type';
+	import type { Address, Coordinates, Location } from '$lib/types/location.type';
 
 	export let label = 'Adresse';
-	export let name = 'address';
+	export let name = '$';
 	export let required = false;
 	export let placeholder = 'Ex : 2 Rue du Bosphore, 35200 Rennes';
 	export let value: Location | undefined = undefined;
@@ -34,7 +34,12 @@
 							label,
 							value: {
 								address: label,
-								coordinates: address.geometry?.coordinates
+								coordinates:
+									address.geometry &&
+									([
+										address.geometry.coordinates[1],
+										address.geometry.coordinates[0]
+									] as Coordinates)
 							}
 						};
 					});
