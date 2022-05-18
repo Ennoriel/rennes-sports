@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Autocomplete from './Autocomplete.svelte';
 	import type { AutocompleteSetValue } from '$lib/types/input.type';
-	import {SPORTS} from "../../data/sports";
+	import { SPORTS } from '../../data/sports';
 
 	export let label = 'Sport';
 	export let name = 'sport';
@@ -20,7 +20,7 @@
 		return new Promise((resolve) =>
 			fetch(`/api/sports/distinct?filter=${encodeURIComponent(filterText)}`)
 				.then((res) => res.json())
-				.then((res) => [...new Set([...res, ...SPORTS.filter(s => filterRegex.test(s))])])
+				.then((res) => [...new Set([...res, ...SPORTS.filter((s) => filterRegex.test(s))])])
 				.then((res) => res.sort((a, b) => a.localeCompare(b)))
 				.then((res: Array<string>) => res.map((s) => ({ label: s, value: s })))
 				.then(resolve)
