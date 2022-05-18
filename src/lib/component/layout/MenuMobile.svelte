@@ -68,7 +68,7 @@
 					<hr />
 				{:else}
 					<li>
-						<a on:click={() => (isOpen = false)} href="/{route.route}" class:active>
+						<a sveltekit:prefetch on:click={() => (isOpen = false)} href="/{route.route}" class:active>
 							{#if active}
 								&gt;
 							{/if}

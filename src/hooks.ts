@@ -2,6 +2,8 @@ import { parse } from 'cookie';
 import * as jwt from 'jsonwebtoken';
 import type { GetSession, Handle } from '@sveltejs/kit';
 import type { LocalsSession } from '$lib/types/session.type';
+// @ts-ignore
+import mongoClient from '$lib/utils/db';
 
 const verifySession = (token: string): LocalsSession => {
 	try {

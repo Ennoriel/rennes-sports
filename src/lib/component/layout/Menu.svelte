@@ -18,7 +18,7 @@
 			{@const active = $page.url.pathname.indexOf(route.route) > 0}
 			{@const last = displayedRoutes.length - 1 === index}
 			<li style:flex-grow={last && '1'}>
-				<a href="/{route.route}" class:active aria-current={(active && 'page') || undefined}>
+				<a sveltekit:prefetch href="/{route.route}" class:active aria-current={(active && 'page') || undefined}>
 					<span>
 						{route.label}
 					</span>
