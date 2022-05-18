@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { GroupSport, Location } from '$lib/types/location.type';
 	import { displayHours, displayYear } from '$lib/utils/time';
+	import Link from '$lib/component/atom/Link.svelte';
 
 	export let location: Location;
 	export let sports: Array<GroupSport>;
@@ -10,27 +11,34 @@
 	{location.name}
 </h2>
 <div class="wrapper">
-	{#each sports as sport}
-		<h3>
-			{sport.sportName}
-		</h3>
-		{#each sport.sports as s}
-			<div class="sport">
-				- {s.level}, {displayYear(s.birthYear, s.otherYear, s.adult)}, {s.sex}
-			</div>
-			{#each s.slots as slot}
-				<div class="slots">
-					{slot.day}
-					{displayHours(slot.hour)}
-					{#if slot.location._id !== location._id}
-						({slot.location.name})
-					{/if}
+	{#each sports as sport, index}
+		{#if index}
+			<hr />
+		{/if}
+		<div>
+			<h3>
+				{sport.sportName}
+			</h3>
+			{#each sport.sports as s}
+				<div class="sport">
+					{s.level}, {displayYear(s.birthYear, s.otherYear, s.adult)}, {s.sex}
+				</div>
+				{#each s.slots as slot}
+					<div class="slots">
+						🢒 {slot.day}
+						{displayHours(slot.hour)}
+						{#if slot.location._id !== location._id}
+							({slot.location.name})
+						{/if}
+					</div>
+				{/each}
+				<div>
+					<Link href={s.association.website} target="_blank" img={{ src: '/svg/right-up.svg' }}
+						>{s.association.name}</Link
+					>
 				</div>
 			{/each}
-			<div>
-				{s.association.name}
-			</div>
-		{/each}
+		</div>
 	{/each}
 </div>
 
@@ -38,6 +46,7 @@
 	:global(.leaflet-popup-content-wrapper) {
 		padding: 0;
 		border-radius: 20px;
+		font-family: 'Roboto', sans-serif;
 	}
 
 	:global(.leaflet-popup-content) {
@@ -75,20 +84,21 @@
 		margin: 0;
 	}
 
-	h3:not(:first-of-type) {
+	.sport {
 		margin-top: 8px;
 	}
 
-	h3::before {
-		content: '•';
-		margin-right: 5px;
-	}
-
-	.sport {
-		margin-top: 6px;
+	hr {
+		margin: 16px;
+		border: 1px solid #eaeaea;
 	}
 
 	.slots {
 		font-weight: bold;
+	}
+
+	:global(.leaflet-container a) {
+		text-align: left;
+		color: var(--text-color);
 	}
 </style>
