@@ -2,11 +2,16 @@
 	import type { Sport } from '$lib/types/sport.type';
 	import { displayHours, displayYear } from '$lib/utils/time';
 	import Link from '$lib/component/atom/Link.svelte';
+	import Title from "../atom/Title.svelte";
 
 	export let sports: Array<Sport>;
 </script>
 
 <div class="wrapper">
+	<Title>
+		Résultats ({sports.length})
+	</Title>
+
 	{#each sports as sport}
 		<div class="card">
 			<h2>

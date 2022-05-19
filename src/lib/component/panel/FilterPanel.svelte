@@ -102,6 +102,15 @@
 			variant="square"
 			bind:setValue={setAssociation}
 		/>
+
+		<Button
+			theme="vibrant"
+			variant="rounded"
+			size="s"
+			on:click={() => ($state.isOpen = false)}
+		>
+			Valdier
+		</Button>
 	</div>
 </Panel>
 

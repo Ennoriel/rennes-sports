@@ -1,8 +1,10 @@
 <script lang="ts">
+	import { state } from '$lib/store/state';
 	import SvelteTable from 'svelte-table';
 	import Row from '$lib/component/list/Row.svelte';
 	import type { Sport } from '$lib/types/sport.type';
 	import { icons } from '$lib/component/atom/TableOrderIcons';
+	import Title from "../atom/Title.svelte";
 
 	export let sports: Array<Sport>;
 
@@ -42,7 +44,11 @@
 	];
 </script>
 
-<div id="table-sports">
+<div id="table-sports" class:sided={$state.isOpen}>
+	<Title>
+		Résultats ({sports.length})
+	</Title>
+
 	<SvelteTable
 		{columns}
 		rows={sports}
@@ -57,7 +63,6 @@
 
 <style>
 	#table-sports {
-		transition: all 0.4s;
 		overflow-y: auto;
 	}
 
@@ -83,9 +88,23 @@
 		min-height: 32px;
 	}
 
+	@media (min-width: 900px) {
+		#table-sports.sided {
+			margin-left: 300px;
+		}
+	}
+
 	@media (min-width: 1000px) {
-		#table-sports {
+		#table-sports:not(.sided) {
 			width: 1000px;
+			margin: auto;
+		}
+	}
+
+	@media (min-width: 1300px) {
+		#table-sports.sided {
+			width: 1300px;
+			padding-left: 300px;
 			margin: auto;
 		}
 	}

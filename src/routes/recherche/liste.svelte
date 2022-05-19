@@ -5,7 +5,6 @@
 
 <script lang="ts">
 	import FilterPanel from '$lib/component/panel/FilterPanel.svelte';
-	import Title from '$lib/component/atom/Title.svelte';
 	import ResponsiveWrapper from '$lib/component/layout/ResponsiveWrapper.svelte';
 	import SportListDesktop from '$lib/component/list/SportListDesktop.svelte';
 	import SportListMobile from '$lib/component/list/SportListMobile.svelte';
@@ -20,10 +19,6 @@
 <FilterPanel {pageRef} />
 
 <div bind:this={pageRef}>
-	<Title>
-		Résultats ({$sports.length})
-	</Title>
-
 	<ResponsiveWrapper>
 		<SportListMobile slot="s" sports={$sports} />
 		<SportListDesktop slot="l" sports={$sports} />
@@ -32,7 +27,7 @@
 
 <style>
 	div {
-		margin: 16px 0 96px;
+		margin: 0;
 		min-height: calc(100vh - var(--header-height) - 16px - 96px);
 	}
 

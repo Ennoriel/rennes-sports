@@ -17,12 +17,18 @@
 		outline: none;
 		border-radius: 5px;
 		padding: 8px 16px;
-		border: none;
 		cursor: pointer;
+		transition: all .2s;
 
 		background-color: var(--secondary-color);
+		border: 1px solid var(--secondary-color);
 
 		z-index: 401;
+	}
+
+	:hover {
+		background-color: #eeeeee;
+		color: var(--text-color);
 	}
 
 	button:focus-visible {
