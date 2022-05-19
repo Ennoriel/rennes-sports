@@ -8,13 +8,12 @@
 
 	import Button from '$lib/component/atom/Button.svelte';
 	import ButtonGroup from '$lib/component/layout/ButtonGroup.svelte';
-	import Title from '$lib/component/atom/Title.svelte';
-	import TextInput from '$lib/component/input/TextInput.svelte';
 	import Radio from '$lib/component/input/Radio.svelte';
 	import Range from '$lib/component/input/Range.svelte';
 	import LocationAutocomplete from '$lib/component/input/LocationAutocomplete.svelte';
 	import X from '$lib/component/svg/X.svelte';
 	import SportAutocomplete from '../../lib/component/input/SportAutocomplete.svelte';
+	import TextArea from '../../lib/component/input/TextArea.svelte';
 
 	export let error: string | undefined = undefined;
 
@@ -84,11 +83,12 @@
 		}
 	}}
 >
+	<h1>Ajouter des entrainements</h1>
 	<div class="block">
-		<Title>Ajouter une séance</Title>
+		<h2><span>Informations séance</span></h2>
 
 		<!-- Sport -->
-		<SportAutocomplete required isCreatable />
+		<SportAutocomplete required isCreatable variant="square" />
 
 		<!-- Level -->
 		<Radio label="Pratique" name="level" required options={LEVELS} />
@@ -123,7 +123,7 @@
 	{#each sport.slots as _, index}
 		<div transition:slideAndScroll|local={{ duration: 800 }} class="block slot">
 			<ButtonGroup>
-				<Title>Créneau {index + 1}</Title>
+				<h2><span>Créneau {index + 1}</span></h2>
 				<Button
 					theme="transparent"
 					variant="rounded"
@@ -152,34 +152,37 @@
 			/>
 
 			<!-- Slot location -->
-			<LocationAutocomplete required name="slots[{index}][location]" />
+			<LocationAutocomplete required name="slots[{index}][location]" variant="square" />
 
 			<!-- Slot details -->
-			<TextInput
+			<TextArea
 				label="Détails du créneau"
 				name="slots[{index}][details]"
 				placeholder="Niveau poussin"
+				variant="square"
 			/>
 		</div>
 	{/each}
 
-	<ButtonGroup>
-		<Button on:click={addSlot}>Ajouter un créneau</Button>
-		<Button type="submit" disabled={pending}>Créer</Button>
+	<ButtonGroup direction="vertical">
+		<Button variant="squarish" on:click={addSlot}>
+			<span>Ajouter un {sport.slots.length + 1}<sup>ème</sup> créneau</span>
+		</Button>
+		<Button type="submit" theme="vibrant" disabled={pending}>Enregistrer</Button>
 	</ButtonGroup>
 </form>
 
 <style>
 	form {
-		margin: 0 16px 16px;
+		margin: 0 auto 64px;
+		max-width: 600px;
 	}
 
 	.block {
-		margin: 64px 0;
-	}
-
-	.block:first-of-type {
-		margin: 16px 0;
+		margin: 16px;
+		padding: 16px;
+		border-radius: 8px;
+		background-color: white;
 	}
 
 	.slot :global(.button-group) {
@@ -195,17 +198,20 @@
 		flex-grow: 0;
 	}
 
-	@media (min-width: 532px) {
-		form {
-			width: 500px;
-			margin: 0 auto 16px;
-		}
-
-		.block {
-			border-radius: 8px;
-			box-shadow: 0 0 3px #777;
-			padding: 16px;
-			margin: 16px 0;
-		}
+	h1 {
+		color: var(--main-color);
+		text-align: center;
+		margin: 16px 0;
+		font-size: 24px;
+	}
+	h2 {
+		color: var(--main-color);
+		text-align: center;
+		margin-bottom: 24px;
+		font-size: 16px;
+		flex-grow: 1;
+	}
+	h2 span {
+		border-bottom: 1px solid var(--main-color);
 	}
 </style>

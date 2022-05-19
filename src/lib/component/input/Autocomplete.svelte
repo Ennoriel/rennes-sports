@@ -37,7 +37,7 @@
 	};
 </script>
 
-<span
+<fieldset
 	class="autocomplete"
 	class:square={variant === 'square'}
 	class:rounded={variant === 'rounded'}
@@ -72,7 +72,7 @@
 		ariaFocused={() =>
 			`Le select a le focus, tapez pour filtrer les résultats, appuyez sur la touche "bas" pour ouvrir les options.`}
 	/>
-</span>
+</fieldset>
 
 <InputHidden {name} {value} />
 
@@ -102,6 +102,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: 10px;
+		border: none;
 	}
 	.autocomplete :global(.svelte-select) {
 		margin-bottom: 16px;

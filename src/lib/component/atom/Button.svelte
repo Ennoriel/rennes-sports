@@ -4,7 +4,7 @@
 
 	export let size: 's' | 'l' = 'l';
 	export let variant: 'square' | 'squarish' | 'rounded' = 'rounded';
-	export let theme: 'primary' | 'secondary' | 'transparent' = 'primary';
+	export let theme: 'primary' | 'secondary' | 'vibrant' | 'transparent' = 'primary';
 	export let type = 'button';
 	export let disabled = false;
 	export let pending = false;
@@ -33,7 +33,6 @@
 	.s {
 		--height: 32px;
 		--padding: 0 16px;
-		--margin: 0 0 16px;
 
 		--spinner-size: 16px;
 	}
@@ -41,7 +40,6 @@
 	.l {
 		--height: 40px;
 		--padding: 0 24px;
-		--margin: 0 0 24px;
 
 		--spinner-width: 3px;
 		--spinner-size: 24px;
@@ -72,7 +70,8 @@
 		--border: 1px solid var(--main-color);
 	}
 
-	.primary:hover {
+	.primary:hover,
+	.vibrant:hover {
 		--bg: #eeeeee;
 		--color: var(--text-color);
 	}
@@ -84,6 +83,12 @@
 
 	.transparent {
 		--bg: transparent;
+	}
+
+	.vibrant {
+		--bg: var(--secondary-color);
+		--color: #fff;
+		--border: 1px solid var(--secondary-color);
 	}
 
 	.secondary:hover,
@@ -109,7 +114,7 @@
 		height: var(--height);
 		border-radius: var(--border-radius);
 		padding: var(--padding);
-		margin: var(--margin);
+		/*margin: var(--margin);*/
 		align-items: center;
 		cursor: var(--cursor, pointer);
 		color: var(--color, var(--text-color));

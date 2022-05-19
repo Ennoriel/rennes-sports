@@ -6,7 +6,7 @@
 
 	const variants = ['square', 'squarish', 'rounded'];
 	const sizes = ['s', 'l'];
-	const themes = ['primary', 'secondary', 'transparent'];
+	const themes = ['primary', 'vibrant', 'secondary', 'transparent'];
 
 	$: if (pending) setTimeout(() => (pending = false), 2000);
 </script>
@@ -15,8 +15,8 @@
 	<thead>
 		<tr>
 			<th colspan="2" />
-			{#each variants as variant}
-				<th>{variant}</th>
+			{#each themes as theme}
+				<th>{theme}</th>
 			{/each}
 		</tr>
 	</thead>

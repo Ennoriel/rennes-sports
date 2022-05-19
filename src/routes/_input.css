@@ -24,6 +24,7 @@ label.input {
 }
 
 label.input input,
+label.input textarea,
 label.input select {
 	height: var(--height);
 	border-radius: var(--border-radius);

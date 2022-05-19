@@ -42,9 +42,10 @@
 		margin: 0;
 		color: var(--text-color);
 	}
-	:global(button) {
-		font-family: 'Roboto', sans-serif;
-		font-size: 14px;
+	:global(button),
+	:global(textarea) {
+		font-family: inherit;
+		font-size: inherit;
 		cursor: pointer;
 	}
 	:global(*) {
