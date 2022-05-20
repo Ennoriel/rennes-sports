@@ -4,7 +4,7 @@
 	import Row from '$lib/component/list/Row.svelte';
 	import type { Sport } from '$lib/types/sport.type';
 	import { icons } from '$lib/component/atom/TableOrderIcons';
-	import Title from "../atom/Title.svelte";
+	import Title from '../atom/Title.svelte';
 
 	export let sports: Array<Sport>;
 
@@ -44,7 +44,7 @@
 	];
 </script>
 
-<div id="table-sports" class:sided={$state.isOpen}>
+<div id="table-sports" class:sided={$state.isOpen} style:--top={$state.isPin ? '60px' : '0px'}>
 	<Title>
 		Résultats ({sports.length})
 	</Title>
@@ -63,7 +63,9 @@
 
 <style>
 	#table-sports {
-		overflow-y: auto;
+		margin-top: calc(var(--header-height) + 20px);
+		transition: all 0.4s;
+		padding-left: 0;
 	}
 
 	#table-sports :global(table) {
@@ -80,7 +82,9 @@
 		user-select: none;
 		position: sticky;
 		background-color: var(--bg-color);
-		top: 0;
+		transition: top 0.4s;
+		top: var(--top);
+		height: 32px;
 	}
 
 	#table-sports :global(tbody td:not(:first-of-type)) {
@@ -88,28 +92,24 @@
 		min-height: 32px;
 	}
 
-	@media (min-width: 900px) {
-		#table-sports.sided {
-			margin-left: 300px;
+	@media (min-width: 1000px) {
+		#table-sports {
+			width: 1000px;
+			margin-left: auto;
+			margin-right: auto;
 		}
 	}
 
-	@media (min-width: 1000px) {
-		#table-sports:not(.sided) {
-			width: 1000px;
-			margin: auto;
+	@media (min-width: 900px) {
+		#table-sports.sided {
+			padding-left: 300px;
+			width: 100vw;
 		}
 	}
 
 	@media (min-width: 1300px) {
 		#table-sports.sided {
 			width: 1300px;
-			padding-left: 300px;
-			margin: auto;
 		}
-	}
-
-	#table-sports :global(h1) {
-		margin: 12px 0 12px 24px;
 	}
 </style>

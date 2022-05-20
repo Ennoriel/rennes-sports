@@ -84,7 +84,7 @@ export const metros: Array<Metro> = [
 	},
 	{
 		name: 'Metro b',
-		color: '#ee161d',
+		color: '#06acfa',
 		stations: [
 			{
 				name: 'Saint-Jacques - Gaîté',

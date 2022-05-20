@@ -28,6 +28,7 @@
 
 <style>
 	#map {
+		margin-top: var(--header-height);
 		height: calc(100vh - var(--header-height));
 		width: 100vw;
 		transition: all 0.4s;

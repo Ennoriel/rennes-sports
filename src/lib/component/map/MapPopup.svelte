@@ -25,7 +25,7 @@
 				</div>
 				{#each s.slots as slot}
 					<div class="slots">
-						🢒 {slot.day}
+						▶ {slot.day}
 						{displayHours(slot.hour)}
 						{#if slot.location._id !== location._id}
 							({slot.location.name})
@@ -55,15 +55,22 @@
 	}
 
 	:global(.leaflet-popup a.leaflet-popup-close-button) {
-		padding: 8px 24px;
+		color: white;
+		transition: color 0.2s;
+		padding: 4px;
+		width: 32px;
+		height: 32px;
+	}
+	:global(.leaflet-popup a.leaflet-popup-close-button:hover) {
+		color: var(--secondary-color);
 	}
 
 	.wrapper {
 		width: 268px;
 		max-height: 200px;
 		overflow-y: auto;
-		margin: 16px 0 16px 16px;
-		padding: 0 16px 0 0;
+		margin: 0 0 16px 16px;
+		padding: 16px 16px 0 0;
 	}
 
 	h2 {

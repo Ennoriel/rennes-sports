@@ -5,6 +5,7 @@ import { filterSports } from '$lib/utils/filter';
 export const state = writable({
 	allSports: [] as Array<Sport>,
 	isOpen: false,
+	isPin: true,
 	filter: {} as Filter
 });
 

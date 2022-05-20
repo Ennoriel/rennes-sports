@@ -2,7 +2,7 @@
 	import type { Sport } from '$lib/types/sport.type';
 	import { displayHours, displayYear } from '$lib/utils/time';
 	import Link from '$lib/component/atom/Link.svelte';
-	import Title from "../atom/Title.svelte";
+	import Title from '../atom/Title.svelte';
 
 	export let sports: Array<Sport>;
 </script>
@@ -46,8 +46,12 @@
 
 <style>
 	.wrapper {
-		margin: 16px 0 16px 16px;
+		margin: calc(var(--header-height) + 20px) 0 16px 16px;
 		padding: 0 16px 0 0;
+	}
+
+	.wrapper :global(h1) {
+		margin-bottom: 8px;
 	}
 
 	.card {

@@ -18,7 +18,7 @@
 		border-radius: 5px;
 		padding: 8px 16px;
 		cursor: pointer;
-		transition: all .2s;
+		transition: all 0.2s;
 
 		background-color: var(--secondary-color);
 		border: 1px solid var(--secondary-color);

@@ -63,14 +63,14 @@
 	options={mapOptions}
 	events={['moveend', 'zoom', 'resize']}
 	on:moveend={() => {
-		currCenter = getMap && getMap().getCenter();
+		currCenter = getMap && getMap()?.getCenter();
 		getMap && getMap()?.invalidateSize();
 	}}
 	on:resize={() => {
 		getMap && getMap()?.invalidateSize();
 	}}
 	on:zoom={() => {
-		zoom = getMap && getMap().getZoom();
+		zoom = getMap && getMap()?.getZoom();
 	}}
 >
 	<TileLayer url={tileUrl} options={tileLayerOptions} />
