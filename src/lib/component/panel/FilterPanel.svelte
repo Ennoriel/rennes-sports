@@ -39,6 +39,7 @@
 					setLocation();
 					setAssociation();
 				}}
+				aria-label="Réinitialiser les filtres"
 			>
 				Réinitialiser
 			</Button>
@@ -48,6 +49,7 @@
 				size="s"
 				on:click={() => ($state.isOpen = false)}
 				icon={X}
+				aria-label="Fermer les filtres"
 			/>
 		</ButtonGroup>
 

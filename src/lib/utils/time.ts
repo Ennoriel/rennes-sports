@@ -1,12 +1,25 @@
+import { floor } from './number';
 import type { RangeType } from '$lib/types/sport.type';
 import type { Sport } from '$lib/types/sport.type';
 
-export function displayHour(minutes: number): string {
+/**
+ * Returns a text representation of an hour (ex: 510 = "8h30")
+ * @param minutes
+ */
+export function displayTextHour(minutes: number): string {
 	return `${Math.floor(minutes / 60)}h${(minutes % 60).toString().padEnd(2, '0')}`;
 }
 
+/**
+ * Returns a decimal representation of an hour (ex: 510 (8h30) = 8.5)
+ * @param minutes
+ */
+export function displayDecimalHour(minutes: number): number {
+	return Math.floor(minutes / 60) + floor((minutes % 60) / 60, 2);
+}
+
 export function displayHours(minutes: RangeType): string {
-	return `${displayHour(minutes[0])} - ${displayHour(minutes[1])}`;
+	return `${displayTextHour(minutes[0])} - ${displayTextHour(minutes[1])}`;
 }
 
 export function hourRangeOverlaps(rangeA: RangeType, rangeB: RangeType): boolean {

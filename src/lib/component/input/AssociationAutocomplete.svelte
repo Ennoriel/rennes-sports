@@ -6,7 +6,7 @@
 	export let label = 'Association';
 	export let name = 'association';
 	export let required = false;
-	export let placeholder = "Ex : Association de la Tour d'Argent";
+	export let placeholder = "Association de la Tour d'Argent";
 	export let value: string | undefined = undefined;
 	export let filterText: string | undefined = undefined;
 	export let listPlacement: 'auto' | 'top' | 'bottom' = 'bottom';

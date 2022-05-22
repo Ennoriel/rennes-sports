@@ -18,6 +18,7 @@
 	class="{variant} {theme} {size}"
 	class:icon
 	class:pending
+	{...$$restProps}
 >
 	{#if icon}
 		<svelte:component this={icon} />

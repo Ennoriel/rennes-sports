@@ -8,7 +8,7 @@
 	export let required = false;
 	export let isCreatable = false;
 	export let filterText: string | undefined = undefined;
-	export let placeholder = 'Ex : Patin sur glace';
+	export let placeholder = 'Patin sur glace';
 	export let value: string | undefined = undefined;
 	export let variant: 'square' | 'rounded' = 'rounded';
 	export let setValue: AutocompleteSetValue = undefined;

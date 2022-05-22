@@ -5,7 +5,7 @@
 	export let label = 'Adresse';
 	export let name = '$';
 	export let required = false;
-	export let placeholder = 'Ex : 2 Rue du Bosphore, 35200 Rennes';
+	export let placeholder = '2 Rue du Bosphore, 35200 Rennes';
 	export let value: Location | undefined = undefined;
 	export let variant: 'square' | 'rounded' = 'rounded';
 

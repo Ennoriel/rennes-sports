@@ -6,7 +6,7 @@
 	export let label = 'Lieu';
 	export let name = 'location';
 	export let required = false;
-	export let placeholder = 'Ex : Parc de la Poterie';
+	export let placeholder = 'Parc de la Poterie';
 	export let value: Location | undefined = undefined;
 	export let filterText: string | undefined = undefined;
 	export let listPlacement: 'auto' | 'top' | 'bottom' = 'bottom';

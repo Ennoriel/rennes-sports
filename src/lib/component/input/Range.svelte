@@ -1,16 +1,16 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { displayHour } from '$lib/utils/time';
+	import { displayDecimalHour, displayTextHour } from '$lib/utils/time';
 	import type { RangeType } from '$lib/types/sport.type';
 	import InputHidden from './InputHidden.svelte';
 
 	export let label: string;
 	export let name: string;
 	export let labelInHour = false;
-	export let min: number;
-	export let max: number;
+	export let min = 0;
+	export let max = 100;
 	export let range: RangeType = [0, 0];
-	export let step: number;
+	export let step = 5;
 
 	let intervals: Array<number>;
 
@@ -79,6 +79,15 @@
 			];
 		}
 	}
+
+	$: rangeLabel = labelInHour
+		? [displayTextHour(range[0]), displayTextHour(range[1])]
+		: [range[0].toString(), range[1].toString()];
+	$: rangeLabelDecimal = labelInHour
+		? [displayDecimalHour(range[0]), displayDecimalHour(range[1])]
+		: range;
+	$: minLabel = labelInHour ? displayDecimalHour(min) : min;
+	$: maxLabel = labelInHour ? displayDecimalHour(max) : max;
 </script>
 
 <svelte:window
@@ -88,8 +97,8 @@
 	on:touchend={mouseUp}
 />
 
-<label>
-	{label}
+<fieldset>
+	<span aria-hidden="true">{label}</span>
 	<div class="range" bind:this={rangeEl}>
 		<div
 			class="selected-range"
@@ -98,40 +107,53 @@
 		<div
 			class="indicator"
 			tabindex="0"
+			role="slider"
+			aria-label="{label}, valeur minimale"
+			aria-valuemin={minLabel}
+			aria-valuemax={rangeLabelDecimal[1]}
+			aria-valuenow={rangeLabelDecimal[0]}
+			aria-valuetext={rangeLabel[0]}
 			on:keydown={(e) => keyDown(e, true)}
 			on:mousedown={() => (minPressed = true)}
 			on:touchstart={() => (minPressed = true)}
 			style="left: {valToPos(range[0])}px"
 		>
-			<span>
-				{labelInHour ? displayHour(range[0]) : range[0]}
+			<span class="valuenow" aria-hidden="true">
+				{rangeLabel[0]}
 			</span>
 		</div>
 		<div
 			class="indicator"
 			tabindex="0"
+			role="slider"
+			aria-label="{label}, valeur maximale"
+			aria-valuemin={rangeLabelDecimal[0]}
+			aria-valuemax={maxLabel}
+			aria-valuenow={rangeLabelDecimal[1]}
+			aria-valuetext={rangeLabel[1]}
 			on:keydown={(e) => keyDown(e, false)}
 			on:mousedown={() => (maxPressed = true)}
 			on:touchstart={() => (maxPressed = true)}
 			style="left: {valToPos(range[1])}px"
 		>
-			<span class:top={range[1] - range[0] <= (max - min) / 6}>
-				{labelInHour ? displayHour(range[1]) : range[1]}
+			<span class="valuenow" class:top={range[1] - range[0] <= (max - min) / 6} aria-hidden="true">
+				{rangeLabel[1]}
 			</span>
 		</div>
 	</div>
 
 	<InputHidden {name} value={range} />
-</label>
+</fieldset>
 
 <style>
-	label {
+	fieldset {
 		display: flex;
 		flex-direction: column;
 		font-size: 14px;
 		font-weight: 700;
 		gap: 10px;
 		margin: 20px 0 35px;
+		border: none;
 	}
 	.range {
 		position: relative;
@@ -163,7 +185,7 @@
 		height: 100%;
 		background-color: var(--main-color);
 	}
-	span {
+	.valuenow {
 		position: absolute;
 		top: 20px;
 		left: 50%;

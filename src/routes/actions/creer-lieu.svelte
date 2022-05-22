@@ -34,7 +34,7 @@
 	<TextInput
 		name="name"
 		label="Nom du lieu"
-		placeholder="Ex : Gymnase Les Chalais, Skatepark de La Poterie, Salle Belle-Ile..."
+		placeholder="Gymnase Les Chalais, Skatepark de La Poterie, Salle Belle-Ile..."
 	/>
 	<AddressAutocomplete />
 
