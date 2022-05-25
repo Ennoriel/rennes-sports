@@ -17,7 +17,7 @@ export const get: RequestHandler = async ({ locals }) => {
 				)
 					.db()
 					?.collection('associations')
-					.find({}, { projection: { email: 1, role: 1, association: 1 } })
+					.find({}, { projection: { email: 1, role: 1, name: 1 } })
 					?.toArray()) || []
 		}
 	};

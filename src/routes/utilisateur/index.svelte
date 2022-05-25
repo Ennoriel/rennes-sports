@@ -31,7 +31,7 @@
 		{
 			key: 'association',
 			title: 'association',
-			value: (v: User) => v.association,
+			value: (v: User) => v.name,
 			sortable: true
 		},
 		{
