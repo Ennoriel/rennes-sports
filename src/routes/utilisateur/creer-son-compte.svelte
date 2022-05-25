@@ -12,7 +12,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { enhance } from '$lib/utils/form';
-	import { session } from '$app/stores';
 	import EmailInput from '$lib/component/input/EmailInput.svelte';
 	import PasswordInput from '$lib/component/input/PasswordInput.svelte';
 	import TextInput from '../../lib/component/input/TextInput.svelte';
@@ -25,9 +24,8 @@
 	action="/utilisateur/creer-son-compte"
 	method="post"
 	use:enhance={{
-		result: async ({ response }) => {
-			$session = await response.json();
-			goto('/utilisateur/se-connecter');
+		result: async () => {
+			setTimeout(() => goto('/utilisateur/se-connecter'), 0);
 		},
 		error: async (p) => {
 			const body = await p.response.json();
@@ -67,6 +65,7 @@
 		margin: 0 auto;
 		padding: 48px 24px 0;
 		max-width: 350px;
+		margin-bottom: 48px;
 	}
 
 	h1,
