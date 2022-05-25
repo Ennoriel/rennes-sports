@@ -73,6 +73,8 @@
 	}
 	.disabled {
 		cursor: not-allowed;
+		background-color: #eeeeee;
+		color: var(--text-color);
 	}
 	:not(.selected).disabled {
 		color: #4f4f4f;

@@ -27,6 +27,9 @@
 	:global(a) {
 		color: inherit;
 	}
+	:global(html) {
+		scroll-padding: 250px;
+	}
 	:global(body) {
 		--main-color: #002395;
 		--secondary-color: #ed1f3a;

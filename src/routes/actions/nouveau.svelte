@@ -108,7 +108,7 @@
 
 		<!-- Adult -->
 		<Radio
-			label="Séance ouverte aux adultes (>= 2004)"
+			label="Séance ouverte aux adultes (naissance avant 2004)"
 			name="adult"
 			required={sport.birthYear?.includes(2004)}
 			disabled={!sport.birthYear?.includes(2004)}
