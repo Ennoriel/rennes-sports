@@ -13,6 +13,9 @@
 	</Title>
 
 	{#each sports as sport}
+		{@const slotSameLocation = sport.slots.every(
+			(s) => s.location._id === sport.slots[0].location._id
+		)}
 		<div class="card">
 			<h2>
 				<strong>{sport.sport}</strong>
@@ -20,18 +23,20 @@
 					>{sport.level}, {displayYear(sport.birthYear, sport.otherYear, sport.adult)}, {sport.sex}</span
 				>
 			</h2>
-			{#each sport.slots as slot}
+			{#each sport.slots as slot, index}
 				<div class="slots">
 					<span>
 						{slot.day}
 						{displayHours(slot.hour)}
 					</span>
-					<Link
-						img={{ src: '/svg/location.svg' }}
-						href="recherche/carte/location/{slot.location._id}"
-					>
-						{slot.location.name}
-					</Link>
+					{#if index === sport.slots.length - 1 || !slotSameLocation}
+						<Link
+							img={{ src: '/svg/location.svg' }}
+							href="recherche/carte/location/{slot.location._id}"
+						>
+							{slot.location.name}
+						</Link>
+					{/if}
 				</div>
 			{/each}
 			<div class="asso-name">
@@ -83,8 +88,11 @@
 		vertical-align: middle;
 	}
 
+	.slots:first-of-type {
+		margin-top: 8px;
+	}
 	.slots {
-		margin: 8px 16px;
+		margin: 0 16px;
 		font-weight: bold;
 	}
 
@@ -92,6 +100,7 @@
 		text-align: left;
 		font-weight: 300;
 		width: fit-content;
+		margin-bottom: 8px;
 	}
 
 	.asso-name {
