@@ -2,8 +2,8 @@
 	import { goto } from '$app/navigation';
 	import { enhance } from '$lib/utils/form';
 	import AddressAutocomplete from '$lib/component/input/AddressAutocomplete.svelte';
-	import TextInput from '../../lib/component/input/TextInput.svelte';
-	import Button from '../../lib/component/atom/Button.svelte';
+	import TextInput from '$lib/component/input/TextInput.svelte';
+	import Button from '$lib/component/atom/Button.svelte';
 
 	export let error: string | undefined = undefined;
 

@@ -12,8 +12,8 @@
 	import Range from '$lib/component/input/Range.svelte';
 	import LocationAutocomplete from '$lib/component/input/LocationAutocomplete.svelte';
 	import X from '$lib/component/svg/X.svelte';
-	import SportAutocomplete from '../../lib/component/input/SportAutocomplete.svelte';
-	import TextArea from '../../lib/component/input/TextArea.svelte';
+	import SportAutocomplete from '$lib/component/input/SportAutocomplete.svelte';
+	import TextArea from '$lib/component/input/TextArea.svelte';
 
 	export let error: string | undefined = undefined;
 
