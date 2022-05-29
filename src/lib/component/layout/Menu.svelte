@@ -1,26 +1,24 @@
 <script lang="ts">
-	import { display, guard, routes } from '$lib/data/routes';
-	import type { Route } from '$lib/data/routes';
+	import { display, getActiveRoute, guard, ROUTES } from '$lib/data/routes';
 	import { page, session } from '$app/stores';
 	import Fav from '$lib/component/atom/Fav.svelte';
 
-	$: displayedRoutes = display(guard(routes, $session), { mobile: false }) as Array<Route>;
-	$: isCreateAccountActive = $page.url.pathname.indexOf('utilisateur/creer-son-compte') > 0;
-	$: isLoginActive = $page.url.pathname.indexOf('utilisateur/connexion') > 0;
+	$: displayedRoutes = display(guard(ROUTES, $session), { mobile: false });
+	$: activeRoute = getActiveRoute($page.url.pathname, displayedRoutes);
 </script>
 
 <nav>
-	<ul>
-		<li style:display="flex">
-			<Fav />
-		</li>
-		{#each displayedRoutes as route, index (route.route)}
-			{@const active = $page.url.pathname.indexOf(route.route) > 0}
-			{@const last = displayedRoutes.length - 1 === index}
-			<li style:flex-grow={last && '1'}>
+	<span class="menu">
+		<Fav />
+		{#each displayedRoutes as route}
+			{#if 'spacer' in route}
+				<span style:flex-grow="1" />
+			{:else}
+				{@const active = activeRoute?.route === route.route}
 				<a
 					sveltekit:prefetch
-					href="/{route.route}"
+					href={route.route}
+					class={route.class}
 					class:active
 					aria-current={(active && 'page') || undefined}
 				>
@@ -28,81 +26,72 @@
 						{route.label}
 					</span>
 				</a>
-			</li>
+			{/if}
 		{/each}
-		{#if !$session}
-			<li>
+	</span>
+	{#if activeRoute?.subRoutes}
+		{@const activeSubRoute = getActiveRoute($page.url.pathname, activeRoute.subRoutes)}
+		<span class="sub-menu">
+			{#each activeRoute.subRoutes as route}
+				{@const active = activeSubRoute?.route === route.route}
 				<a
-					href="/utilisateur/creer-son-compte"
-					class:active={isCreateAccountActive}
-					aria-current={(isCreateAccountActive && 'page') || undefined}
+					sveltekit:prefetch
+					href={route.route}
+					class:active
+					aria-current={(active && 'page') || undefined}
 				>
-					<span> S'inscrire </span>
+					<span>
+						{route.label}
+					</span>
 				</a>
-			</li>
-			<li style:margin-right="12px">
-				<a
-					class="button"
-					href="/utilisateur/se-connecter"
-					aria-current={(isLoginActive && 'page') || undefined}
-				>
-					<span> Se connecter </span>
-				</a>
-			</li>
-		{:else}
-			<li>
-				<a class="button" href="/utilisateur/espace-client">
-					<span> {$session.association.name} </span>
-				</a>
-			</li>
-			<li>
-				<a href="/utilisateur/se-deconnecter">
-					<span> Se déconnecter </span>
-				</a>
-			</li>
-		{/if}
-	</ul>
+			{/each}
+		</span>
+	{/if}
 </nav>
 
 <style>
 	nav {
-		width: 100%;
-		padding: 0 10px;
-		box-sizing: border-box;
-		height: var(--header-height);
-		background-color: var(--main-color);
 		color: white;
 	}
 
-	nav ul {
-		height: 100%;
+	.menu,
+	.sub-menu {
+		width: 100%;
+		padding: 0 10px;
+		box-sizing: border-box;
+
 		margin: 0;
-		padding: 0;
 		list-style: none;
 
 		display: flex;
 		align-items: stretch;
 	}
 
-	li:not(:first-child) a {
-		padding: 0 16px;
+	.menu {
+		height: var(--header-height);
+		background-color: var(--main-color);
+	}
+
+	.sub-menu {
+		height: 40px;
+		background-color: var(--secondary-color);
 	}
 
 	a {
 		font-size: 16px;
-		height: var(--header-height);
 		line-height: var(--header-height);
 		font-weight: 300;
-		display: inline-block;
-		user-select: none;
 
-		text-decoration: none;
-		color: white;
-
-		position: relative;
-		top: 0;
 		transition: color 0.2s;
+		color: white;
+		text-decoration: none;
+
+		padding: 0 16px;
 		border-radius: 8px;
+	}
+
+	.sub-menu a {
+		line-height: 40px;
 	}
 
 	.button {
@@ -126,16 +115,30 @@
 		cursor: default;
 	}
 
-	.active span {
+	.menu :not(.button).active span {
 		border-bottom: 2px solid var(--secondary-color);
 		padding: 4px 0;
 	}
 
-	a:not(.active):hover {
+	.menu .button.active span {
+		border-color: var(--secondary-color);
+	}
+
+	.sub-menu .active span {
+		border-bottom: 2px solid white;
+		padding: 2px 0;
+	}
+
+	.menu a:not(.active):hover {
 		color: var(--secondary-color);
 	}
-	a.button:not(.active):hover span {
+
+	.menu a.button:not(.active):hover span {
 		border-color: var(--secondary-color);
+	}
+
+	.sub-menu a:not(.active):hover {
+		color: var(--main-color);
 	}
 
 	:focus-visible {

@@ -14,8 +14,8 @@
 	import { enhance } from '$lib/utils/form';
 	import EmailInput from '$lib/component/input/EmailInput.svelte';
 	import PasswordInput from '$lib/component/input/PasswordInput.svelte';
-	import TextInput from '../../lib/component/input/TextInput.svelte';
-	import Button from '../../lib/component/atom/Button.svelte';
+	import TextInput from '$lib/component/input/TextInput.svelte';
+	import Button from '$lib/component/atom/Button.svelte';
 
 	export let error: string | null = null;
 </script>

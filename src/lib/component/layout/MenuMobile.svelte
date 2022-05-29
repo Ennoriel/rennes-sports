@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
 	import { state } from '$lib/store/state';
-	import { display, guard, routes } from '$lib/data/routes';
+	import { display, getActiveRoute, guard, ROUTES } from '$lib/data/routes';
 	import { page, session } from '$app/stores';
 	import XOrMenu from '$lib/component/svg/XOrMenu.svelte';
 	import Fav from '$lib/component/atom/Fav.svelte';
@@ -15,7 +15,7 @@
 	let search = '';
 	let isSearching = false;
 	let isOpen = false;
-	let burgerMenu: HTMLUListElement;
+	let burgerMenu: HTMLDivElement;
 
 	$: reSearch = new RegExp(search, 'i');
 
@@ -25,7 +25,8 @@
 		if (isOpen && !burgerMenu.contains(target)) isOpen = false;
 	}
 
-	$: displayedRoutes = display(guard(routes, $session), { mobile: true });
+	$: displayedRoutes = display(guard(ROUTES, $session), { mobile: true });
+	$: activeRoute = getActiveRoute($page.url.pathname, displayedRoutes);
 </script>
 
 <svelte:window on:click={click} />
@@ -45,7 +46,6 @@
 			/>
 		{/if}
 		<button
-			class="menu"
 			on:click|stopPropagation={() => {
 				$state.isOpen = false;
 				isOpen = !isOpen;
@@ -56,33 +56,49 @@
 	</span>
 
 	{#if isOpen}
-		<ul transition:fly={{ x: -200, duration: 400 }} bind:this={burgerMenu}>
-			<li>
-				<a on:click={() => (isOpen = false)} href="/">
-					<img src="/favicon.png" alt="Icone de l'application" />
-				</a>
-			</li>
+		<div class="menu" transition:fly={{ x: -200, duration: 400 }} bind:this={burgerMenu}>
+			<a on:click={() => (isOpen = false)} href="/">
+				<img src="/favicon.png" alt="Icone de l'application" />
+			</a>
 			{#each displayedRoutes as route}
-				{@const active = !('spacer' in route) && $page.url.pathname.indexOf(route.route) > 0}
 				{#if 'spacer' in route}
 					<hr />
 				{:else}
-					<li>
-						<a
-							sveltekit:prefetch
-							on:click={() => (isOpen = false)}
-							href="/{route.route}"
-							class:active
-						>
-							{#if active}
-								&gt;
-							{/if}
-							{route.label}
-						</a>
-					</li>
+					{@const active = activeRoute?.route === route.route}
+					<a
+						sveltekit:prefetch
+						on:click={() => (isOpen = false)}
+						href={route.route}
+						class:active
+						aria-current={(active && 'page') || undefined}
+					>
+						{#if active}
+							&gt;
+						{/if}
+						{route.label}
+					</a>
+					{#if route.subRoutes}
+						<div class="sub-menu">
+							{#each route.subRoutes as subRoute}
+								{@const active = $page.url.pathname.indexOf(subRoute.route) >= 0}
+								<a
+									sveltekit:prefetch
+									on:click={() => (isOpen = false)}
+									href={subRoute.route}
+									class:active
+									aria-current={(active && 'page') || undefined}
+								>
+									{#if active}
+										&gt;
+									{/if}
+									{subRoute.label}
+								</a>
+							{/each}
+						</div>
+					{/if}
 				{/if}
 			{/each}
-		</ul>
+		</div>
 	{/if}
 </nav>
 
@@ -139,10 +155,6 @@
 	}
 
 	button {
-		cursor: pointer;
-	}
-
-	button.menu {
 		width: calc(var(--header-height) - 25px);
 		background-color: var(--main-color);
 		display: flex;
@@ -152,7 +164,7 @@
 		color: white;
 	}
 
-	ul {
+	.menu {
 		position: absolute;
 		top: 0;
 		width: 200px;
@@ -166,38 +178,47 @@
 		margin: 0;
 		padding: 16px 32px;
 		list-style: none;
+		font-size: 16px;
+		line-height: 2em;
 	}
 
-	hr {
+	.menu hr {
 		margin: 16px 96px 16px 0;
 		border: none;
 		border-bottom: 0.1px solid var(--main-color);
 	}
 
-	ul a {
+	.menu a {
 		display: block;
 		text-decoration: none;
 		color: inherit;
-		font-size: 16px;
-		line-height: 32px;
-
 		transition: padding-left 0.4s;
 	}
 
-	ul a:not(.active):hover,
-	ul a:focus-visible {
+	.menu a.active {
+		cursor: default;
+	}
+
+	.menu a:not(.active):hover,
+	.menu a:focus-visible {
 		padding-left: 8px;
 	}
 
-	ul a:focus-visible {
+	.menu a:focus-visible {
 		outline: 2px solid var(--focus-color);
 		outline-offset: 2px;
 		border-radius: 4px;
 	}
 
-	ul img {
+	.menu img {
 		width: 40px;
 		margin-top: 10px;
+	}
+
+	.sub-menu {
+		margin-left: 16px;
+		font-size: 14px;
+		line-height: 1.75em;
 	}
 
 	.options {
