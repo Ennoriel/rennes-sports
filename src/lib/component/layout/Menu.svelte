@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { display, getActiveRoute, guard, ROUTES } from '$lib/data/routes';
+	import { display, getActiveRoute, getRouteLabel, guard, ROUTES } from '$lib/data/routes';
 	import { page, session } from '$app/stores';
 	import Fav from '$lib/component/atom/Fav.svelte';
 
@@ -23,7 +23,7 @@
 					aria-current={(active && 'page') || undefined}
 				>
 					<span>
-						{route.label}
+						{getRouteLabel(route, $session)}
 					</span>
 				</a>
 			{/if}
@@ -41,7 +41,7 @@
 					aria-current={(active && 'page') || undefined}
 				>
 					<span>
-						{route.label}
+						{getRouteLabel(route, $session)}
 					</span>
 				</a>
 			{/each}

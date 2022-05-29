@@ -1,6 +1,7 @@
 export type Route = {
 	route: string;
-	label: string;
+	label?: string;
+	getLabel?: (session: App.Session) => string;
 	guard?: (session: App.Session) => boolean;
 	display?: (config?: { mobile: boolean }) => boolean;
 	class?: string;
@@ -62,7 +63,7 @@ export const ROUTES: Array<Route | Spacer> = [
 	},
 	{
 		route: '/utilisateur/espace-client',
-		label: 'Mon espace',
+		getLabel: (session) => session?.association?.name || 'Mon espace',
 		guard: loggedGuard,
 		class: 'button',
 		subRoutes: [
@@ -128,4 +129,13 @@ export function getActiveRoute(path: string, routes = ROUTES): Route | undefined
 	return getOnlyRoutes(routes).find(
 		(r) => r.route === path || (r.subRoutes && getActiveRoute(path, r.subRoutes))
 	);
+}
+
+export function getRouteLabel(route: Route | Spacer, session: App.Session) {
+	const onlyRoute = getOnlyRoutes([route])?.[0];
+	if (onlyRoute) {
+		return 'getLabel' in onlyRoute && onlyRoute.getLabel
+			? onlyRoute.getLabel(session)
+			: onlyRoute.label;
+	}
 }

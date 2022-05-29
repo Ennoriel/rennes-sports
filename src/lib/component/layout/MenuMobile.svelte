@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
 	import { state } from '$lib/store/state';
-	import { display, getActiveRoute, guard, ROUTES } from '$lib/data/routes';
+	import { display, getActiveRoute, getRouteLabel, guard, ROUTES } from '$lib/data/routes';
 	import { page, session } from '$app/stores';
 	import XOrMenu from '$lib/component/svg/XOrMenu.svelte';
 	import Fav from '$lib/component/atom/Fav.svelte';
@@ -75,7 +75,7 @@
 						{#if active}
 							&gt;
 						{/if}
-						{route.label}
+						{getRouteLabel(route, $session)}
 					</a>
 					{#if route.subRoutes}
 						<div class="sub-menu">
@@ -91,7 +91,7 @@
 									{#if active}
 										&gt;
 									{/if}
-									{subRoute.label}
+									{getRouteLabel(subRoute, $session)}
 								</a>
 							{/each}
 						</div>

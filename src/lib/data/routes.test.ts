@@ -3,7 +3,7 @@ import { ROUTE, SESSION } from './test';
 
 describe('routes utils', () => {
 	it('all methods are tested', () => {
-		expect(Object.keys(_).length).toStrictEqual(7 + 1);
+		expect(Object.keys(_).length).toStrictEqual(8 + 1);
 	});
 
 	it('loggedGuard', () => {
@@ -60,5 +60,11 @@ describe('routes utils', () => {
 		expect(_.getActiveRoute('/first', ROUTES)).toStrictEqual(ROUTE.FIRST_LEVEL);
 		expect(_.getActiveRoute('/first/first', ROUTES)).toStrictEqual(ROUTE.FIRST_LEVEL);
 		expect(_.getActiveRoute('/first/second', ROUTES)).toStrictEqual(ROUTE.FIRST_LEVEL);
+	});
+
+	it('getRouteLabel', () => {
+		expect(_.getRouteLabel(ROUTE.SPACER, SESSION.LOGGED)).toStrictEqual(undefined);
+		expect(_.getRouteLabel(ROUTE.ALL, SESSION.LOGGED)).toStrictEqual('R_ALL');
+		expect(_.getRouteLabel(ROUTE.GET_LABEL, SESSION.LOGGED)).toStrictEqual('LOGGED');
 	});
 });
