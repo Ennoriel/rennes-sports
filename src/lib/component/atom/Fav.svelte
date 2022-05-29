@@ -18,11 +18,7 @@
 		background-size: 100% 100%;
 	}
 
-	.icon:hover div {
-		background: url('/fav.gif');
-		background-size: 100% 100%;
-	}
-
+	.icon:hover div,
 	.icon:focus-visible div {
 		background: url('/fav.gif');
 		background-size: 100% 100%;

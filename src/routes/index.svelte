@@ -1,14 +1,3 @@
-<script lang="ts">
-	import ResponsiveWrapper from '$lib/component/layout/ResponsiveWrapper.svelte';
-	import MenuMobile from '$lib/component/layout/MenuMobile.svelte';
-	import Menu from '$lib/component/layout/Menu.svelte';
-</script>
-
-<ResponsiveWrapper>
-	<MenuMobile slot="s" filtrable={false} />
-	<Menu slot="l" />
-</ResponsiveWrapper>
-
 <main>
 	<div id="content">
 		<h1>

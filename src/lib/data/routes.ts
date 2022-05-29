@@ -3,6 +3,8 @@ export type Route = {
 	label: string;
 	guard?: (session: App.Session) => boolean;
 	display?: (config?: { mobile: boolean }) => boolean;
+	class?: string;
+	subRoutes?: Array<Route>;
 };
 
 export type Spacer = {
@@ -10,72 +12,99 @@ export type Spacer = {
 	display?: (config?: { mobile: boolean }) => boolean;
 };
 
-export const routes: Array<Route | Spacer> = [
-	{
-		route: 'utilisateur/espace-client',
-		label: 'Espace asso',
-		guard: (session) => !!session,
-		display: (config) => config.mobile
-	},
+export const ROUTES: Array<Route | Spacer> = [
 	{
 		spacer: true,
 		display: (config) => config.mobile
 	},
 	{
-		route: 'recherche/liste',
+		route: '/recherche/liste',
 		label: 'Liste'
 	},
 	{
-		route: 'recherche/carte',
+		route: '/recherche/carte',
 		label: 'Carte'
 	},
 	{
-		route: 'actions/nouveau',
-		label: 'Nouveau',
-		guard: (session) => !!session
-	},
-	{
-		route: 'actions/creer-lieu',
-		label: 'Nouveau lieu',
-		guard: (session) => !!session
-	},
-	{
-		route: 'a-propos',
+		route: '/a-propos',
 		label: 'À propos'
 	},
 	{
-		route: 'utilisateur',
-		label: 'Utilisateurs',
-		guard: (session) => session?.association?.role === 'admin'
+		route: '/administration/utilisateurs',
+		label: 'Administration',
+		guard: adminGuard,
+		subRoutes: [
+			{
+				route: '/administration/utilisateurs',
+				label: 'Utilisateurs',
+				guard: adminGuard
+			},
+			{
+				route: '/administration/book',
+				label: 'Book',
+				guard: adminGuard
+			}
+		]
 	},
 	{
-		route: 'book',
-		label: 'Book',
-		guard: (session) => session?.association?.role === 'admin'
+		spacer: true
+	},
+	{
+		route: '/utilisateur/creer-son-compte',
+		label: "S'inscrire",
+		guard: notLoggedGuard
+	},
+	{
+		route: '/utilisateur/se-connecter',
+		label: 'Se connecter',
+		guard: notLoggedGuard,
+		class: 'button'
+	},
+	{
+		route: '/utilisateur/espace-client',
+		label: 'Mon espace',
+		guard: loggedGuard,
+		class: 'button',
+		subRoutes: [
+			{
+				route: '/utilisateur/espace-client',
+				label: 'Espace client',
+				guard: loggedGuard
+			},
+			{
+				route: '/actions/nouveau',
+				label: 'Nouveau',
+				guard: loggedGuard
+			},
+			{
+				route: '/actions/creer-lieu',
+				label: 'Nouveau lieu',
+				guard: loggedGuard
+			}
+		]
 	},
 	{
 		spacer: true,
 		display: (config) => config.mobile
 	},
 	{
-		route: 'utilisateur/se-connecter',
-		label: 'Se connecter',
-		guard: (session) => !session,
-		display: (config) => config.mobile
-	},
-	{
-		route: 'utilisateur/creer-son-compte',
-		label: 'Créer un compte',
-		guard: (session) => !session,
-		display: (config) => config.mobile
-	},
-	{
-		route: 'utilisateur/se-deconnecter',
+		route: '/utilisateur/se-deconnecter',
 		label: 'Se déconnecter',
-		guard: (session) => !!session,
-		display: (config) => config.mobile
+		guard: loggedGuard
 	}
 ];
+
+export function loggedGuard(session: App.Session) {
+	return !!session;
+}
+
+export function notLoggedGuard(session: App.Session) {
+	return !session;
+}
+
+export function adminGuard(session: App.Session) {
+	return session?.association?.role === 'admin';
+}
 
 export const guard = (
 	routes: Array<Route | Spacer>,
@@ -90,3 +119,13 @@ export const display = (
 ): Array<Route | Spacer> => {
 	return routes.filter((route) => !route.display || route.display(config));
 };
+
+export function getOnlyRoutes(routes: Array<Route | Spacer>): Array<Route> {
+	return routes.filter((r) => 'route' in r) as Array<Route>;
+}
+
+export function getActiveRoute(path: string, routes = ROUTES): Route | undefined {
+	return getOnlyRoutes(routes).find(
+		(r) => r.route === path || (r.subRoutes && getActiveRoute(path, r.subRoutes))
+	);
+}

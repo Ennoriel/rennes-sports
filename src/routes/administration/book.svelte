@@ -1,8 +1,5 @@
 <script lang="ts">
-	import ResponsiveWrapper from '$lib/component/layout/ResponsiveWrapper.svelte';
-	import MenuMobile from '$lib/component/layout/MenuMobile.svelte';
-	import Menu from '$lib/component/layout/Menu.svelte';
-	import BookButton from './_bookButtons.svelte';
+	import BookButton from '../_bookButtons.svelte';
 
 	import Link from '$lib/component/atom/Link.svelte';
 	import Spinner from '$lib/component/atom/Spinner.svelte';
@@ -12,16 +9,11 @@
 	import Checkbox from '$lib/component/input/Checkbox.svelte';
 	import Range from '$lib/component/input/Range.svelte';
 	import Autocomplete from '$lib/component/input/Autocomplete.svelte';
-	import EmailInput from '../lib/component/input/EmailInput.svelte';
-	import PasswordInput from '../lib/component/input/PasswordInput.svelte';
-	import LeftRight from '../lib/component/book/LeftRight.svelte';
-	import AddressAutocomplete from '../lib/component/input/AddressAutocomplete.svelte';
+	import EmailInput from '$lib/component/input/EmailInput.svelte';
+	import PasswordInput from '$lib/component/input/PasswordInput.svelte';
+	import LeftRight from '$lib/component/book/LeftRight.svelte';
+	import AddressAutocomplete from '$lib/component/input/AddressAutocomplete.svelte';
 </script>
-
-<ResponsiveWrapper>
-	<MenuMobile slot="s" filtrable={false} />
-	<Menu slot="l" />
-</ResponsiveWrapper>
 
 <div id="wrapper">
 	<Title>Buttons</Title>
