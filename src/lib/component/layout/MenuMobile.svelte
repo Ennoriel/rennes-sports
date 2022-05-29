@@ -64,7 +64,7 @@
 				{#if 'spacer' in route}
 					<hr />
 				{:else}
-					{@const active = activeRoute.route === route.route}
+					{@const active = activeRoute?.route === route.route}
 					<a
 						sveltekit:prefetch
 						on:click={() => (isOpen = false)}

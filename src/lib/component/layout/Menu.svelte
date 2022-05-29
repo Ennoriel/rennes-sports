@@ -14,7 +14,7 @@
 			{#if 'spacer' in route}
 				<span style:flex-grow="1" />
 			{:else}
-				{@const active = activeRoute.route === route.route}
+				{@const active = activeRoute?.route === route.route}
 				<a
 					sveltekit:prefetch
 					href={route.route}
@@ -29,11 +29,11 @@
 			{/if}
 		{/each}
 	</span>
-	{#if activeRoute.subRoutes}
+	{#if activeRoute?.subRoutes}
 		{@const activeSubRoute = getActiveRoute($page.url.pathname, activeRoute.subRoutes)}
 		<span class="sub-menu">
 			{#each activeRoute.subRoutes as route}
-				{@const active = activeSubRoute.route === route.route}
+				{@const active = activeSubRoute?.route === route.route}
 				<a
 					sveltekit:prefetch
 					href={route.route}

@@ -1,4 +1,4 @@
-import { sign } from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
 import { serialize } from 'cookie';
 import type { RequestHandler } from '@sveltejs/kit';
 import { errorResponse } from '$lib/utils/query';
@@ -31,7 +31,7 @@ export const post: RequestHandler = async ({ request }) => {
 		website: associations[0].website
 	};
 
-	const token = sign(association, import.meta.env.VITE_JWT_SECRET as string);
+	const token = jwt.sign(association, import.meta.env.VITE_JWT_SECRET as string);
 
 	const headers = {
 		'set-cookie': serialize('session', token, {
