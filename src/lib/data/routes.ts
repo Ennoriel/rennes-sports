@@ -19,7 +19,7 @@ export const ROUTES: Array<Route | Spacer> = [
 		display: (config) => config.mobile
 	},
 	{
-		route: '/recherche/liste',
+		route: '/recherche/liste?filter=all',
 		label: 'Liste'
 	},
 	{
@@ -73,8 +73,13 @@ export const ROUTES: Array<Route | Spacer> = [
 				guard: loggedGuard
 			},
 			{
+				route: '/recherche/liste?filter=my',
+				label: 'Mes créneaux',
+				guard: loggedGuard
+			},
+			{
 				route: '/actions/nouveau',
-				label: 'Nouveau',
+				label: 'Nouveau créneau',
 				guard: loggedGuard
 			},
 			{

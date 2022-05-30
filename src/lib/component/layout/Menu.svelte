@@ -2,9 +2,11 @@
 	import { display, getActiveRoute, getRouteLabel, guard, ROUTES } from '$lib/data/routes';
 	import { page, session } from '$app/stores';
 	import Fav from '$lib/component/atom/Fav.svelte';
+	import { state } from '$lib/store/state';
 
 	$: displayedRoutes = display(guard(ROUTES, $session), { mobile: false });
-	$: activeRoute = getActiveRoute($page.url.pathname, displayedRoutes);
+	$: activeRoute = getActiveRoute($page.url.pathname + $page.url.search, displayedRoutes);
+	$: $state.isDoubleMenu = !!activeRoute?.subRoutes;
 </script>
 
 <nav>

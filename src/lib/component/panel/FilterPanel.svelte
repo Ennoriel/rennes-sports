@@ -106,7 +106,7 @@
 		/>
 
 		<Button theme="vibrant" variant="rounded" size="s" on:click={() => ($state.isOpen = false)}>
-			Valdier
+			Valider
 		</Button>
 	</div>
 </Panel>

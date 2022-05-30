@@ -1,7 +1,7 @@
 <script lang="ts">
-	export let duration = '400ms';
-	export let offset = 0;
-	export let tolerance = 15;
+	export let duration = '250ms';
+	export let offset = 100;
+	export let tolerance = 25;
 	export let zIndex = 0;
 
 	export let pin = true;

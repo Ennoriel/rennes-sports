@@ -42,9 +42,11 @@
 			sortable: true
 		}
 	];
+
+	$: topp = $state.isPin ? ($state.isDoubleMenu ? '100px' : '60px') : '0px';
 </script>
 
-<div id="table-sports" class:sided={$state.isOpen} style:--top={$state.isPin ? '60px' : '0px'}>
+<div id="table-sports" class:sided={$state.isOpen} style:--top={topp}>
 	<Title>
 		Résultats ({sports.length})
 	</Title>
@@ -63,7 +65,8 @@
 
 <style>
 	#table-sports {
-		margin-top: calc(var(--header-height) + 20px);
+		margin-top: calc(var(--top) + 20px);
+		margin-bottom: 64px;
 		transition: all 0.4s;
 		padding-left: 0;
 	}
@@ -103,7 +106,7 @@
 	@media (min-width: 900px) {
 		#table-sports.sided {
 			padding-left: 300px;
-			width: 100vw;
+			width: 100%;
 		}
 	}
 

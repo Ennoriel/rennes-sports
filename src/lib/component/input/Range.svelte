@@ -114,7 +114,7 @@
 			aria-valuenow={rangeLabelDecimal[0]}
 			aria-valuetext={rangeLabel[0]}
 			on:keydown={(e) => keyDown(e, true)}
-			on:mousedown={() => (minPressed = true)}
+			on:mousedown|preventDefault={() => (minPressed = true)}
 			on:touchstart={() => (minPressed = true)}
 			style="left: {valToPos(range[0])}px"
 		>
@@ -132,7 +132,7 @@
 			aria-valuenow={rangeLabelDecimal[1]}
 			aria-valuetext={rangeLabel[1]}
 			on:keydown={(e) => keyDown(e, false)}
-			on:mousedown={() => (maxPressed = true)}
+			on:mousedown|preventDefault={() => (maxPressed = true)}
 			on:touchstart={() => (maxPressed = true)}
 			style="left: {valToPos(range[1])}px"
 		>

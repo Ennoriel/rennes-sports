@@ -6,6 +6,7 @@ export const state = writable({
 	allSports: [] as Array<Sport>,
 	isOpen: false,
 	isPin: true,
+	isDoubleMenu: false,
 	filter: {} as Filter
 });
 

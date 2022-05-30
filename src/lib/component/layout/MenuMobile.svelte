@@ -26,7 +26,7 @@
 	}
 
 	$: displayedRoutes = display(guard(ROUTES, $session), { mobile: true });
-	$: activeRoute = getActiveRoute($page.url.pathname, displayedRoutes);
+	$: activeRoute = getActiveRoute($page.url.pathname + $page.url.search, displayedRoutes);
 </script>
 
 <svelte:window on:click={click} />

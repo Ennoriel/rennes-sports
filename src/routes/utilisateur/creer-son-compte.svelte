@@ -55,13 +55,9 @@
 </form>
 
 <style>
-	form,
-	label {
+	form {
 		display: flex;
 		flex-direction: column;
-	}
-
-	form {
 		margin: 0 auto;
 		padding: 48px 24px 0;
 		max-width: 350px;
