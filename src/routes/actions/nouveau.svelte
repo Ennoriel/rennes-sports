@@ -14,6 +14,7 @@
 	import X from '$lib/component/svg/X.svelte';
 	import SportAutocomplete from '$lib/component/input/SportAutocomplete.svelte';
 	import TextArea from '$lib/component/input/TextArea.svelte';
+	import { DAYS } from '$lib/data/days';
 
 	export let error: string | undefined = undefined;
 
@@ -134,12 +135,7 @@
 			</ButtonGroup>
 
 			<!-- Slot day -->
-			<Radio
-				label="Jour"
-				name="slots[{index}][day]"
-				required
-				options={['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche']}
-			/>
+			<Radio label="Jour" name="slots[{index}][day]" required options={DAYS} />
 
 			<!-- Slot hours -->
 			<Range

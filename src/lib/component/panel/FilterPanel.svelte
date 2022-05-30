@@ -15,6 +15,7 @@
 	import Autocomplete from '../input/Autocomplete.svelte';
 	import AssociationAutocomplete from '../input/AssociationAutocomplete.svelte';
 	import type { AutocompleteSetValue } from '$lib/types/input.type';
+	import { DAYS } from '$lib/data/days';
 
 	export let pageRef: HTMLElement;
 
@@ -74,12 +75,7 @@
 			bind:value={$state.filter.sex}
 		/>
 
-		<Checkbox
-			label="Jour"
-			name="slotDay"
-			options={['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche']}
-			bind:value={$state.filter.day}
-		/>
+		<Checkbox label="Jour" name="slotDay" options={DAYS} bind:value={$state.filter.day} />
 
 		<Range
 			label="Horaire"

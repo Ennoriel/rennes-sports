@@ -1,6 +1,7 @@
 import { floor } from './number';
 import type { RangeType } from '$lib/types/sport.type';
 import type { Sport } from '$lib/types/sport.type';
+import { DAYS } from '../data/days';
 
 /**
  * Returns a text representation of an hour (ex: 510 = "8h30")
@@ -43,4 +44,9 @@ export function displayYear(
 			birthYear[birthYear.length - 1]
 		}`;
 	}
+}
+
+export function getDayOrder(day?: string): number {
+	if (!day) return 7;
+	return DAYS.findIndex((d) => d === day);
 }

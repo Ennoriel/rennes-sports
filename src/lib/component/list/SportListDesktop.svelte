@@ -5,6 +5,7 @@
 	import type { Sport } from '$lib/types/sport.type';
 	import { icons } from '$lib/component/atom/TableOrderIcons';
 	import Title from '../atom/Title.svelte';
+	import { getDayOrder } from '$lib/utils/time';
 
 	export let sports: Array<Sport>;
 
@@ -29,16 +30,19 @@
 		{
 			key: 'slot',
 			title: 'créneau',
+			value: (v: Sport) => getDayOrder(v.slots?.[0]?.day),
 			sortable: true
 		},
 		{
 			key: 'location',
 			title: 'Lieu',
+			value: (v: Sport) => v.slots?.[0]?.location?.name,
 			sortable: true
 		},
 		{
 			key: 'assoName',
 			title: 'association',
+			value: (v: Sport) => v.association.name,
 			sortable: true
 		}
 	];
