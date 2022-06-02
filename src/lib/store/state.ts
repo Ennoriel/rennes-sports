@@ -1,6 +1,5 @@
 import { derived, writable } from 'svelte/store';
 import type { Filter, Sport } from '$lib/types/sport.type';
-import { filterSports } from '$lib/utils/filter';
 
 export const state = writable({
 	allSports: [] as Array<Sport>,
@@ -10,4 +9,4 @@ export const state = writable({
 	filter: {} as Filter
 });
 
-export const sports = derived(state, ($state) => filterSports($state.filter, $state.allSports));
+export const sports = derived(state, ($state) => $state.allSports);

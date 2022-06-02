@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { createEventDispatcher, onMount } from 'svelte';
+	const dispatch = createEventDispatcher();
 	import { displayDecimalHour, displayTextHour } from '$lib/utils/time';
 	import type { RangeType } from '$lib/types/sport.type';
 	import InputHidden from './InputHidden.svelte';
@@ -62,8 +63,11 @@
 	}
 
 	function mouseUp() {
-		minPressed = false;
-		maxPressed = false;
+		if (minPressed || maxPressed) {
+			minPressed = false;
+			maxPressed = false;
+			dispatch('change', range);
+		}
 	}
 
 	function keyDown(e: KeyboardEvent, isMinIndicator: boolean) {

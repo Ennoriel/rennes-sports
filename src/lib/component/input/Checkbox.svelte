@@ -22,7 +22,7 @@
 		{#each _options as option}
 			<label class:selected={value && value.includes(option.value)}>
 				{option.label}
-				<input type="checkbox" {name} bind:group={value} value={option.value} />
+				<input type="checkbox" {name} bind:group={value} value={option.value} on:click />
 			</label>
 		{/each}
 	</div>

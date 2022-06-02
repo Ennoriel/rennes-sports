@@ -30,7 +30,7 @@ export type Filter = {
 	birthYear?: number;
 	sex?: string[];
 	day?: string[];
-	location?: Location;
+	locationId?: string;
 	associationId?: string;
 	minutes?: RangeType;
 };

@@ -14,13 +14,14 @@ export const errorResponse = (
 		? { status, body: { error: message } }
 		: { status: 302, headers: { Location: `${redirect}?error=${message}` } };
 
+/** deprecated */
 export const parseUrlSearchParams: Load = async ({ url }) => {
 	return {
 		props: urlSearchParamsToString(url.searchParams)
 	};
 };
 
-export const formDataToObject = <T>(formData: FormData): T => {
+export const formDataToObject = <T>(formData: FormData | URLSearchParams): T => {
 	const linearizedObject = [...formData.entries()].reduce((acc, [key, value]: [string, string]) => {
 		if (value)
 			acc[key] = isStringANumber(value)

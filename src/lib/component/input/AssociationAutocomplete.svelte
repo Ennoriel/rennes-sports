@@ -43,5 +43,6 @@
 	bind:setValue
 	bind:value
 	bind:filterText
+	on:change
 	loadOptions={getAssociations}
 />

@@ -1,35 +1,5 @@
-import type { Filter, Sport } from '$lib/types/sport.type';
-import { hourRangeOverlaps } from '$lib/utils/time';
+import type { Sport } from '$lib/types/sport.type';
 import type { Location, Marker } from '$lib/types/location.type';
-
-export function filterSports(filter: Filter, sports: Array<Sport>): Array<Sport> {
-	return sports
-		.filter((sport) => !filter.sport || sport.sport === filter.sport)
-		.filter((sport) => !filter.level || sport.level === filter.level)
-		.filter(
-			(sport) =>
-				!filter.birthYear ||
-				sport.birthYear.includes(filter.birthYear) ||
-				(sport.adult && filter.birthYear <= 2003)
-		)
-		.filter((sport) => !filter.sex || !filter.sex.length || filter.sex.includes(sport.sex))
-		.filter(
-			(sport) =>
-				!filter.day ||
-				!filter.day.length ||
-				sport.slots.some((slot) => filter.day.includes(slot.day))
-		)
-		.filter(
-			(sport) =>
-				!filter.minutes || sport.slots.some((slot) => hourRangeOverlaps(slot.hour, filter.minutes))
-		)
-		.filter(
-			(sport) =>
-				!filter.location?._id ||
-				sport.slots.some((slot) => slot.location._id === filter.location._id)
-		)
-		.filter((sport) => !filter.associationId || sport.association._id === filter.associationId);
-}
 
 export function getMarkers(sports: Array<Sport>, locations: Array<Location>): Array<Marker> {
 	return locations

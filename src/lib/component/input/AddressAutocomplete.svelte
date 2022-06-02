@@ -58,5 +58,6 @@
 	bind:isWaiting
 	noOptionsMessage={isWaiting ? 'Chargement des addresses...' : 'Aucune adresse trouvée'}
 	bind:value
+	on:change
 	loadOptions={getAddresses}
 />

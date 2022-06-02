@@ -23,7 +23,15 @@
 		{#each _options as option}
 			<label class:selected={value === option.value} class:disabled>
 				{option.label}
-				<input type="radio" {name} {required} bind:group={value} value={option.value} {disabled} />
+				<input
+					type="radio"
+					{name}
+					{required}
+					on:click
+					bind:group={value}
+					value={option.value}
+					{disabled}
+				/>
 			</label>
 		{/each}
 	</div>

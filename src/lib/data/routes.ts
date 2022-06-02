@@ -131,9 +131,15 @@ export function getOnlyRoutes(routes: Array<Route | Spacer>): Array<Route> {
 }
 
 export function getActiveRoute(path: string, routes = ROUTES): Route | undefined {
-	return getOnlyRoutes(routes).find(
-		(r) => r.route === path || (r.subRoutes && getActiveRoute(path, r.subRoutes))
-	);
+	const onlyRoutes = getOnlyRoutes(routes);
+
+	const activeSubRoute = onlyRoutes.find((r) => r.subRoutes && getActiveRoute(path, r.subRoutes));
+	if (activeSubRoute) return activeSubRoute;
+
+	const equalRoute = onlyRoutes.find((r) => r.route === path);
+	if (equalRoute) return equalRoute;
+
+	return onlyRoutes.find((r) => path.startsWith(r.route));
 }
 
 export function getRouteLabel(route: Route | Spacer, session: App.Session) {

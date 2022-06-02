@@ -30,6 +30,28 @@ export function hourRangeOverlaps(rangeA: RangeType, rangeB: RangeType): boolean
 	return false;
 }
 
+export function hourRangeMongoQuery(range: RangeType, day?: Array<string>): any {
+	const condition1 = {
+		hour: {
+			$gt: range[0],
+			$lt: range[1]
+		}
+	};
+	const condition2 = {
+		'hour.0': { $lte: range[0] },
+		'hour.1': { $gte: range[1] }
+	};
+	if (day) {
+		condition1['day'] = { $in: day };
+		condition2['day'] = { $in: day };
+	}
+	return {
+		$elemMatch: {
+			$or: [condition1, condition2]
+		}
+	};
+}
+
 export function displayYear(
 	birthYear: Sport['birthYear'],
 	otherYear: Sport['otherYear'],

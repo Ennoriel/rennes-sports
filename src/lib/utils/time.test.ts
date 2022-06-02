@@ -3,7 +3,7 @@ import * as _ from './time';
 describe('number utils', () => {
 	it('all methods are tested', () => {
 		// TODO some are missing
-		expect(Object.keys(_).length).toStrictEqual(6);
+		expect(Object.keys(_).length).toStrictEqual(7);
 	});
 
 	it('getDayOrder', () => {

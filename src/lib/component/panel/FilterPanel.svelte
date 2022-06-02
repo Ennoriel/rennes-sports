@@ -16,6 +16,9 @@
 	import AssociationAutocomplete from '../input/AssociationAutocomplete.svelte';
 	import type { AutocompleteSetValue } from '$lib/types/input.type';
 	import { DAYS } from '$lib/data/days';
+	import { fromObj } from 'form-data-to-object';
+	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 
 	export let pageRef: HTMLElement;
 
@@ -23,6 +26,28 @@
 	let setBirthYear: AutocompleteSetValue;
 	let setLocation: AutocompleteSetValue;
 	let setAssociation: AutocompleteSetValue;
+
+	let search: any;
+
+	function updateUrl() {
+		console.log('updateUrl');
+		setTimeout(() => {
+			search = new URLSearchParams();
+
+			const filter = $page.url.searchParams.get('filter');
+			if (filter) search.append('filter', filter);
+
+			Object.entries(fromObj($state.filter || {}))
+				.filter(([_, v]) => !!v)
+				.forEach(([k, v]) => {
+					search.append(k, v);
+				});
+
+			const url = new URL(`${$page.url.origin}${$page.url.pathname}/?` + search.toString());
+
+			goto(url.toString());
+		}, 0);
+	}
 </script>
 
 <Panel {pageRef}>
@@ -54,9 +79,20 @@
 			/>
 		</ButtonGroup>
 
-		<SportAutocomplete bind:value={$state.filter.sport} variant="square" bind:setValue={setSport} />
+		<SportAutocomplete
+			bind:value={$state.filter.sport}
+			variant="square"
+			bind:setValue={setSport}
+			on:change={updateUrl}
+		/>
 
-		<Radio label="Pratique" name="level" options={LEVELS} bind:value={$state.filter.level} />
+		<Radio
+			label="Pratique"
+			name="level"
+			options={LEVELS}
+			bind:value={$state.filter.level}
+			on:click={updateUrl}
+		/>
 
 		<Autocomplete
 			label="Année de naissance"
@@ -66,6 +102,7 @@
 			bind:value={$state.filter.birthYear}
 			variant="square"
 			bind:setValue={setBirthYear}
+			on:change={updateUrl}
 		/>
 
 		<Checkbox
@@ -73,9 +110,16 @@
 			name="sex"
 			options={['Mixte', 'Féminin', 'Masculin']}
 			bind:value={$state.filter.sex}
+			on:click={updateUrl}
 		/>
 
-		<Checkbox label="Jour" name="slotDay" options={DAYS} bind:value={$state.filter.day} />
+		<Checkbox
+			label="Jour"
+			name="slotDay"
+			options={DAYS}
+			bind:value={$state.filter.day}
+			on:click={updateUrl}
+		/>
 
 		<Range
 			label="Horaire"
@@ -83,15 +127,18 @@
 			name="slotMinutes"
 			min={360}
 			max={1410}
-			step={15}
+			step={30}
 			bind:range={$state.filter.minutes}
+			on:change={updateUrl}
 		/>
 
 		<LocationAutocomplete
-			bind:value={$state.filter.location}
+			bind:value={$state.filter.locationId}
 			listPlacement="top"
 			variant="square"
 			bind:setValue={setLocation}
+			valueAsId
+			on:change={updateUrl}
 		/>
 
 		<AssociationAutocomplete
@@ -99,6 +146,7 @@
 			listPlacement="top"
 			variant="square"
 			bind:setValue={setAssociation}
+			on:change={updateUrl}
 		/>
 
 		<Button theme="vibrant" variant="rounded" size="s" on:click={() => ($state.isOpen = false)}>

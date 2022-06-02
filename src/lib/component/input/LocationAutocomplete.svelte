@@ -7,11 +7,12 @@
 	export let name = 'location';
 	export let required = false;
 	export let placeholder = 'Parc de la Poterie';
-	export let value: Location | undefined = undefined;
+	export let value: Location | string | undefined = undefined;
 	export let filterText: string | undefined = undefined;
 	export let listPlacement: 'auto' | 'top' | 'bottom' = 'bottom';
 	export let variant: 'square' | 'rounded' = 'rounded';
 	export let setValue: AutocompleteSetValue = undefined;
+	export let valueAsId = false;
 
 	let isWaiting = false;
 
@@ -19,7 +20,13 @@
 		return new Promise((resolve) =>
 			fetch(`/api/locations.json?filter=${encodeURIComponent(filterText)}`)
 				.then((res) => res.json())
-				.then((res: Array<Location>) => res.map((l) => ({ ...l, label: l.name })))
+				.then((res: Array<Location>) =>
+					res.map((l) => ({
+						...l,
+						label: l.name,
+						value: valueAsId ? l._id : undefined
+					}))
+				)
 				.then(resolve)
 		);
 	}
@@ -42,5 +49,6 @@
 	bind:setValue
 	bind:value
 	bind:filterText
+	on:change
 	loadOptions={getLocations}
 />

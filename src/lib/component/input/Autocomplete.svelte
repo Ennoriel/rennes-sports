@@ -55,6 +55,7 @@
 		{optionIdentifier}
 		bind:value={boundValue}
 		bind:filterText
+		on:change
 		{isCreatable}
 		{isDisabled}
 		{isMulti}
