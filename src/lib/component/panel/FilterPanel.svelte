@@ -39,8 +39,6 @@
 			delete _filter.association;
 			delete _filter.location;
 
-			console.log(_filter);
-
 			Object.entries(fromObj(_filter || {}))
 				.filter(([_, v]) => !!v)
 				.forEach(([k, v]) => {
