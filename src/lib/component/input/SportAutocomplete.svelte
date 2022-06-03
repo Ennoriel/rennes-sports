@@ -12,6 +12,7 @@
 	export let value: string | undefined = undefined;
 	export let variant: 'square' | 'rounded' = 'rounded';
 	export let setValue: AutocompleteSetValue = undefined;
+	export let initialValue: string | undefined = undefined;
 
 	let isWaiting = false;
 
@@ -43,6 +44,7 @@
 		: 'Commencez à taper un sport'}
 	bind:setValue
 	bind:value
+	{initialValue}
 	bind:filterText
 	on:change
 	loadOptions={getSports}

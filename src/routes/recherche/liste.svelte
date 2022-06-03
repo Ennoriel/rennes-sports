@@ -8,20 +8,20 @@
 	import ResponsiveWrapper from '$lib/component/layout/ResponsiveWrapper.svelte';
 	import SportListDesktop from '$lib/component/list/SportListDesktop.svelte';
 	import SportListMobile from '$lib/component/list/SportListMobile.svelte';
-	import { state, sports } from '$lib/store/state';
+	import type { Filter } from '../../lib/types/sport.type';
 
-	export let loadedSports = [];
-	$: $state.allSports = loadedSports;
+	export let sports = [];
+	export let filter: Filter;
 
 	let pageRef: HTMLElement;
 </script>
 
-<FilterPanel {pageRef} />
+<FilterPanel {pageRef} {filter} />
 
 <div bind:this={pageRef}>
 	<ResponsiveWrapper>
-		<SportListMobile slot="s" sports={$sports} />
-		<SportListDesktop slot="l" sports={$sports} />
+		<SportListMobile slot="s" {sports} />
+		<SportListDesktop slot="l" {sports} />
 	</ResponsiveWrapper>
 </div>
 

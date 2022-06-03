@@ -32,7 +32,10 @@
 		{/each}
 	</span>
 	{#if activeRoute?.subRoutes}
-		{@const activeSubRoute = getActiveRoute($page.url.pathname, activeRoute.subRoutes)}
+		{@const activeSubRoute = getActiveRoute(
+			$page.url.pathname + $page.url.search,
+			activeRoute.subRoutes
+		)}
 		<span class="sub-menu">
 			{#each activeRoute.subRoutes as route}
 				{@const active = activeSubRoute?.route === route.route}

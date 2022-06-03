@@ -28,7 +28,8 @@
 		color: inherit;
 	}
 	:global(html) {
-		scroll-padding: 250px;
+		scroll-padding-top: 100px;
+		scroll-behavior: smooth;
 	}
 	:global(body) {
 		--main-color: #002395;

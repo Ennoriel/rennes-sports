@@ -43,6 +43,9 @@
 		bottom: 10.5px;
 		right: 15px;
 	}
+	.square button {
+		bottom: 6.5px;
+	}
 
 	button,
 	button img {

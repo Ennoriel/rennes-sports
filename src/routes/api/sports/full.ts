@@ -5,13 +5,13 @@ import { formDataToObject } from '$lib/utils/query';
 import { hourRangeMongoQuery } from '../../../lib/utils/time';
 
 export const get: RequestHandler = async (event) => {
-	const { filter, sport, level, birthYear, sex, day, minutes, locationId, associationId } =
+	const { q, sport, level, birthYear, sex, day, minutes, locationId, associationId } =
 		formDataToObject(event.url.searchParams);
-	console.log({ filter, sport, level, birthYear, sex, day, minutes, locationId, associationId });
+	console.log({ q, sport, level, birthYear, sex, day, minutes, locationId, associationId });
 
 	let query = {};
 
-	if (filter === 'my') query['association._id'] = new ObjectId(event.locals.session._id);
+	if (q === 'my') query['association._id'] = new ObjectId(event.locals.session._id);
 	if (sport) query['sport'] = sport;
 	if (level) query['level'] = level;
 	if (birthYear) query['birthYear'] = birthYear;
@@ -28,6 +28,9 @@ export const get: RequestHandler = async (event) => {
 	console.log(JSON.stringify(query, null, 2));
 
 	return {
-		body: (await (await mongoClient).db()?.collection('sports').find(query)?.toArray()) || []
+		body: {
+			sports: (await (await mongoClient).db()?.collection('sports').find(query)?.toArray()) || [],
+			filter: { q, sport, level, birthYear, sex, day, minutes, locationId, associationId }
+		}
 	};
 };

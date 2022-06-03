@@ -54,12 +54,16 @@ describe('routes utils', () => {
 	});
 
 	it('getActiveRoute', () => {
-		const ROUTES = [ROUTE.ALL, ROUTE.FIRST_LEVEL];
+		const ROUTES = [ROUTE.ALL, ROUTE.FIRST_LEVEL, ROUTE.WITH_QUERY];
 
 		expect(_.getActiveRoute('/', ROUTES)).toStrictEqual(ROUTE.ALL);
 		expect(_.getActiveRoute('/first', ROUTES)).toStrictEqual(ROUTE.FIRST_LEVEL);
 		expect(_.getActiveRoute('/first/first', ROUTES)).toStrictEqual(ROUTE.FIRST_LEVEL);
 		expect(_.getActiveRoute('/first/second', ROUTES)).toStrictEqual(ROUTE.FIRST_LEVEL);
+		expect(_.getActiveRoute('/first?q=my', ROUTES)).toStrictEqual(ROUTE.WITH_QUERY);
+		expect(_.getActiveRoute('/first?q=my&other=other', ROUTES)).toStrictEqual(ROUTE.WITH_QUERY);
+		expect(_.getActiveRoute('/first?q=one', ROUTES)).toStrictEqual(ROUTE.WITH_QUERY);
+		expect(_.getActiveRoute('/first?q=one&other=other', ROUTES)).toStrictEqual(ROUTE.WITH_QUERY);
 	});
 
 	it('getRouteLabel', () => {

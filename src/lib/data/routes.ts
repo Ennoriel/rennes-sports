@@ -19,7 +19,7 @@ export const ROUTES: Array<Route | Spacer> = [
 		display: (config) => config.mobile
 	},
 	{
-		route: '/recherche/liste?filter=all',
+		route: '/recherche/liste?q=all',
 		label: 'Liste'
 	},
 	{
@@ -43,6 +43,11 @@ export const ROUTES: Array<Route | Spacer> = [
 			{
 				route: '/administration/book',
 				label: 'Book',
+				guard: adminGuard
+			},
+			{
+				route: '/administration/book-select',
+				label: 'Book Select',
 				guard: adminGuard
 			}
 		]
@@ -73,7 +78,7 @@ export const ROUTES: Array<Route | Spacer> = [
 				guard: loggedGuard
 			},
 			{
-				route: '/recherche/liste?filter=my',
+				route: '/recherche/liste?q=my',
 				label: 'Mes créneaux',
 				guard: loggedGuard
 			},
@@ -131,7 +136,7 @@ export function getOnlyRoutes(routes: Array<Route | Spacer>): Array<Route> {
 }
 
 export function getActiveRoute(path: string, routes = ROUTES): Route | undefined {
-	const onlyRoutes = getOnlyRoutes(routes);
+	const onlyRoutes = getOnlyRoutes(routes).sort((r1, r2) => r2.route.length - r1.route.length);
 
 	const activeSubRoute = onlyRoutes.find((r) => r.subRoutes && getActiveRoute(path, r.subRoutes));
 	if (activeSubRoute) return activeSubRoute;

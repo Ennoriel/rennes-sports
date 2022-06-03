@@ -16,6 +16,7 @@
 	export let labelIdentifier: string | undefined = undefined;
 	export let optionIdentifier: string | undefined = undefined;
 	export let value: AutocompleteValue | undefined = undefined;
+	export let initialValue: AutocompleteValue | undefined = undefined;
 	export let isCreatable = false;
 	export let isDisabled = false;
 	export let isMulti = false;
@@ -27,7 +28,14 @@
 		boundValue = v;
 	};
 
-	let boundValue: { index: number; value: AutocompleteValue } | any | undefined;
+	if (initialValue && !options) {
+		options = [initialValue] as Array<object> | Array<string> | Array<number>;
+		setTimeout(() => {
+			options = undefined;
+		}, 0);
+	}
+
+	let boundValue: { index: number; value: AutocompleteValue } | any | undefined = initialValue;
 
 	$: value = boundValue?.value || boundValue?.[optionIdentifier] || boundValue;
 
@@ -175,6 +183,7 @@
 
 		max-height: calc(4 * var(--select-height));
 		overflow-y: auto;
+		scroll-snap-type: y mandatory;
 	}
 	.autocomplete :global(.list-item:first-of-type .item) {
 		border-top-left-radius: var(--border-radius-list);
@@ -189,6 +198,7 @@
 		font-weight: 300;
 		letter-spacing: 0.1px;
 		cursor: pointer;
+		scroll-snap-align: start;
 	}
 	.autocomplete :global(.empty) {
 		padding: 5px 0 5px var(--select-height-half);

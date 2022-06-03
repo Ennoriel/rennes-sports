@@ -23,6 +23,11 @@ export const post: RequestHandler = async ({ locals, request }) => {
 		website: locals.session.website
 	};
 
+	sport.slots = sport.slots.map(({ location, ...slot }) => ({
+		...slot,
+		location: { ...location, _id: new ObjectId(location._id) }
+	}));
+
 	const result = (await (await mongoClient)
 		.db()
 		?.collection('sports')

@@ -61,6 +61,20 @@ export const ROUTE = {
 			}
 		]
 	},
+	WITH_QUERY: {
+		route: '/first?q=my',
+		label: '1.',
+		subRoutes: [
+			{
+				route: '/first?q=one',
+				label: '1.1.'
+			},
+			{
+				route: '/first?q=two',
+				label: '1.2.'
+			}
+		]
+	},
 	GET_LABEL: {
 		route: '/get/label',
 		getLabel: (session?: App.Session) => session?.association?.name

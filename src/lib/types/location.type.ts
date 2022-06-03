@@ -1,9 +1,10 @@
 import type { Sport } from '$lib/types/sport.type';
+import type { ObjectId } from 'mongodb';
 
 export type Coordinates = [number, number];
 
 export type Location = {
-	_id: number;
+	_id: string | ObjectId;
 	name: string;
 	address?: string;
 	coordinates?: Coordinates;

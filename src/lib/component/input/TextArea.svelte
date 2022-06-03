@@ -21,5 +21,6 @@
 		line-height: 18px;
 		font-weight: 400;
 		padding-top: 8px !important;
+		cursor: text;
 	}
 </style>

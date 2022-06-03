@@ -1,7 +1,27 @@
-<main>
-	<h1>Vous semblez loin de la réalité !</h1>
-	<p>Pour revenir vers l'accueil : <a href="/">c'est ici !</a></p>
-</main>
+<script context="module" lang="ts">
+	export function load({ error, status }) {
+		return {
+			props: { error, status }
+		};
+	}
+</script>
+
+<script lang="ts">
+	import { dev } from '$app/env';
+
+	export let status: number;
+	export let error: Error;
+</script>
+
+{#if dev}
+	<h1>{status}: {error.message}</h1>
+	<pre>{error.stack}</pre>
+{:else}
+	<main>
+		<h1>Vous semblez loin de la réalité !</h1>
+		<p>Pour revenir vers l'accueil : <a href="/">c'est ici !</a></p>
+	</main>
+{/if}
 
 <style>
 	main {
@@ -13,7 +33,7 @@
 		justify-content: space-evenly;
 	}
 
-	h1 {
+	main h1 {
 		font-size: 72px;
 		color: white;
 		text-align: center;

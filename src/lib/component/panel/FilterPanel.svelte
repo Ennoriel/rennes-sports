@@ -19,8 +19,10 @@
 	import { fromObj } from 'form-data-to-object';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
+	import type { Filter } from '$lib/types/sport.type';
 
 	export let pageRef: HTMLElement;
+	export let filter: Filter;
 
 	let setSport: AutocompleteSetValue;
 	let setBirthYear: AutocompleteSetValue;
@@ -30,14 +32,10 @@
 	let search: any;
 
 	function updateUrl() {
-		console.log('updateUrl');
 		setTimeout(() => {
 			search = new URLSearchParams();
 
-			const filter = $page.url.searchParams.get('filter');
-			if (filter) search.append('filter', filter);
-
-			Object.entries(fromObj($state.filter || {}))
+			Object.entries(fromObj(filter || {}))
 				.filter(([_, v]) => !!v)
 				.forEach(([k, v]) => {
 					search.append(k, v);
@@ -59,7 +57,7 @@
 				variant="rounded"
 				size="s"
 				on:click={() => {
-					$state.filter = { day: [], minutes: [360, 1410] };
+					filter = { day: [], minutes: [360, 1410] };
 					setSport();
 					setBirthYear();
 					setLocation();
@@ -80,9 +78,10 @@
 		</ButtonGroup>
 
 		<SportAutocomplete
-			bind:value={$state.filter.sport}
+			bind:value={filter.sport}
 			variant="square"
 			bind:setValue={setSport}
+			initialValue={filter.sport}
 			on:change={updateUrl}
 		/>
 
@@ -90,7 +89,7 @@
 			label="Pratique"
 			name="level"
 			options={LEVELS}
-			bind:value={$state.filter.level}
+			bind:value={filter.level}
 			on:click={updateUrl}
 		/>
 
@@ -99,7 +98,8 @@
 			placeholder="Année"
 			name="birthYear"
 			options={range(2021, 1920)}
-			bind:value={$state.filter.birthYear}
+			bind:value={filter.birthYear}
+			initialValue={filter.birthYear}
 			variant="square"
 			bind:setValue={setBirthYear}
 			on:change={updateUrl}
@@ -109,7 +109,7 @@
 			label="Sexe"
 			name="sex"
 			options={['Mixte', 'Féminin', 'Masculin']}
-			bind:value={$state.filter.sex}
+			bind:value={filter.sex}
 			on:click={updateUrl}
 		/>
 
@@ -117,7 +117,7 @@
 			label="Jour"
 			name="slotDay"
 			options={DAYS}
-			bind:value={$state.filter.day}
+			bind:value={filter.day}
 			on:click={updateUrl}
 		/>
 
@@ -128,12 +128,12 @@
 			min={360}
 			max={1410}
 			step={30}
-			bind:range={$state.filter.minutes}
+			bind:range={filter.minutes}
 			on:change={updateUrl}
 		/>
 
 		<LocationAutocomplete
-			bind:value={$state.filter.locationId}
+			bind:value={filter.locationId}
 			listPlacement="top"
 			variant="square"
 			bind:setValue={setLocation}
@@ -142,7 +142,7 @@
 		/>
 
 		<AssociationAutocomplete
-			bind:value={$state.filter.associationId}
+			bind:value={filter.associationId}
 			listPlacement="top"
 			variant="square"
 			bind:setValue={setAssociation}

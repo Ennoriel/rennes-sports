@@ -42,6 +42,7 @@
 		<EmailInput slot="right" />
 	</LeftRight>
 	<LeftRight>
+		<PasswordInput slot="left" variant="square" />
 		<PasswordInput slot="right" />
 	</LeftRight>
 	<LeftRight>
@@ -63,6 +64,7 @@
 	</LeftRight>
 	<LeftRight>
 		<AddressAutocomplete slot="left" variant="square" />
+		<AddressAutocomplete slot="right" />
 	</LeftRight>
 
 	<Radio label="radio input" name="radio" options={['option 1', 'option 2']} />
