@@ -4,13 +4,6 @@ import type { Location, Marker } from '$lib/types/location.type';
 export function getMarkers(sports: Array<Sport>, locations: Array<Location>): Array<Marker> {
 	return locations
 		.filter((location) => !!location.coordinates)
-		.filter((location) =>
-			sports.some((sport) =>
-				sport.slots.some(
-					(slot) => (slot as any).location._id.toString() === (location as any)._id.toString()
-				)
-			)
-		)
 		.map((location) => {
 			const locatedSports = sports.filter((sport) =>
 				sport.slots.some(

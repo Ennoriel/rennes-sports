@@ -4,7 +4,7 @@ import type { RequestHandler } from '@sveltejs/kit';
 // import {assos} from "../../lib/data/assos";
 
 export const get: RequestHandler = async () => {
-	// const sports = (await (await mongoClient).db()?.collection('sports').find({})?.toArray()) || [];
+	// let sports = (await (await mongoClient).db()?.collection('sports').find({})?.toArray()) || [];
 	// await (await mongoClient).db()?.collection('sports2').deleteMany({});
 	// await (await mongoClient).db()?.collection('sports2').insertMany(sports);
 	//
@@ -19,15 +19,29 @@ export const get: RequestHandler = async () => {
 	//     sport.associationId = undefined;
 	// });
 	//
-	// // await Promise.all(
-	// //     sports.map(
-	// //         async (sport) =>
-	// //             await (await mongoClient)
-	// //                 .db()
-	// //                 ?.collection('sports')
-	// //                 .updateOne({ _id: sport._id }, { $set: sport })
-	// //     )
-	// // );
+
+	// sports = sports.map(({slots, ...sport}) => ({
+	// 	...sport,
+	// 	slots: slots.map(({location, ...slot}) => ({
+	// 		...slot,
+	// 		location: {
+	// 			...location,
+	// 			_id: typeof location._id === "string" ? new ObjectId(location._id) : location._id
+	// 		}
+	// 	}))
+	// }))
+	//
+	// sports.forEach(s => s.slots.forEach(sl => console.log(sl.location._id)))
+	//
+	// await Promise.all(
+	//     sports.map(
+	//         async (sport) =>
+	//             await (await mongoClient)
+	//                 .db()
+	//                 ?.collection('sports')
+	//                 .updateOne({ _id: sport._id }, { $set: sport })
+	//     )
+	// );
 	//
 	// await (await mongoClient).db()?.collection('sports').updateMany({}, {$unset: {assoId:1}});
 

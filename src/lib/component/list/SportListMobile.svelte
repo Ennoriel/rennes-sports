@@ -32,7 +32,7 @@
 					{#if index === sport.slots.length - 1 || !slotSameLocation}
 						<Link
 							img={{ src: '/svg/location.svg' }}
-							href="recherche/carte/location/{slot.location._id}"
+							href="/recherche/carte?locationId={slot.location._id}"
 						>
 							{slot.location.name}
 						</Link>

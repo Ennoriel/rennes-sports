@@ -9,6 +9,17 @@
 
 # DB Graph
 
+## Indexes
+
+2 indexes:
+
+- collection sports:
+  - slots.location.coordinates: 2dsphere
+- collection locations:
+  - coordinates: 2dsphere
+
+## Schema
+
 ```mermaid
 erDiagram
     TRAINING ||--|{ SLOT : "est consituté de"

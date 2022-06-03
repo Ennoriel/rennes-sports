@@ -1,11 +1,16 @@
 import type { Load } from '@sveltejs/kit';
 
-export const loadSports: Load = async ({ fetch, url }) => {
-	const res = await fetch(`/api/sports/full${url.search || ''}`);
+export const loadSports =
+	(mode: string): Load =>
+	async ({ fetch, url }) => {
+		const { searchParams } = url;
+		searchParams.append('mode', mode);
 
-	if (res.ok) {
-		return {
-			props: await res.json()
-		};
-	}
-};
+		const res = await fetch(`/api/sports/full?${searchParams.toString()}`);
+
+		if (res.ok) {
+			return {
+				props: await res.json()
+			};
+		}
+	};

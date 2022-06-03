@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
 	import { loadSports } from './_load';
-	export const load = loadSports;
+	export const load = loadSports('list');
 </script>
 
 <script lang="ts">
@@ -8,9 +8,9 @@
 	import ResponsiveWrapper from '$lib/component/layout/ResponsiveWrapper.svelte';
 	import SportListDesktop from '$lib/component/list/SportListDesktop.svelte';
 	import SportListMobile from '$lib/component/list/SportListMobile.svelte';
-	import type { Filter } from '../../lib/types/sport.type';
+	import type { Filter, Sport } from '../../lib/types/sport.type';
 
-	export let sports = [];
+	export let sports: Array<Sport> = [];
 	export let filter: Filter;
 
 	let pageRef: HTMLElement;

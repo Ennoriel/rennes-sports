@@ -4,8 +4,10 @@
 	import 'leaflet/dist/leaflet.css';
 	import FilterPanel from '$lib/component/panel/FilterPanel.svelte';
 	import type { Coordinates, Marker } from '$lib/types/location.type';
+	import type { Filter } from '$lib/types/sport.type';
 
 	export let markers: Array<Marker>;
+	export let filter: Filter = {};
 	export let center: Coordinates | undefined = undefined;
 
 	let pageRef: HTMLElement;
@@ -18,7 +20,7 @@
 	});
 </script>
 
-<FilterPanel {pageRef} />
+<FilterPanel {pageRef} {filter} />
 
 <div bind:this={pageRef} id="map">
 	{#if browser && window}

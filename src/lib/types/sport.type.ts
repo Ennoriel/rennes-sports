@@ -25,6 +25,8 @@ export type Slot = {
 };
 
 export type Filter = {
+	q?: string;
+	mode?: string;
 	sport?: string;
 	level?: string;
 	birthYear?: number;

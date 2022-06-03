@@ -1,36 +1,33 @@
 import type { RequestHandler } from '@sveltejs/kit';
-import mongoClient from '$lib/utils/db';
-import { ObjectId } from 'mongodb';
 import { formDataToObject } from '$lib/utils/query';
-import { hourRangeMongoQuery } from '../../../lib/utils/time';
+import type { Filter } from '$lib/types/sport.type';
+import { getSports } from '$lib/db/sport';
+import { getLocations } from '$lib/db/location';
+import type { ObjectId } from 'mongodb';
+import { getMarkers } from '$lib/utils/filter';
+import type { Location, Marker } from '$lib/types/location.type';
 
 export const get: RequestHandler = async (event) => {
-	const { q, sport, level, birthYear, sex, day, minutes, locationId, associationId } =
-		formDataToObject(event.url.searchParams);
-	console.log({ q, sport, level, birthYear, sex, day, minutes, locationId, associationId });
+	const filter = formDataToObject<Filter>(event.url.searchParams);
 
-	let query = {};
+	const sports = await getSports(filter, event.locals.session);
 
-	if (q === 'my') query['association._id'] = new ObjectId(event.locals.session._id);
-	if (sport) query['sport'] = sport;
-	if (level) query['level'] = level;
-	if (birthYear) query['birthYear'] = birthYear;
-	if (sex) query['sex'] = { $in: sex };
-	if (day?.length && minutes) {
-		query['slots'] = hourRangeMongoQuery(minutes, day);
-	} else {
-		if (day?.length) query['slots.day'] = { $in: day };
-		if (minutes) query['slots'] = hourRangeMongoQuery(minutes);
+	let locations: Array<Location>;
+	let markers: Array<Marker>;
+
+	if (filter.mode === 'map' && sports.length) {
+		const locationIds = sports
+			.map(({ slots }) => slots.map((slot) => slot.location._id))
+			.flat() as Array<ObjectId>;
+		locations = await getLocations(locationIds);
+		markers = getMarkers(sports, locations);
 	}
-	if (locationId) query['slots.location._id'] = new ObjectId(locationId);
-	if (associationId) query['association._id'] = new ObjectId(associationId);
-
-	console.log(JSON.stringify(query, null, 2));
 
 	return {
 		body: {
-			sports: (await (await mongoClient).db()?.collection('sports').find(query)?.toArray()) || [],
-			filter: { q, sport, level, birthYear, sex, day, minutes, locationId, associationId }
+			sports,
+			markers,
+			filter
 		}
 	};
 };

@@ -224,6 +224,7 @@
 	.options {
 		position: absolute;
 		inset: 80px 20px;
+		height: calc(100vh - var(--header-height) - 40px);
 		padding: 10px;
 		background-color: #00000088;
 		z-index: 10000;

@@ -16,7 +16,7 @@
 	import { metros } from '$lib/data/metro';
 	import type { Coordinates, Marker } from '$lib/types/location.type';
 
-	export let markers: Array<Marker>;
+	export let markers: Array<Marker> = [];
 	export let center: Coordinates = [48.1113618, -1.6500957];
 	let currCenter: LatLng;
 

@@ -12,7 +12,7 @@
 
 {#each slots as slot}
 	<div>
-		<Link img={{ src: '/svg/location.svg' }} href="/recherche/carte/location/{slot.location._id}">
+		<Link img={{ src: '/svg/location.svg' }} href="/recherche/carte?locationId={slot.location._id}">
 			{slot.location.name}
 		</Link>
 	</div>
