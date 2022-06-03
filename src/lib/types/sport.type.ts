@@ -1,3 +1,4 @@
+import type { ObjectId } from 'mongodb';
 import type { Location } from './location.type';
 
 export type Sport = {
@@ -12,7 +13,7 @@ export type Sport = {
 };
 
 export type Association = {
-	_id: string;
+	_id: string | ObjectId;
 	name: string;
 	website: string;
 };
@@ -33,7 +34,9 @@ export type Filter = {
 	sex?: string[];
 	day?: string[];
 	locationId?: string;
+	location?: Location;
 	associationId?: string;
+	association?: Association;
 	minutes?: RangeType;
 };
 

@@ -3,9 +3,10 @@ import { formDataToObject } from '$lib/utils/query';
 import type { Filter } from '$lib/types/sport.type';
 import { getSports } from '$lib/db/sport';
 import { getLocations } from '$lib/db/location';
-import type { ObjectId } from 'mongodb';
+import { ObjectId } from 'mongodb';
 import { getMarkers } from '$lib/utils/filter';
 import type { Location, Marker } from '$lib/types/location.type';
+import { getAssociation } from '../../../lib/db/association';
 
 export const get: RequestHandler = async (event) => {
 	const filter = formDataToObject<Filter>(event.url.searchParams);
@@ -21,6 +22,14 @@ export const get: RequestHandler = async (event) => {
 			.flat() as Array<ObjectId>;
 		locations = await getLocations(locationIds);
 		markers = getMarkers(sports, locations);
+	}
+
+	if (filter.locationId) {
+		filter.location = (await getLocations([new ObjectId(filter.locationId)]))?.[0];
+	}
+
+	if (filter.associationId) {
+		filter.association = await getAssociation(filter.associationId);
 	}
 
 	return {

@@ -4,7 +4,7 @@ export const loadSports =
 	(mode: string): Load =>
 	async ({ fetch, url }) => {
 		const { searchParams } = url;
-		searchParams.append('mode', mode);
+		if (!searchParams.get('mode')) searchParams.append('mode', mode);
 
 		const res = await fetch(`/api/sports/full?${searchParams.toString()}`);
 

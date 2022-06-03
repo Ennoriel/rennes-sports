@@ -8,6 +8,7 @@
 	export let required = false;
 	export let placeholder = 'Parc de la Poterie';
 	export let value: Location | string | undefined = undefined;
+	export let initialValue: Location | undefined = undefined;
 	export let filterText: string | undefined = undefined;
 	export let listPlacement: 'auto' | 'top' | 'bottom' = 'bottom';
 	export let variant: 'square' | 'rounded' = 'rounded';
@@ -49,6 +50,7 @@
 	bind:setValue
 	bind:value
 	bind:filterText
+	{initialValue}
 	on:change
 	loadOptions={getLocations}
 />

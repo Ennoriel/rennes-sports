@@ -35,7 +35,13 @@
 		setTimeout(() => {
 			search = new URLSearchParams();
 
-			Object.entries(fromObj(filter || {}))
+			const _filter = { ...filter };
+			delete _filter.association;
+			delete _filter.location;
+
+			console.log(_filter);
+
+			Object.entries(fromObj(_filter || {}))
 				.filter(([_, v]) => !!v)
 				.forEach(([k, v]) => {
 					search.append(k, v);
@@ -137,6 +143,7 @@
 			listPlacement="top"
 			variant="square"
 			bind:setValue={setLocation}
+			initialValue={filter.location}
 			valueAsId
 			on:change={updateUrl}
 		/>
@@ -146,6 +153,8 @@
 			listPlacement="top"
 			variant="square"
 			bind:setValue={setAssociation}
+			initialValue={filter.association}
+			valueAsId
 			on:change={updateUrl}
 		/>
 
