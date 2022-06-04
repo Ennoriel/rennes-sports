@@ -10,15 +10,18 @@
 		ScaleControl
 	} from 'svelte-leafletjs';
 	import { icon as LeafletIcon } from 'leaflet';
-	import type { Map, LatLng } from 'leaflet';
+	import type { Map } from 'leaflet';
 
 	import MapPopup from './MapPopup.svelte';
 	import { metros } from '$lib/data/metro';
-	import type { Coordinates, Marker } from '$lib/types/location.type';
+	import type { Bounds, Coordinates, Marker } from '$lib/types/location.type';
+	import { getUrl } from '$lib/utils/url';
+	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 
 	export let markers: Array<Marker> = [];
 	export let center: Coordinates = [48.1113618, -1.6500957];
-	let currCenter: LatLng;
+	let bounds: Bounds | undefined = undefined;
 
 	let zoom = 13;
 
@@ -34,13 +37,15 @@
 
 	$: currConfig = config[Math.max(12, zoom).toString()];
 
+	$: goto(getUrl($page.url, zoom > 11 ? { bounds } : {}, false).toString());
+
 	const mapOptions = {
 		center,
 		zoom
 	};
 	const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 	const tileLayerOptions = {
-		minZoom: 0,
+		minZoom: 4,
 		maxZoom: 18,
 		maxNativeZoom: 18,
 		attribution: '© OpenStreetMap contributors' // link to https://www.openstreetmap.org/copyright
@@ -63,7 +68,18 @@
 	options={mapOptions}
 	events={['moveend', 'zoom', 'resize']}
 	on:moveend={() => {
-		currCenter = getMap && getMap()?.getCenter();
+		let currBounds = getMap?.().getBounds();
+		let west = currBounds.getWest();
+		let south = currBounds.getSouth();
+		let east = currBounds.getEast();
+		let north = currBounds.getNorth();
+		let offset = (north - south) / 2;
+		bounds = {
+			west: west - offset,
+			south: south - offset,
+			east: east + offset,
+			north: north + offset
+		};
 		getMap && getMap()?.invalidateSize();
 	}}
 	on:resize={() => {

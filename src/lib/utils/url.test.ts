@@ -2,7 +2,8 @@ import * as _ from './url';
 
 describe('url utils', () => {
 	it('all methods are tested', () => {
-		expect(Object.keys(_).length).toStrictEqual(1);
+		// TODO some tests are missing
+		expect(Object.keys(_).length).toStrictEqual(2);
 	});
 
 	it('urlSearchParamsToString', () => {

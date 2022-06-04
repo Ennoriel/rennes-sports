@@ -16,10 +16,10 @@
 	import AssociationAutocomplete from '../input/AssociationAutocomplete.svelte';
 	import type { AutocompleteSetValue } from '$lib/types/input.type';
 	import { DAYS } from '$lib/data/days';
-	import { fromObj } from 'form-data-to-object';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import type { Filter } from '$lib/types/sport.type';
+	import { getUrl } from '../../utils/url';
 
 	export let pageRef: HTMLElement;
 	export let filter: Filter;
@@ -29,25 +29,13 @@
 	let setLocation: AutocompleteSetValue;
 	let setAssociation: AutocompleteSetValue;
 
-	let search: any;
-
 	function updateUrl() {
 		setTimeout(() => {
-			search = new URLSearchParams();
-
 			const _filter = { ...filter };
 			delete _filter.association;
 			delete _filter.location;
 
-			Object.entries(fromObj(_filter || {}))
-				.filter(([_, v]) => !!v)
-				.forEach(([k, v]) => {
-					search.append(k, v);
-				});
-
-			const url = new URL(`${$page.url.origin}${$page.url.pathname}/?` + search.toString());
-
-			goto(url.toString());
+			goto(getUrl($page.url, _filter).toString());
 		}, 0);
 	}
 </script>

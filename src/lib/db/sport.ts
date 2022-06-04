@@ -2,9 +2,11 @@ import type { Filter, Sport } from '../types/sport.type';
 import { hourRangeMongoQuery } from '../utils/time';
 import { ObjectId } from 'mongodb';
 import mongoClient from '../utils/db';
+import { geoQuery } from '../utils/geoquery';
 
 export async function getSports(filters: Filter, session: App.Locals['session']) {
-	const { q, sport, level, birthYear, sex, day, minutes, locationId, associationId } = filters;
+	const { q, mode, sport, level, birthYear, sex, day, minutes, locationId, associationId, bounds } =
+		filters;
 
 	let query = {};
 
@@ -21,6 +23,7 @@ export async function getSports(filters: Filter, session: App.Locals['session'])
 	}
 	if (locationId) query['slots.location._id'] = new ObjectId(locationId);
 	if (associationId) query['association._id'] = new ObjectId(associationId);
+	if (mode === 'map' && bounds) query['slots.location.coordinates'] = geoQuery(bounds);
 
 	return (await (await mongoClient).db()?.collection<Sport>('sports').find(query)?.toArray()) || [];
 }

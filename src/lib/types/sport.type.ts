@@ -1,5 +1,5 @@
 import type { ObjectId } from 'mongodb';
-import type { Location } from './location.type';
+import type { Bounds, Location } from './location.type';
 
 export type Sport = {
 	sport: string;
@@ -38,6 +38,7 @@ export type Filter = {
 	associationId?: string;
 	association?: Association;
 	minutes?: RangeType;
+	bounds?: Bounds;
 };
 
 export type RangeType = [number, number];

@@ -8,7 +8,7 @@
 	import type { Marker } from '$lib/types/location.type';
 	import type { Filter } from '$lib/types/sport.type';
 
-	export let markers: Array<Marker>;
+	export let markers: Array<Marker> = [];
 	export let filter: Filter;
 </script>
 
