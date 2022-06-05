@@ -4,11 +4,11 @@ export function urlSearchParamsToString(params: URLSearchParams): Record<string,
 	return Object.fromEntries(params.entries());
 }
 
-export function getUrl(url: URL, filter: Record<string, any> | undefined, reset = true) {
+export function getUrl(url: URL, filter: Record<string, unknown> | undefined, reset = true) {
 	const searchParams = reset ? new URLSearchParams() : url.searchParams;
 
 	Object.entries(fromObj(filter || {}))
-		.filter(([_, v]) => !!v)
+		.filter(([, v]) => !!v)
 		.forEach(([k, v]) => {
 			searchParams.set(k, v);
 		});

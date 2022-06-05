@@ -30,7 +30,7 @@ export function hourRangeOverlaps(rangeA: RangeType, rangeB: RangeType): boolean
 	return false;
 }
 
-export function hourRangeMongoQuery(range: RangeType, day?: Array<string>): any {
+export function hourRangeMongoQuery(range: RangeType, day?: Array<string>) {
 	const condition1 = {
 		hour: {
 			$gt: range[0],

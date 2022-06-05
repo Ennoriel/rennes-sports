@@ -8,7 +8,7 @@ export async function getSports(filters: Filter, session: App.Locals['session'])
 	const { q, mode, sport, level, birthYear, sex, day, minutes, locationId, associationId, bounds } =
 		filters;
 
-	let query = {};
+	const query = {};
 
 	if (q === 'my') query['association._id'] = new ObjectId(session._id);
 	if (sport) query['sport'] = sport;

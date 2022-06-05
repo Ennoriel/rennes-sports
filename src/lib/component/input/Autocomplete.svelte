@@ -74,7 +74,7 @@
 		listOffset={8}
 		debounceWait={200}
 		getOptionLabel={(option, filterText) =>
-			option.isCreator ? `Créer \"${filterText}\"` : option.label}
+			option.isCreator ? `Créer "${filterText}"` : option.label}
 		{noOptionsMessage}
 		ariaValues={(values) => `Option ${values}, selectionné.`}
 		ariaListOpen={(label, count) => `Focus sur l'option ${label} parmi ${count} résultats.`}

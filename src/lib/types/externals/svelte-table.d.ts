@@ -3,13 +3,20 @@ declare module 'svelte-table' {
 
 	type Row = $$Generic;
 
+	type NameValue = {
+		name: string;
+		value: string;
+	};
+
+	type Html = string;
+
 	type Column = {
 		key: string;
 		title: string;
-		searchValue?: Function;
-		renderValue?: Function;
-		value?: Function;
-		filterOptions?: Function;
+		searchValue?: (row: Row) => string | number;
+		renderValue?: (row: Row) => Html | number;
+		value?: (row: Row) => Html | number;
+		filterOptions?: (row: Row) => NameValue | Array<string>;
 		headerFilterClass?: string;
 		headerClass?: string;
 		class?: string;
@@ -25,7 +32,7 @@ declare module 'svelte-table' {
 			sortOrders?: Array<number>;
 			sortBy?: string;
 			sortOrder?: number;
-			filterSelections?: Object;
+			filterSelections?: Record<string, string>;
 			expanded?: Array<string | number>;
 			expandRowKey?: string;
 			expandSingle?: boolean;

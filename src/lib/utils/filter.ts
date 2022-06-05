@@ -6,9 +6,7 @@ export function getMarkers(sports: Array<Sport>, locations: Array<Location>): Ar
 		.filter((location) => !!location.coordinates)
 		.map((location) => {
 			const locatedSports = sports.filter((sport) =>
-				sport.slots.some(
-					(slot) => (slot as any).location._id.toString() === (location as any)._id.toString()
-				)
+				sport.slots.some((slot) => slot.location._id.toString() === location._id.toString())
 			);
 			const groupedSports: Map<string, Array<Sport>> = locatedSports.reduce(
 				(acc, s) => (
