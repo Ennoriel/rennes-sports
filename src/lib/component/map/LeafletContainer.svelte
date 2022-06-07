@@ -18,6 +18,7 @@
 	import { getUrl } from '$lib/utils/url';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
+	import { floor } from '$lib/utils/number.js';
 
 	export let markers: Array<Marker> = [];
 	export let center: Coordinates = [48.1113618, -1.6500957];
@@ -75,10 +76,10 @@
 		let north = currBounds.getNorth();
 		let offset = (north - south) / 2;
 		bounds = {
-			west: west - offset,
-			south: south - offset,
-			east: east + offset,
-			north: north + offset
+			west: floor(west - offset, 4),
+			south: floor(south - offset, 4),
+			east: floor(east + offset, 4),
+			north: floor(north + offset, 4)
 		};
 		getMap && getMap()?.invalidateSize();
 	}}

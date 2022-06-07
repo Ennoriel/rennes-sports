@@ -25,6 +25,8 @@
 		if (range[0] === 0 && range[1] === 0) range = [min, intervals[intervals.length - 1]];
 	});
 
+	$: if (!range?.length) range = [0, 0];
+
 	let rangeEl: HTMLDivElement;
 
 	let minPressed = false;

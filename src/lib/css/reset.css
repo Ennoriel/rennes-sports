@@ -1,0 +1,18 @@
+* {
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	box-sizing: border-box;
+}
+body {
+	margin: 0;
+}
+a {
+	color: inherit;
+}
+button,
+textarea {
+	font-family: inherit;
+	font-size: inherit;
+	cursor: pointer;
+}
