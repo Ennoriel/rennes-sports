@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { session } from '$app/stores';
 	import { state } from '$lib/store/state';
 	import SvelteTable from 'svelte-table';
 	import Row from '$lib/component/list/Row.svelte';
@@ -46,6 +47,14 @@
 			sortable: true
 		}
 	];
+
+	if ($session.association.role === 'admin') {
+		columns.push({
+			key: 'actions',
+			title: 'actions',
+			sortable: false
+		});
+	}
 
 	$: topp = $state.isPin ? ($state.isDoubleMenu ? '100px' : '60px') : '0px';
 </script>

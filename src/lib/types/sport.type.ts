@@ -2,6 +2,7 @@ import type { ObjectId } from 'mongodb';
 import type { Bounds, Location } from './location.type';
 
 export type Sport = {
+	_id?: string | ObjectId;
 	sport: string;
 	birthYear: number[];
 	adult: boolean;

@@ -102,7 +102,7 @@
 		}
 	}
 
-	function getRangeLabelDecimal(labelInHour: boolean, range: Range) {
+	function getRangeLabelDecimal(labelInHour: boolean, range: RangeType) {
 		return labelInHour ? [displayDecimalHour(range[0]), displayDecimalHour(range[1])] : range;
 	}
 

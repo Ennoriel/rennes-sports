@@ -9,7 +9,7 @@ export const post: RequestHandler = async ({ locals, request }) => {
 	const body = await request.formData();
 	const acceptsJson = request.headers.get('accept') == 'application/json';
 
-	const sport = formDataToObject<Sport>(body);
+	const sport = formDataToObject<Omit<Sport, '_id'>>(body);
 
 	if (sport.birthYear) {
 		sport.birthYear = [...new Array(sport.birthYear[1] - sport.birthYear[0] + 1)].map(
