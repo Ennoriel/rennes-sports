@@ -70,8 +70,9 @@
 
 	<Radio label="radio input" name="radio" options={['option 1', 'option 2']} />
 	<Checkbox label="checkbox input" name="checkbox" options={['option 1', 'option 2']} />
-	<Range label="range input" name="range" min={0} max={1200} step={20} labelInHour={true} />
-	<Range label="range input" name="range" min={0} max={20} step={1 / 3} />
+	<Range label="range input" name="range" min={0} max={1200} step={20} labelInHour />
+	<Range label="range input" name="range" min={0} max={20} step={1} />
+	<Range label="range input" name="range" min={1922} max={2020} step={1} labelInYear />
 </div>
 
 <style>

@@ -8,10 +8,13 @@
 	export let label: string;
 	export let name: string;
 	export let labelInHour = false;
+	export let labelInYear = false;
 	export let min = 0;
 	export let max = 100;
 	export let range: RangeType = [0, 0];
 	export let step = 5;
+
+	const year = new Date().getFullYear();
 
 	let intervals: Array<number>;
 
@@ -86,12 +89,25 @@
 		}
 	}
 
-	$: rangeLabel = labelInHour
-		? [displayTextHour(range[0]), displayTextHour(range[1])]
-		: [range[0].toString(), range[1].toString()];
-	$: rangeLabelDecimal = labelInHour
-		? [displayDecimalHour(range[0]), displayDecimalHour(range[1])]
-		: range;
+	function getRangeLabel(labelInHour: boolean, range: RangeType) {
+		if (labelInHour) {
+			return [displayTextHour(range[0]), displayTextHour(range[1])];
+		} else if (labelInYear) {
+			return [
+				`${range[0].toString()} - ${year - range[0]}ans`,
+				`${range[1].toString()} - ${year - range[1]}ans`
+			];
+		} else {
+			return [range[0].toString(), range[1].toString()];
+		}
+	}
+
+	function getRangeLabelDecimal(labelInHour: boolean, range: Range) {
+		return labelInHour ? [displayDecimalHour(range[0]), displayDecimalHour(range[1])] : range;
+	}
+
+	$: rangeLabel = getRangeLabel(labelInHour, range);
+	$: rangeLabelDecimal = getRangeLabelDecimal(labelInHour, range);
 	$: minLabel = labelInHour ? displayDecimalHour(min) : min;
 	$: maxLabel = labelInHour ? displayDecimalHour(max) : max;
 </script>
@@ -122,7 +138,7 @@
 			on:keydown={(e) => keyDown(e, true)}
 			on:mousedown|preventDefault={() => (minPressed = true)}
 			on:touchstart={() => (minPressed = true)}
-			style="left: {valToPos(range[0])}px"
+			style:left="{valToPos(range[0])}px"
 		>
 			<span class="valuenow" aria-hidden="true">
 				{rangeLabel[0]}
@@ -140,7 +156,7 @@
 			on:keydown={(e) => keyDown(e, false)}
 			on:mousedown|preventDefault={() => (maxPressed = true)}
 			on:touchstart={() => (maxPressed = true)}
-			style="left: {valToPos(range[1])}px"
+			style:left="{valToPos(range[1])}px"
 		>
 			<span class="valuenow" class:top={range[1] - range[0] <= (max - min) / 6} aria-hidden="true">
 				{rangeLabel[1]}
@@ -197,6 +213,9 @@
 		left: 50%;
 		transform: translateX(-50%);
 		user-select: none;
+		width: 100px;
+		text-align: center;
+		font-weight: normal;
 	}
 	.top {
 		top: -24px;
