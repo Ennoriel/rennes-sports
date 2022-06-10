@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Sport } from '$lib/types/sport.type';
 	import Link from '$lib/component/atom/Link.svelte';
+	import Pin from '../svg/Pin.svelte';
 
 	export let row: Sport;
 
@@ -12,7 +13,7 @@
 
 {#each slots as slot}
 	<div>
-		<Link img={{ src: '/svg/location.svg' }} href="/recherche/carte?locationId={slot.location._id}">
+		<Link href="/recherche/carte?locationId={slot.location._id}" svg={Pin}>
 			{slot.location.name}
 		</Link>
 	</div>

@@ -2,6 +2,7 @@
 	import type { GroupSport, Location } from '$lib/types/location.type';
 	import { displayHours, displayYear } from '$lib/utils/time';
 	import Link from '$lib/component/atom/Link.svelte';
+	import LinkIcon from '../svg/LinkIcon.svelte';
 
 	export let location: Location;
 	export let sports: Array<GroupSport>;
@@ -33,7 +34,7 @@
 					</div>
 				{/each}
 				<div>
-					<Link href={s.association.website} target="_blank" img={{ src: '/svg/right-up.svg' }}
+					<Link href={s.association.website} target="_blank" svg={LinkIcon}
 						>{s.association.name}</Link
 					>
 				</div>
@@ -105,7 +106,6 @@
 	}
 
 	:global(.leaflet-container a) {
-		text-align: left;
 		color: var(--text-color);
 	}
 </style>

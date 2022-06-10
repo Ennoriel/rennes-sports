@@ -1,4 +1,7 @@
 <script lang="ts">
+	import Button from '../atom/Button.svelte';
+	import EyeOff from '../svg/EyeOff.svelte';
+	import Eye from '../svg/Eye.svelte';
 	export let label = 'Mot de passe';
 	export let name = 'password';
 	export let variant: 'square' | 'rounded' = 'rounded';
@@ -21,14 +24,22 @@
 	{label}
 	{#if showPassword}
 		<input type="text" {name} bind:value={password} bind:this={input} />
-		<button type="button" on:click={changePasswordVisibility}>
-			<img src="/svg/eye-strike.svg" alt="cacher" />
-		</button>
+		<Button
+			type="button"
+			theme="transparent"
+			icon={EyeOff}
+			size="s"
+			on:click={changePasswordVisibility}
+		/>
 	{:else}
 		<input type="password" {name} bind:value={password} bind:this={input} />
-		<button type="button" on:click={changePasswordVisibility}>
-			<img src="/svg/eye.svg" alt="cacher" />
-		</button>
+		<Button
+			type="button"
+			theme="transparent"
+			icon={Eye}
+			size="s"
+			on:click={changePasswordVisibility}
+		/>
 	{/if}
 </label>
 
@@ -36,26 +47,10 @@
 	label {
 		position: relative;
 	}
-	button {
-		border: none;
-		background-color: transparent;
+
+	label :global(button) {
 		position: absolute;
-		bottom: 10.5px;
-		right: 15px;
-	}
-	.square button {
-		bottom: 6.5px;
-	}
-
-	button,
-	button img {
-		width: 20px;
-		height: 20px;
-		border-radius: 10px;
-	}
-
-	button:focus-visible {
-		outline: 2px solid var(--focus-color);
-		outline-offset: 4px;
+		bottom: 4.5px;
+		right: 4.5px;
 	}
 </style>

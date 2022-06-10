@@ -3,6 +3,8 @@
 	import { displayHours, displayYear } from '$lib/utils/time';
 	import Link from '$lib/component/atom/Link.svelte';
 	import Title from '../atom/Title.svelte';
+	import Pin from '../svg/Pin.svelte';
+	import LinkIcon from '../svg/LinkIcon.svelte';
 
 	export let sports: Array<Sport>;
 </script>
@@ -30,10 +32,7 @@
 						{displayHours(slot.hour)}
 					</span>
 					{#if index === sport.slots.length - 1 || !slotSameLocation}
-						<Link
-							img={{ src: '/svg/location.svg' }}
-							href="/recherche/carte?locationId={slot.location._id}"
-						>
+						<Link href="/recherche/carte?locationId={slot.location._id}" svg={Pin}>
 							{slot.location.name}
 						</Link>
 					{/if}
@@ -41,7 +40,7 @@
 			{/each}
 			<div class="asso-name">
 				{sport.association.name}
-				<Link target="_blank" href={sport.association.website} img={{ src: '/svg/right-up.svg' }}>
+				<Link target="_blank" href={sport.association.website} svg={LinkIcon}>
 					consulter le site
 				</Link>
 			</div>
@@ -97,7 +96,8 @@
 	}
 
 	.slots :global(a) {
-		text-align: left;
+		display: flex;
+		justify-content: center;
 		font-weight: 300;
 		width: fit-content;
 		margin-bottom: 8px;
@@ -108,11 +108,11 @@
 		padding-top: 8px;
 		border-top: 1px solid #c4c4c4;
 		font-weight: 700;
+		display: flex;
+		gap: 16px;
 	}
 
 	.asso-name :global(a) {
-		display: inline;
 		font-weight: 300;
-		margin-left: 16px;
 	}
 </style>

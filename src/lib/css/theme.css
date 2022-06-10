@@ -9,3 +9,8 @@ body {
 	background-color: var(--bg-color);
 	color: var(--text-color);
 }
+
+.icon {
+	width: 16px;
+	height: 16px;
+}

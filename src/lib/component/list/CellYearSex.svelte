@@ -1,10 +1,14 @@
 <script lang="ts">
 	import type { Sport } from '$lib/types/sport.type';
 	import { displayYear } from '$lib/utils/time';
+	import GenderAll from '../svg/GenderAll.svelte';
+	import GenderMale from '../svg/GenderMale.svelte';
+	import GenderFemale from '../svg/GenderFemale.svelte';
 
 	export let row: Sport;
 
-	$: svg = row && (row.sex === 'Mixte' ? 'mixte' : row.sex === 'Masculin' ? 'male' : 'female');
+	$: Icon =
+		row && (row.sex === 'Mixte' ? GenderAll : row.sex === 'Masculin' ? GenderMale : GenderFemale);
 </script>
 
 <div>
@@ -12,7 +16,7 @@
 </div>
 
 <div class="flex">
-	<img alt={row.sex} src="/svg/gender-{svg}.svg" />
+	<Icon />
 	{row.sex}
 </div>
 

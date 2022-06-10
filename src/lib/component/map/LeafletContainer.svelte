@@ -18,7 +18,7 @@
 	import { getUrl } from '$lib/utils/url';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
-	import { floor } from '$lib/utils/number.js';
+	import { floor } from '$lib/utils/number';
 
 	export let markers: Array<Marker> = [];
 	export let center: Coordinates = [48.1113618, -1.6500957];
@@ -119,3 +119,38 @@
 	{/each}
 	<ScaleControl position="bottomright" options={{ imperial: false }} />
 </LeafletMap>
+
+<style>
+	:global(.leaflet-control-container .leaflet-control-zoom) {
+		border: none;
+		box-shadow: 0 0 4px #aaa;
+		border-radius: 20px;
+	}
+
+	:global(.leaflet-control-zoom .leaflet-control-zoom-in),
+	:global(.leaflet-control-zoom .leaflet-control-zoom-out) {
+		border: none;
+		width: 40px !important;
+		height: 40px !important;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-family: 'Roboto', sans-serif;
+		font-weight: 100;
+	}
+
+	:global(.leaflet-control-zoom .leaflet-control-zoom-in) {
+		border-radius: 20px 20px 0 0 !important;
+	}
+
+	:global(.leaflet-control-zoom .leaflet-control-zoom-out) {
+		border-radius: 0 0 20px 20px !important;
+	}
+
+	:global(.leaflet-marker-icon:focus-visible) {
+		outline: 2px solid var(--focus-color);
+		border-radius: 50%;
+		outline-offset: 4px;
+		clip-path: ellipse(130px 140px at 10% 20%);
+	}
+</style>

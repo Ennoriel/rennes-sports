@@ -13,6 +13,7 @@
 	import PasswordInput from '$lib/component/input/PasswordInput.svelte';
 	import LeftRight from '$lib/component/book/LeftRight.svelte';
 	import AddressAutocomplete from '$lib/component/input/AddressAutocomplete.svelte';
+	import LinkIcon from '../../lib/component/svg/LinkIcon.svelte';
 </script>
 
 <div id="wrapper">
@@ -23,7 +24,7 @@
 	<div class="container">
 		<Link href="https://www.machyme.fr">Link</Link>
 		<span style:width="20px" />
-		<Link href="https://www.machyme.fr" img={{ src: '/svg/right-up.svg' }}>Link with icon</Link>
+		<Link href="https://www.machyme.fr" svg={LinkIcon}>Link with icon</Link>
 	</div>
 
 	<Title>Spinner</Title>

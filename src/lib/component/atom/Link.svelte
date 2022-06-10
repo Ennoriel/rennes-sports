@@ -1,20 +1,23 @@
 <script lang="ts">
 	export let target: string | undefined = undefined;
 	export let href: string;
-	export let img: { src: string; alt?: string } | undefined = undefined;
+	export let svg: any = undefined;
 </script>
 
 <a {target} {href}>
-	{#if img?.src}
-		<img src={img?.src} alt={img?.alt} aria-hidden={img?.alt ? 'false' : 'true'} />
+	{#if svg}
+		<svelte:component this={svg} />
 	{/if}
 	<slot />
 </a>
 
 <style>
 	a {
-		display: block;
-		text-align: center;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 4px;
+
 		line-height: 17px;
 		text-decoration: none;
 		outline: none;
