@@ -101,22 +101,11 @@
 		<Range
 			label="Catégorie d'âge (années de naissance)"
 			name="birthYear"
-			min={2004}
-			max={2020}
+			min={1922}
+			max={2018}
+			labelInYear
 			step={1}
 			bind:range={sport.birthYear}
-		/>
-
-		<!-- Adult -->
-		<Radio
-			label="Séance ouverte aux adultes (naissance avant 2004)"
-			name="adult"
-			required={sport.birthYear?.includes(2004)}
-			disabled={!sport.birthYear?.includes(2004)}
-			options={[
-				{ label: 'Oui', value: true },
-				{ label: 'Non', value: false }
-			]}
 		/>
 	</div>
 

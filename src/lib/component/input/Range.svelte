@@ -94,8 +94,8 @@
 			return [displayTextHour(range[0]), displayTextHour(range[1])];
 		} else if (labelInYear) {
 			return [
-				`${range[0].toString()} - ${year - range[0]}ans`,
-				`${range[1].toString()} - ${year - range[1]}ans`
+				`${range[0].toString()} <span style="font-size: 12px">(${year - range[0]}ans)</span>`,
+				`${range[1].toString()} <span style="font-size: 12px">(${year - range[1]}ans)</span>`
 			];
 		} else {
 			return [range[0].toString(), range[1].toString()];
@@ -141,7 +141,7 @@
 			style:left="{valToPos(range[0])}px"
 		>
 			<span class="valuenow" aria-hidden="true">
-				{rangeLabel[0]}
+				{@html rangeLabel[0]}
 			</span>
 		</div>
 		<div
@@ -159,7 +159,7 @@
 			style:left="{valToPos(range[1])}px"
 		>
 			<span class="valuenow" class:top={range[1] - range[0] <= (max - min) / 6} aria-hidden="true">
-				{rangeLabel[1]}
+				{@html rangeLabel[1]}
 			</span>
 		</div>
 	</div>
