@@ -39,10 +39,6 @@
 		padding-bottom: 12px;
 	}
 
-	.user-card :global(a) {
-		display: inline-block;
-	}
-
 	@media (max-width: 720px) {
 		.user-card {
 			flex-direction: column;

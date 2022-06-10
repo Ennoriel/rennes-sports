@@ -2,9 +2,10 @@
 	export let target: string | undefined = undefined;
 	export let href: string;
 	export let svg: any = undefined;
+	export let inline = false;
 </script>
 
-<a {target} {href}>
+<a {target} {href} style:display={`${inline ? 'inline-' : ''}flex`}>
 	{#if svg}
 		<svelte:component this={svg} />
 	{/if}
@@ -13,7 +14,6 @@
 
 <style>
 	a {
-		display: inline-flex;
 		align-items: center;
 		justify-content: center;
 		gap: 4px;

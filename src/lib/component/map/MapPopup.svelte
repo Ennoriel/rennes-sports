@@ -34,7 +34,7 @@
 					</div>
 				{/each}
 				<div>
-					<Link href={s.association.website} target="_blank" svg={LinkIcon}
+					<Link href={s.association.website} target="_blank" svg={LinkIcon} inline
 						>{s.association.name}</Link
 					>
 				</div>

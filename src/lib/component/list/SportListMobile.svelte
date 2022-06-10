@@ -96,7 +96,6 @@
 	}
 
 	.slots :global(a) {
-		display: flex;
 		justify-content: center;
 		font-weight: 300;
 		width: fit-content;
