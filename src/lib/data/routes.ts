@@ -19,11 +19,11 @@ export const ROUTES: Array<Route | Spacer> = [
 		display: (config) => config.mobile
 	},
 	{
-		route: '/recherche/liste?q=all',
+		route: '/recherche/ville?route=liste',
 		label: 'Liste'
 	},
 	{
-		route: '/recherche/carte',
+		route: '/recherche/ville?route=carte',
 		label: 'Carte'
 	},
 	{

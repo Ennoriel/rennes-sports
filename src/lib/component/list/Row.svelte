@@ -26,7 +26,7 @@
 	<td><CellSlot {row} /></td>
 	<td><CellLocation {row} /></td>
 	<td><CellAsso {row} /></td>
-	{#if $session.association.role === 'admin'}
+	{#if $session?.association?.role === 'admin'}
 		<td style:text-align="center">
 			<Button type="submit" theme="transparent" icon={Trash} size="s" on:click={del} />
 		</td>

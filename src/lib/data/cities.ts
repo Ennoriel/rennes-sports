@@ -1,4 +1,5 @@
 import type { City } from '$lib/types/city.type';
+import { uniqBy } from '../utils/array';
 
 export const cities: Array<City> = [
 	{
@@ -1602,3 +1603,5 @@ export const cities: Array<City> = [
 		name: 'Vitry-sur-Seine'
 	}
 ];
+
+export const uniqCities = uniqBy(cities, (c) => c.id);

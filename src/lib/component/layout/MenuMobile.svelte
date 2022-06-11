@@ -5,10 +5,9 @@
 	import { page, session } from '$app/stores';
 	import XOrMenu from '$lib/component/svg/XOrMenu.svelte';
 	import Fav from '$lib/component/atom/Fav.svelte';
-	import { cities } from '$lib/data/cities';
+	import { uniqCities } from '$lib/data/cities';
 
 	import { clickAway } from '$lib/utils/clickAway';
-	import { uniqBy } from '$lib/utils/array';
 
 	export let filtrable = true;
 
@@ -18,8 +17,6 @@
 	let burgerMenu: HTMLDivElement;
 
 	$: reSearch = new RegExp(search, 'i');
-
-	const uniqCities = uniqBy(cities, (c) => c.id);
 
 	function click({ target }) {
 		if (isOpen && !burgerMenu.contains(target)) isOpen = false;
@@ -109,7 +106,7 @@
 		on:click={() => (isSearching = false)}
 	>
 		{#each uniqCities.filter((city) => city.name.match(reSearch)) as city}
-			<a href="/recherche/carte/ville/{city.zipCode}">{city.name}</a>
+			<a sveltekit:reload href="/recherche/carte?q=_{city.id}">{city.name}</a>
 		{/each}
 	</div>
 {/if}

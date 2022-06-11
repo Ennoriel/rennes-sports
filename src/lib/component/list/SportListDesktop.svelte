@@ -48,7 +48,7 @@
 		}
 	];
 
-	if ($session.association.role === 'admin') {
+	if ($session?.association?.role === 'admin') {
 		columns.push({
 			key: 'actions',
 			title: 'actions',

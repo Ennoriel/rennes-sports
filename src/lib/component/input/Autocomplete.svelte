@@ -15,6 +15,9 @@
 	export let filterText: string | undefined = undefined;
 	export let labelIdentifier: string | undefined = undefined;
 	export let optionIdentifier: string | undefined = undefined;
+	export let getOptionLabel = (option: Record<string, string>) => option.label;
+	export let nbItemDisplayed = 5;
+	export let listOpen = false;
 	export let value: AutocompleteValue | undefined = undefined;
 	export let initialValue: AutocompleteValue | undefined = undefined;
 	export let isCreatable = false;
@@ -49,6 +52,7 @@
 	class="autocomplete"
 	class:square={variant === 'square'}
 	class:rounded={variant === 'rounded'}
+	style:--nb-item-displayed={nbItemDisplayed}
 >
 	<Label {variant} for={id}>
 		{label}
@@ -63,6 +67,7 @@
 		{optionIdentifier}
 		bind:value={boundValue}
 		bind:filterText
+		bind:listOpen
 		on:change
 		{isCreatable}
 		{isDisabled}
@@ -74,12 +79,14 @@
 		listOffset={8}
 		debounceWait={200}
 		getOptionLabel={(option, filterText) =>
-			option.isCreator ? `Créer "${filterText}"` : option.label}
+			option.isCreator ? `Créer "${filterText}"` : getOptionLabel(option)}
 		{noOptionsMessage}
 		ariaValues={(values) => `Option ${values}, selectionné.`}
 		ariaListOpen={(label, count) => `Focus sur l'option ${label} parmi ${count} résultats.`}
 		ariaFocused={() =>
 			`Le select a le focus, tapez pour filtrer les résultats, appuyez sur la touche "bas" pour ouvrir les options.`}
+		on:focus
+		on:blur
 	/>
 </fieldset>
 
@@ -176,7 +183,8 @@
 		color: var(--main-color);
 	}
 	.autocomplete :global(.list) {
-		background-color: var(--select-bg-color);
+		position: fixed;
+		background-color: transparent;
 		border-radius: var(--border-radius-list);
 		z-index: 1;
 		box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
@@ -184,6 +192,12 @@
 		max-height: calc(4 * var(--select-height));
 		overflow-y: auto;
 		scroll-snap-type: y mandatory;
+		min-height: calc((var(--nb-item-displayed) + 0.65) * 31px);
+
+		transition: all 0.5s;
+	}
+	.autocomplete :global(.list-item .item) {
+		background-color: var(--select-bg-color);
 	}
 	.autocomplete :global(.list-item:first-of-type .item) {
 		border-top-left-radius: var(--border-radius-list);

@@ -13,5 +13,10 @@ export function getUrl(url: URL, filter: Record<string, unknown> | undefined, re
 			searchParams.set(k, v);
 		});
 
+	// dirty
+	if (filter?.bounds) {
+		searchParams.delete('q');
+	}
+
 	return new URL(`${url.origin}${url.pathname}/?${searchParams.toString()}`);
 }

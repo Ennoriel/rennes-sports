@@ -1,6 +1,6 @@
 import type { Bounds } from '../types/location.type';
 
-export function geoQuery(bounds: Bounds) {
+export function geoQueryPolygon(bounds: Bounds) {
 	return {
 		$geoWithin: {
 			$polygon: [
@@ -10,6 +10,14 @@ export function geoQuery(bounds: Bounds) {
 				[bounds.south, bounds.west],
 				[bounds.north, bounds.west]
 			]
+		}
+	};
+}
+
+export function geoQueryCircle(latitude: number, longitude: number, radius = 0.1) {
+	return {
+		$geoWithin: {
+			$center: [[latitude, longitude], radius]
 		}
 	};
 }

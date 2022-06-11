@@ -14,7 +14,7 @@ export const get: RequestHandler = async (event) => {
 	const sports = await getSports(filter, event.locals.session);
 
 	let locations: Array<Location>;
-	let markers: Array<Marker>;
+	let markers: Array<Marker> = [];
 
 	if (filter.mode === 'map' && sports.length) {
 		const locationIds = sports
