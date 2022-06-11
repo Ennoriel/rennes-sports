@@ -8,25 +8,30 @@
 
 <script lang="ts">
 	import { dev } from '$app/env';
+	import '$lib/css/reset.css';
+	import '$lib/css/font.css';
+	import '$lib/css/theme.css';
+	import '$lib/css/scroll.css';
+	import '$lib/css/input.css';
 
 	export let status: number;
 	export let error: Error;
 </script>
 
-{#if dev}
-	<h1>{status}: {error.message}</h1>
-	<pre>{error.stack}</pre>
-{:else}
-	<main>
+<main>
+	{#if dev}
+		<h1>{status}: {error.message}</h1>
+		<pre>{error.stack}</pre>
+	{:else}
 		<h1>Vous semblez loin de la réalité !</h1>
 		<p>Pour revenir vers l'accueil : <a href="/">c'est ici !</a></p>
-	</main>
-{/if}
+	{/if}
+</main>
 
 <style>
 	main {
 		background-color: var(--main-color);
-		height: 100vh;
+		height: calc(100vh - var(--header-height));
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -39,7 +44,8 @@
 		text-align: center;
 	}
 
-	p {
+	p,
+	pre {
 		font-size: 24px;
 		color: white;
 	}
