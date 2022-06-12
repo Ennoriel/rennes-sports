@@ -189,14 +189,14 @@
 		z-index: 1;
 		box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
 
-		max-height: calc(4 * var(--select-height));
+		max-height: calc((var(--nb-item-displayed) + 0.65) * 31px);
 		overflow-y: auto;
 		scroll-snap-type: y mandatory;
-		min-height: calc((var(--nb-item-displayed) + 0.65) * 31px);
 
 		transition: all 0.5s;
 	}
-	.autocomplete :global(.list-item .item) {
+	.autocomplete :global(.list-item .item),
+	.autocomplete :global(.list .empty) {
 		background-color: var(--select-bg-color);
 	}
 	.autocomplete :global(.list-item:first-of-type .item) {

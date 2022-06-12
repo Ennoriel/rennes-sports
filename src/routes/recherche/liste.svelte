@@ -28,7 +28,7 @@
 <style>
 	div {
 		margin: 0;
-		min-height: calc(100vh - var(--header-height));
+		min-height: calc(100vh - var(--header-height) - 20px);
 	}
 
 	div :global(h1) {

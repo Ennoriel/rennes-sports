@@ -20,7 +20,7 @@
 </script>
 
 <tr>
-	<td><CellSport {row} /></td>
+	<td style:width="10%"><CellSport {row} /></td>
 	<td><CellLevel {row} /></td>
 	<td><CellYearSex {row} /></td>
 	<td><CellSlot {row} /></td>

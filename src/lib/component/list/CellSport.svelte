@@ -4,13 +4,14 @@
 	export let row: Sport;
 </script>
 
-<span>
+<div>
 	{row.sport}
-</span>
+</div>
 
 <style>
-	span {
+	div {
 		font-weight: 900;
 		font-size: 15px;
+		text-align: center;
 	}
 </style>
