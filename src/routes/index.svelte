@@ -16,13 +16,13 @@
 
 		<ul>
 			<li>
-				<a href="/recherche/liste">
+				<a href="/recherche/ville?route=liste">
 					<span>Liste</span>
 					Tri des créneaux par sport, âge, sexe, jour, type de pratique...
 				</a>
 			</li>
 			<li>
-				<a href="/recherche/carte">
+				<a href="/recherche/ville?route=carte">
 					<span>Carte</span>
 					Localisation des équipements sportifs à proximité
 				</a>

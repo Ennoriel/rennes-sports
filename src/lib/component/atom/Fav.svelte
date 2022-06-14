@@ -33,9 +33,7 @@
 	}
 
 	img {
-		height: 36px;
-		width: 100px;
+		height: 28px;
 		transform: skewX(-5deg);
-		margin-top: 4px;
 	}
 </style>
