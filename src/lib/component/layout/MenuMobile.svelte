@@ -220,20 +220,24 @@
 
 	.options {
 		position: absolute;
-		inset: 80px 20px;
+		inset: 80px 100px;
 		height: calc(100vh - var(--header-height) - 40px);
+		border-radius: 16px;
 		padding: 10px;
-		background-color: #00000088;
+		background-color: #ffffffdd;
 		z-index: 10000;
 		overflow-y: auto;
 
-		--dark: #333;
+		--dark: #ddd;
 	}
 	.options a {
 		display: block;
+		padding: 4px 16px;
 	}
 	.options a:hover,
 	.options a:focus-visible {
-		color: var(--secondary-color);
+		font-weight: bold;
+		background-color: #4f4f4f4f;
+		border-radius: 8px;
 	}
 </style>

@@ -20,7 +20,7 @@
 			setTimeout(() => {
 				delay2 = false;
 			}, 0);
-		}, 400);
+		}, 500);
 	}
 
 	$: if (cityId) {
@@ -77,6 +77,7 @@
 		position: relative;
 		max-width: 400px;
 		margin: auto;
+		padding: 0 20px;
 	}
 
 	div :global(label) {
@@ -85,6 +86,11 @@
 
 	div :global(.autocomplete .list) {
 		padding-right: 8px;
+	}
+
+	div :global(.autocomplete .list-item .item) {
+		padding-top: 8px;
+		padding-bottom: 8px;
 	}
 
 	.delay2 :global(.autocomplete .list) {

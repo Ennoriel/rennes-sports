@@ -17,7 +17,7 @@
 				{#if index}
 					<span>&nbsp;—</span>
 				{/if}
-				<Link href={link.href} target="_blank">{link.label}</Link>
+				<Link href={link.href} target="_blank" inline>{link.label}</Link>
 			{/each}
 		</div>
 	</div>
