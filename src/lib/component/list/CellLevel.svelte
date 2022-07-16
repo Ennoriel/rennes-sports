@@ -5,7 +5,7 @@
 </script>
 
 <div>
-	{row.level}
+	{row.level.join(', ')}
 </div>
 
 <style>

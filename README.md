@@ -1,11 +1,9 @@
 # TODO
 
-- [x] sport multi select
-- [x] filtre conservé au changement de page
-- [ ] implémenter la recherche (petit écran)
-- [x] régler le problème des salles
-- [x] formulaire de création de cours
-- [ ] formulaire de création de lieu
+- [x] les icones des liens doivent se colorer
+- [ ] décimales des nombres des input range
+- [x] précision des latitutdes / longitudes
+- [ ] afficher un lieu par défaut
 
 # DB Graph
 

@@ -121,7 +121,7 @@
 	}
 
 	.menu :not(.button).active span {
-		border-bottom: 2px solid var(--secondary-color);
+		border-bottom: 1.5px solid var(--secondary-color);
 		padding: 4px 0;
 	}
 

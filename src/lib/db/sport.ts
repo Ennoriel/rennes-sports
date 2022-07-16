@@ -18,7 +18,7 @@ export async function getSports(filters: Filter, session: App.Locals['session'])
 		if (city) query['slots.location.coordinates'] = geoQueryCircle(city.latitude, city.longitude);
 	}
 	if (sport) query['sport'] = sport;
-	if (level) query['level'] = level;
+	if (level) query['level'] = { $all: level };
 	if (birthYear) query['birthYear'] = birthYear;
 	if (sex) query['sex'] = { $in: sex };
 	if (day?.length && minutes) {

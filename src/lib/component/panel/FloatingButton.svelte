@@ -28,7 +28,7 @@
 
 	:hover {
 		background-color: #eeeeee;
-		color: var(--text-color);
+		color: var(--secondary-color);
 	}
 
 	button:focus-visible {

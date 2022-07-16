@@ -10,6 +10,7 @@
 	import ButtonGroup from '$lib/component/layout/ButtonGroup.svelte';
 	import Radio from '$lib/component/input/Radio.svelte';
 	import Range from '$lib/component/input/Range.svelte';
+	import Checkbox from '$lib/component/input/Checkbox.svelte';
 	import LocationAutocomplete from '$lib/component/input/LocationAutocomplete.svelte';
 	import X from '$lib/component/svg/X.svelte';
 	import SportAutocomplete from '$lib/component/input/SportAutocomplete.svelte';
@@ -92,7 +93,7 @@
 		<SportAutocomplete required isCreatable variant="square" />
 
 		<!-- Level -->
-		<Radio label="Pratique" name="level" required options={LEVELS} />
+		<Checkbox label="Pratique" name="level" required options={LEVELS} />
 
 		<!-- Sex -->
 		<Radio label="Sexe" name="sex" required options={['Mixte', 'Féminin', 'Masculin']} />

@@ -33,7 +33,7 @@
 	{#if !cityId}
 		<div transition:fade style:padding-bottom={focus ? '200px' : '0'} class:delay2>
 			<Autocomplete
-				label="Où souhaitez-vous exercer votre activité sportive?"
+				label="Où souhaitez-vous pratiquer votre activité sportive ?"
 				placeholder="Rennes"
 				name="birthYear"
 				options={uniqCities}

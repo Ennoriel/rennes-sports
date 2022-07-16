@@ -8,7 +8,7 @@ export type Sport = {
 	adult: boolean;
 	otherYear?: string;
 	sex: string;
-	level: string;
+	level: string[];
 	association: Association;
 	slots: Slot[];
 };
@@ -30,7 +30,7 @@ export type Filter = {
 	q?: string;
 	mode?: string;
 	sport?: string;
-	level?: string;
+	level?: string[];
 	birthYear?: number;
 	sex?: string[];
 	day?: string[];

@@ -39,6 +39,10 @@
 		padding-bottom: 12px;
 	}
 
+	.user-card :global(a) {
+		font-weight: 700;
+	}
+
 	@media (max-width: 720px) {
 		.user-card {
 			flex-direction: column;

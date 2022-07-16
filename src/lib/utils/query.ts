@@ -21,14 +21,27 @@ export const parseUrlSearchParams: Load = async ({ url }) => {
 	};
 };
 
+/**
+ * Transforms a FormData object to a plain js object based on the keys. Check tests for complete rules
+ * @param formData FormData object
+ */
 export const formDataToObject = <T>(formData: FormData | URLSearchParams): T => {
 	const linearizedObject = [...formData.entries()].reduce((acc, [key, value]: [string, string]) => {
-		if (value)
-			acc[key] = isStringANumber(value)
+		let parsedValue: string | boolean | number;
+		if (value) {
+			parsedValue = isStringANumber(value)
 				? parseFloat(value)
 				: isStringABool(value)
 				? value === 'true'
 				: value;
+			if (!(key in acc)) {
+				acc[key] = parsedValue;
+			} else if (Array.isArray(acc[key])) {
+				acc[key].push(parsedValue);
+			} else {
+				acc[key] = [acc[key], parsedValue];
+			}
+		}
 		return acc;
 	}, {} as any);
 

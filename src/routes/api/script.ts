@@ -9,14 +9,7 @@ export const get: RequestHandler = async () => {
 	// await (await mongoClient).db()?.collection('sports2').insertMany(sports);
 	//
 	// sports.forEach((sport) => {
-	//     const asso = assos.find((a) => a.id === sport.assoId);
-	//     console.log(asso)
-	//     sport.association = {
-	//         _id: new ObjectId(asso._id),
-	//         name: asso.name,
-	//         website: asso.website,
-	//     }
-	//     sport.associationId = undefined;
+	//     sport.level = [sport.level]
 	// });
 	//
 

@@ -20,7 +20,7 @@
 		{
 			key: 'level',
 			title: 'pratique',
-			value: (v: Sport) => v.level,
+			value: (v: Sport) => v.level.join(', '),
 			sortable: true
 		},
 		{

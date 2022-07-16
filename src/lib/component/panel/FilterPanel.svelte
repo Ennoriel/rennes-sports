@@ -3,7 +3,6 @@
 	import { range } from '$lib/utils/array';
 	import { LEVELS } from '$lib/data/sport';
 	import Panel from './Panel.svelte';
-	import Radio from '$lib/component/input/Radio.svelte';
 	import Checkbox from '$lib/component/input/Checkbox.svelte';
 	import Range from '$lib/component/input/Range.svelte';
 	import Title from '$lib/component/atom/Title.svelte';
@@ -77,7 +76,7 @@
 			on:change={updateUrl}
 		/>
 
-		<Radio
+		<Checkbox
 			label="Pratique"
 			name="level"
 			options={LEVELS}
