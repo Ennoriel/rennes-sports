@@ -2,7 +2,7 @@ export type Route = {
 	route: string;
 	label?: string;
 	getLabel?: (session: App.Session) => string;
-	guard?: (session: App.Session) => boolean;
+	guard?: (session: App.Session | undefined) => boolean;
 	display?: (config?: { mobile: boolean }) => boolean;
 	class?: string;
 	subRoutes?: Array<Route>;
@@ -16,7 +16,7 @@ export type Spacer = {
 export const ROUTES: Array<Route | Spacer> = [
 	{
 		spacer: true,
-		display: (config) => config.mobile
+		display: (config) => !!config?.mobile
 	},
 	{
 		route: '/recherche/ville?route=liste',
@@ -96,7 +96,7 @@ export const ROUTES: Array<Route | Spacer> = [
 	},
 	{
 		spacer: true,
-		display: (config) => config.mobile
+		display: (config) => !!config?.mobile
 	},
 	{
 		route: '/utilisateur/se-deconnecter',
@@ -105,21 +105,21 @@ export const ROUTES: Array<Route | Spacer> = [
 	}
 ];
 
-export function loggedGuard(session: App.Session) {
+export function loggedGuard(session: App.Session | undefined) {
 	return !!session;
 }
 
-export function notLoggedGuard(session: App.Session) {
+export function notLoggedGuard(session: App.Session | undefined) {
 	return !session;
 }
 
-export function adminGuard(session: App.Session) {
+export function adminGuard(session: App.Session | undefined) {
 	return session?.association?.role === 'admin';
 }
 
 export const guard = (
 	routes: Array<Route | Spacer>,
-	session: App.Session
+	session: App.Session | undefined
 ): Array<Route | Spacer> => {
 	return routes.filter((route) => !('guard' in route) || !route.guard || route.guard(session));
 };

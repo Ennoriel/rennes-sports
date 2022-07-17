@@ -16,7 +16,7 @@
 </div>
 
 <div class="flex">
-	<Icon />
+	<svelte:component this={Icon} />
 	{row.sex}
 </div>
 

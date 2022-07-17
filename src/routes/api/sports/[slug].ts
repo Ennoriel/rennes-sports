@@ -2,7 +2,7 @@ import type { RequestHandler } from '@sveltejs/kit';
 import mongoClient from '$lib/utils/db';
 import { ObjectId } from 'mongodb';
 
-export const del: RequestHandler = async ({ locals, params }) => {
+export const DELETE: RequestHandler = async ({ locals, params }) => {
 	if (locals.session?.role !== 'admin') {
 		return {
 			status: 302,

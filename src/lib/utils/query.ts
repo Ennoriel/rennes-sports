@@ -3,6 +3,7 @@ import { urlSearchParamsToString } from './url';
 import { isStringANumber } from './number';
 import { toObj } from 'form-data-to-object';
 import { isStringABool } from './bool';
+import { isFormDataEntryValueAFile } from './type';
 
 export const errorResponse = (
 	acceptsJson: boolean,
@@ -26,10 +27,12 @@ export const parseUrlSearchParams: Load = async ({ url }) => {
  * @param formData FormData object
  */
 export const formDataToObject = <T>(formData: FormData | URLSearchParams): T => {
-	const linearizedObject = [...formData.entries()].reduce((acc, [key, value]: [string, string]) => {
+	const linearizedObject = [...formData.entries()].reduce((acc, [key, value]) => {
 		let parsedValue: string | boolean | number;
 		if (value) {
-			parsedValue = isStringANumber(value)
+			parsedValue = isFormDataEntryValueAFile(value)
+				? 'files not yet handled'
+				: isStringANumber(value)
 				? parseFloat(value)
 				: isStringABool(value)
 				? value === 'true'

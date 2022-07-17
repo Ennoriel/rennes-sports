@@ -5,7 +5,7 @@ import type { InsertOneReturnType } from '$lib/types/mongo.type';
 import type { Sport } from '$lib/types/sport.type';
 import { ObjectId } from 'mongodb';
 
-export const post: RequestHandler = async ({ locals, request }) => {
+export const POST: RequestHandler = async ({ locals, request }) => {
 	const body = await request.formData();
 	const acceptsJson = request.headers.get('accept') == 'application/json';
 

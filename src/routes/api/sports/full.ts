@@ -8,7 +8,7 @@ import { getMarkers } from '$lib/utils/filter';
 import type { Location, Marker } from '$lib/types/location.type';
 import { getAssociation } from '../../../lib/db/association';
 
-export const get: RequestHandler = async (event) => {
+export const GET: RequestHandler = async (event) => {
 	const filter = formDataToObject<Filter>(event.url.searchParams);
 
 	const sports = await getSports(filter, event.locals.session);

@@ -1,7 +1,7 @@
 import type { RequestHandler } from '@sveltejs/kit';
 import mongoClient from '$lib/utils/db';
 
-export const get: RequestHandler = async ({ locals }) => {
+export const GET: RequestHandler = async ({ locals }) => {
 	if (locals.session?.role !== 'admin') {
 		return {
 			status: 302,

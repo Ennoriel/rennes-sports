@@ -3,7 +3,7 @@ import { errorResponse, formDataToObject } from '$lib/utils/query';
 import mongoClient from '$lib/utils/db';
 import type { Location } from '$lib/types/location.type';
 
-export const post: RequestHandler = async ({ request }) => {
+export const POST: RequestHandler = async ({ request }) => {
 	const body = await request.formData();
 	const acceptsJson = request.headers.get('accept') == 'application/json';
 

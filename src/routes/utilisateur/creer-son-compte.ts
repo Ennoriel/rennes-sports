@@ -3,7 +3,7 @@ import { errorResponse } from '$lib/utils/query';
 import mongoClient from '$lib/utils/db';
 import { crypt } from './_utils';
 
-export const post: RequestHandler = async ({ request }) => {
+export const POST: RequestHandler = async ({ request }) => {
 	const body = await request.formData();
 	const acceptsJson = request.headers.get('accept') == 'application/json';
 

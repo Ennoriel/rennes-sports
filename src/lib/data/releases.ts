@@ -4,7 +4,8 @@ export const RELEASES = [
 		updates: [
 			"Evolution: possibilité de saisir un sport avec plusieurs niveaux d'entrainement (Compétition, Handisport, Loisir) 🏃",
 			'Evolution: page nouveautés 🤠',
-			"Corrections: tailles d'icones, couleur bouton, images, orthographe ✨"
+			"Corrections: tailles d'icones, couleur bouton, images, orthographe ✨",
+			'Technique: mise à jour des dépendances techniques 🔨'
 		]
 	}
 ];

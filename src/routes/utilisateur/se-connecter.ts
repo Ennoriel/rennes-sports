@@ -5,7 +5,7 @@ import { errorResponse } from '$lib/utils/query';
 import { validate } from './_utils';
 import mongoClient from '$lib/utils/db';
 
-export const post: RequestHandler = async ({ request }) => {
+export const POST: RequestHandler = async ({ request }) => {
 	const body = await request.formData();
 	const acceptsJson = request.headers.get('accept') == 'application/json';
 

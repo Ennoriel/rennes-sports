@@ -18,6 +18,7 @@ describe('query utils', () => {
 	});
 
 	it('formDataToObject', () => {
+		// @ts-ignore
 		const formData = new FormData();
 		formData.append('string', 'string');
 		formData.append('number', '42');

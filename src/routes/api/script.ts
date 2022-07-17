@@ -3,7 +3,7 @@ import type { RequestHandler } from '@sveltejs/kit';
 // import { ObjectId } from 'mongodb';
 // import {assos} from "../../lib/data/assos";
 
-export const get: RequestHandler = async () => {
+export const GET: RequestHandler = async () => {
 	// let sports = (await (await mongoClient).db()?.collection('sports').find({})?.toArray()) || [];
 	// await (await mongoClient).db()?.collection('sports2').deleteMany({});
 	// await (await mongoClient).db()?.collection('sports2').insertMany(sports);

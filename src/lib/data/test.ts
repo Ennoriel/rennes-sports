@@ -77,6 +77,6 @@ export const ROUTE = {
 	},
 	GET_LABEL: {
 		route: '/get/label',
-		getLabel: (session?: App.Session) => session?.association?.name
+		getLabel: (session?: App.Session) => session?.association?.name || ''
 	}
 };
